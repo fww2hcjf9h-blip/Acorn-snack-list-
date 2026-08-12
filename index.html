@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Acorn Lists</title>
 
 <style>
@@ -15,9 +15,7 @@ background:#f4f7f4;
 color:#202520;
 }
 
-button,input,select{
-font:inherit;
-}
+button,input,select{font:inherit}
 
 button{
 border:0;
@@ -26,6 +24,8 @@ padding:10px 13px;
 font-weight:bold;
 cursor:pointer;
 }
+
+.hidden{display:none!important}
 
 .app{
 display:flex;
@@ -335,10 +335,6 @@ display:flex;
 gap:6px;
 }
 
-.hidden{
-display:none!important;
-}
-
 /* LOGIN */
 
 .login-screen{
@@ -357,22 +353,21 @@ background:white;
 border-radius:20px;
 padding:25px;
 width:100%;
-max-width:430px;
+max-width:420px;
 box-shadow:0 4px 20px rgba(0,0,0,.08);
 }
 
 .login-logo{
 text-align:center;
-font-size:30px;
+font-size:32px;
 font-weight:bold;
 color:#2f6f45;
-margin-bottom:5px;
 }
 
 .login-subtitle{
 text-align:center;
 color:#687068;
-margin-bottom:20px;
+margin:6px 0 20px;
 }
 
 .login-tabs{
@@ -399,12 +394,12 @@ margin-bottom:12px;
 font-size:14px;
 }
 
-.login-message.error{
+.error{
 background:#f7dddd;
 color:#8d2525;
 }
 
-.login-message.success{
+.success{
 background:#dff1e3;
 color:#246337;
 }
@@ -422,20 +417,20 @@ background:#2f6f45;
 color:white;
 font-size:30px;
 box-shadow:0 4px 15px rgba(0,0,0,.2);
-z-index:30;
+z-index:40;
 }
 
 .profile-menu{
 position:fixed;
 right:20px;
-top:75px;
+bottom:90px;
 background:white;
 border:1px solid #ddd;
 border-radius:14px;
 padding:12px;
 width:240px;
 box-shadow:0 5px 20px rgba(0,0,0,.15);
-z-index:40;
+z-index:50;
 }
 
 .profile-menu button{
@@ -469,7 +464,9 @@ height:100%;
 object-fit:cover;
 }
 
-.profile-modal{
+/* MODALS */
+
+.modal{
 position:fixed;
 inset:0;
 background:rgba(0,0,0,.4);
@@ -480,10 +477,10 @@ padding:20px;
 z-index:80;
 }
 
-.profile-modal-box{
+.modal-box{
 background:white;
 width:100%;
-max-width:500px;
+max-width:450px;
 border-radius:18px;
 padding:20px;
 }
@@ -546,14 +543,14 @@ Adult access
 <div class="login-tabs">
 
 <button
-id="loginModeButton"
+id="loginTab"
 class="active"
 type="button">
 Log in
 </button>
 
 <button
-id="signupModeButton"
+id="createTab"
 type="button">
 Create account
 </button>
@@ -561,51 +558,55 @@ Create account
 </div>
 
 <div
-id="loginMessage"
+id="authMessage"
 class="login-message hidden">
 </div>
 
 <div class="field">
 
 <label>
-Email
+Adult name
 </label>
 
 <input
-id="authEmail"
-type="email"
-placeholder="Email address"
-autocomplete="email">
+id="adultName"
+type="text"
+placeholder="e.g. Sarah"
+autocomplete="off">
 
 </div>
 
 <div class="field">
 
 <label>
-Password / code
+4-digit code
 </label>
 
 <input
-id="authPassword"
+id="adultCode"
 type="password"
-placeholder="Your password or code"
-autocomplete="current-password">
+inputmode="numeric"
+maxlength="4"
+placeholder="••••"
+autocomplete="off">
 
 </div>
 
 <div
-id="authNameField"
+id="confirmCodeField"
 class="field hidden">
 
 <label>
-Your name
+Confirm 4-digit code
 </label>
 
 <input
-id="authName"
-type="text"
-placeholder="Your name"
-autocomplete="name">
+id="confirmCode"
+type="password"
+inputmode="numeric"
+maxlength="4"
+placeholder="••••"
+autocomplete="off">
 
 </div>
 
@@ -624,7 +625,7 @@ Log in
 </div>
 
 
-<!-- MAIN APP -->
+<!-- APP -->
 
 <div
 id="app"
@@ -682,9 +683,9 @@ Daily records
 </div>
 
 <button
+id="profileButton"
 type="button"
-class="secondary small"
-id="profileButton">
+class="secondary small">
 
 👤 Profile
 
@@ -743,18 +744,14 @@ Create new day
 type="button"
 class="snack-tab active"
 id="amButton">
-
 AM Snack
-
 </button>
 
 <button
 type="button"
 class="snack-tab"
 id="pmButton">
-
 PM Snack
-
 </button>
 
 </div>
@@ -989,13 +986,12 @@ Saved Days
 </div>
 
 
-<!-- BOTTOM RIGHT ACCOUNT BUTTON -->
+<!-- PLUS BUTTON -->
 
 <button
 id="accountFab"
 class="fab"
-type="button"
-title="Account">
+type="button">
 
 +
 
@@ -1037,9 +1033,9 @@ Adult account
 
 
 <button
+id="editProfileButton"
 type="button"
-class="secondary"
-id="editProfileButton">
+class="secondary">
 
 ✏️ Edit profile
 
@@ -1047,9 +1043,19 @@ id="editProfileButton">
 
 
 <button
+id="addAdultButton"
 type="button"
-class="danger"
-id="logoutButton">
+class="secondary">
+
+➕ Add another adult
+
+</button>
+
+
+<button
+id="logoutButton"
+type="button"
+class="danger">
 
 🚪 Log out
 
@@ -1062,9 +1068,9 @@ id="logoutButton">
 
 <div
 id="profileModal"
-class="profile-modal hidden">
+class="modal hidden">
 
-<div class="profile-modal-box">
+<div class="modal-box">
 
 <h2>
 Edit profile
@@ -1077,8 +1083,7 @@ Your name
 </label>
 
 <input
-id="profileDisplayName"
-type="text"
+id="profileNameInput"
 placeholder="Your name">
 
 </div>
@@ -1091,8 +1096,7 @@ Profile photo URL
 </label>
 
 <input
-id="profilePhotoUrl"
-type="url"
+id="profilePhotoInput"
 placeholder="Optional photo URL">
 
 </div>
@@ -1105,9 +1109,9 @@ class="login-message hidden">
 
 
 <button
+id="saveProfileButton"
 type="button"
 class="primary"
-id="saveProfileButton"
 style="width:100%">
 
 Save profile
@@ -1116,9 +1120,9 @@ Save profile
 
 
 <button
+id="closeProfileButton"
 type="button"
 class="secondary"
-id="closeProfileButton"
 style="width:100%;margin-top:7px">
 
 Close
@@ -1139,11 +1143,7 @@ from
 "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
-/*
-==================================================
-SUPABASE
-==================================================
-*/
+/* SUPABASE */
 
 const supabase=createClient(
 
@@ -1154,13 +1154,9 @@ const supabase=createClient(
 );
 
 
-/*
-==================================================
-VARIABLES
-==================================================
-*/
+/* VARIABLES */
 
-let currentUser=null;
+let currentAdult=null;
 
 let data={};
 
@@ -1177,28 +1173,19 @@ let openNoteIndex=null;
 let authMode="login";
 
 
-/*
-==================================================
-HELPERS
-==================================================
-*/
+/* HELPERS */
 
-function get(id){
-
-return document.getElementById(id);
-
-}
+const $=id=>document.getElementById(id);
 
 
-function getToday(){
+function today(){
 
 const d=new Date();
 
-const local=new Date(
-
+const local=
+new Date(
 d.getTime()-
 d.getTimezoneOffset()*60000
-
 );
 
 return local.toISOString().slice(0,10);
@@ -1213,9 +1200,7 @@ if(!data[date]){
 data[date]={
 
 amSnack:[],
-
 pmSnack:[],
-
 suncream:[]
 
 };
@@ -1228,162 +1213,89 @@ suncream:[]
 function formatDate(date){
 
 return new Date(date+"T12:00:00")
-
 .toLocaleDateString(
-
 "en-GB",
-
 {
-
 weekday:"long",
-
 day:"numeric",
-
 month:"long",
-
 year:"numeric"
-
 }
-
 );
 
 }
 
 
-/*
-==================================================
-LOGIN MESSAGE
-==================================================
-*/
+/* LOGIN MODE */
 
-function showLoginMessage(text,success=false){
+$("loginTab").onclick=()=>{
 
-const box=get("loginMessage");
+authMode="login";
+
+$("loginTab").classList.add("active");
+
+$("createTab").classList.remove("active");
+
+$("confirmCodeField").classList.add("hidden");
+
+$("authButton").textContent="Log in";
+
+$("authMessage").classList.add("hidden");
+
+};
+
+
+$("createTab").onclick=()=>{
+
+authMode="create";
+
+$("createTab").classList.add("active");
+
+$("loginTab").classList.remove("active");
+
+$("confirmCodeField").classList.remove("hidden");
+
+$("authButton").textContent="Create account";
+
+$("authMessage").classList.add("hidden");
+
+};
+
+
+/* LOGIN MESSAGE */
+
+function authMessage(text,success=false){
+
+const box=$("authMessage");
 
 box.textContent=text;
 
 box.classList.remove("hidden");
 
-box.classList.toggle(
-"success",
-success
-);
+box.classList.toggle("success",success);
 
-box.classList.toggle(
-"error",
-!success
-);
+box.classList.toggle("error",!success);
 
 }
 
 
-/*
-==================================================
-AUTH MODE
-==================================================
-*/
+/* CREATE / LOGIN */
 
-function setAuthMode(mode){
-
-authMode=mode;
-
-get("loginModeButton")
-.classList.toggle(
-"active",
-mode==="login"
-);
-
-get("signupModeButton")
-.classList.toggle(
-"active",
-mode==="signup"
-);
-
-get("authNameField")
-.classList.toggle(
-"hidden",
-mode!=="signup"
-);
-
-get("authButton").textContent=
-
-mode==="login"
-?"Log in"
-:"Create account";
-
-get("loginMessage")
-.classList.add("hidden");
-
-}
+$("authButton").onclick=auth;
 
 
-get("loginModeButton")
-.addEventListener(
-"click",
-function(){
-
-setAuthMode("login");
-
-}
-);
-
-
-get("signupModeButton")
-.addEventListener(
-"click",
-function(){
-
-setAuthMode("signup");
-
-}
-);
-
-
-/*
-==================================================
-LOGIN / CREATE ACCOUNT
-==================================================
-*/
-
-get("authButton")
-.addEventListener(
-"click",
-submitAuth
-);
-
-
-async function submitAuth(){
-
-const email=
-get("authEmail")
-.value
-.trim();
-
-const password=
-get("authPassword")
-.value;
-
-if(!email || !password){
-
-showLoginMessage(
-"Please enter your email and password."
-);
-
-return;
-
-}
-
-
-if(authMode==="signup"){
+async function auth(){
 
 const name=
-get("authName")
-.value
-.trim();
+$("adultName").value.trim();
+
+const code=
+$("adultCode").value.trim();
+
 
 if(!name){
 
-showLoginMessage(
+authMessage(
 "Please enter your name."
 );
 
@@ -1392,10 +1304,27 @@ return;
 }
 
 
-if(password.length<6){
+if(!/^\d{4}$/.test(code)){
 
-showLoginMessage(
-"Your password/code must be at least 6 characters."
+authMessage(
+"Please enter a 4-digit code."
+);
+
+return;
+
+}
+
+
+if(authMode==="create"){
+
+const confirm=
+$("confirmCode").value.trim();
+
+
+if(code!==confirm){
+
+authMessage(
+"The codes don't match."
 );
 
 return;
@@ -1404,18 +1333,18 @@ return;
 
 
 const result=
-await supabase.auth.signUp({
-
-email:email,
-
-password:password
-
-});
+await supabase.rpc(
+"create_adult",
+{
+p_name:name,
+p_code:code
+}
+);
 
 
 if(result.error){
 
-showLoginMessage(
+authMessage(
 result.error.message
 );
 
@@ -1424,194 +1353,172 @@ return;
 }
 
 
-if(result.data.user){
+currentAdult=result.data;
 
-const profileResult=
-await supabase
-.from("profiles")
-.upsert({
+saveLogin();
 
-id:result.data.user.id,
-
-display_name:name,
-
-photo_url:""
-
-});
-
-
-if(profileResult.error){
-
-showLoginMessage(
-profileResult.error.message
-);
+showApp();
 
 return;
 
 }
 
-}
 
-
-if(!result.data.session){
-
-showLoginMessage(
-"Account created. Check your email to confirm your account before logging in.",
-true
-);
-
-return;
-
-}
-
-}
-
-else{
+/* LOGIN */
 
 const result=
-await supabase.auth.signInWithPassword({
-
-email:email,
-
-password:password
-
-});
+await supabase.rpc(
+"login_adult",
+{
+p_name:name,
+p_code:code
+}
+);
 
 
 if(result.error){
 
-showLoginMessage(
-result.error.message
+authMessage(
+"Incorrect name or code."
 );
 
 return;
 
 }
 
-}
+
+currentAdult=result.data;
+
+saveLogin();
+
+showApp();
 
 }
 
 
-/*
-==================================================
-START APP
-==================================================
-*/
+/* SAVE LOGIN */
 
-async function startApp(user){
+function saveLogin(){
 
-currentUser=user;
+localStorage.setItem(
+"acornAdult",
+JSON.stringify(currentAdult)
+);
 
-get("loginScreen")
+}
+
+
+/* SHOW APP */
+
+async function showApp(){
+
+$("loginScreen")
 .classList.add("hidden");
 
-get("app")
+$("app")
 .classList.remove("hidden");
 
-await loadProfile();
+currentDate=today();
 
-await loadSharedData();
+await loadData();
+
+render();
+
+updateProfile();
+
+}
+
+
+/* AUTO LOGIN */
+
+async function checkLogin(){
+
+const saved=
+localStorage.getItem(
+"acornAdult"
+);
+
+if(!saved){
+
+$("loginScreen")
+.classList.remove("hidden");
+
+return;
+
+}
+
+
+try{
+
+currentAdult=
+JSON.parse(saved);
+
+if(!currentAdult.id){
+
+throw new Error();
+
+}
+
+await loadData();
+
+$("loginScreen")
+.classList.add("hidden");
+
+$("app")
+.classList.remove("hidden");
+
+updateProfile();
 
 render();
 
 }
 
+catch(error){
 
-/*
-==================================================
-LOGIN SCREEN
-==================================================
-*/
+localStorage.removeItem(
+"acornAdult"
+);
 
-function showLogin(){
-
-currentUser=null;
-
-get("loginScreen")
+$("loginScreen")
 .classList.remove("hidden");
 
-get("app")
-.classList.add("hidden");
+}
 
 }
 
 
-/*
-==================================================
-PROFILE
-==================================================
-*/
+/* PROFILE */
 
-async function loadProfile(){
+async function updateProfile(){
 
-if(!currentUser){
+if(!currentAdult){
 
 return;
 
 }
+
+
+$("profileMenuName")
+.textContent=
+currentAdult.name || "Adult";
 
 
 let result=
 await supabase
-.from("profiles")
-.select("*")
-.eq("id",currentUser.id)
+.from("adults")
+.select("photo_url")
+.eq("id",currentAdult.id)
 .maybeSingle();
 
 
-if(result.error){
-
-console.log(result.error);
-
-return;
-
-}
-
-
-let profile=result.data;
-
-
-if(!profile){
-
-const defaultName=
-(currentUser.email || "Adult")
-.split("@")[0];
-
-
-await supabase
-.from("profiles")
-.upsert({
-
-id:currentUser.id,
-
-display_name:defaultName,
-
-photo_url:""
-
-});
-
-
-profile={
-
-display_name:defaultName,
-
-photo_url:""
-
-};
-
-}
-
-
-get("profileMenuName")
-.textContent=
-profile.display_name || "Adult";
-
+if(result.data){
 
 setAvatar(
-get("profileAvatar"),
-profile.photo_url
+$("profileAvatar"),
+result.data.photo_url
 );
+
+}
 
 }
 
@@ -1620,7 +1527,6 @@ function setAvatar(element,url){
 
 element.innerHTML="";
 
-
 if(url){
 
 const image=
@@ -1628,13 +1534,8 @@ document.createElement("img");
 
 image.src=url;
 
-image.alt="Profile photo";
-
-image.onerror=function(){
-
-element.textContent="👤";
-
-};
+image.onerror=
+()=>element.textContent="👤";
 
 element.appendChild(image);
 
@@ -1649,84 +1550,89 @@ element.textContent="👤";
 }
 
 
-/*
-==================================================
-OPEN EDIT PROFILE
-==================================================
-*/
+/* PROFILE MENU */
 
-get("editProfileButton")
-.addEventListener(
-"click",
-openEditProfile
-);
+$("profileButton").onclick=()=>{
+
+$("profileMenu")
+.classList.toggle("hidden");
+
+};
 
 
-async function openEditProfile(){
+$("accountFab").onclick=()=>{
 
-get("profileMenu")
+$("profileMenu")
+.classList.toggle("hidden");
+
+};
+
+
+/* EDIT PROFILE */
+
+$("editProfileButton").onclick=
+async function(){
+
+$("profileMenu")
 .classList.add("hidden");
 
 
 const result=
 await supabase
-.from("profiles")
+.from("adults")
 .select("*")
-.eq("id",currentUser.id)
+.eq("id",currentAdult.id)
 .maybeSingle();
 
 
-get("profileDisplayName").value=
-result.data?.display_name || "";
+if(result.data){
 
+$("profileNameInput").value=
+result.data.name || "";
 
-get("profilePhotoUrl").value=
-result.data?.photo_url || "";
-
-
-get("profileMessage")
-.classList.add("hidden");
-
-
-get("profileModal")
-.classList.remove("hidden");
+$("profilePhotoInput").value=
+result.data.photo_url || "";
 
 }
 
 
-/*
-==================================================
-SAVE PROFILE
-==================================================
-*/
+$("profileModal")
+.classList.remove("hidden");
 
-get("saveProfileButton")
-.addEventListener(
-"click",
-saveProfile
-);
+};
 
 
-async function saveProfile(){
+$("closeProfileButton").onclick=()=>{
+
+$("profileModal")
+.classList.add("hidden");
+
+};
+
+
+/* SAVE PROFILE */
+
+$("saveProfileButton").onclick=
+async function(){
 
 const name=
-get("profileDisplayName")
+$("profileNameInput")
 .value
 .trim();
 
 const photo=
-get("profilePhotoUrl")
+$("profilePhotoInput")
 .value
 .trim();
 
 
 if(!name){
 
-get("profileMessage")
+$("profileMessage")
 .textContent=
 "Please enter your name.";
 
-get("profileMessage")
+$("profileMessage")
 .classList.remove("hidden");
 
 return;
@@ -1735,26 +1641,23 @@ return;
 
 
 const result=
-await supabase
-.from("profiles")
-.upsert({
-
-id:currentUser.id,
-
-display_name:name,
-
-photo_url:photo
-
-});
+await supabase.rpc(
+"update_adult",
+{
+p_id:currentAdult.id,
+p_name:name,
+p_photo_url:photo
+}
+);
 
 
 if(result.error){
 
-get("profileMessage")
+$("profileMessage")
 .textContent=
 result.error.message;
 
-get("profileMessage")
+$("profileMessage")
 .classList.remove("hidden");
 
 return;
@@ -1762,72 +1665,67 @@ return;
 }
 
 
-get("profileMenuName")
-.textContent=name;
+currentAdult.name=name;
 
-setAvatar(
-get("profileAvatar"),
-photo
-);
+saveLogin();
 
-get("profileModal")
+$("profileModal")
 .classList.add("hidden");
 
-}
+updateProfile();
+
+};
 
 
-/*
-==================================================
-CLOSE PROFILE
-==================================================
-*/
+/* ADD ADULT */
 
-get("closeProfileButton")
-.addEventListener(
-"click",
-function(){
+$("addAdultButton").onclick=()=>{
 
-get("profileModal")
+$("profileMenu")
 .classList.add("hidden");
 
-}
+$("adultName").value="";
+
+$("adultCode").value="";
+
+$("confirmCode").value="";
+
+$("loginScreen").classList.remove("hidden");
+
+$("app").classList.add("hidden");
+
+$("createTab").click();
+
+};
+
+
+/* LOG OUT */
+
+$("logoutButton").onclick=()=>{
+
+localStorage.removeItem(
+"acornAdult"
 );
 
+currentAdult=null;
 
-/*
-==================================================
-LOGOUT
-==================================================
-*/
-
-get("logoutButton")
-.addEventListener(
-"click",
-async function(){
-
-get("profileMenu")
+$("profileMenu")
 .classList.add("hidden");
 
-await supabase.auth.signOut();
+$("app").classList.add("hidden");
 
-}
-);
+$("loginScreen").classList.remove("hidden");
+
+$("adultName").value="";
+
+$("adultCode").value="";
+
+};
 
 
-/*
-==================================================
-LOAD SHARED DATA
-==================================================
-*/
+/* LOAD DATA */
 
-async function loadSharedData(){
-
-if(!currentUser){
-
-return;
-
-}
-
+async function loadData(){
 
 data={};
 
@@ -1836,12 +1734,7 @@ const snacks=
 await supabase
 .from("snack_lists")
 .select("*")
-.order(
-"list_date",
-{
-ascending:false
-}
-)
+.order("list_date",{ascending:false})
 .order("id");
 
 
@@ -1849,12 +1742,7 @@ const suncream=
 await supabase
 .from("suncream_lists")
 .select("*")
-.order(
-"list_date",
-{
-ascending:false
-}
-)
+.order("list_date",{ascending:false})
 .order("id");
 
 
@@ -1880,12 +1768,9 @@ return;
 }
 
 
-/*
-SNACKS
-*/
-
-(snacks.data || [])
-.forEach(function(item){
+(snacks.data||[])
+.forEach(
+function(item){
 
 createDay(item.list_date);
 
@@ -1894,24 +1779,24 @@ item.snack_time==="am"
 ?"amSnack"
 :"pmSnack";
 
-
-data[item.list_date][key].push({
+data[item.list_date][key]
+.push({
 
 id:item.id,
 
 name:item.child_name,
 
-status:item.allergy_status || "none",
+status:item.allergy_status||"none",
 
-milk:item.alternative_milk || "",
+milk:item.alternative_milk||"",
 
 done:!!item.done,
 
 note:{
 
-amount:item.amount || "",
+amount:item.amount||"",
 
-what:item.food || ""
+what:item.food||""
 
 }
 
@@ -1920,12 +1805,9 @@ what:item.food || ""
 });
 
 
-/*
-SUNCREAM
-*/
-
-(suncream.data || [])
-.forEach(function(item){
+(suncream.data||[])
+.forEach(
+function(item){
 
 createDay(item.list_date);
 
@@ -1937,7 +1819,7 @@ id:item.id,
 
 name:item.child_name,
 
-product:item.product || "",
+product:item.product||"",
 
 done:!!item.done
 
@@ -1948,11 +1830,7 @@ done:!!item.done
 }
 
 
-/*
-==================================================
-PAGE NAVIGATION
-==================================================
-*/
+/* NAVIGATION */
 
 function openSnackList(){
 
@@ -1960,26 +1838,19 @@ currentPage="snacks";
 
 openNoteIndex=null;
 
-get("snackPage")
-.classList.remove("hidden");
+$("snackPage").classList.remove("hidden");
 
-get("groupedPage")
-.classList.add("hidden");
+$("groupedPage").classList.add("hidden");
 
-get("suncreamPage")
-.classList.add("hidden");
+$("suncreamPage").classList.add("hidden");
 
-get("snackFolder")
-.classList.add("active");
+$("snackFolder").classList.add("active");
 
-get("groupedButton")
-.classList.remove("active");
+$("groupedButton").classList.remove("active");
 
-get("suncreamFolder")
-.classList.remove("active");
+$("suncreamFolder").classList.remove("active");
 
-get("pageTitle")
-.textContent=
+$("pageTitle").textContent=
 "Acorn Snack List";
 
 render();
@@ -1993,26 +1864,19 @@ currentPage="grouped";
 
 openNoteIndex=null;
 
-get("snackPage")
-.classList.add("hidden");
+$("snackPage").classList.add("hidden");
 
-get("groupedPage")
-.classList.remove("hidden");
+$("groupedPage").classList.remove("hidden");
 
-get("suncreamPage")
-.classList.add("hidden");
+$("suncreamPage").classList.add("hidden");
 
-get("snackFolder")
-.classList.remove("active");
+$("snackFolder").classList.remove("active");
 
-get("groupedButton")
-.classList.add("active");
+$("groupedButton").classList.add("active");
 
-get("suncreamFolder")
-.classList.remove("active");
+$("suncreamFolder").classList.remove("active");
 
-get("pageTitle")
-.textContent=
+$("pageTitle").textContent=
 "Grouped Snacks";
 
 render();
@@ -2024,26 +1888,19 @@ function openSuncreamList(){
 
 currentPage="suncream";
 
-get("snackPage")
-.classList.add("hidden");
+$("snackPage").classList.add("hidden");
 
-get("groupedPage")
-.classList.add("hidden");
+$("groupedPage").classList.add("hidden");
 
-get("suncreamPage")
-.classList.remove("hidden");
+$("suncreamPage").classList.remove("hidden");
 
-get("snackFolder")
-.classList.remove("active");
+$("snackFolder").classList.remove("active");
 
-get("groupedButton")
-.classList.remove("active");
+$("groupedButton").classList.remove("active");
 
-get("suncreamFolder")
-.classList.add("active");
+$("suncreamFolder").classList.add("active");
 
-get("pageTitle")
-.textContent=
+$("pageTitle").textContent=
 "Acorn Suncream List";
 
 render();
@@ -2051,104 +1908,75 @@ render();
 }
 
 
-/*
-==================================================
-SNACK TABS
-==================================================
-*/
+/* SNACK TABS */
 
-function openAM(){
+$("amButton").onclick=()=>{
 
 currentSnack="am";
 
-openNoteIndex=null;
+$("amButton").classList.add("active");
 
-get("amButton")
-.classList.add("active");
+$("pmButton").classList.remove("active");
 
-get("pmButton")
-.classList.remove("active");
-
-get("snackTitle")
-.textContent=
-"AM Snack";
+$("snackTitle").textContent="AM Snack";
 
 renderSnackList();
 
-}
+};
 
 
-function openPM(){
+$("pmButton").onclick=()=>{
 
 currentSnack="pm";
 
-openNoteIndex=null;
+$("pmButton").classList.add("active");
 
-get("pmButton")
-.classList.add("active");
+$("amButton").classList.remove("active");
 
-get("amButton")
-.classList.remove("active");
-
-get("snackTitle")
-.textContent=
-"PM Snack";
+$("snackTitle").textContent="PM Snack";
 
 renderSnackList();
 
-}
+};
 
 
-/*
-==================================================
-GROUPED TABS
-==================================================
-*/
+/* GROUPED TABS */
 
-function openGroupedAM(){
+$("groupedAmButton").onclick=()=>{
 
 groupedSnack="am";
 
-get("groupedAmButton")
-.classList.add("active");
+$("groupedAmButton").classList.add("active");
 
-get("groupedPmButton")
-.classList.remove("active");
+$("groupedPmButton").classList.remove("active");
 
 renderGrouped();
 
-}
+};
 
 
-function openGroupedPM(){
+$("groupedPmButton").onclick=()=>{
 
 groupedSnack="pm";
 
-get("groupedPmButton")
-.classList.add("active");
+$("groupedPmButton").classList.add("active");
 
-get("groupedAmButton")
-.classList.remove("active");
+$("groupedAmButton").classList.remove("active");
 
 renderGrouped();
 
-}
+};
 
 
-/*
-==================================================
-MAIN RENDER
-==================================================
-*/
+/* RENDER */
 
 function render(){
 
 createDay(currentDate);
 
-get("date").value=
-currentDate;
+$("date").value=currentDate;
 
-get("pageSubtitle")
+$("pageSubtitle")
 .textContent=
 formatDate(currentDate);
 
@@ -2177,16 +2005,12 @@ renderSavedDays();
 }
 
 
-/*
-==================================================
-SNACK LIST
-==================================================
-*/
+/* SNACK LIST */
 
 function renderSnackList(){
 
 const container=
-get("snackChildren");
+$("snackChildren");
 
 container.innerHTML="";
 
@@ -2224,14 +2048,11 @@ item.className=
 const top=
 document.createElement("div");
 
-top.className=
-"child-top";
+top.className="child-top";
 
 
 const tick=
 document.createElement("button");
-
-tick.type="button";
 
 tick.className="tick";
 
@@ -2246,12 +2067,9 @@ const result=
 await supabase
 .from("snack_lists")
 .update({
-
 done:!child.done
-
 })
 .eq("id",child.id);
-
 
 if(result.error){
 
@@ -2260,7 +2078,6 @@ alert(result.error.message);
 return;
 
 }
-
 
 child.done=!child.done;
 
@@ -2269,128 +2086,88 @@ renderSnackList();
 };
 
 
-/* NAME */
-
 const name=
 document.createElement("div");
 
-name.className=
-"child-name";
+name.className="child-name";
 
 name.textContent=
 child.name;
 
-
-/* ALLERGY */
 
 const badge=
 document.createElement("span");
 
 if(child.status==="red"){
 
-badge.className=
-"badge red";
+badge.className="badge red";
 
-badge.textContent=
-"RED";
+badge.textContent="RED";
 
 }
 
 else if(child.status==="green"){
 
-badge.className=
-"badge green";
+badge.className="badge green";
 
-badge.textContent=
-"GREEN";
+badge.textContent="GREEN";
 
 }
 
 else{
 
-badge.className=
-"badge none";
+badge.className="badge none";
 
-badge.textContent=
-"NONE";
+badge.textContent="NONE";
 
 }
 
 
-/* NOTE */
-
-const noteButton=
+const note=
 document.createElement("button");
 
-noteButton.type="button";
-
-noteButton.className=
+note.className=
 "note-button"+
 (
-child.note &&
-(child.note.amount||child.note.what)
-?" has-note"
-:""
+child.note.amount||
+child.note.what
+?" has-note":""
 );
 
-noteButton.textContent="📝";
+note.textContent="📝";
 
-noteButton.title=
-"Add snack";
+note.onclick=()=>{
 
-
-noteButton.onclick=
-function(){
-
-if(openNoteIndex===index){
-
-openNoteIndex=null;
-
-}
-
-else{
-
-openNoteIndex=index;
-
-}
+openNoteIndex=
+openNoteIndex===index
+?null
+:index;
 
 renderSnackList();
 
 };
 
 
-/* REMOVE */
-
 const remove=
 document.createElement("button");
-
-remove.type="button";
 
 remove.className=
 "danger small";
 
-remove.textContent=
-"Remove";
-
+remove.textContent="Remove";
 
 remove.onclick=
 async function(){
 
 if(!confirm(
 "Remove "+child.name+"?"
-)){
-
-return;
-
-}
-
+))return;
 
 const result=
 await supabase
 .from("snack_lists")
 .delete()
 .eq("id",child.id);
-
 
 if(result.error){
 
@@ -2400,28 +2177,23 @@ return;
 
 }
 
-
-await loadSharedData();
+await loadData();
 
 render();
 
 };
 
 
-/* TOP */
-
 top.append(
 tick,
 name,
 badge,
-noteButton,
+note,
 remove
 );
 
 item.appendChild(top);
 
-
-/* MILK */
 
 if(child.milk){
 
@@ -2438,11 +2210,9 @@ item.appendChild(milk);
 }
 
 
-/* EATEN */
-
 if(
-child.note &&
-(child.note.amount||child.note.what)
+child.note.amount||
+child.note.what
 ){
 
 const eaten=
@@ -2451,38 +2221,20 @@ document.createElement("div");
 eaten.className=
 "eaten-detail";
 
-let text=
-"Eaten: ";
-
-if(child.note.amount){
-
-text+=
-child.note.amount;
-
-}
-
-if(child.note.what){
-
-if(child.note.amount){
-
-text+=" — ";
-
-}
-
-text+=
-child.note.what;
-
-}
-
 eaten.textContent=
-text;
+"Eaten: "+
+child.note.amount+
+(
+child.note.what
+?
+" — "+child.note.what
+:""
+);
 
 item.appendChild(eaten);
 
 }
 
-
-/* NOTE BOX */
 
 if(openNoteIndex===index){
 
@@ -2500,19 +2252,14 @@ container.appendChild(item);
 }
 
 
-/*
-==================================================
-NOTE BOX
-==================================================
-*/
+/* NOTE BOX */
 
 function createNoteBox(child){
 
 const box=
 document.createElement("div");
 
-box.className=
-"note-box";
+box.className="note-box";
 
 
 const label=
@@ -2545,31 +2292,24 @@ function(amount){
 const button=
 document.createElement("button");
 
-button.type="button";
-
 button.className=
 "amount-button"+
 (
-child.note &&
 child.note.amount===amount
-?" selected"
-:""
+?" selected":""
 );
 
 button.textContent=
 amount;
 
-
 button.onclick=
 async function(){
 
-child.note.amount=
-amount;
+child.note.amount=amount;
 
-await saveSnackNote(child);
+await saveNote(child);
 
 };
-
 
 buttons.appendChild(button);
 
@@ -2579,28 +2319,23 @@ buttons.appendChild(button);
 box.appendChild(buttons);
 
 
-const whatLabel=
+const foodLabel=
 document.createElement("label");
 
-whatLabel.textContent=
+foodLabel.textContent=
 "What did they have?";
 
-box.appendChild(whatLabel);
+box.appendChild(foodLabel);
 
 
 const input=
 document.createElement("input");
 
-input.type="text";
-
 input.placeholder=
 "e.g. banana, apple, different fruit";
 
 input.value=
-child.note &&
-child.note.what
-?child.note.what
-:"";
+child.note.what;
 
 box.appendChild(input);
 
@@ -2615,12 +2350,9 @@ row.className=
 const save=
 document.createElement("button");
 
-save.type="button";
-
 save.className="primary";
 
 save.textContent="Save";
-
 
 save.onclick=
 async function(){
@@ -2628,7 +2360,7 @@ async function(){
 child.note.what=
 input.value.trim();
 
-await saveSnackNote(child);
+await saveNote(child);
 
 };
 
@@ -2636,16 +2368,11 @@ await saveSnackNote(child);
 const close=
 document.createElement("button");
 
-close.type="button";
-
-close.className=
-"secondary";
+close.className="secondary";
 
 close.textContent="Close";
 
-
-close.onclick=
-function(){
+close.onclick=()=>{
 
 openNoteIndex=null;
 
@@ -2654,39 +2381,30 @@ renderSnackList();
 };
 
 
-row.append(
-save,
-close
-);
+row.append(save,close);
 
 box.appendChild(row);
-
 
 return box;
 
 }
 
 
-/*
-==================================================
-SAVE SNACK NOTE
-==================================================
-*/
+/* SAVE NOTE */
 
-async function saveSnackNote(child){
+async function saveNote(child){
 
 const result=
 await supabase
 .from("snack_lists")
 .update({
 
-amount:child.note.amount || "",
+amount:child.note.amount||"",
 
-food:child.note.what || ""
+food:child.note.what||""
 
 })
 .eq("id",child.id);
-
 
 if(result.error){
 
@@ -2696,7 +2414,6 @@ return;
 
 }
 
-
 openNoteIndex=null;
 
 renderSnackList();
@@ -2704,39 +2421,24 @@ renderSnackList();
 }
 
 
-/*
-==================================================
-GROUPED
-==================================================
-*/
+/* GROUPED */
 
 function renderGrouped(){
 
 const container=
-get("groupedChildren");
+$("groupedChildren");
 
 container.innerHTML="";
 
 createDay(currentDate);
 
-const key=
+const children=
+data[currentDate]
+[
 groupedSnack==="am"
 ?"amSnack"
-:"pmSnack";
-
-const children=
-data[currentDate][key];
-
-
-if(!children.length){
-
-container.innerHTML=
-'<div class="grouped-empty">No children have been added yet.</div>';
-
-return;
-
-}
-
+:"pmSnack"
+];
 
 const amounts=[
 "All",
@@ -2755,20 +2457,14 @@ const matching=
 children.filter(
 function(child){
 
-return child.note &&
-child.note.amount===amount &&
+return child.note.amount===amount &&
 child.note.what &&
 child.note.what.trim();
 
 });
 
 
-if(!matching.length){
-
-return;
-
-}
-
+if(!matching.length)return;
 
 found=true;
 
@@ -2804,19 +2500,14 @@ child.note.what.trim();
 const key=
 food.toLowerCase();
 
-
 if(!groups[key]){
 
 groups[key]={
-
 name:food,
-
 children:[]
-
 };
 
 }
-
 
 groups[key]
 .children
@@ -2826,15 +2517,10 @@ groups[key]
 
 
 Object.values(groups)
-
 .sort(
-function(a,b){
-
-return a.name
-.localeCompare(b.name);
-
-})
-
+(a,b)=>
+a.name.localeCompare(b.name)
+)
 .forEach(
 function(group){
 
@@ -2845,13 +2531,13 @@ snack.className=
 "grouped-snack";
 
 
-const snackName=
+const title=
 document.createElement("div");
 
-snackName.className=
+title.className=
 "grouped-snack-name";
 
-snackName.textContent=
+title.textContent=
 "🍌 "+group.name;
 
 
@@ -2866,7 +2552,7 @@ group.children.join(" • ");
 
 
 snack.append(
-snackName,
+title,
 names
 );
 
@@ -2890,16 +2576,12 @@ container.innerHTML=
 }
 
 
-/*
-==================================================
-SUNCREAM
-==================================================
-*/
+/* SUNCREAM */
 
 function renderSuncreamList(){
 
 const container=
-get("suncreamChildren");
+$("suncreamChildren");
 
 container.innerHTML="";
 
@@ -2939,8 +2621,6 @@ top.className=
 const tick=
 document.createElement("button");
 
-tick.type="button";
-
 tick.className="tick";
 
 tick.textContent=
@@ -2954,12 +2634,9 @@ const result=
 await supabase
 .from("suncream_lists")
 .update({
-
 done:!child.done
-
 })
 .eq("id",child.id);
-
 
 if(result.error){
 
@@ -2968,7 +2645,6 @@ alert(result.error.message);
 return;
 
 }
-
 
 child.done=!child.done;
 
@@ -2990,33 +2666,23 @@ child.name;
 const remove=
 document.createElement("button");
 
-remove.type="button";
-
 remove.className=
 "danger small";
 
-remove.textContent=
-"Remove";
-
+remove.textContent="Remove";
 
 remove.onclick=
 async function(){
 
 if(!confirm(
 "Remove "+child.name+"?"
-)){
-
-return;
-
-}
-
+))return;
 
 const result=
 await supabase
 .from("suncream_lists")
 .delete()
 .eq("id",child.id);
-
 
 if(result.error){
 
@@ -3026,8 +2692,7 @@ return;
 
 }
 
-
-await loadSharedData();
+await loadData();
 
 render();
 
@@ -3050,8 +2715,10 @@ detail.className="detail";
 
 detail.textContent=
 child.product
-?"Suncream: "+child.product
-:"No specific suncream recorded";
+?
+"Suncream: "+child.product
+:
+"No specific suncream recorded";
 
 item.appendChild(detail);
 
@@ -3062,16 +2729,12 @@ container.appendChild(item);
 }
 
 
-/*
-==================================================
-SAVED DAYS
-==================================================
-*/
+/* SAVED DAYS */
 
 function renderSavedDays(){
 
 const container=
-get("savedDays");
+$("savedDays");
 
 container.innerHTML="";
 
@@ -3118,17 +2781,12 @@ buttons.className=
 const open=
 document.createElement("button");
 
-open.type="button";
-
 open.className=
 "secondary small";
 
-open.textContent=
-"Open";
+open.textContent="Open";
 
-
-open.onclick=
-function(){
+open.onclick=()=>{
 
 currentDate=date;
 
@@ -3137,76 +2795,67 @@ currentPage="snacks";
 render();
 
 window.scrollTo({
-
 top:0,
-
 behavior:"smooth"
-
 });
 
 };
 
 
-const deleteButton=
+const del=
 document.createElement("button");
 
-deleteButton.type="button";
-
-deleteButton.className=
+del.className=
 "danger small";
 
-deleteButton.textContent=
-"Delete";
+del.textContent="Delete";
 
-
-deleteButton.onclick=
+del.onclick=
 async function(){
 
 if(!confirm(
-"Are you sure you want to delete "+
-formatDate(date)+
-"?\n\nThis will delete the AM snack, PM snack and suncream list for this day."
-)){
-
-return;
-
-}
+"Delete "+formatDate(date)+
+"?\n\nThis will delete all records for this day."
+))return;
 
 
-const snackDelete=
+const snacks=
 await supabase
 .from("snack_lists")
 .delete()
 .eq("list_date",date);
 
 
-const suncreamDelete=
+const suncream=
 await supabase
 .from("suncream_lists")
 .delete()
 .eq("list_date",date);
 
 
-if(
-snackDelete.error ||
-suncreamDelete.error
-){
+if(snacks.error){
 
-alert(
-(snackDelete.error ||
-suncreamDelete.error).message
-);
+alert(snacks.error.message);
 
 return;
 
 }
 
 
-await loadSharedData();
+if(suncream.error){
+
+alert(suncream.error.message);
+
+return;
+
+}
+
+
+await loadData();
 
 if(currentDate===date){
 
-currentDate=getToday();
+currentDate=today();
 
 }
 
@@ -3217,7 +2866,7 @@ render();
 
 buttons.append(
 open,
-deleteButton
+del
 );
 
 row.append(
@@ -3232,16 +2881,12 @@ container.appendChild(row);
 }
 
 
-/*
-==================================================
-ADD SNACK
-==================================================
-*/
+/* ADD SNACK */
 
 async function addSnack(){
 
 const name=
-get("snackName")
+$("snackName")
 .value
 .trim();
 
@@ -3252,7 +2897,7 @@ alert(
 "Please enter the child's name."
 );
 
-get("snackName").focus();
+$("snackName").focus();
 
 return;
 
@@ -3264,7 +2909,7 @@ await supabase
 .from("snack_lists")
 .insert({
 
-user_id:currentUser.id,
+user_id:currentAdult.id,
 
 list_date:currentDate,
 
@@ -3273,10 +2918,10 @@ snack_time:currentSnack,
 child_name:name,
 
 allergy_status:
-get("snackStatus").value,
+$("snackStatus").value,
 
 alternative_milk:
-get("snackMilk").value.trim(),
+$("snackMilk").value.trim(),
 
 done:false,
 
@@ -3296,32 +2941,28 @@ return;
 }
 
 
-get("snackName").value="";
+$("snackName").value="";
 
-get("snackMilk").value="";
+$("snackMilk").value="";
 
-get("snackStatus").value="none";
+$("snackStatus").value="none";
 
 
-await loadSharedData();
+await loadData();
 
 renderSnackList();
 
-get("snackName").focus();
+$("snackName").focus();
 
 }
 
 
-/*
-==================================================
-ADD SUNCREAM
-==================================================
-*/
+/* ADD SUNCREAM */
 
 async function addSuncream(){
 
 const name=
-get("suncreamName")
+$("suncreamName")
 .value
 .trim();
 
@@ -3331,8 +2972,6 @@ if(!name){
 alert(
 "Please enter the child's name."
 );
-
-get("suncreamName").focus();
 
 return;
 
@@ -3344,16 +2983,15 @@ await supabase
 .from("suncream_lists")
 .insert({
 
-user_id:currentUser.id,
+user_id:currentAdult.id,
 
 list_date:currentDate,
 
 child_name:name,
 
 product:
-get("suncreamProduct")
-.value
-.trim(),
+$("suncreamProduct")
+.value.trim(),
 
 done:false
 
@@ -3369,25 +3007,21 @@ return;
 }
 
 
-get("suncreamName").value="";
+$("suncreamName").value="";
 
-get("suncreamProduct").value="";
+$("suncreamProduct").value="";
 
 
-await loadSharedData();
+await loadData();
 
 renderSuncreamList();
 
-get("suncreamName").focus();
+$("suncreamName").focus();
 
 }
 
 
-/*
-==================================================
-NEW DAY
-==================================================
-*/
+/* NEW DAY */
 
 function createNewDay(){
 
@@ -3396,17 +3030,10 @@ prompt(
 "Enter the date as DD/MM/YYYY"
 );
 
-
-if(!answer){
-
-return;
-
-}
-
+if(!answer)return;
 
 const parts=
 answer.split("/");
-
 
 if(parts.length!==3){
 
@@ -3418,7 +3045,6 @@ return;
 
 }
 
-
 const day=
 parts[0].padStart(2,"0");
 
@@ -3427,7 +3053,6 @@ parts[1].padStart(2,"0");
 
 const year=
 parts[2];
-
 
 if(
 year.length!==4 ||
@@ -3438,13 +3063,12 @@ Number(month)>12
 ){
 
 alert(
-"Please enter a valid date using DD/MM/YYYY."
+"Please enter a valid date."
 );
 
 return;
 
 }
-
 
 currentDate=
 year+"-"+month+"-"+day;
@@ -3456,110 +3080,48 @@ render();
 }
 
 
-/*
-==================================================
-BUTTONS
-==================================================
-*/
+/* BUTTONS */
 
-get("snackFolder")
-.addEventListener(
-"click",
-openSnackList
-);
+$("snackFolder").onclick=
+openSnackList;
 
-get("groupedButton")
-.addEventListener(
-"click",
-openGroupedList
-);
+$("groupedButton").onclick=
+openGroupedList;
 
-get("backToSnackButton")
-.addEventListener(
-"click",
-openSnackList
-);
+$("suncreamFolder").onclick=
+openSuncreamList;
 
-get("suncreamFolder")
-.addEventListener(
-"click",
-openSuncreamList
-);
+$("backToSnackButton").onclick=
+openSnackList;
 
-get("amButton")
-.addEventListener(
-"click",
-openAM
-);
+$("addSnackButton").onclick=
+addSnack;
 
-get("pmButton")
-.addEventListener(
-"click",
-openPM
-);
+$("addSuncreamButton").onclick=
+addSuncream;
 
-get("groupedAmButton")
-.addEventListener(
-"click",
-openGroupedAM
-);
-
-get("groupedPmButton")
-.addEventListener(
-"click",
-openGroupedPM
-);
-
-get("addSnackButton")
-.addEventListener(
-"click",
-addSnack
-);
-
-get("addSuncreamButton")
-.addEventListener(
-"click",
-addSuncream
-);
-
-get("newDayButton")
-.addEventListener(
-"click",
-createNewDay
-);
+$("newDayButton").onclick=
+createNewDay;
 
 
-/*
-==================================================
-DATE
-==================================================
-*/
+/* DATE */
 
-get("date")
-.addEventListener(
-"change",
+$("date").onchange=
 async function(){
 
 currentDate=
-get("date").value;
+$("date").value;
 
-await loadSharedData();
+await loadData();
 
 render();
 
-}
-);
+};
 
 
-/*
-==================================================
-ENTER KEY
-==================================================
-*/
+/* ENTER */
 
-get("snackName")
-.addEventListener(
-"keydown",
+$("snackName").onkeydown=
 function(event){
 
 if(event.key==="Enter"){
@@ -3570,13 +3132,10 @@ addSnack();
 
 }
 
-}
-);
+};
 
 
-get("suncreamName")
-.addEventListener(
-"keydown",
+$("suncreamName").onkeydown=
 function(event){
 
 if(event.key==="Enter"){
@@ -3587,128 +3146,16 @@ addSuncream();
 
 }
 
-}
-);
+};
 
 
-/*
-==================================================
-PROFILE BUTTONS
-==================================================
-*/
+/* START */
 
-get("profileButton")
-.addEventListener(
-"click",
-function(){
+currentDate=today();
 
-get("profileMenu")
-.classList.toggle("hidden");
+createDay(currentDate);
 
-}
-);
-
-
-get("accountFab")
-.addEventListener(
-"click",
-function(){
-
-get("profileMenu")
-.classList.toggle("hidden");
-
-}
-);
-
-
-/*
-==================================================
-AUTH STATE
-==================================================
-*/
-
-supabase.auth.getSession()
-
-.then(
-async function(result){
-
-if(result.data.session){
-
-await startApp(
-result.data.session.user
-);
-
-}
-
-else{
-
-showLogin();
-
-}
-
-}
-);
-
-
-supabase.auth.onAuthStateChange(
-
-async function(event,session){
-
-if(session){
-
-await startApp(
-session.user
-);
-
-}
-
-else{
-
-showLogin();
-
-}
-
-}
-);
-
-
-/*
-==================================================
-START
-==================================================
-*/
-
-currentDate=
-getToday();
-
-createDay(
-currentDate
-);
-
-
-/*
-==================================================
-REFRESH SHARED DATA
-==================================================
-*/
-
-setInterval(
-async function(){
-
-if(
-currentUser &&
-document.visibilityState==="visible"
-){
-
-await loadSharedData();
-
-render();
-
-}
-
-},
-15000
-);
+checkLogin();
 
 </script>
 

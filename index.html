@@ -59,6 +59,19 @@ background:#2f6f45;
 color:white;
 }
 
+.grouped-button{
+width:100%;
+text-align:left;
+background:#dcefe0;
+color:#245d36;
+margin-bottom:8px;
+}
+
+.grouped-button.active{
+background:#2f6f45;
+color:white;
+}
+
 .main{
 width:100%;
 max-width:900px;
@@ -131,3 +144,2119 @@ color:#8d2525;
 }
 
 .small{
+padding:7px 10px;
+font-size:13px;
+}
+
+.snack-tabs{
+display:flex;
+gap:8px;
+margin-bottom:15px;
+}
+
+.snack-tab{
+flex:1;
+background:#e8eee9;
+color:#294e34;
+}
+
+.snack-tab.active{
+background:#2f6f45;
+color:white;
+}
+
+.child{
+border:1px solid #dce2dc;
+border-radius:13px;
+padding:12px;
+margin-top:9px;
+}
+
+.child.done{
+background:#f0f7f1;
+border-color:#b9d4bf;
+}
+
+.child-top{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.tick{
+width:32px;
+height:32px;
+padding:0;
+border-radius:50%;
+background:#edf0ed;
+color:#2f6f45;
+border:1px solid #ccd4cc;
+flex-shrink:0;
+}
+
+.child.done .tick{
+background:#2f6f45;
+color:white;
+}
+
+.child-name{
+font-weight:bold;
+flex:1;
+min-width:100px;
+}
+
+.badge{
+font-size:10px;
+font-weight:bold;
+padding:5px 7px;
+border-radius:7px;
+}
+
+.red{
+background:#f7dddd;
+color:#982626;
+}
+
+.green{
+background:#dff1e3;
+color:#246337;
+}
+
+.none{
+background:#edf0ed;
+color:#596159;
+}
+
+.note-button{
+background:#eef3ee;
+color:#294e34;
+padding:7px 9px;
+font-size:15px;
+}
+
+.note-button.has-note{
+background:#dcefe0;
+color:#246337;
+}
+
+.note-box{
+margin:12px 0 2px 40px;
+padding:12px;
+background:#f7faf7;
+border:1px solid #dce5dc;
+border-radius:12px;
+}
+
+.amount-buttons{
+display:flex;
+gap:6px;
+flex-wrap:wrap;
+margin-bottom:10px;
+}
+
+.amount-button{
+background:white;
+border:1px solid #ccd4cc;
+color:#394239;
+}
+
+.amount-button.selected{
+background:#2f6f45;
+color:white;
+}
+
+.note-save-row{
+display:flex;
+gap:7px;
+margin-top:10px;
+}
+
+.detail{
+font-size:13px;
+color:#555;
+margin:8px 0 0 40px;
+}
+
+.eaten-detail{
+font-size:14px;
+font-weight:bold;
+color:#2f6f45;
+margin:7px 0 0 40px;
+}
+
+.empty{
+text-align:center;
+color:#687068;
+padding:20px;
+}
+
+/* GROUPED */
+
+.grouped-section{
+border:1px solid #dce2dc;
+border-radius:14px;
+margin-bottom:14px;
+overflow:hidden;
+}
+
+.grouped-heading{
+padding:13px 15px;
+font-size:18px;
+font-weight:bold;
+background:#eef3ee;
+color:#294e34;
+}
+
+.grouped-snack{
+padding:13px 15px;
+border-top:1px solid #e4e8e4;
+}
+
+.grouped-snack-name{
+font-size:16px;
+font-weight:bold;
+color:#2f6f45;
+}
+
+.grouped-names{
+font-size:14px;
+color:#555;
+margin-top:5px;
+line-height:1.6;
+}
+
+.grouped-empty{
+text-align:center;
+padding:25px;
+color:#687068;
+}
+
+.back-button{
+margin-bottom:12px;
+}
+
+/* SAVED DAYS */
+
+.history-item{
+border-top:1px solid #e4e8e4;
+padding:12px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+
+.history-buttons{
+display:flex;
+gap:6px;
+}
+
+.hidden{
+display:none!important;
+}
+
+@media(max-width:650px){
+
+.app{
+display:block;
+}
+
+.sidebar{
+width:100%;
+border-right:0;
+border-bottom:1px solid #ddd;
+display:flex;
+gap:7px;
+overflow-x:auto;
+padding:9px;
+}
+
+.logo{
+display:none;
+}
+
+.folder-button,
+.grouped-button{
+width:auto;
+white-space:nowrap;
+margin:0;
+}
+
+.main{
+padding:10px;
+}
+
+.child-top{
+flex-wrap:wrap;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar">
+
+<div class="logo">
+Acorn
+</div>
+
+<button
+type="button"
+class="folder-button active"
+id="snackFolder">
+Snack Lists
+</button>
+
+<button
+type="button"
+class="grouped-button"
+id="groupedButton">
+📋 Grouped
+</button>
+
+<button
+type="button"
+class="folder-button"
+id="suncreamFolder">
+Suncream Lists
+</button>
+
+</aside>
+
+
+<main class="main">
+
+<header class="header">
+
+<h1 id="pageTitle">
+Acorn Snack List
+</h1>
+
+<p id="pageSubtitle">
+Daily records
+</p>
+
+</header>
+
+
+<section class="card">
+
+<div class="row">
+
+<div class="field">
+
+<label>Date</label>
+
+<input
+id="date"
+type="date">
+
+</div>
+
+<div
+class="field"
+style="align-self:end">
+
+<button
+type="button"
+class="secondary"
+id="newDayButton">
+
+Create new day
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SNACK PAGE -->
+
+<div id="snackPage">
+
+<section class="card">
+
+<div class="snack-tabs">
+
+<button
+type="button"
+class="snack-tab active"
+id="amButton">
+AM Snack
+</button>
+
+<button
+type="button"
+class="snack-tab"
+id="pmButton">
+PM Snack
+</button>
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>Child's name</label>
+
+<input
+id="snackName"
+placeholder="Child's name"
+autocomplete="off">
+
+</div>
+
+
+<div class="field">
+
+<label>Allergy / preference</label>
+
+<select id="snackStatus">
+
+<option value="none">
+No allergy / preference
+</option>
+
+<option value="green">
+Green - Preference
+</option>
+
+<option value="red">
+Red - Allergy
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>Alternative milk</label>
+
+<input
+id="snackMilk"
+placeholder="e.g. oat milk">
+
+</div>
+
+</div>
+
+
+<button
+type="button"
+class="primary"
+id="addSnackButton"
+style="margin-top:10px">
+
+Add child
+
+</button>
+
+</section>
+
+
+<section class="card">
+
+<h2 id="snackTitle">
+AM Snack
+</h2>
+
+<div id="snackChildren"></div>
+
+</section>
+
+</div>
+
+
+<!-- GROUPED PAGE -->
+
+<div
+id="groupedPage"
+class="hidden">
+
+<button
+type="button"
+class="secondary back-button"
+id="backToSnackButton">
+
+← Back to Snack List
+
+</button>
+
+
+<section class="card">
+
+<h2>
+📋 Grouped Snacks
+</h2>
+
+<p style="color:#687068;font-size:14px">
+
+Snacks are grouped by amount and then by snack.
+
+</p>
+
+
+<div class="snack-tabs">
+
+<button
+type="button"
+class="snack-tab active"
+id="groupedAmButton">
+
+AM Snack
+
+</button>
+
+<button
+type="button"
+class="snack-tab"
+id="groupedPmButton">
+
+PM Snack
+
+</button>
+
+</div>
+
+
+<div id="groupedChildren"></div>
+
+</section>
+
+</div>
+
+
+<!-- SUNCREAM PAGE -->
+
+<div
+id="suncreamPage"
+class="hidden">
+
+<section class="card">
+
+<h2>
+Suncream List
+</h2>
+
+<div class="row">
+
+<div class="field">
+
+<label>Child's name</label>
+
+<input
+id="suncreamName"
+placeholder="Child's name"
+autocomplete="off">
+
+</div>
+
+
+<div class="field">
+
+<label>Suncream</label>
+
+<input
+id="suncreamProduct"
+placeholder="e.g. child's own SPF 50">
+
+</div>
+
+</div>
+
+
+<button
+type="button"
+class="primary"
+id="addSuncreamButton"
+style="margin-top:10px">
+
+Add child
+
+</button>
+
+</section>
+
+
+<section class="card">
+
+<h2>
+Today's Suncream
+</h2>
+
+<div id="suncreamChildren"></div>
+
+</section>
+
+</div>
+
+
+<!-- SAVED DAYS -->
+
+<section class="card">
+
+<h2>
+Saved Days
+</h2>
+
+<div id="savedDays"></div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script>
+
+const STORAGE_KEY="acornListsV9";
+
+let data={};
+
+let currentDate="";
+
+let currentPage="snacks";
+
+let currentSnack="am";
+
+let groupedSnack="am";
+
+let openNoteIndex=null;
+
+
+function get(id){
+
+return document.getElementById(id);
+
+}
+
+
+/* LOAD */
+
+function loadData(){
+
+try{
+
+const saved=
+localStorage.getItem(STORAGE_KEY);
+
+if(saved){
+
+data=JSON.parse(saved);
+
+}
+
+}catch(error){
+
+data={};
+
+}
+
+}
+
+
+/* SAVE */
+
+function saveData(){
+
+try{
+
+localStorage.setItem(
+STORAGE_KEY,
+JSON.stringify(data)
+);
+
+}catch(error){
+
+console.log("Save error",error);
+
+}
+
+}
+
+
+/* TODAY */
+
+function getToday(){
+
+const d=new Date();
+
+const local=new Date(
+d.getTime()-
+d.getTimezoneOffset()*60000
+);
+
+return local.toISOString().slice(0,10);
+
+}
+
+
+/* CREATE DAY */
+
+function createDay(date){
+
+if(!data[date]){
+
+data[date]={
+
+amSnack:[],
+pmSnack:[],
+suncream:[]
+
+};
+
+}
+
+}
+
+
+/* FORMAT DATE */
+
+function formatDate(date){
+
+return new Date(date+"T12:00:00")
+.toLocaleDateString(
+"en-GB",
+{
+weekday:"long",
+day:"numeric",
+month:"long",
+year:"numeric"
+}
+);
+
+}
+
+
+/* SNACK PAGE */
+
+function openSnackList(){
+
+currentPage="snacks";
+
+openNoteIndex=null;
+
+get("snackPage")
+.classList.remove("hidden");
+
+get("groupedPage")
+.classList.add("hidden");
+
+get("suncreamPage")
+.classList.add("hidden");
+
+get("snackFolder")
+.classList.add("active");
+
+get("groupedButton")
+.classList.remove("active");
+
+get("suncreamFolder")
+.classList.remove("active");
+
+get("pageTitle")
+.textContent="Acorn Snack List";
+
+render();
+
+}
+
+
+/* GROUPED PAGE */
+
+function openGroupedList(){
+
+currentPage="grouped";
+
+openNoteIndex=null;
+
+get("snackPage")
+.classList.add("hidden");
+
+get("groupedPage")
+.classList.remove("hidden");
+
+get("suncreamPage")
+.classList.add("hidden");
+
+get("snackFolder")
+.classList.remove("active");
+
+get("groupedButton")
+.classList.add("active");
+
+get("suncreamFolder")
+.classList.remove("active");
+
+get("pageTitle")
+.textContent="Grouped Snacks";
+
+renderGrouped();
+
+}
+
+
+/* SUNCREAM */
+
+function openSuncreamList(){
+
+currentPage="suncream";
+
+get("snackPage")
+.classList.add("hidden");
+
+get("groupedPage")
+.classList.add("hidden");
+
+get("suncreamPage")
+.classList.remove("hidden");
+
+get("snackFolder")
+.classList.remove("active");
+
+get("groupedButton")
+.classList.remove("active");
+
+get("suncreamFolder")
+.classList.add("active");
+
+get("pageTitle")
+.textContent="Acorn Suncream List";
+
+render();
+
+}
+
+
+/* AM */
+
+function openAM(){
+
+currentSnack="am";
+
+openNoteIndex=null;
+
+get("amButton")
+.classList.add("active");
+
+get("pmButton")
+.classList.remove("active");
+
+get("snackTitle")
+.textContent="AM Snack";
+
+renderSnackList();
+
+}
+
+
+/* PM */
+
+function openPM(){
+
+currentSnack="pm";
+
+openNoteIndex=null;
+
+get("pmButton")
+.classList.add("active");
+
+get("amButton")
+.classList.remove("active");
+
+get("snackTitle")
+.textContent="PM Snack";
+
+renderSnackList();
+
+}
+
+
+/* GROUPED AM */
+
+function openGroupedAM(){
+
+groupedSnack="am";
+
+get("groupedAmButton")
+.classList.add("active");
+
+get("groupedPmButton")
+.classList.remove("active");
+
+renderGrouped();
+
+}
+
+
+/* GROUPED PM */
+
+function openGroupedPM(){
+
+groupedSnack="pm";
+
+get("groupedPmButton")
+.classList.add("active");
+
+get("groupedAmButton")
+.classList.remove("active");
+
+renderGrouped();
+
+}
+
+
+/* MAIN RENDER */
+
+function render(){
+
+createDay(currentDate);
+
+get("date").value=currentDate;
+
+get("pageSubtitle")
+.textContent=formatDate(currentDate);
+
+if(currentPage==="snacks"){
+
+renderSnackList();
+
+}
+
+else if(currentPage==="grouped"){
+
+renderGrouped();
+
+}
+
+else{
+
+renderSuncreamList();
+
+}
+
+renderSavedDays();
+
+}
+
+
+/* SNACK LIST */
+
+function renderSnackList(){
+
+const container=
+get("snackChildren");
+
+container.innerHTML="";
+
+const key=
+currentSnack==="am"
+?"amSnack"
+:"pmSnack";
+
+const children=
+data[currentDate][key];
+
+
+if(!children.length){
+
+container.innerHTML=
+'<div class="empty">No children added to this list yet.</div>';
+
+return;
+
+}
+
+
+children.forEach(function(child,index){
+
+const item=
+document.createElement("div");
+
+item.className=
+"child"+(child.done?" done":"");
+
+
+const top=
+document.createElement("div");
+
+top.className="child-top";
+
+
+/* TICK */
+
+const tick=
+document.createElement("button");
+
+tick.type="button";
+
+tick.className="tick";
+
+tick.textContent=
+child.done?"✓":"";
+
+
+tick.onclick=function(){
+
+child.done=!child.done;
+
+saveData();
+
+renderSnackList();
+
+};
+
+
+/* NAME */
+
+const name=
+document.createElement("div");
+
+name.className="child-name";
+
+name.textContent=child.name;
+
+
+/* ALLERGY */
+
+const badge=
+document.createElement("span");
+
+
+if(child.status==="red"){
+
+badge.className="badge red";
+
+badge.textContent="RED";
+
+}
+
+else if(child.status==="green"){
+
+badge.className="badge green";
+
+badge.textContent="GREEN";
+
+}
+
+else{
+
+badge.className="badge none";
+
+badge.textContent="NONE";
+
+}
+
+
+/* NOTE BUTTON */
+
+const noteButton=
+document.createElement("button");
+
+noteButton.type="button";
+
+noteButton.className=
+"note-button"+
+(
+child.note &&
+(child.note.amount||child.note.what)
+?" has-note"
+:""
+);
+
+noteButton.textContent="📝";
+
+noteButton.title="Add snack";
+
+
+noteButton.onclick=function(){
+
+if(openNoteIndex===index){
+
+openNoteIndex=null;
+
+}
+
+else{
+
+openNoteIndex=index;
+
+}
+
+renderSnackList();
+
+};
+
+
+/* REMOVE */
+
+const remove=
+document.createElement("button");
+
+remove.type="button";
+
+remove.className="danger small";
+
+remove.textContent="Remove";
+
+
+remove.onclick=function(){
+
+children.splice(index,1);
+
+openNoteIndex=null;
+
+saveData();
+
+renderSnackList();
+
+};
+
+
+/* TOP */
+
+top.append(
+tick,
+name,
+badge,
+noteButton,
+remove
+);
+
+item.appendChild(top);
+
+
+/* MILK */
+
+if(child.milk){
+
+const milk=
+document.createElement("div");
+
+milk.className="detail";
+
+milk.textContent=
+"Alternative milk: "+child.milk;
+
+item.appendChild(milk);
+
+}
+
+
+/* EATEN */
+
+if(
+child.note &&
+(child.note.amount||child.note.what)
+){
+
+const eaten=
+document.createElement("div");
+
+eaten.className="eaten-detail";
+
+let text="Eaten: ";
+
+if(child.note.amount){
+
+text+=child.note.amount;
+
+}
+
+if(child.note.what){
+
+if(child.note.amount){
+
+text+=" — ";
+
+}
+
+text+=child.note.what;
+
+}
+
+eaten.textContent=text;
+
+item.appendChild(eaten);
+
+}
+
+
+/* NOTE BOX */
+
+if(openNoteIndex===index){
+
+item.appendChild(
+createNoteBox(child)
+);
+
+}
+
+
+container.appendChild(item);
+
+});
+
+}
+
+
+/* NOTE BOX */
+
+function createNoteBox(child){
+
+const box=
+document.createElement("div");
+
+box.className="note-box";
+
+
+const amountLabel=
+document.createElement("label");
+
+amountLabel.textContent=
+"How much did they have?";
+
+box.appendChild(amountLabel);
+
+
+const amounts=[
+"Little",
+"Half",
+"Almost all",
+"All"
+];
+
+
+const amountButtons=
+document.createElement("div");
+
+amountButtons.className=
+"amount-buttons";
+
+
+amounts.forEach(function(amount){
+
+const button=
+document.createElement("button");
+
+button.type="button";
+
+button.className=
+"amount-button"+
+(
+child.note &&
+child.note.amount===amount
+?" selected"
+:""
+);
+
+button.textContent=amount;
+
+
+button.onclick=function(){
+
+if(!child.note){
+
+child.note={};
+
+}
+
+child.note.amount=amount;
+
+saveData();
+
+renderSnackList();
+
+};
+
+
+amountButtons.appendChild(button);
+
+});
+
+
+box.appendChild(amountButtons);
+
+
+/* WHAT */
+
+const whatLabel=
+document.createElement("label");
+
+whatLabel.textContent=
+"What did they have?";
+
+box.appendChild(whatLabel);
+
+
+const whatInput=
+document.createElement("input");
+
+whatInput.type="text";
+
+whatInput.placeholder=
+"e.g. banana, apple, different fruit";
+
+whatInput.value=
+child.note &&
+child.note.what
+?child.note.what
+:"";
+
+box.appendChild(whatInput);
+
+
+/* SAVE */
+
+const saveRow=
+document.createElement("div");
+
+saveRow.className="note-save-row";
+
+
+const saveButton=
+document.createElement("button");
+
+saveButton.type="button";
+
+saveButton.className="primary";
+
+saveButton.textContent="Save";
+
+
+saveButton.onclick=function(){
+
+if(!child.note){
+
+child.note={};
+
+}
+
+child.note.what=
+whatInput.value.trim();
+
+saveData();
+
+openNoteIndex=null;
+
+renderSnackList();
+
+};
+
+
+/* CLOSE */
+
+const closeButton=
+document.createElement("button");
+
+closeButton.type="button";
+
+closeButton.className="secondary";
+
+closeButton.textContent="Close";
+
+
+closeButton.onclick=function(){
+
+openNoteIndex=null;
+
+renderSnackList();
+
+};
+
+
+saveRow.append(
+saveButton,
+closeButton
+);
+
+box.appendChild(saveRow);
+
+
+return box;
+
+}
+
+
+/* GROUPED */
+
+function renderGrouped(){
+
+const container=
+get("groupedChildren");
+
+container.innerHTML="";
+
+createDay(currentDate);
+
+const key=
+groupedSnack==="am"
+?"amSnack"
+:"pmSnack";
+
+const children=
+data[currentDate][key];
+
+
+if(!children.length){
+
+container.innerHTML=
+'<div class="grouped-empty">No children have been added yet.</div>';
+
+return;
+
+}
+
+
+const amounts=[
+"All",
+"Almost all",
+"Half",
+"Little"
+];
+
+let found=false;
+
+
+amounts.forEach(function(amount){
+
+const matching=
+children.filter(function(child){
+
+return child.note &&
+child.note.amount===amount &&
+child.note.what &&
+child.note.what.trim();
+
+});
+
+
+if(!matching.length){
+
+return;
+
+}
+
+
+found=true;
+
+
+/* SECTION */
+
+const section=
+document.createElement("div");
+
+section.className="grouped-section";
+
+
+const heading=
+document.createElement("div");
+
+heading.className="grouped-heading";
+
+heading.textContent=
+amount.toUpperCase();
+
+section.appendChild(heading);
+
+
+/* GROUP BY FOOD */
+
+const groups={};
+
+
+matching.forEach(function(child){
+
+const food=
+child.note.what.trim();
+
+const groupKey=
+food.toLowerCase();
+
+
+if(!groups[groupKey]){
+
+groups[groupKey]={
+name:food,
+children:[]
+};
+
+}
+
+
+groups[groupKey].children.push(
+child.name
+);
+
+});
+
+
+Object.values(groups)
+.sort(function(a,b){
+
+return a.name.localeCompare(b.name);
+
+})
+.forEach(function(group){
+
+const snack=
+document.createElement("div");
+
+snack.className="grouped-snack";
+
+
+const snackName=
+document.createElement("div");
+
+snackName.className=
+"grouped-snack-name";
+
+snackName.textContent=
+"🍌 "+group.name;
+
+
+const names=
+document.createElement("div");
+
+names.className=
+"grouped-names";
+
+names.textContent=
+group.children.join(" • ");
+
+
+snack.append(
+snackName,
+names
+);
+
+section.appendChild(snack);
+
+});
+
+
+container.appendChild(section);
+
+});
+
+
+if(!found){
+
+container.innerHTML=
+'<div class="grouped-empty">Nothing has been recorded yet.<br><br>Use the 📝 button beside a child to add what they ate.</div>';
+
+}
+
+}
+
+
+/* SUNCREAM */
+
+function renderSuncreamList(){
+
+const container=
+get("suncreamChildren");
+
+container.innerHTML="";
+
+const children=
+data[currentDate].suncream;
+
+
+if(!children.length){
+
+container.innerHTML=
+'<div class="empty">No children added to today\'s suncream list yet.</div>';
+
+return;
+
+}
+
+
+children.forEach(function(child,index){
+
+const item=
+document.createElement("div");
+
+item.className=
+"child"+(child.done?" done":"");
+
+
+const top=
+document.createElement("div");
+
+top.className="child-top";
+
+
+const tick=
+document.createElement("button");
+
+tick.type="button";
+
+tick.className="tick";
+
+tick.textContent=
+child.done?"✓":"";
+
+
+tick.onclick=function(){
+
+child.done=!child.done;
+
+saveData();
+
+renderSuncreamList();
+
+};
+
+
+const name=
+document.createElement("div");
+
+name.className="child-name";
+
+name.textContent=child.name;
+
+
+const remove=
+document.createElement("button");
+
+remove.type="button";
+
+remove.className="danger small";
+
+remove.textContent="Remove";
+
+
+remove.onclick=function(){
+
+children.splice(index,1);
+
+saveData();
+
+renderSuncreamList();
+
+};
+
+
+top.append(
+tick,
+name,
+remove
+);
+
+item.appendChild(top);
+
+
+const detail=
+document.createElement("div");
+
+detail.className="detail";
+
+detail.textContent=
+child.product
+?"Suncream: "+child.product
+:"No specific suncream recorded";
+
+item.appendChild(detail);
+
+container.appendChild(item);
+
+});
+
+}
+
+
+/* SAVED DAYS */
+
+function renderSavedDays(){
+
+const container=
+get("savedDays");
+
+container.innerHTML="";
+
+const dates=
+Object.keys(data)
+.sort()
+.reverse();
+
+
+if(!dates.length){
+
+container.innerHTML=
+'<div class="empty">Saved days will appear here.</div>';
+
+return;
+
+}
+
+
+dates.forEach(function(date){
+
+const row=
+document.createElement("div");
+
+row.className="history-item";
+
+
+const title=
+document.createElement("strong");
+
+title.textContent=
+formatDate(date);
+
+
+const buttons=
+document.createElement("div");
+
+buttons.className="history-buttons";
+
+
+const open=
+document.createElement("button");
+
+open.type="button";
+
+open.className="secondary small";
+
+open.textContent="Open";
+
+
+open.onclick=function(){
+
+currentDate=date;
+
+currentPage="snacks";
+
+render();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+};
+
+
+const deleteButton=
+document.createElement("button");
+
+deleteButton.type="button";
+
+deleteButton.className="danger small";
+
+deleteButton.textContent="Delete";
+
+
+deleteButton.onclick=function(){
+
+const confirmed=
+confirm(
+"Are you sure you want to delete "+
+formatDate(date)+
+"?\n\nThis will delete the AM snack, PM snack and suncream list for this day."
+);
+
+
+if(!confirmed){
+
+return;
+
+}
+
+
+delete data[date];
+
+saveData();
+
+
+if(currentDate===date){
+
+currentDate=getToday();
+
+createDay(currentDate);
+
+saveData();
+
+}
+
+
+render();
+
+};
+
+
+buttons.append(
+open,
+deleteButton
+);
+
+row.append(
+title,
+buttons
+);
+
+container.appendChild(row);
+
+});
+
+}
+
+
+/* ADD SNACK */
+
+function addSnack(){
+
+const name=
+get("snackName")
+.value
+.trim();
+
+
+if(!name){
+
+alert(
+"Please enter the child's name."
+);
+
+get("snackName").focus();
+
+return;
+
+}
+
+
+const key=
+currentSnack==="am"
+?"amSnack"
+:"pmSnack";
+
+
+data[currentDate][key].push({
+
+name:name,
+
+status:
+get("snackStatus").value,
+
+milk:
+get("snackMilk")
+.value
+.trim(),
+
+done:false,
+
+note:{
+amount:"",
+what:""
+}
+
+});
+
+
+get("snackName").value="";
+
+get("snackMilk").value="";
+
+get("snackStatus").value="none";
+
+
+saveData();
+
+renderSnackList();
+
+get("snackName").focus();
+
+}
+
+
+/* ADD SUNCREAM */
+
+function addSuncream(){
+
+const name=
+get("suncreamName")
+.value
+.trim();
+
+
+if(!name){
+
+alert(
+"Please enter the child's name."
+);
+
+get("suncreamName").focus();
+
+return;
+
+}
+
+
+data[currentDate]
+.suncream
+.push({
+
+name:name,
+
+product:
+get("suncreamProduct")
+.value
+.trim(),
+
+done:false
+
+});
+
+
+get("suncreamName").value="";
+
+get("suncreamProduct").value="";
+
+
+saveData();
+
+renderSuncreamList();
+
+get("suncreamName").focus();
+
+}
+
+
+/* NEW DAY */
+
+function createNewDay(){
+
+const answer=
+prompt(
+"Enter the date as DD/MM/YYYY"
+);
+
+
+if(!answer){
+
+return;
+
+}
+
+
+const parts=
+answer.split("/");
+
+
+if(parts.length!==3){
+
+alert(
+"Please use DD/MM/YYYY."
+);
+
+return;
+
+}
+
+
+const day=
+parts[0].padStart(2,"0");
+
+const month=
+parts[1].padStart(2,"0");
+
+const year=
+parts[2];
+
+
+if(
+year.length!==4 ||
+Number(day)<1 ||
+Number(day)>31 ||
+Number(month)<1 ||
+Number(month)>12
+){
+
+alert(
+"Please enter a valid date using DD/MM/YYYY."
+);
+
+return;
+
+}
+
+
+currentDate=
+year+"-"+month+"-"+day;
+
+createDay(currentDate);
+
+saveData();
+
+render();
+
+}
+
+
+/* BUTTONS */
+
+get("snackFolder")
+.addEventListener(
+"click",
+openSnackList
+);
+
+
+get("groupedButton")
+.addEventListener(
+"click",
+openGroupedList
+);
+
+
+get("backToSnackButton")
+.addEventListener(
+"click",
+openSnackList
+);
+
+
+get("suncreamFolder")
+.addEventListener(
+"click",
+openSuncreamList
+);
+
+
+get("amButton")
+.addEventListener(
+"click",
+openAM
+);
+
+
+get("pmButton")
+.addEventListener(
+"click",
+openPM
+);
+
+
+get("groupedAmButton")
+.addEventListener(
+"click",
+openGroupedAM
+);
+
+
+get("groupedPmButton")
+.addEventListener(
+"click",
+openGroupedPM
+);
+
+
+get("addSnackButton")
+.addEventListener(
+"click",
+addSnack
+);
+
+
+get("addSuncreamButton")
+.addEventListener(
+"click",
+addSuncream
+);
+
+
+get("newDayButton")
+.addEventListener(
+"click",
+createNewDay
+);
+
+
+/* DATE */
+
+get("date")
+.addEventListener(
+"change",
+function(){
+
+currentDate=
+get("date").value;
+
+createDay(currentDate);
+
+saveData();
+
+render();
+
+}
+);
+
+
+/* ENTER KEY - CHILD NAME */
+
+get("snackName")
+.addEventListener(
+"keydown",
+function(event){
+
+if(event.key==="Enter"){
+
+event.preventDefault();
+
+addSnack();
+
+}
+
+}
+);
+
+
+/* ENTER KEY - SUNCREAM */
+
+get("suncreamName")
+.addEventListener(
+"keydown",
+function(event){
+
+if(event.key==="Enter"){
+
+event.preventDefault();
+
+addSuncream();
+
+}
+
+}
+);
+
+
+/* START */
+
+loadData();
+
+currentDate=getToday();
+
+createDay(currentDate);
+
+saveData();
+
+render();
+
+</script>
+
+</body>
+</html>

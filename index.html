@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,1438 +10,1281 @@
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  background:#f3f7f3;
-  color:#29372d;
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+background:#f3f7f3;
+color:#29372d;
 }
 
 button,input,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
-/* ---------- LOGIN ---------- */
+/* LOGIN */
 
 .login{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
 }
 
 .login-box{
-  width:100%;
-  max-width:520px;
-  background:#fff;
-  border-radius:30px;
-  padding:30px 20px;
-  box-shadow:0 8px 35px rgba(0,0,0,.08);
-  text-align:center;
+width:100%;
+max-width:520px;
+background:white;
+border-radius:30px;
+padding:30px 20px;
+box-shadow:0 8px 35px rgba(0,0,0,.08);
+text-align:center;
 }
 
 .logo{
-  font-size:52px;
-  font-weight:900;
-  color:#40774d;
+font-size:52px;
+font-weight:900;
+color:#40774d;
 }
 
 .login-title{
-  font-size:28px;
-  font-weight:900;
-  margin:7px 0 25px;
-}
-
-.no-account{
-  padding:20px 5px;
-}
-
-.no-icon{
-  font-size:65px;
-}
-
-.no-text{
-  font-size:20px;
-  font-weight:800;
-  color:#687169;
-  margin:10px 0 20px;
+font-size:28px;
+font-weight:900;
+margin:8px 0 25px;
 }
 
 .selector{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
 }
 
 .arrow{
-  flex:none;
-  width:50px;
-  height:50px;
-  border:0;
-  border-radius:50%;
-  background:#e7eee8;
-  color:#40774d;
-  font-size:38px;
+width:48px;
+height:48px;
+border:0;
+border-radius:50%;
+background:#e7eee8;
+color:#40774d;
+font-size:36px;
 }
 
 .adult-card{
-  width:245px;
-  min-height:320px;
-  border:4px solid #40774d;
-  border-radius:28px;
-  background:#f0f5f0;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+width:245px;
+min-height:320px;
+border:4px solid #40774d;
+border-radius:28px;
+background:#f0f5f0;
+padding:20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 }
 
 .adult-photo{
-  width:175px;
-  height:175px;
-  border-radius:50%;
-  background:#dfe8df;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:75px;
+width:175px;
+height:175px;
+border-radius:50%;
+background:#dfe8df;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:70px;
 }
 
 .adult-photo img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .adult-name{
-  margin-top:15px;
-  font-size:27px;
-  font-weight:900;
-  color:#40774d;
+margin-top:15px;
+font-size:27px;
+font-weight:900;
+color:#40774d;
 }
 
 .dots{
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  margin:15px;
+display:flex;
+justify-content:center;
+gap:6px;
+margin:15px;
 }
 
 .dot{
-  width:8px;
-  height:8px;
-  border-radius:10px;
-  background:#ccd6cd;
+width:8px;
+height:8px;
+border-radius:10px;
+background:#ccd6cd;
 }
 
 .dot.active{
-  width:23px;
-  background:#40774d;
+width:22px;
+background:#40774d;
 }
 
-label{
-  display:block;
-  text-align:left;
-  font-weight:800;
-  margin:10px 0 6px;
+.no-account{
+padding:20px;
 }
 
-input,select{
-  width:100%;
-  padding:13px;
-  border:2px solid #d5ded6;
-  border-radius:12px;
-  background:#fff;
+.no-icon{
+font-size:65px;
+}
+
+.no-text{
+font-size:20px;
+font-weight:800;
+color:#687169;
+margin:10px 0 20px;
 }
 
 .code{
-  text-align:center;
-  font-size:25px;
-  letter-spacing:8px;
-}
-
-.green{
-  width:100%;
-  border:0;
-  border-radius:12px;
-  padding:14px;
-  background:#40774d;
-  color:#fff;
-  font-weight:900;
-}
-
-.grey{
-  width:100%;
-  border:0;
-  border-radius:12px;
-  padding:13px;
-  background:#e7eee8;
-  color:#315b3d;
-  font-weight:800;
-  margin-top:8px;
+text-align:center;
+font-size:25px;
+letter-spacing:8px;
 }
 
 .plus{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:65px;
-  height:65px;
-  border:0;
-  border-radius:50%;
-  background:#40774d;
-  color:#fff;
-  font-size:40px;
-  box-shadow:0 5px 20px rgba(0,0,0,.2);
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;
+height:65px;
+border:0;
+border-radius:50%;
+background:#40774d;
+color:white;
+font-size:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+/* GENERAL */
+
+.green{
+width:100%;
+border:0;
+border-radius:12px;
+padding:14px;
+background:#40774d;
+color:white;
+font-weight:900;
+}
+
+.grey{
+width:100%;
+border:0;
+border-radius:12px;
+padding:13px;
+background:#e7eee8;
+color:#315b3d;
+font-weight:800;
+margin-top:8px;
+}
+
+label{
+display:block;
+font-weight:800;
+text-align:left;
+margin:10px 0 6px;
+}
+
+input,select{
+width:100%;
+padding:13px;
+border:2px solid #d5ded6;
+border-radius:12px;
+background:white;
 }
 
 .message{
-  padding:12px;
-  border-radius:12px;
-  margin:12px 0;
-  font-weight:800;
+padding:12px;
+border-radius:12px;
+margin:12px 0;
+font-weight:800;
 }
 
 .error{
-  background:#f7dddd;
-  color:#922e2e;
+background:#f7dddd;
+color:#922e2e;
 }
 
 .success{
-  background:#dff0e1;
-  color:#28613a;
+background:#dff0e1;
+color:#28613a;
 }
 
-/* ---------- APP ---------- */
+/* APP */
 
 .top{
-  background:#40774d;
-  color:#fff;
-  padding:12px 15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  position:sticky;
-  top:0;
-  z-index:30;
+background:#40774d;
+color:white;
+padding:12px 15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+position:sticky;
+top:0;
+z-index:20;
 }
 
 .title{
-  font-size:24px;
-  font-weight:900;
+font-size:24px;
+font-weight:900;
 }
 
 .top-right{
-  display:flex;
-  align-items:center;
-  gap:8px;
+display:flex;
+align-items:center;
+gap:8px;
 }
 
 .small-photo{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background:#e2e9e2;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+width:40px;
+height:40px;
+border-radius:50%;
+background:#e2e9e2;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .small-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .profile-btn{
-  border:0;
-  border-radius:10px;
-  padding:9px 12px;
-  color:#315b3d;
-  font-weight:800;
+border:0;
+border-radius:10px;
+padding:9px 12px;
+color:#315b3d;
+font-weight:800;
 }
 
 .nav{
-  display:flex;
-  gap:7px;
-  padding:8px;
-  background:#fff;
-  overflow-x:auto;
-  position:sticky;
-  top:64px;
-  z-index:25;
+display:flex;
+gap:7px;
+padding:8px;
+background:white;
+overflow-x:auto;
+position:sticky;
+top:64px;
+z-index:15;
 }
 
 .nav button{
-  white-space:nowrap;
-  border:0;
-  border-radius:10px;
-  padding:10px 15px;
-  background:#e7eee8;
-  color:#315b3d;
-  font-weight:800;
+white-space:nowrap;
+border:0;
+border-radius:10px;
+padding:10px 15px;
+background:#e7eee8;
+color:#315b3d;
+font-weight:800;
 }
 
 .nav button.active{
-  background:#40774d;
-  color:#fff;
+background:#40774d;
+color:white;
 }
 
 .main{
-  max-width:950px;
-  margin:auto;
-  padding:15px;
+max-width:950px;
+margin:auto;
+padding:15px;
 }
 
 .card{
-  background:#fff;
-  border-radius:17px;
-  padding:16px;
-  margin-bottom:14px;
-  box-shadow:0 2px 9px rgba(0,0,0,.05);
+background:white;
+border-radius:17px;
+padding:16px;
+margin-bottom:14px;
+box-shadow:0 2px 9px rgba(0,0,0,.05);
 }
 
 .row{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
 }
 
 .field{
-  flex:1 1 180px;
+flex:1 1 180px;
 }
 
 .tabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:15px;
+display:flex;
+gap:8px;
+margin-bottom:15px;
 }
 
 .tabs button{
-  flex:1;
-  border:0;
-  border-radius:11px;
-  padding:12px;
-  background:#e7eee8;
-  color:#315b3d;
-  font-weight:900;
+flex:1;
+border:0;
+border-radius:11px;
+padding:12px;
+background:#e7eee8;
+color:#315b3d;
+font-weight:900;
 }
 
 .tabs button.active{
-  background:#40774d;
-  color:#fff;
+background:#40774d;
+color:white;
 }
 
-/* ---------- CHILD ---------- */
+/* CHILD */
 
 .child{
-  border:1px solid #dce4dd;
-  border-radius:14px;
-  padding:12px;
-  margin-bottom:9px;
-  background:#fff;
+border:1px solid #dce4dd;
+border-radius:14px;
+padding:12px;
+margin-bottom:9px;
+background:white;
 }
 
 .child.done{
-  background:#edf5ee;
+background:#edf5ee;
 }
 
 .child-top{
-  display:flex;
-  align-items:center;
-  gap:7px;
+display:flex;
+align-items:center;
+gap:7px;
 }
 
 .tick{
-  flex:none;
-  width:37px;
-  height:37px;
-  border:0;
-  border-radius:50%;
-  background:#e7eee8;
-  color:#40774d;
-  font-weight:900;
+width:37px;
+height:37px;
+border:0;
+border-radius:50%;
+background:#e7eee8;
+color:#40774d;
+font-weight:900;
+flex:none;
 }
 
 .done .tick{
-  background:#40774d;
-  color:#fff;
+background:#40774d;
+color:white;
 }
 
 .child-name{
-  flex:1;
-  font-size:18px;
-  font-weight:900;
+flex:1;
+font-size:18px;
+font-weight:900;
 }
 
-.edit-btn{
-  flex:none;
-  border:0;
-  border-radius:9px;
-  padding:9px 11px;
-  background:#e7eee8;
-  color:#315b3d;
-  font-weight:900;
+.record{
+border:0;
+border-radius:9px;
+padding:9px 11px;
+background:#e7eee8;
+color:#315b3d;
+font-weight:900;
+flex:none;
 }
 
-.delete-btn{
-  flex:none;
-  border:0;
-  border-radius:9px;
-  padding:9px;
-  background:#f5dddd;
-  color:#922e2e;
-  font-weight:800;
+.child-edit{
+width:100%;
+margin-top:10px;
+border:0;
+border-radius:10px;
+padding:10px;
+background:#eef2ee;
+color:#315b3d;
+font-weight:800;
 }
 
 .details{
-  margin:9px 0 0 44px;
-  color:#59645b;
-  line-height:1.5;
+margin:9px 0 0 44px;
+line-height:1.5;
+color:#59645b;
 }
 
 .empty{
-  text-align:center;
-  padding:25px;
-  color:#687169;
+text-align:center;
+padding:25px;
+color:#687169;
 }
 
-/* ---------- GROUP ---------- */
+/* GROUP */
 
 .group-box{
-  border:1px solid #dce4dd;
-  border-radius:14px;
-  padding:14px;
-  margin-bottom:12px;
+border:1px solid #dce4dd;
+border-radius:14px;
+padding:14px;
+margin-bottom:12px;
 }
 
 .group-title{
-  font-size:19px;
-  font-weight:900;
-  color:#40774d;
-  margin-bottom:8px;
+font-size:19px;
+font-weight:900;
+color:#40774d;
+margin-bottom:8px;
 }
 
 .group-child{
-  padding:4px 0;
-  font-weight:700;
+padding:4px 0;
+font-weight:700;
 }
 
-/* ---------- MENU ---------- */
+/* MENU */
 
 .menu{
-  position:fixed;
-  right:12px;
-  top:68px;
-  width:255px;
-  background:#fff;
-  border-radius:15px;
-  padding:14px;
-  box-shadow:0 5px 25px rgba(0,0,0,.2);
-  z-index:80;
+position:fixed;
+right:12px;
+top:68px;
+width:255px;
+background:white;
+border-radius:15px;
+padding:14px;
+box-shadow:0 5px 25px rgba(0,0,0,.2);
+z-index:50;
 }
 
 .menu button{
-  width:100%;
+width:100%;
 }
 
-/* ---------- MODALS ---------- */
+/* MODAL */
 
 .modal{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  background:rgba(0,0,0,.45);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
+position:fixed;
+inset:0;
+z-index:100;
+background:rgba(0,0,0,.45);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:18px;
 }
 
 .modal-box{
-  width:100%;
-  max-width:470px;
-  max-height:90vh;
-  overflow:auto;
-  background:#fff;
-  border-radius:22px;
-  padding:22px;
+width:100%;
+max-width:470px;
+max-height:90vh;
+overflow:auto;
+background:white;
+border-radius:22px;
+padding:22px;
 }
 
 .preview{
-  width:125px;
-  height:125px;
-  border-radius:50%;
-  background:#e0e9e0;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:55px;
-  margin:10px auto 15px;
+width:125px;
+height:125px;
+border-radius:50%;
+background:#e0e9e0;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:55px;
+margin:10px auto 15px;
 }
 
 .preview img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .photo-label{
-  display:block;
-  text-align:center;
-  padding:13px;
-  border-radius:12px;
-  background:#e7eee8;
-  color:#315b3d;
-  font-weight:800;
+display:block;
+text-align:center;
+padding:13px;
+border-radius:12px;
+background:#e7eee8;
+color:#315b3d;
+font-weight:800;
 }
 
 .photo-label input{
-  display:none;
+display:none;
 }
 
-/* AMOUNT BUTTONS */
+/* AMOUNT */
 
 .amount-buttons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
 }
 
-.amount-button{
-  border:2px solid #d5ded6;
-  background:#fff;
-  color:#315b3d;
-  border-radius:12px;
-  padding:14px 8px;
-  font-weight:900;
+.amount{
+border:2px solid #d5ded6;
+background:white;
+color:#315b3d;
+border-radius:12px;
+padding:14px 8px;
+font-weight:900;
 }
 
-.amount-button.selected{
-  background:#40774d;
-  color:#fff;
-  border-color:#40774d;
+.amount.selected{
+background:#40774d;
+border-color:#40774d;
+color:white;
 }
 
 @media(max-width:600px){
-  .adult-card{
-    width:220px;
-  }
 
-  .adult-photo{
-    width:150px;
-    height:150px;
-  }
+.adult-card{
+width:220px;
+}
 
-  .adult-name{
-    font-size:24px;
-  }
+.adult-photo{
+width:150px;
+height:150px;
+}
 
-  .delete-btn{
-    display:none;
-  }
+.adult-name{
+font-size:24px;
+}
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 
 <div id="loginScreen" class="login">
 
-  <div class="login-box">
+<div class="login-box">
 
-    <div class="logo">🌳 Acorn</div>
+<div class="logo">🌳 Acorn</div>
 
-    <div class="login-title">
-      Who's logging in?
-    </div>
+<div class="login-title">
+Who's logging in?
+</div>
 
-    <div id="loginMessage" class="message hidden"></div>
+<div id="loginMessage" class="message hidden"></div>
 
-    <div id="noAccounts" class="no-account hidden">
+<div id="noAccounts" class="no-account hidden">
 
-      <div class="no-icon">👤</div>
+<div class="no-icon">👤</div>
 
-      <div class="no-text">
-        No adult accounts yet
-      </div>
+<div class="no-text">
+No adult accounts yet
+</div>
 
-      <button id="firstAdd" class="green">
-        + Add adult
-      </button>
+<button id="firstAdd" class="green">
++ Add adult
+</button>
 
-    </div>
+</div>
 
-    <div id="selector" class="hidden">
+<div id="selector" class="hidden">
 
-      <div class="selector">
+<div class="selector">
 
-        <button id="left" class="arrow">
-          ‹
-        </button>
+<button id="left" class="arrow">‹</button>
 
-        <div class="adult-card">
+<div class="adult-card">
 
-          <div id="adultPhoto" class="adult-photo">
-            👤
-          </div>
+<div id="adultPhoto" class="adult-photo">
+👤
+</div>
 
-          <div id="adultName" class="adult-name"></div>
+<div id="adultName" class="adult-name"></div>
 
-        </div>
+</div>
 
-        <button id="right" class="arrow">
-          ›
-        </button>
+<button id="right" class="arrow">›</button>
 
-      </div>
+</div>
 
-      <div id="dots" class="dots"></div>
+<div id="dots" class="dots"></div>
 
-      <label>
-        Enter your 4-digit code
-      </label>
+<label>
+Enter your 4-digit code
+</label>
 
-      <input
-        id="loginCode"
-        class="code"
-        type="password"
-        inputmode="numeric"
-        maxlength="4"
-        placeholder="••••">
+<input
+id="loginCode"
+class="code"
+type="password"
+inputmode="numeric"
+maxlength="4"
+placeholder="••••">
 
-      <button id="loginBtn" class="green">
-        Log in
-      </button>
+<button id="loginBtn" class="green">
+Log in
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
-  <button id="plus" class="plus">
-    +
-  </button>
+<button id="plus" class="plus">+</button>
 
 </div>
 
 
-<!-- ================= APP ================= -->
+<!-- APP -->
 
 <div id="app" class="hidden">
 
-  <div class="top">
+<div class="top">
 
-    <div class="title">
-      🌳 Acorn
-    </div>
+<div class="title">
+🌳 Acorn
+</div>
 
-    <div class="top-right">
+<div class="top-right">
 
-      <div id="smallPhoto" class="small-photo">
-        👤
-      </div>
+<div id="smallPhoto" class="small-photo">
+👤
+</div>
 
-      <button id="profileBtn" class="profile-btn">
-        Profile
-      </button>
+<button id="profileBtn" class="profile-btn">
+Profile
+</button>
 
-    </div>
-
-  </div>
-
-
-  <div class="nav">
-
-    <button id="snackNav" class="active">
-      🍎 Snack List
-    </button>
-
-    <button id="groupNav">
-      📋 Group
-    </button>
-
-    <button id="sunNav">
-      ☀️ Suncream
-    </button>
-
-  </div>
-
-
-  <div class="main">
-
-    <div class="card">
-
-      <label>Date</label>
-
-      <input id="date" type="date">
-
-    </div>
-
-
-    <!-- SNACK PAGE -->
-
-    <div id="snackPage">
-
-      <div class="card">
-
-        <div class="tabs">
-
-          <button id="amBtn" class="active">
-            AM
-          </button>
-
-          <button id="pmBtn">
-            PM
-          </button>
-
-        </div>
-
-        <div class="row">
-
-          <div class="field">
-
-            <label>Child's name</label>
-
-            <input
-              id="childName"
-              placeholder="Child's name">
-
-          </div>
-
-          <div class="field">
-
-            <label>Allergy / preference</label>
-
-            <select id="allergy">
-
-              <option value="none">
-                None
-              </option>
-
-              <option value="green">
-                Green - Preference
-              </option>
-
-              <option value="red">
-                Red - Allergy
-              </option>
-
-            </select>
-
-          </div>
-
-          <div class="field">
-
-            <label>Alternative milk</label>
-
-            <input
-              id="milk"
-              placeholder="e.g. oat milk">
-
-          </div>
-
-        </div>
-
-        <button id="addChild" class="green">
-          Add child
-        </button>
-
-      </div>
-
-
-      <div class="card">
-
-        <h2 id="listTitle">
-          AM Snack List
-        </h2>
-
-        <div id="snackList"></div>
-
-      </div>
-
-    </div>
-
-
-    <!-- GROUP PAGE -->
-
-    <div id="groupPage" class="hidden">
-
-      <div class="card">
-
-        <h2>
-          📋 Grouped Snacks
-        </h2>
-
-        <div class="tabs">
-
-          <button id="groupAm" class="active">
-            AM
-          </button>
-
-          <button id="groupPm">
-            PM
-          </button>
-
-        </div>
-
-        <div id="groupList"></div>
-
-      </div>
-
-    </div>
-
-
-    <!-- SUNCREAM -->
-
-    <div id="sunPage" class="hidden">
-
-      <div class="card">
-
-        <h2>
-          ☀️ Suncream List
-        </h2>
-
-        <div class="row">
-
-          <div class="field">
-
-            <label>Child's name</label>
-
-            <input
-              id="sunChild"
-              placeholder="Child's name">
-
-          </div>
-
-          <div class="field">
-
-            <label>Product</label>
-
-            <input
-              id="sunProduct"
-              placeholder="SPF 50">
-
-          </div>
-
-        </div>
-
-        <button id="addSun" class="green">
-          Add child
-        </button>
-
-      </div>
-
-      <div class="card">
-
-        <div id="sunList"></div>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </div>
 
 
-<!-- ================= ADD ADULT ================= -->
+<div class="nav">
+
+<button id="snackNav" class="active">
+🍎 Snack List
+</button>
+
+<button id="groupNav">
+📋 Group
+</button>
+
+<button id="sunNav">
+☀️ Suncream
+</button>
+
+</div>
+
+
+<div class="main">
+
+<div class="card">
+
+<label>Date</label>
+
+<input id="date" type="date">
+
+</div>
+
+
+<!-- SNACK -->
+
+<div id="snackPage">
+
+<div class="card">
+
+<div class="tabs">
+
+<button id="amBtn" class="active">
+AM
+</button>
+
+<button id="pmBtn">
+PM
+</button>
+
+</div>
+
+<div class="row">
+
+<div class="field">
+
+<label>Child's name</label>
+
+<input
+id="childName"
+placeholder="Child's name">
+
+</div>
+
+<div class="field">
+
+<label>Allergy / preference</label>
+
+<select id="allergy">
+
+<option value="none">None</option>
+
+<option value="green">
+Green - Preference
+</option>
+
+<option value="red">
+Red - Allergy
+</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Alternative milk</label>
+
+<input
+id="milk"
+placeholder="e.g. oat milk">
+
+</div>
+
+</div>
+
+<button id="addChild" class="green">
+Add child
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2 id="listTitle">
+AM Snack List
+</h2>
+
+<div id="snackList"></div>
+
+</div>
+
+</div>
+
+
+<!-- GROUP -->
+
+<div id="groupPage" class="hidden">
+
+<div class="card">
+
+<h2>
+📋 Grouped Snacks
+</h2>
+
+<div class="tabs">
+
+<button id="groupAm" class="active">
+AM
+</button>
+
+<button id="groupPm">
+PM
+</button>
+
+</div>
+
+<div id="groupList"></div>
+
+</div>
+
+</div>
+
+
+<!-- SUNCREAM -->
+
+<div id="sunPage" class="hidden">
+
+<div class="card">
+
+<h2>
+☀️ Suncream
+</h2>
+
+<div class="row">
+
+<div class="field">
+
+<label>Child's name</label>
+
+<input
+id="sunChild"
+placeholder="Child's name">
+
+</div>
+
+<div class="field">
+
+<label>Product</label>
+
+<input
+id="sunProduct"
+placeholder="SPF 50">
+
+</div>
+
+</div>
+
+<button id="addSun" class="green">
+Add child
+</button>
+
+</div>
+
+<div class="card">
+
+<div id="sunList"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ADD ADULT -->
 
 <div id="adultModal" class="modal hidden">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <h2>
-      Add adult
-    </h2>
+<h2>Add adult</h2>
 
-    <div id="newPhoto" class="preview">
-      👤
-    </div>
+<div id="newPhoto" class="preview">
+👤
+</div>
 
-    <label class="photo-label">
+<label class="photo-label">
 
-      📷 Choose profile photo
+📷 Choose profile photo
 
-      <input
-        id="newPhotoFile"
-        type="file"
-        accept="image/*">
+<input
+id="newPhotoFile"
+type="file"
+accept="image/*">
 
-    </label>
+</label>
 
-    <label>
-      Adult name
-    </label>
+<label>Adult name</label>
 
-    <input id="newAdultName">
+<input id="newAdultName">
 
-    <label>
-      4-digit code
-    </label>
+<label>4-digit code</label>
 
-    <input
-      id="newCode"
-      type="password"
-      inputmode="numeric"
-      maxlength="4">
+<input
+id="newCode"
+type="password"
+inputmode="numeric"
+maxlength="4">
 
-    <label>
-      Confirm 4-digit code
-    </label>
+<label>Confirm code</label>
 
-    <input
-      id="confirmCode"
-      type="password"
-      inputmode="numeric"
-      maxlength="4">
+<input
+id="confirmCode"
+type="password"
+inputmode="numeric"
+maxlength="4">
 
-    <div id="adultError" class="message hidden"></div>
+<div id="adultError" class="message hidden"></div>
 
-    <button id="createAdult" class="green">
-      Create account
-    </button>
+<button id="createAdult" class="green">
+Create account
+</button>
 
-    <button id="cancelAdult" class="grey">
-      Cancel
-    </button>
+<button id="cancelAdult" class="grey">
+Cancel
+</button>
 
-  </div>
+</div>
 
 </div>
 
 
-<!-- ================= RECORD WHAT CHILD HAD ================= -->
+<!-- RECORD SNACK -->
 
 <div id="recordModal" class="modal hidden">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <h2>
-      📝 Record snack
-    </h2>
+<h2>
+📝 What did they have?
+</h2>
 
-    <p id="recordChildName" style="font-weight:900"></p>
+<p id="recordChildName"></p>
 
-    <label>
-      How much did they have?
-    </label>
+<label>
+How much did they have?
+</label>
 
-    <div class="amount-buttons">
+<div class="amount-buttons">
 
-      <button class="amount-button" data-amount="Little">
-        Little
-      </button>
+<button class="amount" data-value="Little">
+Little
+</button>
 
-      <button class="amount-button" data-amount="Half">
-        Half
-      </button>
+<button class="amount" data-value="Half">
+Half
+</button>
 
-      <button class="amount-button" data-amount="Almost all">
-        Almost all
-      </button>
+<button class="amount" data-value="Almost all">
+Almost all
+</button>
 
-      <button class="amount-button" data-amount="All">
-        All
-      </button>
+<button class="amount" data-value="All">
+All
+</button>
 
-    </div>
+</div>
 
-    <label>
-      What did they have?
-    </label>
+<label>
+What did they have?
+</label>
 
-    <input
-      id="recordFood"
-      placeholder="e.g. Banana">
+<input
+id="recordFood"
+placeholder="e.g. Banana">
 
-    <button id="saveRecord" class="green" style="margin-top:15px">
-      Save
-    </button>
+<button id="saveRecord" class="green" style="margin-top:15px">
+Save
+</button>
 
-    <button id="cancelRecord" class="grey">
-      Cancel
-    </button>
+<button id="cancelRecord" class="grey">
+Cancel
+</button>
 
-  </div>
+</div>
 
 </div>
 
 
-<!-- ================= EDIT CHILD ================= -->
+<!-- EDIT CHILD -->
 
 <div id="childModal" class="modal hidden">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <h2>
-      ✏️ Edit child
-    </h2>
+<h2>
+✏️ Edit child
+</h2>
 
-    <input id="editId" type="hidden">
+<input id="editId" type="hidden">
 
-    <label>
-      Child's name
-    </label>
+<label>Child's name</label>
 
-    <input id="editChildName">
+<input id="editChildName">
 
-    <label>
-      Allergy / preference
-    </label>
+<label>Allergy / preference</label>
 
-    <select id="editAllergy">
+<select id="editAllergy">
 
-      <option value="none">
-        None
-      </option>
+<option value="none">None</option>
 
-      <option value="green">
-        Green - Preference
-      </option>
+<option value="green">
+Green - Preference
+</option>
 
-      <option value="red">
-        Red - Allergy
-      </option>
+<option value="red">
+Red - Allergy
+</option>
 
-    </select>
+</select>
 
-    <label>
-      Alternative milk
-    </label>
+<label>Alternative milk</label>
 
-    <input id="editMilk">
+<input id="editMilk">
 
-    <button id="saveChild" class="green" style="margin-top:15px">
-      Save changes
-    </button>
+<button id="saveChild" class="green" style="margin-top:15px">
+Save changes
+</button>
 
-    <button id="cancelChild" class="grey">
-      Cancel
-    </button>
+<button id="cancelChild" class="grey">
+Cancel
+</button>
 
-  </div>
+</div>
 
 </div>
 
 
-<!-- ================= PROFILE ================= -->
+<!-- PROFILE -->
 
 <div id="profileModal" class="modal hidden">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <h2>
-      Edit profile
-    </h2>
+<h2>Edit profile</h2>
 
-    <div id="profilePhoto" class="preview">
-      👤
-    </div>
+<div id="profilePhoto" class="preview">
+👤
+</div>
 
-    <label class="photo-label">
+<label class="photo-label">
 
-      📷 Change profile photo
+📷 Change profile photo
 
-      <input
-        id="profileFile"
-        type="file"
-        accept="image/*">
+<input
+id="profileFile"
+type="file"
+accept="image/*">
 
-    </label>
+</label>
 
-    <label>
-      Name
-    </label>
+<label>Name</label>
 
-    <input id="profileName">
+<input id="profileName">
 
-    <div id="profileError" class="message hidden"></div>
+<div id="profileError" class="message hidden"></div>
 
-    <button id="saveProfile" class="green">
-      Save changes
-    </button>
+<button id="saveProfile" class="green">
+Save changes
+</button>
 
-    <button id="cancelProfile" class="grey">
-      Cancel
-    </button>
+<button id="cancelProfile" class="grey">
+Cancel
+</button>
 
-  </div>
+</div>
 
 </div>
 
 
-<!-- ================= MENU ================= -->
+<!-- MENU -->
 
 <div id="menu" class="menu hidden">
 
-  <strong id="menuName"></strong>
+<strong id="menuName"></strong>
 
-  <button id="editProfile" class="grey">
-    ✏️ Edit profile
-  </button>
+<button id="editProfile" class="grey">
+✏️ Edit profile
+</button>
 
-  <button id="addAdultAgain" class="grey">
-    ➕ Add another adult
-  </button>
+<button id="addAdultAgain" class="grey">
+➕ Add another adult
+</button>
 
-  <button id="logout" class="grey">
-    🚪 Log out
-  </button>
+<button id="logout" class="grey">
+🚪 Log out
+</button>
 
 </div>
 
 
 <script>
 
-const SUPABASE_URL =
-"https://zzyyetnklrwzdzoraqqz.supabase.co";
+/*
+==================================================
+ACORN
+This version works without Supabase for the
+actual app controls.
 
-const SUPABASE_KEY =
-"sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0";
+Everything is stored in this browser.
+==================================================
+*/
 
-let adults=[];
+const STORAGE_KEY="ACORN_FINAL_DATA";
+
+let data={
+adults:[],
+entries:[]
+};
+
 let adultIndex=0;
 let currentAdult=null;
-
-let entries=[];
-
 let snackTime="am";
 let groupTime="am";
-
-let selectedDate=
-new Date().toISOString().slice(0,10);
+let selectedDate=new Date().toISOString().slice(0,10);
 
 let recordId=null;
 let recordAmount="";
 
 
 function $(id){
-  return document.getElementById(id);
+return document.getElementById(id);
 }
 
 
 function show(id){
-  $(id).classList.remove("hidden");
+$(id).classList.remove("hidden");
 }
 
 
 function hide(id){
-  $(id).classList.add("hidden");
+$(id).classList.add("hidden");
 }
 
 
-function setMessage(id,text,type){
-
-  const e=$(id);
-
-  e.textContent=text;
-  e.className="message "+type;
+function saveData(){
+localStorage.setItem(
+STORAGE_KEY,
+JSON.stringify(data)
+);
 }
 
 
-function setPhoto(element,url){
+function loadData(){
 
-  element.innerHTML="";
+try{
 
-  if(url && url.trim()){
+const saved=
+localStorage.getItem(STORAGE_KEY);
 
-    const img=
-      document.createElement("img");
+if(saved){
 
-    img.src=url;
+const parsed=
+JSON.parse(saved);
 
-    img.alt="Profile photo";
+if(parsed &&
+Array.isArray(parsed.adults) &&
+Array.isArray(parsed.entries)){
 
-    img.onerror=function(){
-      element.innerHTML="👤";
-    };
+data=parsed;
 
-    element.appendChild(img);
+}
 
-  }else{
+}
 
-    element.textContent="👤";
+}catch(error){
 
-  }
+console.log(error);
+
+}
+
 }
 
 
-/* DATABASE */
+function photo(element,url){
 
-async function db(path,options={}){
+element.innerHTML="";
 
-  const response=
-    await fetch(
-      SUPABASE_URL+path,
-      {
-        ...options,
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":
-            "Bearer "+SUPABASE_KEY,
-          "Content-Type":
-            "application/json",
-          ...(options.headers||{})
-        }
-      }
-    );
+if(url){
 
-  const text=
-    await response.text();
+const image=
+document.createElement("img");
 
-  let data=null;
+image.src=url;
 
-  try{
-    data=text?JSON.parse(text):null;
-  }catch{
-    data=text;
-  }
+image.onload=function(){
 
-  if(!response.ok){
+element.innerHTML="";
+element.appendChild(image);
 
-    throw new Error(
-      data?.message ||
-      data?.hint ||
-      data?.error ||
-      text ||
-      "Database error"
-    );
-  }
+};
 
-  return data;
+image.onerror=function(){
+element.textContent="👤";
+};
+
+}else{
+
+element.textContent="👤";
+
+}
+
 }
 
 
-/* ADULTS */
+/* LOGIN */
 
-async function loadAdults(){
+function drawAdults(){
 
-  try{
+if(data.adults.length===0){
 
-    const data=
-      await db(
-        "/rest/v1/rpc/list_adults",
-        {
-          method:"POST",
-          body:"{}"
-        }
-      );
+hide("selector");
+show("noAccounts");
 
-    adults=
-      Array.isArray(data)
-      ?data
-      :[];
+return;
 
-    if(adults.length===0){
-
-      hide("selector");
-      show("noAccounts");
-
-    }else{
-
-      hide("noAccounts");
-      show("selector");
-
-      if(adultIndex>=adults.length){
-        adultIndex=0;
-      }
-
-      drawAdult();
-
-    }
-
-  }catch(error){
-
-    setMessage(
-      "loginMessage",
-      "Couldn't load adult accounts: "+
-      error.message,
-      "error"
-    );
-
-  }
 }
 
+hide("noAccounts");
+show("selector");
 
-function drawAdult(){
+if(adultIndex>=data.adults.length)
+adultIndex=0;
 
-  if(!adults.length)return;
+const adult=
+data.adults[adultIndex];
 
-  const adult=
-    adults[adultIndex];
+$("adultName").textContent=
+adult.name;
 
-  $("adultName").textContent=
-    adult.name;
+/*
+THIS IS THE PROFILE PHOTO.
+It is taken directly from the selected
+adult's saved profile.
+*/
 
-  /*
-    IMPORTANT:
-    This takes the photo directly from
-    the adult account returned by Supabase.
-  */
+photo(
+$("adultPhoto"),
+adult.photo
+);
 
-  setPhoto(
-    $("adultPhoto"),
-    adult.photo_url
-  );
+$("dots").innerHTML="";
 
-  $("dots").innerHTML="";
+data.adults.forEach(
+function(_,index){
 
-  adults.forEach(
-    (_,index)=>{
+const dot=
+document.createElement("div");
 
-      const dot=
-        document.createElement("div");
+dot.className=
+"dot "+
+(index===adultIndex?"active":"");
 
-      dot.className=
-        "dot "+
-        (
-          index===adultIndex
-          ?"active"
-          :""
-        );
+$("dots").appendChild(dot);
 
-      $("dots").appendChild(dot);
-
-    }
-  );
+});
 
 }
 
 
 $("left").onclick=function(){
 
-  if(!adults.length)return;
+if(!data.adults.length)return;
 
-  adultIndex--;
+adultIndex--;
 
-  if(adultIndex<0){
-    adultIndex=
-      adults.length-1;
-  }
+if(adultIndex<0)
+adultIndex=data.adults.length-1;
 
-  drawAdult();
+drawAdults();
 
 };
 
 
 $("right").onclick=function(){
 
-  if(!adults.length)return;
+if(!data.adults.length)return;
 
-  adultIndex++;
+adultIndex++;
 
-  if(adultIndex>=adults.length){
-    adultIndex=0;
-  }
+if(adultIndex>=data.adults.length)
+adultIndex=0;
 
-  drawAdult();
+drawAdults();
 
 };
-
-
-/* PHOTO RESIZE */
-
-function resizePhoto(file){
-
-  return new Promise(
-    (resolve,reject)=>{
-
-      const reader=
-        new FileReader();
-
-      reader.onload=function(){
-
-        const image=
-          new Image();
-
-        image.onload=function(){
-
-          const canvas=
-            document.createElement("canvas");
-
-          const max=500;
-
-          let width=image.width;
-          let height=image.height;
-
-          if(width>height){
-
-            height=
-              height*(max/width);
-
-            width=max;
-
-          }else{
-
-            width=
-              width*(max/height);
-
-            height=max;
-
-          }
-
-          canvas.width=width;
-          canvas.height=height;
-
-          canvas
-            .getContext("2d")
-            .drawImage(
-              image,
-              0,
-              0,
-              width,
-              height
-            );
-
-          resolve(
-            canvas.toDataURL(
-              "image/jpeg",
-              .72
-            )
-          );
-
-        };
-
-        image.onerror=reject;
-        image.src=reader.result;
-
-      };
-
-      reader.onerror=reject;
-
-      reader.readAsDataURL(file);
-
-    }
-  );
-}
 
 
 /* ADD ADULT */
 
 function openAdult(){
 
-  $("newAdultName").value="";
-  $("newCode").value="";
-  $("confirmCode").value="";
+$("newAdultName").value="";
+$("newCode").value="";
+$("confirmCode").value="";
 
-  $("newPhoto").dataset.photo="";
+$("newPhoto").dataset.photo="";
 
-  setPhoto(
-    $("newPhoto"),
-    ""
-  );
+photo(
+$("newPhoto"),
+""
+);
 
-  hide("adultError");
+hide("adultError");
 
-  show("adultModal");
+show("adultModal");
 
 }
 
@@ -1449,430 +1293,360 @@ $("plus").onclick=openAdult;
 $("firstAdd").onclick=openAdult;
 
 
-$("cancelAdult").onclick=()=>{
-  hide("adultModal");
+$("cancelAdult").onclick=function(){
+hide("adultModal");
 };
 
 
-$("newPhotoFile").onchange=
-async function(){
+$("newPhotoFile").onchange=function(){
 
-  if(!this.files[0])return;
+const file=this.files[0];
 
-  try{
+if(!file)return;
 
-    const photo=
-      await resizePhoto(
-        this.files[0]
-      );
+const reader=
+new FileReader();
 
-    $("newPhoto").dataset.photo=
-      photo;
+reader.onload=function(){
 
-    setPhoto(
-      $("newPhoto"),
-      photo
-    );
+$("newPhoto").dataset.photo=
+reader.result;
 
-  }catch{
+photo(
+$("newPhoto"),
+reader.result
+);
 
-    setMessage(
-      "adultError",
-      "Couldn't add that photo.",
-      "error"
-    );
+};
 
-  }
+reader.readAsDataURL(file);
 
 };
 
 
-$("createAdult").onclick=
-async function(){
+$("createAdult").onclick=function(){
 
-  const name=
-    $("newAdultName")
-    .value
-    .trim();
+const name=
+$("newAdultName")
+.value.trim();
 
-  const code=
-    $("newCode")
-    .value
-    .trim();
+const code=
+$("newCode")
+.value.trim();
 
-  const confirm=
-    $("confirmCode")
-    .value
-    .trim();
+const confirm=
+$("confirmCode")
+.value.trim();
 
-  const photo=
-    $("newPhoto").dataset.photo||"";
+const picture=
+$("newPhoto").dataset.photo||"";
 
 
-  if(!name){
+if(!name){
 
-    setMessage(
-      "adultError",
-      "Please enter the adult's name.",
-      "error"
-    );
+$("adultError").textContent=
+"Please enter the adult's name.";
 
-    return;
-  }
+$("adultError").className=
+"message error";
 
+return;
 
-  if(!/^[0-9]{4}$/.test(code)){
-
-    setMessage(
-      "adultError",
-      "The code must be exactly 4 numbers.",
-      "error"
-    );
-
-    return;
-  }
+}
 
 
-  if(code!==confirm){
+if(!/^[0-9]{4}$/.test(code)){
 
-    setMessage(
-      "adultError",
-      "The codes don't match.",
-      "error"
-    );
+$("adultError").textContent=
+"Code must be exactly 4 numbers.";
 
-    return;
-  }
+$("adultError").className=
+"message error";
 
+return;
 
-  try{
-
-    await db(
-      "/rest/v1/rpc/create_adult",
-      {
-        method:"POST",
-        body:JSON.stringify({
-          p_name:name,
-          p_code:code,
-          p_photo:photo
-        })
-      }
-    );
+}
 
 
-    hide("adultModal");
+if(code!==confirm){
 
-    await loadAdults();
+$("adultError").textContent=
+"The codes don't match.";
 
+$("adultError").className=
+"message error";
 
-    const newIndex=
-      adults.findIndex(
-        adult=>
-          adult.name.toLowerCase()===
-          name.toLowerCase()
-      );
+return;
 
-
-    if(newIndex>=0){
-
-      adultIndex=newIndex;
-
-      drawAdult();
-
-    }
+}
 
 
-    setMessage(
-      "loginMessage",
-      name+
-      " has been added. Select their account and enter their code.",
-      "success"
-    );
+const exists=
+data.adults.some(
+adult=>
+adult.name.toLowerCase()===
+name.toLowerCase()
+);
 
-  }catch(error){
 
-    setMessage(
-      "adultError",
-      error.message,
-      "error"
-    );
+if(exists){
 
-  }
+$("adultError").textContent=
+"That adult already exists.";
+
+$("adultError").className=
+"message error";
+
+return;
+
+}
+
+
+const adult={
+id:Date.now().toString(),
+name:name,
+code:code,
+photo:picture
+};
+
+
+data.adults.push(adult);
+
+saveData();
+
+adultIndex=
+data.adults.length-1;
+
+hide("adultModal");
+
+drawAdults();
+
+$("loginMessage").textContent=
+name+" has been added. Select them and enter their code.";
+
+$("loginMessage").className=
+"message success";
 
 };
 
 
 /* LOGIN */
 
-$("loginBtn").onclick=
-async function(){
+$("loginBtn").onclick=function(){
 
-  if(!adults.length){
+if(!data.adults.length){
 
-    setMessage(
-      "loginMessage",
-      "There are no adult accounts yet.",
-      "error"
-    );
+$("loginMessage").textContent=
+"No adult accounts yet.";
 
-    return;
-  }
+$("loginMessage").className=
+"message error";
 
-
-  const adult=
-    adults[adultIndex];
-
-  const code=
-    $("loginCode")
-    .value
-    .trim();
-
-
-  if(!/^[0-9]{4}$/.test(code)){
-
-    setMessage(
-      "loginMessage",
-      "Enter your 4-digit code.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  try{
-
-    const result=
-      await db(
-        "/rest/v1/rpc/login_adult",
-        {
-          method:"POST",
-          body:JSON.stringify({
-            p_name:adult.name,
-            p_code:code
-          })
-        }
-      );
-
-
-    currentAdult=
-      Array.isArray(result)
-      ?result[0]
-      :result;
-
-
-    localStorage.setItem(
-      "acornAdult",
-      JSON.stringify(currentAdult)
-    );
-
-
-    $("loginCode").value="";
-
-    openApp();
-
-  }catch{
-
-    setMessage(
-      "loginMessage",
-      "Incorrect code.",
-      "error"
-    );
-
-  }
-
-};
-
-
-/* OPEN APP */
-
-function openApp(){
-
-  hide("loginScreen");
-  show("app");
-
-  $("menuName").textContent=
-    currentAdult.name;
-
-  setPhoto(
-    $("smallPhoto"),
-    currentAdult.photo_url
-  );
-
-  $("date").value=
-    selectedDate;
-
-  loadEntries();
+return;
 
 }
 
 
-/* PROFILE MENU */
+const adult=
+data.adults[adultIndex];
 
-$("profileBtn").onclick=function(){
+const code=
+$("loginCode").value.trim();
 
-  $("menu").classList.toggle(
-    "hidden"
-  );
+
+if(code!==adult.code){
+
+$("loginMessage").textContent=
+"Incorrect code.";
+
+$("loginMessage").className=
+"message error";
+
+return;
+
+}
+
+
+currentAdult=adult;
+
+localStorage.setItem(
+"ACORN_CURRENT_ADULT",
+adult.id
+);
+
+$("loginCode").value="";
+
+openApp();
 
 };
 
 
-$("addAdultAgain").onclick=function(){
+function openApp(){
 
-  hide("menu");
-  openAdult();
+hide("loginScreen");
+show("app");
 
-};
+$("menuName").textContent=
+currentAdult.name;
 
+photo(
+$("smallPhoto"),
+currentAdult.photo
+);
+
+$("date").value=
+selectedDate;
+
+renderAll();
+
+}
+
+
+/* LOGOUT */
 
 $("logout").onclick=function(){
 
-  localStorage.removeItem(
-    "acornAdult"
-  );
+currentAdult=null;
 
-  currentAdult=null;
+localStorage.removeItem(
+"ACORN_CURRENT_ADULT"
+);
 
-  hide("menu");
-  hide("app");
-  show("loginScreen");
+hide("menu");
+hide("app");
+show("loginScreen");
 
-  loadAdults();
+$("loginCode").value="";
+
+drawAdults();
 
 };
 
 
 /* PROFILE */
 
+$("profileBtn").onclick=function(){
+
+$("menu").classList.toggle(
+"hidden"
+);
+
+};
+
+
 $("editProfile").onclick=function(){
 
-  hide("menu");
+hide("menu");
 
-  $("profileName").value=
-    currentAdult.name;
+$("profileName").value=
+currentAdult.name;
 
-  $("profilePhoto").dataset.photo=
-    currentAdult.photo_url||"";
+$("profilePhoto").dataset.photo=
+currentAdult.photo||"";
 
-  setPhoto(
-    $("profilePhoto"),
-    currentAdult.photo_url
-  );
+photo(
+$("profilePhoto"),
+currentAdult.photo
+);
 
-  hide("profileError");
+hide("profileError");
 
-  show("profileModal");
-
-};
-
-
-$("cancelProfile").onclick=()=>{
-  hide("profileModal");
-};
-
-
-$("profileFile").onchange=
-async function(){
-
-  if(!this.files[0])return;
-
-  const photo=
-    await resizePhoto(
-      this.files[0]
-    );
-
-  $("profilePhoto").dataset.photo=
-    photo;
-
-  setPhoto(
-    $("profilePhoto"),
-    photo
-  );
+show("profileModal");
 
 };
 
 
-$("saveProfile").onclick=
-async function(){
-
-  const name=
-    $("profileName")
-    .value
-    .trim();
-
-  const photo=
-    $("profilePhoto")
-    .dataset.photo||"";
+$("cancelProfile").onclick=function(){
+hide("profileModal");
+};
 
 
-  if(!name){
+$("profileFile").onchange=function(){
 
-    setMessage(
-      "profileError",
-      "Please enter a name.",
-      "error"
-    );
+const file=this.files[0];
 
-    return;
-  }
+if(!file)return;
 
+const reader=
+new FileReader();
 
-  try{
+reader.onload=function(){
 
-    await db(
-      "/rest/v1/adults?id=eq."+
-      encodeURIComponent(
-        currentAdult.id
-      ),
-      {
-        method:"PATCH",
-        headers:{
-          "Prefer":
-            "return=minimal"
-        },
-        body:JSON.stringify({
-          name:name,
-          photo_url:photo
-        })
-      }
-    );
+$("profilePhoto").dataset.photo=
+reader.result;
+
+photo(
+$("profilePhoto"),
+reader.result
+);
+
+};
+
+reader.readAsDataURL(file);
+
+};
 
 
-    currentAdult.name=name;
-    currentAdult.photo_url=photo;
+$("saveProfile").onclick=function(){
+
+const name=
+$("profileName")
+.value.trim();
+
+if(!name){
+
+$("profileError").textContent=
+"Please enter a name.";
+
+$("profileError").className=
+"message error";
+
+return;
+
+}
 
 
-    localStorage.setItem(
-      "acornAdult",
-      JSON.stringify(
-        currentAdult
-      )
-    );
+currentAdult.name=name;
+
+currentAdult.photo=
+$("profilePhoto").dataset.photo||"";
 
 
-    $("menuName").textContent=
-      name;
-
-    setPhoto(
-      $("smallPhoto"),
-      photo
-    );
+const index=
+data.adults.findIndex(
+adult=>
+adult.id===currentAdult.id
+);
 
 
-    await loadAdults();
+if(index!==-1){
 
-    hide("profileModal");
+data.adults[index]=currentAdult;
 
-  }catch(error){
+}
 
-    setMessage(
-      "profileError",
-      error.message,
-      "error"
-    );
+saveData();
 
-  }
+$("menuName").textContent=
+currentAdult.name;
+
+photo(
+$("smallPhoto"),
+currentAdult.photo
+);
+
+hide("profileModal");
+
+drawAdults();
+
+};
+
+
+$("addAdultAgain").onclick=function(){
+
+hide("menu");
+
+openAdult();
 
 };
 
@@ -1881,835 +1655,687 @@ async function(){
 
 $("date").onchange=function(){
 
-  selectedDate=this.value;
+selectedDate=this.value;
 
-  loadEntries();
+renderAll();
 
 };
-
-
-/* LOAD SHARED LIST */
-
-async function loadEntries(){
-
-  try{
-
-    entries=
-      await db(
-        "/rest/v1/acorn_entries?select=*&order=id.asc"
-      );
-
-    renderSnacks();
-    renderGroup();
-    renderSun();
-
-  }catch(error){
-
-    console.error(error);
-
-  }
-
-}
 
 
 /* AM / PM */
 
 $("amBtn").onclick=function(){
 
-  snackTime="am";
+snackTime="am";
 
-  $("amBtn").classList.add("active");
-  $("pmBtn").classList.remove("active");
+$("amBtn").classList.add("active");
+$("pmBtn").classList.remove("active");
 
-  $("listTitle").textContent=
-    "AM Snack List";
+$("listTitle").textContent=
+"AM Snack List";
 
-  renderSnacks();
+renderSnacks();
 
 };
 
 
 $("pmBtn").onclick=function(){
 
-  snackTime="pm";
+snackTime="pm";
 
-  $("pmBtn").classList.add("active");
-  $("amBtn").classList.remove("active");
+$("pmBtn").classList.add("active");
+$("amBtn").classList.remove("active");
 
-  $("listTitle").textContent=
-    "PM Snack List";
+$("listTitle").textContent=
+"PM Snack List";
 
-  renderSnacks();
+renderSnacks();
 
 };
 
 
 /* ADD CHILD */
 
-$("addChild").onclick=
-async function(){
+$("addChild").onclick=function(){
 
-  const name=
-    $("childName")
-    .value
-    .trim();
+const name=
+$("childName")
+.value.trim();
 
-  if(!name){
+if(!name){
 
-    alert(
-      "Please enter the child's name."
-    );
+alert("Please enter the child's name.");
 
-    return;
-  }
-
-
-  try{
-
-    await db(
-      "/rest/v1/acorn_entries",
-      {
-        method:"POST",
-        headers:{
-          "Prefer":
-            "return=minimal"
-        },
-        body:JSON.stringify({
-
-          list_date:selectedDate,
-
-          snack_time:snackTime,
-
-          child_name:name,
-
-          allergy_status:
-            $("allergy").value,
-
-          alternative_milk:
-            $("milk").value.trim(),
-
-          amount:"",
-
-          food:"",
-
-          done:false,
-
-          suncream_product:"",
-
-          suncream_done:false
-
-        })
-      }
-    );
-
-
-    $("childName").value="";
-    $("milk").value="";
-
-    loadEntries();
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-};
-
-
-/* RENDER SNACK LIST */
-
-function renderSnacks(){
-
-  const box=
-    $("snackList");
-
-  box.innerHTML="";
-
-
-  const list=
-    entries.filter(
-      entry=>
-        entry.list_date===selectedDate &&
-        entry.snack_time===snackTime &&
-        !entry.suncream_product
-    );
-
-
-  if(!list.length){
-
-    box.innerHTML=
-      '<div class="empty">No children added yet.</div>';
-
-    return;
-  }
-
-
-  list.forEach(entry=>{
-
-    const child=
-      document.createElement("div");
-
-    child.className=
-      "child "+
-      (entry.done?"done":"");
-
-
-    const top=
-      document.createElement("div");
-
-    top.className="child-top";
-
-
-    const tick=
-      document.createElement("button");
-
-    tick.className="tick";
-
-    tick.textContent=
-      entry.done?"✓":"";
-
-    tick.onclick=
-      ()=>toggleDone(entry);
-
-
-    const name=
-      document.createElement("div");
-
-    name.className="child-name";
-
-    name.textContent=
-      entry.child_name;
-
-
-    /*
-      THIS IS THE RECORD BUTTON
-      It is always visible beside
-      the child's name.
-    */
-
-    const edit=
-      document.createElement("button");
-
-    edit.className="edit-btn";
-
-    edit.textContent="📝";
-
-    edit.title=
-      "Record what they had";
-
-    edit.onclick=
-      ()=>openRecord(entry);
-
-
-    top.append(
-      tick,
-      name,
-      edit
-    );
-
-
-    child.appendChild(top);
-
-
-    const details=
-      document.createElement("div");
-
-    details.className="details";
-
-
-    let html="";
-
-
-    if(entry.allergy_status==="red")
-      html+="🔴 Allergy<br>";
-
-    if(entry.allergy_status==="green")
-      html+="🟢 Preference<br>";
-
-
-    if(entry.alternative_milk)
-      html+=
-        "<strong>Milk:</strong> "+
-        escapeHtml(
-          entry.alternative_milk
-        )+
-        "<br>";
-
-
-    if(entry.amount)
-      html+=
-        "<strong>Amount:</strong> "+
-        escapeHtml(
-          entry.amount
-        )+
-        "<br>";
-
-
-    if(entry.food)
-      html+=
-        "<strong>Had:</strong> "+
-        escapeHtml(
-          entry.food
-        );
-
-
-    details.innerHTML=html;
-
-    child.appendChild(details);
-
-
-    const editChild=
-      document.createElement("button");
-
-    editChild.className="grey";
-
-    editChild.textContent=
-      "✏️ Edit child details";
-
-    editChild.style.marginTop="10px";
-
-    editChild.onclick=
-      ()=>openChildEditor(entry);
-
-
-    child.appendChild(editChild);
-
-
-    box.appendChild(child);
-
-  });
+return;
 
 }
 
 
-/* RECORD BUTTON */
+const entry={
+
+id:Date.now().toString(),
+
+date:selectedDate,
+
+time:snackTime,
+
+child:name,
+
+allergy:$("allergy").value,
+
+milk:$("milk").value.trim(),
+
+amount:"",
+
+food:"",
+
+done:false
+
+};
+
+
+data.entries.push(entry);
+
+saveData();
+
+$("childName").value="";
+$("milk").value="";
+
+renderAll();
+
+};
+
+
+/* SNACK LIST */
+
+function getSnacks(){
+
+return data.entries.filter(
+entry=>
+entry.date===selectedDate &&
+entry.time===snackTime
+);
+
+}
+
+
+function renderSnacks(){
+
+const box=
+$("snackList");
+
+box.innerHTML="";
+
+const list=getSnacks();
+
+
+if(!list.length){
+
+box.innerHTML=
+'<div class="empty">No children added yet.</div>';
+
+return;
+
+}
+
+
+list.forEach(function(entry){
+
+const child=
+document.createElement("div");
+
+child.className=
+"child "+
+(entry.done?"done":"");
+
+
+const top=
+document.createElement("div");
+
+top.className="child-top";
+
+
+const tick=
+document.createElement("button");
+
+tick.className="tick";
+
+tick.textContent=
+entry.done?"✓":"";
+
+tick.onclick=function(){
+
+entry.done=!entry.done;
+
+saveData();
+
+renderAll();
+
+};
+
+
+const name=
+document.createElement("div");
+
+name.className="child-name";
+
+name.textContent=
+entry.child;
+
+
+const record=
+document.createElement("button");
+
+record.className="record";
+
+record.textContent="📝";
+
+record.title=
+"Record what they had";
+
+record.onclick=function(){
+
+openRecord(entry);
+
+};
+
+
+top.append(
+tick,
+name,
+record
+);
+
+
+child.appendChild(top);
+
+
+const details=
+document.createElement("div");
+
+details.className="details";
+
+let text="";
+
+
+if(entry.allergy==="red")
+text+="🔴 Allergy<br>";
+
+if(entry.allergy==="green")
+text+="🟢 Preference<br>";
+
+if(entry.milk)
+text+="Milk: "+entry.milk+"<br>";
+
+if(entry.amount)
+text+="Amount: <strong>"+entry.amount+"</strong><br>";
+
+if(entry.food)
+text+="Had: <strong>"+entry.food+"</strong>";
+
+
+details.innerHTML=text;
+
+child.appendChild(details);
+
+
+const edit=
+document.createElement("button");
+
+edit.className="child-edit";
+
+edit.textContent=
+"✏️ Edit child details";
+
+edit.onclick=function(){
+
+openChildEditor(entry);
+
+};
+
+child.appendChild(edit);
+
+box.appendChild(child);
+
+});
+
+}
+
+
+/* RECORD */
 
 function openRecord(entry){
 
-  recordId=entry.id;
+recordId=entry.id;
 
-  recordAmount=
-    entry.amount||"";
+recordAmount=
+entry.amount||"";
 
-  $("recordChildName").textContent=
-    entry.child_name;
+$("recordChildName").textContent=
+entry.child;
 
-  $("recordFood").value=
-    entry.food||"";
-
-
-  document
-    .querySelectorAll(".amount-button")
-    .forEach(button=>{
-
-      button.classList.toggle(
-        "selected",
-        button.dataset.amount===
-        recordAmount
-      );
-
-    });
+$("recordFood").value=
+entry.food||"";
 
 
-  show("recordModal");
+document
+.querySelectorAll(".amount")
+.forEach(
+button=>{
+button.classList.toggle(
+"selected",
+button.dataset.value===recordAmount
+);
+}
+);
+
+show("recordModal");
 
 }
 
 
 document
-  .querySelectorAll(".amount-button")
-  .forEach(button=>{
+.querySelectorAll(".amount")
+.forEach(
+button=>{
 
-    button.onclick=function(){
+button.onclick=function(){
 
-      recordAmount=
-        this.dataset.amount;
+recordAmount=
+this.dataset.value;
 
-      document
-        .querySelectorAll(".amount-button")
-        .forEach(b=>
-          b.classList.remove("selected")
-        );
+document
+.querySelectorAll(".amount")
+.forEach(
+b=>b.classList.remove("selected")
+);
 
-      this.classList.add("selected");
+this.classList.add("selected");
 
-    };
+};
 
-  });
+});
 
 
 $("cancelRecord").onclick=function(){
 
-  hide("recordModal");
+hide("recordModal");
 
-  recordId=null;
-
-};
-
-
-$("saveRecord").onclick=
-async function(){
-
-  if(!recordId)return;
-
-
-  try{
-
-    await db(
-      "/rest/v1/acorn_entries?id=eq."+
-      recordId,
-      {
-        method:"PATCH",
-        headers:{
-          "Prefer":
-            "return=minimal"
-        },
-        body:JSON.stringify({
-
-          amount:recordAmount,
-
-          food:
-            $("recordFood")
-            .value
-            .trim(),
-
-          updated_at:
-            new Date().toISOString()
-
-        })
-      }
-    );
-
-
-    hide("recordModal");
-
-    recordId=null;
-
-    await loadEntries();
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
+recordId=null;
 
 };
 
 
-/* EDIT CHILD DETAILS */
+$("saveRecord").onclick=function(){
+
+if(!recordId)return;
+
+const entry=
+data.entries.find(
+e=>e.id===recordId
+);
+
+if(!entry)return;
+
+entry.amount=
+recordAmount;
+
+entry.food=
+$("recordFood")
+.value.trim();
+
+saveData();
+
+hide("recordModal");
+
+recordId=null;
+
+renderAll();
+
+};
+
+
+/* EDIT CHILD */
 
 function openChildEditor(entry){
 
-  $("editId").value=
-    entry.id;
+$("editId").value=
+entry.id;
 
-  $("editChildName").value=
-    entry.child_name||"";
+$("editChildName").value=
+entry.child;
 
-  $("editAllergy").value=
-    entry.allergy_status||"none";
+$("editAllergy").value=
+entry.allergy||"none";
 
-  $("editMilk").value=
-    entry.alternative_milk||"";
+$("editMilk").value=
+entry.milk||"";
 
-  show("childModal");
-
-}
-
-
-$("cancelChild").onclick=()=>{
-  hide("childModal");
-};
-
-
-$("saveChild").onclick=
-async function(){
-
-  const id=
-    $("editId").value;
-
-
-  try{
-
-    await db(
-      "/rest/v1/acorn_entries?id=eq."+
-      id,
-      {
-        method:"PATCH",
-        headers:{
-          "Prefer":
-            "return=minimal"
-        },
-        body:JSON.stringify({
-
-          child_name:
-            $("editChildName")
-            .value
-            .trim(),
-
-          allergy_status:
-            $("editAllergy").value,
-
-          alternative_milk:
-            $("editMilk")
-            .value
-            .trim(),
-
-          updated_at:
-            new Date().toISOString()
-
-        })
-      }
-    );
-
-
-    hide("childModal");
-
-    loadEntries();
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-};
-
-
-/* DONE */
-
-async function toggleDone(entry){
-
-  try{
-
-    await db(
-      "/rest/v1/acorn_entries?id=eq."+
-      entry.id,
-      {
-        method:"PATCH",
-        body:JSON.stringify({
-          done:!entry.done
-        })
-      }
-    );
-
-    loadEntries();
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
+show("childModal");
 
 }
 
 
-/* GROUP PAGE */
+$("cancelChild").onclick=function(){
+hide("childModal");
+};
 
-let groupTime="am";
 
+$("saveChild").onclick=function(){
+
+const id=
+$("editId").value;
+
+const entry=
+data.entries.find(
+e=>e.id===id
+);
+
+if(!entry)return;
+
+entry.child=
+$("editChildName")
+.value.trim();
+
+entry.allergy=
+$("editAllergy").value;
+
+entry.milk=
+$("editMilk")
+.value.trim();
+
+saveData();
+
+hide("childModal");
+
+renderAll();
+
+};
+
+
+/* GROUP */
 
 $("groupAm").onclick=function(){
 
-  groupTime="am";
+groupTime="am";
 
-  $("groupAm").classList.add("active");
-  $("groupPm").classList.remove("active");
+$("groupAm").classList.add("active");
+$("groupPm").classList.remove("active");
 
-  renderGroup();
+renderGroup();
 
 };
 
 
 $("groupPm").onclick=function(){
 
-  groupTime="pm";
+groupTime="pm";
 
-  $("groupPm").classList.add("active");
-  $("groupAm").classList.remove("active");
+$("groupPm").classList.add("active");
+$("groupAm").classList.remove("active");
 
-  renderGroup();
+renderGroup();
 
 };
 
 
 function renderGroup(){
 
-  const box=
-    $("groupList");
+const box=
+$("groupList");
 
-  box.innerHTML="";
-
-
-  const list=
-    entries.filter(
-      entry=>
-        entry.list_date===selectedDate &&
-        entry.snack_time===groupTime &&
-        !entry.suncream_product &&
-        entry.food
-    );
+box.innerHTML="";
 
 
-  if(!list.length){
-
-    box.innerHTML=
-      '<div class="empty">Nothing has been recorded yet.</div>';
-
-    return;
-
-  }
-
-
-  const groups={};
+const list=
+data.entries.filter(
+entry=>
+entry.date===selectedDate &&
+entry.time===groupTime &&
+entry.food
+);
 
 
-  list.forEach(entry=>{
+if(!list.length){
 
-    const amount=
-      entry.amount||
-      "Amount not recorded";
+box.innerHTML=
+'<div class="empty">Nothing has been recorded yet.</div>';
 
-    const food=
-      entry.food||
-      "Food not recorded";
+return;
 
-    const key=
-      amount+"|||"+food;
+}
 
 
-    if(!groups[key])
-      groups[key]=[];
-
-    groups[key].push(
-      entry.child_name
-    );
-
-  });
+const groups={};
 
 
-  Object.keys(groups)
-    .forEach(key=>{
+list.forEach(function(entry){
 
-      const parts=
-        key.split("|||");
+const amount=
+entry.amount||"Amount not recorded";
 
+const food=
+entry.food||"Food not recorded";
 
-      const group=
-        document.createElement("div");
+const key=
+amount+"|||"+food;
 
-      group.className=
-        "group-box";
+if(!groups[key])
+groups[key]=[];
 
+groups[key].push(entry.child);
 
-      const title=
-        document.createElement("div");
-
-      title.className=
-        "group-title";
-
-      title.textContent=
-        parts[0]+" — "+parts[1];
+});
 
 
-      group.appendChild(title);
+Object.keys(groups)
+.forEach(function(key){
+
+const parts=
+key.split("|||");
+
+const group=
+document.createElement("div");
+
+group.className=
+"group-box";
 
 
-      groups[key]
-        .forEach(name=>{
+const title=
+document.createElement("div");
 
-          const child=
-            document.createElement("div");
+title.className=
+"group-title";
 
-          child.className=
-            "group-child";
+title.textContent=
+parts[0]+" — "+parts[1];
 
-          child.textContent=
-            "• "+name;
-
-          group.appendChild(child);
-
-        });
+group.appendChild(title);
 
 
-      box.appendChild(group);
+groups[key].forEach(function(childName){
 
-    });
+const child=
+document.createElement("div");
+
+child.className=
+"group-child";
+
+child.textContent=
+"• "+childName;
+
+group.appendChild(child);
+
+});
+
+
+box.appendChild(group);
+
+});
 
 }
 
 
 /* SUNCREAM */
 
-$("addSun").onclick=
-async function(){
+function getSuncream(){
 
-  const name=
-    $("sunChild")
-    .value
-    .trim();
+return data.entries.filter(
+entry=>
+entry.date===selectedDate &&
+entry.suncream===true
+);
 
-  if(!name){
-
-    alert(
-      "Please enter the child's name."
-    );
-
-    return;
-  }
+}
 
 
-  try{
+$("addSun").onclick=function(){
 
-    await db(
-      "/rest/v1/acorn_entries",
-      {
-        method:"POST",
-        headers:{
-          "Prefer":
-            "return=minimal"
-        },
-        body:JSON.stringify({
+const name=
+$("sunChild")
+.value.trim();
 
-          list_date:selectedDate,
+if(!name){
 
-          snack_time:"am",
+alert("Please enter the child's name.");
 
-          child_name:name,
+return;
 
-          suncream_product:
-            $("sunProduct")
-            .value
-            .trim(),
-
-          suncream_done:false
-
-        })
-      }
-    );
+}
 
 
-    $("sunChild").value="";
-    $("sunProduct").value="";
+const entry={
 
-    loadEntries();
+id:Date.now().toString(),
 
-  }catch(error){
+date:selectedDate,
 
-    alert(error.message);
+time:"sun",
 
-  }
+child:name,
+
+allergy:"none",
+
+milk:"",
+
+amount:"",
+
+food:"",
+
+done:false,
+
+suncream:true,
+
+product:
+$("sunProduct")
+.value.trim(),
+
+sunDone:false
+
+};
+
+
+data.entries.push(entry);
+
+saveData();
+
+$("sunChild").value="";
+$("sunProduct").value="";
+
+renderSun();
 
 };
 
 
 function renderSun(){
 
-  const box=
-    $("sunList");
+const box=
+$("sunList");
 
-  box.innerHTML="";
+box.innerHTML="";
 
-
-  const list=
-    entries.filter(
-      entry=>
-        entry.list_date===selectedDate &&
-        entry.suncream_product
-    );
+const list=
+getSuncream();
 
 
-  if(!list.length){
+if(!list.length){
 
-    box.innerHTML=
-      '<div class="empty">No children added yet.</div>';
+box.innerHTML=
+'<div class="empty">No children added yet.</div>';
 
-    return;
+return;
 
-  }
-
-
-  list.forEach(entry=>{
-
-    const child=
-      document.createElement("div");
-
-    child.className=
-      "child "+
-      (entry.suncream_done?"done":"");
+}
 
 
-    const top=
-      document.createElement("div");
+list.forEach(function(entry){
 
-    top.className="child-top";
+const child=
+document.createElement("div");
 
-
-    const tick=
-      document.createElement("button");
-
-    tick.className="tick";
-
-    tick.textContent=
-      entry.suncream_done?"✓":"";
+child.className=
+"child "+
+(entry.sunDone?"done":"");
 
 
-    tick.onclick=
-    async function(){
+const top=
+document.createElement("div");
 
-      await db(
-        "/rest/v1/acorn_entries?id=eq."+
-        entry.id,
-        {
-          method:"PATCH",
-          body:JSON.stringify({
-            suncream_done:
-              !entry.suncream_done
-          })
-        }
-      );
-
-      loadEntries();
-
-    };
+top.className=
+"child-top";
 
 
-    const name=
-      document.createElement("div");
+const tick=
+document.createElement("button");
 
-    name.className="child-name";
+tick.className="tick";
 
-    name.textContent=
-      entry.child_name;
+tick.textContent=
+entry.sunDone?"✓":"";
 
+tick.onclick=function(){
 
-    top.append(
-      tick,
-      name
-    );
+entry.sunDone=!entry.sunDone;
 
+saveData();
 
-    child.appendChild(top);
+renderSun();
 
-
-    const details=
-      document.createElement("div");
-
-    details.className="details";
-
-    details.innerHTML=
-      "<strong>Product:</strong> "+
-      escapeHtml(
-        entry.suncream_product
-      );
+};
 
 
-    child.appendChild(details);
+const name=
+document.createElement("div");
 
-    box.appendChild(child);
+name.className="child-name";
 
-  });
+name.textContent=
+entry.child;
+
+
+top.append(
+tick,
+name
+);
+
+child.appendChild(top);
+
+
+const details=
+document.createElement("div");
+
+details.className="details";
+
+details.textContent=
+"Product: "+
+(entry.product||"Not entered");
+
+child.appendChild(details);
+
+
+box.appendChild(child);
+
+});
 
 }
 
@@ -2718,102 +2344,93 @@ function renderSun(){
 
 $("snackNav").onclick=function(){
 
-  show("snackPage");
-  hide("groupPage");
-  hide("sunPage");
+show("snackPage");
+hide("groupPage");
+hide("sunPage");
 
-  $("snackNav").classList.add("active");
-  $("groupNav").classList.remove("active");
-  $("sunNav").classList.remove("active");
+$("snackNav").classList.add("active");
+$("groupNav").classList.remove("active");
+$("sunNav").classList.remove("active");
 
 };
 
 
 $("groupNav").onclick=function(){
 
-  hide("snackPage");
-  show("groupPage");
-  hide("sunPage");
+hide("snackPage");
+show("groupPage");
+hide("sunPage");
 
-  $("snackNav").classList.remove("active");
-  $("groupNav").classList.add("active");
-  $("sunNav").classList.remove("active");
+$("snackNav").classList.remove("active");
+$("groupNav").classList.add("active");
+$("sunNav").classList.remove("active");
 
-  renderGroup();
+renderGroup();
 
 };
 
 
 $("sunNav").onclick=function(){
 
-  hide("snackPage");
-  hide("groupPage");
-  show("sunPage");
+hide("snackPage");
+hide("groupPage");
+show("sunPage");
 
-  $("snackNav").classList.remove("active");
-  $("groupNav").classList.remove("active");
-  $("sunNav").classList.add("active");
+$("snackNav").classList.remove("active");
+$("groupNav").classList.remove("active");
+$("sunNav").classList.add("active");
 
-  renderSun();
+renderSun();
 
 };
 
 
-/* ESCAPE */
+/* RENDER EVERYTHING */
 
-function escapeHtml(value){
+function renderAll(){
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+renderSnacks();
+renderGroup();
+renderSun();
 
 }
 
 
 /* START */
 
-async function start(){
+function start(){
 
-  $("date").value=
-    selectedDate;
+loadData();
 
-  await loadAdults();
+$("date").value=
+selectedDate;
 
-
-  const saved=
-    localStorage.getItem(
-      "acornAdult"
-    );
+drawAdults();
 
 
-  if(saved){
+const savedAdult=
+localStorage.getItem(
+"ACORN_CURRENT_ADULT"
+);
 
-    try{
 
-      currentAdult=
-        JSON.parse(saved);
+if(savedAdult){
 
-      if(
-        currentAdult &&
-        currentAdult.id
-      ){
+const adult=
+data.adults.find(
+a=>a.id===savedAdult
+);
 
-        openApp();
 
-      }
+if(adult){
 
-    }catch{
+currentAdult=adult;
 
-      localStorage.removeItem(
-        "acornAdult"
-      );
+openApp();
 
-    }
+}
 
-  }
+}
 
 }
 

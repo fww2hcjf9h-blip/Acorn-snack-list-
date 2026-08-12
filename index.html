@@ -1,1053 +1,889 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2f6f45">
-  <title>Acorn Snack List</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: #f5f7f5;
-      color: #202520;
-    }
-
-    .app {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 18px 14px 40px;
-    }
-
-    header {
-      background: #2f6f45;
-      color: white;
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      margin: 0 0 5px;
-      font-size: 28px;
-    }
-
-    .subtitle {
-      margin: 0;
-      opacity: 0.9;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-    }
-
-    .row {
-      display: flex;
-      gap: 9px;
-      flex-wrap: wrap;
-    }
-
-    .field {
-      flex: 1 1 180px;
-    }
-
-    label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    input,
-    select {
-      width: 100%;
-      border: 1px solid #d4d9d4;
-      border-radius: 11px;
-      padding: 12px;
-      background: white;
-      color: #202520;
-    }
-
-    button {
-      border: 0;
-      border-radius: 11px;
-      padding: 12px 15px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .primary {
-      background: #2f6f45;
-      color: white;
-    }
-
-    .secondary {
-      background: #e9eee9;
-      color: #244d32;
-    }
-
-    .danger {
-      background: #f8dddd;
-      color: #8b2222;
-    }
-
-    .small {
-      padding: 8px 10px;
-      font-size: 13px;
-    }
-
-    .list-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .list-title {
-      margin: 0;
-      font-size: 21px;
-    }
-
-    .person {
-      border: 1px solid #dfe4df;
-      border-radius: 14px;
-      padding: 13px;
-      margin-top: 9px;
-      transition: 0.15s;
-    }
-
-    .person.done {
-      background: #f0f7f1;
-      border-color: #b9d4bf;
-    }
-
-    .person-top {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .tick {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      padding: 0;
-      flex: 0 0 30px;
-      background: #edf0ed;
-      color: #2f6f45;
-      border: 1px solid #ccd4cc;
-    }
-
-    .done .tick {
-      background: #2f6f45;
-      color: white;
-      border-color: #2f6f45;
-    }
-
-    .name {
-      font-size: 17px;
-      font-weight: 800;
-      flex: 1;
-    }
-
-    .status {
-      font-size: 12px;
-      font-weight: 800;
-      padding: 5px 8px;
-      border-radius: 8px;
-      white-space: nowrap;
-    }
-
-    .green {
-      background: #dff1e3;
-      color: #236337;
-    }
-
-    .red {
-      background: #f7dddd;
-      color: #9a2525;
-    }
-
-    .milk {
-      margin: 9px 0 0 41px;
-      color: #555d56;
-      font-size: 13px;
-    }
-
-    .milk strong {
-      color: #303730;
-    }
-
-    .empty {
-      text-align: center;
-      color: #687068;
-      padding: 18px 5px;
-    }
-
-    .history-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      border-top: 1px solid #e5e8e5;
-      padding: 11px 0;
-    }
-
-    .history-item:first-child {
-      border-top: 0;
-    }
-
-    .date-title {
-      font-weight: 800;
-    }
-
-    .count {
-      color: #626962;
-      font-size: 13px;
-      margin-top: 3px;
-    }
-
-    .note {
-      font-size: 12px;
-      color: #666d66;
-      margin-top: 10px;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 520px) {
-      .app {
-        padding: 10px 10px 30px;
-      }
-
-      header {
-        border-radius: 14px;
-      }
-
-      .card {
-        border-radius: 14px;
-      }
-
-      .person-top {
-        align-items: flex-start;
-      }
-
-      .status {
-        margin-left: auto;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acorn Lists</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7f4;color:#202520}
+button,input,select{font:inherit}
+button{border:0;border-radius:10px;padding:11px 14px;font-weight:bold;cursor:pointer}
+.app{display:flex;min-height:100vh}
+.sidebar{width:220px;background:white;border-right:1px solid #ddd;padding:18px 12px}
+.logo{font-size:23px;font-weight:bold;color:#2f6f45;padding:8px;margin-bottom:12px}
+.folder-button{width:100%;text-align:left;background:#eef3ee;color:#294e34;margin-bottom:7px}
+.folder-button.active{background:#2f6f45;color:white}
+.main{width:100%;max-width:850px;margin:auto;padding:18px}
+.header{background:#2f6f45;color:white;border-radius:17px;padding:20px;margin-bottom:14px}
+.header h1{margin:0 0 4px}
+.header p{margin:0}
+.card{background:white;border-radius:15px;padding:16px;margin-bottom:14px;box-shadow:0 2px 10px #0001}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.field{flex:1 1 180px}
+label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
+input,select{width:100%;padding:11px;border:1px solid #d2d9d2;border-radius:10px}
+.primary{background:#2f6f45;color:white}
+.secondary{background:#e8eee9;color:#294e34}
+.danger{background:#f7dddd;color:#8d2525}
+.small{padding:7px 10px;font-size:13px}
+.snack-tabs{display:flex;gap:8px;margin-bottom:14px}
+.snack-tab{flex:1;background:#e8eee9;color:#294e34}
+.snack-tab.active{background:#2f6f45;color:white}
+.child{border:1px solid #dce2dc;border-radius:13px;padding:12px;margin-top:9px}
+.child.done{background:#f0f7f1;border-color:#b9d4bf}
+.child-top{display:flex;align-items:center;gap:9px}
+.tick{width:31px;height:31px;padding:0;border-radius:50%;background:#edf0ed;color:#2f6f45;border:1px solid #ccd4cc}
+.child.done .tick{background:#2f6f45;color:white}
+.child-name{font-weight:bold;flex:1}
+.badge{font-size:11px;font-weight:bold;padding:5px 7px;border-radius:7px}
+.red{background:#f7dddd;color:#982626}
+.green{background:#dff1e3;color:#246337}
+.none{background:#edf0ed;color:#596159}
+.detail{font-size:13px;color:#555;margin:8px 0 0 40px}
+.empty{text-align:center;color:#687068;padding:20px}
+.history-item{border-top:1px solid #e4e8e4;padding:11px 0;display:flex;justify-content:space-between;align-items:center}
+.hidden{display:none!important}
+@media(max-width:650px){
+.app{display:block}
+.sidebar{width:100%;border-right:0;border-bottom:1px solid #ddd;display:flex;gap:7px;overflow-x:auto;padding:9px}
+.logo{display:none}
+.folder-button{width:auto;white-space:nowrap;margin:0}
+.main{padding:10px}
+}
+</style>
 </head>
 
 <body>
 
-  <main class="app">
+<div class="app">
 
-    <header>
-      <h1>Acorn Snack List</h1>
-      <p class="subtitle">Daily snack record</p>
-    </header>
+<aside class="sidebar">
 
-    <section class="card">
+<div class="logo">Acorn</div>
 
-      <div class="list-header">
+<button type="button" class="folder-button active" id="snackFolder">
+Snack Lists
+</button>
 
-        <div>
-          <label for="datePicker">Select a day</label>
-          <input id="datePicker" type="date">
-        </div>
+<button type="button" class="folder-button" id="suncreamFolder">
+Suncream Lists
+</button>
 
-        <button class="secondary" id="newDayBtn">
-          Create new day
-        </button>
+</aside>
 
-      </div>
+<main class="main">
 
-    </section>
+<header class="header">
+<h1 id="pageTitle">Acorn Snack List</h1>
+<p id="pageSubtitle">Daily records</p>
+</header>
 
-    <section class="card">
+<section class="card">
 
-      <h2 style="margin-top:0;">
-        Add a child
-      </h2>
+<div class="row">
 
-      <div class="row">
+<div class="field">
+<label>Date</label>
+<input id="date" type="date">
+</div>
 
-        <div class="field">
+<div class="field" style="align-self:end">
+<button type="button" class="secondary" id="newDayButton">
+Create new day
+</button>
+</div>
 
-          <label for="nameInput">
-            Name
-          </label>
+</div>
 
-          <input
-            id="nameInput"
-            type="text"
-            placeholder="Child's name"
-          >
+</section>
 
-        </div>
 
-        <div class="field">
+<div id="snackPage">
 
-          <label for="statusInput">
-            Allergy / preference
-          </label>
+<section class="card">
 
-          <select id="statusInput">
+<div class="snack-tabs">
 
-            <option value="none">
-              No allergy / preference
-            </option>
+<button type="button" class="snack-tab active" id="amButton">
+AM Snack
+</button>
 
-            <option value="green">
-              Green - Preference
-            </option>
+<button type="button" class="snack-tab" id="pmButton">
+PM Snack
+</button>
 
-            <option value="red">
-              Red - Allergy
-            </option>
+</div>
 
-          </select>
+<div class="row">
 
-        </div>
+<div class="field">
+<label>Child's name</label>
+<input id="snackName" placeholder="Child's name">
+</div>
 
-        <div class="field">
+<div class="field">
+<label>Allergy / preference</label>
 
-          <label for="milkInput">
-            Alternative milk
-          </label>
+<select id="snackStatus">
 
-          <input
-            id="milkInput"
-            type="text"
-            placeholder="e.g. oat milk"
-          >
+<option value="none">
+No allergy / preference
+</option>
 
-        </div>
+<option value="green">
+Green - Preference
+</option>
 
-      </div>
+<option value="red">
+Red - Allergy
+</option>
 
-      <div style="margin-top:10px;">
+</select>
 
-        <button
-          class="primary"
-          id="addBtn"
-        >
-          Add child
-        </button>
+</div>
 
-      </div>
+<div class="field">
+<label>Alternative milk</label>
+<input id="snackMilk" placeholder="e.g. oat milk">
+</div>
 
-    </section>
+</div>
 
-    <section class="card">
+<button type="button" class="primary" id="addSnackButton" style="margin-top:10px">
+Add child
+</button>
 
-      <div class="list-header">
+</section>
 
-        <div>
+<section class="card">
 
-          <h2
-            class="list-title"
-            id="dayTitle"
-          >
-            Today's list
-          </h2>
+<h2 id="snackTitle">
+AM Snack
+</h2>
 
-          <div
-            id="summary"
-            class="count"
-          ></div>
+<div id="snackChildren"></div>
 
-        </div>
+</section>
 
-        <button
-          class="secondary small"
-          id="clearDayBtn"
-        >
-          Clear this day
-        </button>
+</div>
 
-      </div>
 
-      <div id="people"></div>
+<div id="suncreamPage" class="hidden">
 
-    </section>
+<section class="card">
 
-    <section class="card">
+<h2>Suncream List</h2>
 
-      <h2 style="margin-top:0;">
-        Saved days
-      </h2>
+<div class="row">
 
-      <div id="history"></div>
+<div class="field">
+<label>Child's name</label>
+<input id="suncreamName" placeholder="Child's name">
+</div>
 
-    </section>
+<div class="field">
+<label>Suncream</label>
+<input id="suncreamProduct" placeholder="e.g. child's own SPF 50">
+</div>
 
-  </main>
+</div>
+
+<button type="button" class="primary" id="addSuncreamButton" style="margin-top:10px">
+Add child
+</button>
+
+</section>
+
+<section class="card">
+
+<h2>Today's Suncream</h2>
+
+<div id="suncreamChildren"></div>
+
+</section>
+
+</div>
+
+
+<section class="card">
+
+<h2>Saved Days</h2>
+
+<div id="savedDays"></div>
+
+</section>
+
+</main>
+</div>
 
 
 <script>
 
-(function () {
+const STORAGE_KEY = "acornListsV5";
 
-  const STORAGE_KEY = "acornSnackListV2";
+let data = {};
+let currentDate = "";
+let currentPage = "snacks";
+let currentSnack = "am";
 
-  const datePicker =
-    document.getElementById("datePicker");
 
-  const nameInput =
-    document.getElementById("nameInput");
+function get(id){
+return document.getElementById(id);
+}
 
-  const statusInput =
-    document.getElementById("statusInput");
 
-  const milkInput =
-    document.getElementById("milkInput");
+function loadData(){
 
-  const people =
-    document.getElementById("people");
+try{
 
-  const history =
-    document.getElementById("history");
+const saved=localStorage.getItem(STORAGE_KEY);
 
-  const dayTitle =
-    document.getElementById("dayTitle");
+if(saved){
+data=JSON.parse(saved);
+}
 
-  const summary =
-    document.getElementById("summary");
+}catch(error){
 
+data={};
 
-  let data = load();
+}
 
-  let currentDate = today();
+}
 
-  datePicker.value = currentDate;
 
+function saveData(){
 
-  function today() {
+localStorage.setItem(
+STORAGE_KEY,
+JSON.stringify(data)
+);
 
-    const d = new Date();
+}
 
-    const local =
-      new Date(
-        d.getTime() -
-        d.getTimezoneOffset() * 60000
-      );
 
-    return local
-      .toISOString()
-      .slice(0, 10);
-  }
+function getToday(){
 
+const d=new Date();
 
-  function load() {
+const local=new Date(
+d.getTime()-
+d.getTimezoneOffset()*60000
+);
 
-    try {
+return local.toISOString().slice(0,10);
 
-      const saved =
-        JSON.parse(
-          localStorage.getItem(STORAGE_KEY)
-        );
+}
 
-      return saved &&
-        typeof saved === "object"
-        ? saved
-        : {};
 
-    } catch (error) {
+function createDay(date){
 
-      return {};
+if(!data[date]){
 
-    }
-  }
+data[date]={
+amSnack:[],
+pmSnack:[],
+suncream:[]
+};
 
+}
 
-  function save() {
+}
 
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(data)
-    );
-  }
 
+function formatDate(date){
 
-  function ensureDay(date) {
+return new Date(date+"T12:00:00")
+.toLocaleDateString(
+"en-GB",
+{
+weekday:"long",
+day:"numeric",
+month:"long",
+year:"numeric"
+}
+);
 
-    if (!data[date]) {
+}
 
-      data[date] = {
-        children: []
-      };
 
-    }
-  }
+function openSnackList(){
 
+currentPage="snacks";
 
-  function prettyDate(date) {
+get("snackPage").classList.remove("hidden");
+get("suncreamPage").classList.add("hidden");
 
-    return new Date(
-      date + "T12:00:00"
-    ).toLocaleDateString(
-      "en-GB",
-      {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-      }
-    );
+get("snackFolder").classList.add("active");
+get("suncreamFolder").classList.remove("active");
 
-  }
+get("pageTitle").textContent="Acorn Snack List";
 
+render();
 
-  function render() {
+}
 
-    ensureDay(currentDate);
 
-    datePicker.value =
-      currentDate;
+function openSuncreamList(){
 
-    dayTitle.textContent =
-      prettyDate(currentDate);
+currentPage="suncream";
 
+get("snackPage").classList.add("hidden");
+get("suncreamPage").classList.remove("hidden");
 
-    const children =
-      data[currentDate].children;
+get("snackFolder").classList.remove("active");
+get("suncreamFolder").classList.add("active");
 
+get("pageTitle").textContent="Acorn Suncream List";
 
-    const done =
-      children.filter(
-        child => child.done
-      ).length;
+render();
 
+}
 
-    summary.textContent =
-      children.length
-        ? `${done} of ${children.length} completed`
-        : "No children added yet";
 
+function openAM(){
 
-    people.innerHTML = "";
+currentSnack="am";
 
+get("amButton").classList.add("active");
+get("pmButton").classList.remove("active");
 
-    if (!children.length) {
+get("snackTitle").textContent="AM Snack";
 
-      people.innerHTML =
-        '<div class="empty">' +
-        'No children on this day yet. Add one above.' +
-        '</div>';
+renderSnackList();
 
-    } else {
+}
 
-      children.forEach(
-        (child, index) => {
 
-          const item =
-            document.createElement("div");
+function openPM(){
 
-          item.className =
-            "person" +
-            (child.done
-              ? " done"
-              : "");
+currentSnack="pm";
 
+get("pmButton").classList.add("active");
+get("amButton").classList.remove("active");
 
-          const top =
-            document.createElement("div");
+get("snackTitle").textContent="PM Snack";
 
-          top.className =
-            "person-top";
+renderSnackList();
 
+}
 
-          const tick =
-            document.createElement("button");
 
-          tick.className =
-            "tick";
+function render(){
 
-          tick.title =
-            child.done
-              ? "Mark as not done"
-              : "Mark as done";
+createDay(currentDate);
 
-          tick.textContent =
-            child.done
-              ? "✓"
-              : "";
+get("date").value=currentDate;
 
+get("pageSubtitle").textContent=formatDate(currentDate);
 
-          tick.addEventListener(
-            "click",
-            () => {
+if(currentPage==="snacks"){
 
-              child.done =
-                !child.done;
+renderSnackList();
 
-              save();
+}else{
 
-              render();
+renderSuncreamList();
 
-            }
-          );
+}
 
+renderSavedDays();
 
-          const name =
-            document.createElement("div");
+}
 
-          name.className =
-            "name";
 
-          name.textContent =
-            child.name;
+function renderSnackList(){
 
+const container=get("snackChildren");
 
-          const status =
-            document.createElement("span");
+container.innerHTML="";
 
+const key=currentSnack==="am"
+?"amSnack"
+:"pmSnack";
 
-          if (
-            child.status === "none"
-          ) {
+const children=data[currentDate][key];
 
-            status.className =
-              "status";
 
-            status.style.background =
-              "#edf0ed";
+if(!children.length){
 
-            status.style.color =
-              "#596159";
+container.innerHTML=
+'<div class="empty">No children added to this list yet.</div>';
 
-            status.textContent =
-              "NONE";
+return;
 
-          } else {
+}
 
-            status.className =
-              "status " +
-              (
-                child.status === "red"
-                  ? "red"
-                  : "green"
-              );
 
-            status.textContent =
-              child.status === "red"
-                ? "RED"
-                : "GREEN";
+children.forEach((child,index)=>{
 
-          }
+const item=document.createElement("div");
 
+item.className="child"+(child.done?" done":"");
 
-          const remove =
-            document.createElement("button");
 
-          remove.className =
-            "danger small";
+const top=document.createElement("div");
 
-          remove.textContent =
-            "Remove";
+top.className="child-top";
 
 
-          remove.addEventListener(
-            "click",
-            () => {
+const tick=document.createElement("button");
 
-              if (
-                confirm(
-                  "Remove " +
-                  child.name +
-                  " from this day's list?"
-                )
-              ) {
+tick.type="button";
+tick.className="tick";
+tick.textContent=child.done?"✓":"";
 
-                children.splice(
-                  index,
-                  1
-                );
 
-                save();
+tick.onclick=()=>{
 
-                render();
+child.done=!child.done;
 
-              }
+saveData();
 
-            }
-          );
+renderSnackList();
 
+};
 
-          top.append(
-            tick,
-            name,
-            status,
-            remove
-          );
 
+const name=document.createElement("div");
 
-          item.appendChild(top);
+name.className="child-name";
+name.textContent=child.name;
 
 
-          if (
-            child.milk &&
-            child.milk.trim()
-          ) {
+const badge=document.createElement("span");
 
-            const milk =
-              document.createElement("div");
 
-            milk.className =
-              "milk";
+if(child.status==="red"){
 
+badge.className="badge red";
+badge.textContent="RED";
 
-            const strong =
-              document.createElement("strong");
+}
 
-            strong.textContent =
-              "Alternative milk: ";
+else if(child.status==="green"){
 
+badge.className="badge green";
+badge.textContent="GREEN";
 
-            milk.appendChild(strong);
+}
 
+else{
 
-            milk.appendChild(
-              document.createTextNode(
-                child.milk
-              )
-            );
+badge.className="badge none";
+badge.textContent="NONE";
 
+}
 
-            item.appendChild(milk);
 
-          }
+const remove=document.createElement("button");
 
+remove.type="button";
+remove.className="danger small";
+remove.textContent="Remove";
 
-          people.appendChild(item);
 
-        }
-      );
+remove.onclick=()=>{
 
-    }
+children.splice(index,1);
 
+saveData();
 
-    renderHistory();
+renderSnackList();
 
-  }
+};
 
 
-  function renderHistory() {
+top.append(
+tick,
+name,
+badge,
+remove
+);
 
-    history.innerHTML = "";
 
+item.appendChild(top);
 
-    const dates =
-      Object.keys(data)
-        .sort()
-        .reverse();
 
+if(child.milk){
 
-    if (!dates.length) {
+const milk=document.createElement("div");
 
-      history.innerHTML =
-        '<div class="empty">' +
-        'Your saved days will appear here.' +
-        '</div>';
+milk.className="detail";
 
-      return;
+milk.textContent=
+"Alternative milk: "+child.milk;
 
-    }
+item.appendChild(milk);
 
+}
 
-    dates.forEach(
-      date => {
 
-        const children =
-          data[date].children || [];
+container.appendChild(item);
 
+});
 
-        const done =
-          children.filter(
-            child => child.done
-          ).length;
+}
 
 
-        const row =
-          document.createElement("div");
+function renderSuncreamList(){
 
-        row.className =
-          "history-item";
+const container=get("suncreamChildren");
 
+container.innerHTML="";
 
-        const info =
-          document.createElement("div");
+const children=data[currentDate].suncream;
 
 
-        const title =
-          document.createElement("div");
+if(!children.length){
 
-        title.className =
-          "date-title";
+container.innerHTML=
+'<div class="empty">No children added to today\'s suncream list yet.</div>';
 
-        title.textContent =
-          prettyDate(date);
+return;
 
+}
 
-        const count =
-          document.createElement("div");
 
-        count.className =
-          "count";
+children.forEach((child,index)=>{
 
-        count.textContent =
-          `${done} of ${children.length} completed`;
+const item=document.createElement("div");
 
+item.className="child"+(child.done?" done":"");
 
-        info.append(
-          title,
-          count
-        );
 
+const top=document.createElement("div");
 
-        const open =
-          document.createElement("button");
+top.className="child-top";
 
-        open.className =
-          "secondary small";
 
-        open.textContent =
-          "Open";
+const tick=document.createElement("button");
 
+tick.type="button";
+tick.className="tick";
+tick.textContent=child.done?"✓":"";
 
-        open.addEventListener(
-          "click",
-          () => {
 
-            currentDate =
-              date;
+tick.onclick=()=>{
 
-            render();
+child.done=!child.done;
 
-            window.scrollTo({
-              top: 0,
-              behavior: "smooth"
-            });
+saveData();
 
-          }
-        );
+renderSuncreamList();
 
+};
 
-        row.append(
-          info,
-          open
-        );
 
+const name=document.createElement("div");
 
-        history.appendChild(row);
+name.className="child-name";
+name.textContent=child.name;
 
-      }
-    );
 
-  }
+const remove=document.createElement("button");
 
+remove.type="button";
+remove.className="danger small";
+remove.textContent="Remove";
 
-  document
-    .getElementById("addBtn")
-    .addEventListener(
-      "click",
-      () => {
 
-        const name =
-          nameInput.value.trim();
+remove.onclick=()=>{
 
+children.splice(index,1);
 
-        if (!name) {
+saveData();
 
-          alert(
-            "Please enter the child's name."
-          );
+renderSuncreamList();
 
-          nameInput.focus();
+};
 
-          return;
 
-        }
+top.append(
+tick,
+name,
+remove
+);
 
+item.appendChild(top);
 
-        ensureDay(currentDate);
 
+const detail=document.createElement("div");
 
-        data[currentDate]
-          .children
-          .push({
+detail.className="detail";
 
-            name: name,
+detail.textContent=
+child.product
+?"Suncream: "+child.product
+:"No specific suncream recorded";
 
-            status:
-              statusInput.value,
 
-            milk:
-              milkInput.value.trim(),
+item.appendChild(detail);
 
-            done: false
+container.appendChild(item);
 
-          });
+});
 
+}
 
-        save();
 
+function renderSavedDays(){
 
-        nameInput.value = "";
+const container=get("savedDays");
 
-        milkInput.value = "";
+container.innerHTML="";
 
-        statusInput.value =
-          "none";
+const dates=Object.keys(data).sort().reverse();
 
 
-        nameInput.focus();
+if(!dates.length){
 
-        render();
+container.innerHTML=
+'<div class="empty">Saved days will appear here.</div>';
 
-      }
-    );
+return;
 
+}
 
-  nameInput.addEventListener(
-    "keydown",
-    event => {
 
-      if (
-        event.key === "Enter"
-      ) {
+dates.forEach(date=>{
 
-        document
-          .getElementById("addBtn")
-          .click();
+const row=document.createElement("div");
 
-      }
+row.className="history-item";
 
-    }
-  );
 
+const title=document.createElement("strong");
 
-  datePicker.addEventListener(
-    "change",
-    () => {
+title.textContent=formatDate(date);
 
-      currentDate =
-        datePicker.value;
 
-      ensureDay(currentDate);
+const open=document.createElement("button");
 
-      save();
+open.type="button";
+open.className="secondary small";
+open.textContent="Open";
 
-      render();
 
-    }
-  );
+open.onclick=()=>{
 
+currentDate=date;
 
-  document
-    .getElementById("newDayBtn")
-    .addEventListener(
-      "click",
-      () => {
+render();
 
-        const date =
-          prompt(
-            "Enter the date for the new list (DD/MM/YYYY):"
-          );
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
+};
 
-        if (!date) {
-          return;
-        }
 
+row.append(title,open);
 
-        const parts =
-          date.split("/");
+container.appendChild(row);
 
+});
 
-        if (
-          parts.length !== 3
-        ) {
+}
 
-          alert(
-            "Please use DD/MM/YYYY."
-          );
 
-          return;
+function addSnack(){
 
-        }
+const name=get("snackName").value.trim();
 
 
-        const iso =
-          `${parts[2].padStart(4, "0")}-${parts[1].padStart(2, "0")}-${parts[0].padStart(2, "0")}`;
+if(!name){
 
+alert("Please enter the child's name.");
 
-        currentDate =
-          iso;
+return;
 
+}
 
-        ensureDay(currentDate);
 
-        save();
+const key=currentSnack==="am"
+?"amSnack"
+:"pmSnack";
 
-        render();
 
-      }
-    );
+data[currentDate][key].push({
 
+name:name,
 
-  document
-    .getElementById("clearDayBtn")
-    .addEventListener(
-      "click",
-      () => {
+status:get("snackStatus").value,
 
-        if (
-          !data[currentDate] ||
-          !data[currentDate].children.length
-        ) {
+milk:get("snackMilk").value.trim(),
 
-          return;
+done:false
 
-        }
+});
 
 
-        if (
-          confirm(
-            "Clear everyone from this day's list? This cannot be undone."
-          )
-        ) {
+get("snackName").value="";
+get("snackMilk").value="";
+get("snackStatus").value="none";
 
-          data[currentDate]
-            .children = [];
 
-          save();
+saveData();
 
-          render();
+renderSnackList();
 
-        }
+}
 
-      }
-    );
 
+function addSuncream(){
 
-  ensureDay(currentDate);
+const name=get("suncreamName").value.trim();
 
-  render();
 
-})();
+if(!name){
+
+alert("Please enter the child's name.");
+
+return;
+
+}
+
+
+data[currentDate].suncream.push({
+
+name:name,
+
+product:get("suncreamProduct").value.trim(),
+
+done:false
+
+});
+
+
+get("suncreamName").value="";
+get("suncreamProduct").value="";
+
+
+saveData();
+
+renderSuncreamList();
+
+}
+
+
+function createNewDay(){
+
+const answer=prompt(
+"Enter the date as DD/MM/YYYY"
+);
+
+
+if(!answer)return;
+
+
+const parts=answer.split("/");
+
+
+if(parts.length!==3){
+
+alert("Please use DD/MM/YYYY.");
+
+return;
+
+}
+
+
+currentDate=
+parts[2]+"-"+
+parts[1].padStart(2,"0")+"-"+
+parts[0].padStart(2,"0");
+
+
+createDay(currentDate);
+
+saveData();
+
+render();
+
+}
+
+
+/* BUTTONS */
+
+get("snackFolder")
+.addEventListener(
+"click",
+openSnackList
+);
+
+
+get("suncreamFolder")
+.addEventListener(
+"click",
+openSuncreamList
+);
+
+
+get("amButton")
+.addEventListener(
+"click",
+openAM
+);
+
+
+get("pmButton")
+.addEventListener(
+"click",
+openPM
+);
+
+
+get("addSnackButton")
+.addEventListener(
+"click",
+addSnack
+);
+
+
+get("addSuncreamButton")
+.addEventListener(
+"click",
+addSuncream
+);
+
+
+get("newDayButton")
+.addEventListener(
+"click",
+createNewDay
+);
+
+
+get("date")
+.addEventListener(
+"change",
+()=>{
+
+currentDate=get("date").value;
+
+createDay(currentDate);
+
+saveData();
+
+render();
+
+}
+);
+
+
+/* START */
+
+loadData();
+
+currentDate=getToday();
+
+createDay(currentDate);
+
+saveData();
+
+render();
 
 </script>
 

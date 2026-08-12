@@ -148,6 +148,150 @@ padding:7px 10px;
 font-size:13px;
 }
 
+/* LOGIN */
+
+.login-screen{
+min-height:100vh;
+background:#f4f7f4;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.login-box{
+width:100%;
+max-width:650px;
+background:white;
+border-radius:22px;
+padding:25px;
+box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+
+.login-logo{
+text-align:center;
+font-size:32px;
+font-weight:bold;
+color:#2f6f45;
+margin-bottom:20px;
+}
+
+.profile-scroll{
+display:flex;
+gap:12px;
+overflow-x:auto;
+padding:8px 3px 15px;
+}
+
+.profile-card{
+min-width:125px;
+background:#f4f7f4;
+border:2px solid transparent;
+border-radius:16px;
+padding:12px;
+text-align:center;
+cursor:pointer;
+}
+
+.profile-card.selected{
+border-color:#2f6f45;
+background:#eef7ef;
+}
+
+.profile-photo{
+width:70px;
+height:70px;
+border-radius:50%;
+object-fit:cover;
+background:#dcefe0;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0 auto 8px;
+font-size:30px;
+}
+
+.profile-name{
+font-weight:bold;
+font-size:14px;
+word-break:break-word;
+}
+
+.add-profile-card{
+min-width:125px;
+background:#eef3ee;
+border:2px dashed #9ab19f;
+border-radius:16px;
+padding:12px;
+text-align:center;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+}
+
+.plus-large{
+font-size:35px;
+color:#2f6f45;
+}
+
+.code-box{
+margin-top:10px;
+}
+
+.code-input{
+text-align:center;
+font-size:24px;
+letter-spacing:8px;
+}
+
+.profile-preview{
+width:90px;
+height:90px;
+border-radius:50%;
+object-fit:cover;
+display:block;
+margin:10px auto;
+background:#dcefe0;
+}
+
+.hidden{
+display:none!important;
+}
+
+/* APP PROFILE BAR */
+
+.top-profile{
+display:flex;
+align-items:center;
+justify-content:flex-end;
+gap:8px;
+margin-bottom:10px;
+}
+
+.top-profile-photo{
+width:38px;
+height:38px;
+border-radius:50%;
+object-fit:cover;
+background:#dcefe0;
+}
+
+.top-profile-name{
+font-weight:bold;
+font-size:14px;
+}
+
+.logout-button{
+padding:7px 10px;
+font-size:12px;
+background:#f7dddd;
+color:#8d2525;
+}
+
+/* SNACKS */
+
 .snack-tabs{
 display:flex;
 gap:8px;
@@ -351,8 +495,21 @@ display:flex;
 gap:6px;
 }
 
-.hidden{
-display:none!important;
+/* FLOATING ADD ACCOUNT */
+
+.floating-add{
+position:fixed;
+right:20px;
+bottom:20px;
+width:58px;
+height:58px;
+border-radius:50%;
+background:#2f6f45;
+color:white;
+font-size:30px;
+padding:0;
+box-shadow:0 4px 15px rgba(0,0,0,.2);
+z-index:1000;
 }
 
 @media(max-width:650px){
@@ -390,11 +547,180 @@ padding:10px;
 flex-wrap:wrap;
 }
 
+.floating-add{
+right:16px;
+bottom:16px;
+}
+
 }
 </style>
 </head>
 
 <body>
+
+<!-- LOGIN -->
+
+<div id="loginScreen" class="login-screen">
+
+<div class="login-box">
+
+<div class="login-logo">
+🌱 Acorn
+</div>
+
+<h2 style="text-align:center;margin-top:0;">
+Who's using Acorn?
+</h2>
+
+<p style="text-align:center;color:#687068;">
+Select your profile and enter your personal code.
+</p>
+
+<div id="profileScroll" class="profile-scroll"></div>
+
+<div id="loginCodeArea" class="code-box hidden">
+
+<label>
+Your 4-digit code
+</label>
+
+<input
+id="loginCode"
+class="code-input"
+type="password"
+inputmode="numeric"
+maxlength="4"
+placeholder="••••">
+
+<button
+type="button"
+class="primary"
+id="loginButton"
+style="width:100%;margin-top:10px;">
+
+Log in
+
+</button>
+
+</div>
+
+<div
+id="loginMessage"
+style="text-align:center;color:#982626;margin-top:10px;">
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CREATE ACCOUNT -->
+
+<div id="accountScreen" class="login-screen hidden">
+
+<div class="login-box">
+
+<div class="login-logo">
+🌱 Acorn
+</div>
+
+<h2 style="text-align:center;">
+Create adult account
+</h2>
+
+<div class="field">
+
+<label>
+Your name
+</label>
+
+<input
+id="newProfileName"
+placeholder="Enter your name"
+autocomplete="off">
+
+</div>
+
+<div class="field" style="margin-top:12px;">
+
+<label>
+Create a 4-digit code
+</label>
+
+<input
+id="newProfileCode"
+type="password"
+inputmode="numeric"
+maxlength="4"
+placeholder="••••">
+
+</div>
+
+<div class="field" style="margin-top:12px;">
+
+<label>
+Confirm your code
+</label>
+
+<input
+id="newProfileCodeConfirm"
+type="password"
+inputmode="numeric"
+maxlength="4"
+placeholder="••••">
+
+</div>
+
+<div class="field" style="margin-top:12px;">
+
+<label>
+Profile photo
+</label>
+
+<input
+id="profilePhotoInput"
+type="file"
+accept="image/*">
+
+</div>
+
+<img
+id="profilePreview"
+class="profile-preview hidden">
+
+<div
+id="accountMessage"
+style="color:#982626;text-align:center;margin:10px 0;">
+</div>
+
+<button
+type="button"
+class="primary"
+id="createAccountButton"
+style="width:100%;margin-top:10px;">
+
+Create account
+
+</button>
+
+<button
+type="button"
+class="secondary"
+id="cancelAccountButton"
+style="width:100%;margin-top:8px;">
+
+← Back to profiles
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- MAIN APP -->
+
+<div id="mainApp" class="hidden">
 
 <div class="app">
 
@@ -429,6 +755,27 @@ Suncream Lists
 
 
 <main class="main">
+
+<div class="top-profile">
+
+<img
+id="currentProfilePhoto"
+class="top-profile-photo">
+
+<span
+id="currentProfileName"
+class="top-profile-name">
+</span>
+
+<button
+type="button"
+class="logout-button"
+id="logoutButton">
+Log out
+</button>
+
+</div>
+
 
 <header class="header">
 
@@ -580,9 +927,7 @@ AM Snack
 
 <!-- GROUPED PAGE -->
 
-<div
-id="groupedPage"
-class="hidden">
+<div id="groupedPage" class="hidden">
 
 <button
 type="button"
@@ -639,9 +984,7 @@ PM Snack
 
 <!-- SUNCREAM PAGE -->
 
-<div
-id="suncreamPage"
-class="hidden">
+<div id="suncreamPage" class="hidden">
 
 <section class="card">
 
@@ -718,12 +1061,31 @@ Saved Days
 
 </div>
 
+</div>
+
+
+<!-- FLOATING + -->
+
+<button
+type="button"
+class="floating-add"
+id="floatingAddAccount"
+title="Add adult account">
+
++
+
+</button>
+
 
 <script>
 
-const STORAGE_KEY="acornListsV9";
+const STORAGE_KEY="acornListsV10";
 
 let data={};
+
+let profiles=[];
+
+let currentProfile=null;
 
 let currentDate="";
 
@@ -736,14 +1098,14 @@ let groupedSnack="am";
 let openNoteIndex=null;
 
 
+/* GET ELEMENT */
+
 function get(id){
-
 return document.getElementById(id);
-
 }
 
 
-/* LOAD */
+/* LOAD EVERYTHING */
 
 function loadData(){
 
@@ -754,20 +1116,25 @@ localStorage.getItem(STORAGE_KEY);
 
 if(saved){
 
-data=JSON.parse(saved);
+const parsed=JSON.parse(saved);
+
+data=parsed.data || {};
+
+profiles=parsed.profiles || [];
 
 }
 
 }catch(error){
 
 data={};
+profiles=[];
 
 }
 
 }
 
 
-/* SAVE */
+/* SAVE EVERYTHING */
 
 function saveData(){
 
@@ -775,7 +1142,10 @@ try{
 
 localStorage.setItem(
 STORAGE_KEY,
-JSON.stringify(data)
+JSON.stringify({
+data:data,
+profiles:profiles
+})
 );
 
 }catch(error){
@@ -810,11 +1180,9 @@ function createDay(date){
 if(!data[date]){
 
 data[date]={
-
 amSnack:[],
 pmSnack:[],
 suncream:[]
-
 };
 
 }
@@ -836,6 +1204,423 @@ month:"long",
 year:"numeric"
 }
 );
+
+}
+
+
+/* PROFILE PHOTO */
+
+function photoForProfile(profile){
+
+if(profile.photo){
+
+return profile.photo;
+
+}
+
+return "";
+
+}
+
+
+/* RENDER LOGIN PROFILES */
+
+function renderProfiles(){
+
+const container=
+get("profileScroll");
+
+container.innerHTML="";
+
+
+profiles.forEach(function(profile){
+
+const card=
+document.createElement("div");
+
+card.className="profile-card";
+
+card.onclick=function(){
+
+selectProfile(profile.id);
+
+};
+
+
+const photo=
+document.createElement("img");
+
+photo.className="profile-photo";
+
+if(profile.photo){
+
+photo.src=profile.photo;
+
+}else{
+
+photo.style.display="flex";
+
+photo.alt="👤";
+
+photo.src="";
+
+photo.onerror=function(){
+
+this.style.display="none";
+
+};
+
+}
+
+if(!profile.photo){
+
+const icon=
+document.createElement("div");
+
+icon.className="profile-photo";
+
+icon.textContent="👤";
+
+card.appendChild(icon);
+
+}else{
+
+card.appendChild(photo);
+
+}
+
+
+const name=
+document.createElement("div");
+
+name.className="profile-name";
+
+name.textContent=profile.name;
+
+card.appendChild(name);
+
+container.appendChild(card);
+
+});
+
+
+const add=
+document.createElement("div");
+
+add.className="add-profile-card";
+
+add.onclick=function(){
+
+showCreateAccount();
+
+};
+
+const plus=
+document.createElement("div");
+
+plus.className="plus-large";
+
+plus.textContent="+";
+
+const text=
+document.createElement("div");
+
+text.textContent="Add account";
+
+add.append(
+plus,
+text
+);
+
+container.appendChild(add);
+
+}
+
+
+/* SELECT PROFILE */
+
+function selectProfile(id){
+
+currentProfile=
+profiles.find(function(profile){
+
+return profile.id===id;
+
+});
+
+if(!currentProfile){
+
+return;
+
+}
+
+get("loginCodeArea")
+.classList.remove("hidden");
+
+get("loginCode")
+.value="";
+
+get("loginCode")
+focus();
+
+get("loginMessage")
+.textContent="";
+
+}
+
+
+/* LOGIN */
+
+function login(){
+
+if(!currentProfile){
+
+return;
+
+}
+
+const code=
+get("loginCode")
+.value.trim();
+
+if(code===currentProfile.code){
+
+get("loginScreen")
+.classList.add("hidden");
+
+get("mainApp")
+.classList.remove("hidden");
+
+setupProfileBar();
+
+startApp();
+
+}else{
+
+get("loginMessage")
+.textContent=
+"Incorrect code. Please try again.";
+
+get("loginCode").value="";
+
+get("loginCode").focus();
+
+}
+
+}
+
+
+/* PROFILE BAR */
+
+function setupProfileBar(){
+
+get("currentProfileName")
+.textContent=
+currentProfile.name;
+
+const image=
+get("currentProfilePhoto");
+
+if(currentProfile.photo){
+
+image.src=currentProfile.photo;
+
+}else{
+
+image.src="";
+
+image.alt="👤";
+
+}
+
+}
+
+
+/* CREATE ACCOUNT SCREEN */
+
+function showCreateAccount(){
+
+get("loginScreen")
+.classList.add("hidden");
+
+get("accountScreen")
+.classList.remove("hidden");
+
+get("newProfileName").value="";
+
+get("newProfileCode").value="";
+
+get("newProfileCodeConfirm").value="";
+
+get("profilePhotoInput").value="";
+
+get("profilePreview").classList.add("hidden");
+
+get("accountMessage").textContent="";
+
+}
+
+
+/* CANCEL ACCOUNT */
+
+function cancelCreateAccount(){
+
+get("accountScreen")
+.classList.add("hidden");
+
+get("loginScreen")
+.classList.remove("hidden");
+
+renderProfiles();
+
+}
+
+
+/* CREATE ACCOUNT */
+
+function createAccount(){
+
+const name=
+get("newProfileName")
+.value.trim();
+
+const code=
+get("newProfileCode")
+.value.trim();
+
+const confirmCode=
+get("newProfileCodeConfirm")
+.value.trim();
+
+
+if(!name){
+
+get("accountMessage")
+.textContent="Please enter your name.";
+
+return;
+
+}
+
+
+if(!/^\d{4}$/.test(code)){
+
+get("accountMessage")
+.textContent=
+"Your code must be exactly 4 numbers.";
+
+return;
+
+}
+
+
+if(code!==confirmCode){
+
+get("accountMessage")
+.textContent=
+"The codes do not match.";
+
+return;
+
+}
+
+
+if(profiles.some(function(profile){
+
+return profile.name.toLowerCase()===name.toLowerCase();
+
+})){
+
+get("accountMessage")
+.textContent=
+"An account with this name already exists.";
+
+return;
+
+}
+
+
+const file=
+get("profilePhotoInput").files[0];
+
+
+function finishCreate(photo){
+
+const profile={
+
+id:
+Date.now().toString(),
+
+name:name,
+
+code:code,
+
+photo:photo || ""
+
+};
+
+
+profiles.push(profile);
+
+saveData();
+
+currentProfile=profile;
+
+get("accountScreen")
+.classList.add("hidden");
+
+get("mainApp")
+.classList.remove("hidden");
+
+setupProfileBar();
+
+startApp();
+
+}
+
+
+if(file){
+
+const reader=
+new FileReader();
+
+reader.onload=function(event){
+
+finishCreate(event.target.result);
+
+};
+
+reader.readAsDataURL(file);
+
+}else{
+
+finishCreate("");
+
+}
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+currentProfile=null;
+
+get("mainApp")
+.classList.add("hidden");
+
+get("loginScreen")
+.classList.remove("hidden");
+
+get("loginCodeArea")
+.classList.add("hidden");
+
+get("loginCode").value="";
+
+get("loginMessage").textContent="";
+
+renderProfiles();
 
 }
 
@@ -1095,8 +1880,6 @@ document.createElement("div");
 top.className="child-top";
 
 
-/* TICK */
-
 const tick=
 document.createElement("button");
 
@@ -1119,8 +1902,6 @@ renderSnackList();
 };
 
 
-/* NAME */
-
 const name=
 document.createElement("div");
 
@@ -1128,8 +1909,6 @@ name.className="child-name";
 
 name.textContent=child.name;
 
-
-/* ALLERGY */
 
 const badge=
 document.createElement("span");
@@ -1160,8 +1939,6 @@ badge.textContent="NONE";
 }
 
 
-/* NOTE BUTTON */
-
 const noteButton=
 document.createElement("button");
 
@@ -1187,9 +1964,7 @@ if(openNoteIndex===index){
 
 openNoteIndex=null;
 
-}
-
-else{
+}else{
 
 openNoteIndex=index;
 
@@ -1199,8 +1974,6 @@ renderSnackList();
 
 };
 
-
-/* REMOVE */
 
 const remove=
 document.createElement("button");
@@ -1224,8 +1997,6 @@ renderSnackList();
 
 };
 
-
-/* TOP */
 
 top.append(
 tick,
@@ -1342,8 +2113,7 @@ const amounts=[
 const amountButtons=
 document.createElement("div");
 
-amountButtons.className=
-"amount-buttons";
+amountButtons.className="amount-buttons";
 
 
 amounts.forEach(function(amount){
@@ -1390,8 +2160,6 @@ amountButtons.appendChild(button);
 box.appendChild(amountButtons);
 
 
-/* WHAT */
-
 const whatLabel=
 document.createElement("label");
 
@@ -1407,7 +2175,7 @@ document.createElement("input");
 whatInput.type="text";
 
 whatInput.placeholder=
-"e.g. banana, apple, different fruit";
+"e.g. banana, apple, cookie";
 
 whatInput.value=
 child.note &&
@@ -1417,8 +2185,6 @@ child.note.what
 
 box.appendChild(whatInput);
 
-
-/* SAVE */
 
 const saveRow=
 document.createElement("div");
@@ -1455,8 +2221,6 @@ renderSnackList();
 
 };
 
-
-/* CLOSE */
 
 const closeButton=
 document.createElement("button");
@@ -1553,8 +2317,6 @@ return;
 found=true;
 
 
-/* SECTION */
-
 const section=
 document.createElement("div");
 
@@ -1571,8 +2333,6 @@ amount.toUpperCase();
 
 section.appendChild(heading);
 
-
-/* GROUP BY FOOD */
 
 const groups={};
 
@@ -1624,14 +2384,13 @@ snackName.className=
 "grouped-snack-name";
 
 snackName.textContent=
-+group.name;
+group.name;
 
 
 const names=
 document.createElement("div");
 
-names.className=
-"grouped-names";
+names.className="grouped-names";
 
 names.textContent=
 group.children.join(" • ");
@@ -2006,9 +2765,7 @@ return;
 }
 
 
-data[currentDate]
-.suncream
-.push({
+data[currentDate].suncream.push({
 
 name:name,
 
@@ -2107,7 +2864,30 @@ render();
 }
 
 
-/* BUTTONS */
+/* START APP */
+
+function startApp(){
+
+currentDate=getToday();
+
+createDay(currentDate);
+
+saveData();
+
+currentPage="snacks";
+
+currentSnack="am";
+
+groupedSnack="am";
+
+openNoteIndex=null;
+
+render();
+
+}
+
+
+/* BUTTON EVENTS */
 
 get("snackFolder")
 .addEventListener(
@@ -2186,6 +2966,41 @@ createNewDay
 );
 
 
+get("loginButton")
+.addEventListener(
+"click",
+login
+);
+
+
+get("createAccountButton")
+.addEventListener(
+"click",
+createAccount
+);
+
+
+get("cancelAccountButton")
+.addEventListener(
+"click",
+cancelCreateAccount
+);
+
+
+get("logoutButton")
+.addEventListener(
+"click",
+logout
+);
+
+
+get("floatingAddAccount")
+.addEventListener(
+"click",
+showCreateAccount
+);
+
+
 /* DATE */
 
 get("date")
@@ -2206,7 +3021,7 @@ render();
 );
 
 
-/* ENTER KEY - CHILD NAME */
+/* ENTER CHILD */
 
 get("snackName")
 .addEventListener(
@@ -2225,7 +3040,7 @@ addSnack();
 );
 
 
-/* ENTER KEY - SUNCREAM */
+/* ENTER SUNCREAM */
 
 get("suncreamName")
 .addEventListener(
@@ -2244,17 +3059,67 @@ addSuncream();
 );
 
 
+/* ENTER LOGIN */
+
+get("loginCode")
+.addEventListener(
+"keydown",
+function(event){
+
+if(event.key==="Enter"){
+
+event.preventDefault();
+
+login();
+
+}
+
+}
+);
+
+
+/* PHOTO PREVIEW */
+
+get("profilePhotoInput")
+.addEventListener(
+"change",
+function(){
+
+const file=this.files[0];
+
+if(!file){
+
+get("profilePreview")
+.classList.add("hidden");
+
+return;
+
+}
+
+const reader=
+new FileReader();
+
+reader.onload=function(event){
+
+get("profilePreview").src=
+event.target.result;
+
+get("profilePreview")
+.classList.remove("hidden");
+
+};
+
+reader.readAsDataURL(file);
+
+}
+);
+
+
 /* START */
 
 loadData();
 
-currentDate=getToday();
-
-createDay(currentDate);
-
-saveData();
-
-render();
+renderProfiles();
 
 </script>
 

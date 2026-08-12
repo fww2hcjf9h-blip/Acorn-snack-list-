@@ -7,12 +7,14 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 background:#f3f7f3;
 color:#29372d
 }
+
 button,input,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
@@ -407,12 +409,6 @@ padding:25px;
 color:#687169
 }
 
-.saved-days-title{
-display:flex;
-align-items:center;
-justify-content:space-between
-}
-
 .saved-days-title h2{
 margin:0
 }
@@ -557,6 +553,19 @@ border-color:#40774d;
 color:white
 }
 
+.loading{
+position:fixed;
+inset:0;
+background:rgba(255,255,255,.92);
+z-index:200;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+font-weight:900;
+color:#40774d
+}
+
 @media(max-width:600px){
 .adult-card{width:220px}
 .adult-photo{width:150px;height:150px}
@@ -567,7 +576,11 @@ color:white
 
 <body>
 
-<div id="loginScreen" class="login">
+<div id="loading" class="loading">
+Loading Acorn...
+</div>
+
+<div id="loginScreen" class="login hidden">
 
 <div class="login-box">
 
@@ -597,9 +610,7 @@ No adult accounts yet
 
 <div class="selector">
 
-<button id="left" class="arrow">
-‹
-</button>
+<button id="left" class="arrow">‹</button>
 
 <div class="adult-card">
 
@@ -611,9 +622,7 @@ No adult accounts yet
 
 </div>
 
-<button id="right" class="arrow">
-›
-</button>
+<button id="right" class="arrow">›</button>
 
 </div>
 
@@ -668,6 +677,7 @@ Profile
 
 </div>
 
+
 <div class="nav">
 
 <button id="snackNav" class="active">
@@ -684,17 +694,14 @@ Profile
 
 </div>
 
+
 <div class="main">
 
 <div class="card">
 
-<label>
-Date
-</label>
+<label>Date</label>
 
-<input
-id="date"
-type="date">
+<input id="date" type="date">
 
 </div>
 
@@ -719,9 +726,7 @@ PM
 
 <div class="field">
 
-<label>
-Child's name
-</label>
+<label>Child's name</label>
 
 <input
 id="childName"
@@ -731,15 +736,11 @@ placeholder="Child's name">
 
 <div class="field">
 
-<label>
-Allergy / preference
-</label>
+<label>Allergy / preference</label>
 
 <select id="allergy">
 
-<option value="none">
-None
-</option>
+<option value="none">None</option>
 
 <option value="green">
 Green - Preference
@@ -755,9 +756,7 @@ Red - Allergy
 
 <div class="field">
 
-<label>
-Alternative milk
-</label>
+<label>Alternative milk</label>
 
 <input
 id="milk"
@@ -787,13 +786,9 @@ AM Snack List
 
 <div class="card">
 
-<div class="saved-days-title">
-
 <h2>
 📅 Saved Days
 </h2>
-
-</div>
 
 <div id="savedDays"></div>
 
@@ -841,9 +836,7 @@ PM
 
 <div class="field">
 
-<label>
-Child's name
-</label>
+<label>Child's name</label>
 
 <input
 id="sunChild"
@@ -853,9 +846,7 @@ placeholder="Child's name">
 
 <div class="field">
 
-<label>
-Product
-</label>
+<label>Product</label>
 
 <input
 id="sunProduct"
@@ -909,15 +900,11 @@ accept="image/*">
 
 </label>
 
-<label>
-Adult name
-</label>
+<label>Adult name</label>
 
 <input id="newAdultName">
 
-<label>
-4-digit code
-</label>
+<label>4-digit code</label>
 
 <input
 id="newCode"
@@ -925,9 +912,7 @@ type="password"
 inputmode="numeric"
 maxlength="4">
 
-<label>
-Confirm code
-</label>
+<label>Confirm code</label>
 
 <input
 id="confirmCode"
@@ -960,10 +945,7 @@ Cancel
 📝 What did they have?
 </h2>
 
-<p
-id="recordChildName"
-style="font-weight:900">
-</p>
+<p id="recordChildName"></p>
 
 <label>
 How much did they have?
@@ -1040,26 +1022,17 @@ accept="image/*">
 
 </label>
 
-<label>
-Name
-</label>
+<label>Name</label>
 
 <input id="profileName">
 
-<div
-id="profileError"
-class="message hidden">
-</div>
+<div id="profileError" class="message hidden"></div>
 
-<button
-id="saveProfile"
-class="green">
+<button id="saveProfile" class="green">
 Save changes
 </button>
 
-<button
-id="cancelProfile"
-class="grey">
+<button id="cancelProfile" class="grey">
 Cancel
 </button>
 
@@ -1072,32 +1045,21 @@ Cancel
 
 <div id="menu" class="menu hidden">
 
-<strong
-id="menuName"
-class="menu-name">
-</strong>
+<strong id="menuName" class="menu-name"></strong>
 
-<button
-id="editProfile"
-class="grey">
+<button id="editProfile" class="grey">
 ✏️ Edit profile
 </button>
 
-<button
-id="addAdultAgain"
-class="grey">
+<button id="addAdultAgain" class="grey">
 ➕ Add another adult
 </button>
 
-<button
-id="deleteAdult"
-class="danger">
+<button id="deleteAdult" class="danger">
 🗑️ Delete adult profile
 </button>
 
-<button
-id="logout"
-class="grey">
+<button id="logout" class="grey">
 🚪 Log out
 </button>
 
@@ -1106,127 +1068,281 @@ class="grey">
 
 <script>
 
-const STORAGE_KEY="ACORN_FINAL_DATA";
-const CURRENT_ADULT_KEY="ACORN_CURRENT_ADULT";
+/* =========================================================
+   SUPABASE
+   ========================================================= */
 
-let data={
-adults:[],
-entries:[]
+const SUPABASE_URL =
+"https://zzyyetnklrwzdzoraqqz.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0";
+
+
+const API =
+SUPABASE_URL + "/rest/v1";
+
+
+const HEADERS = {
+"apikey": SUPABASE_KEY,
+"Authorization": "Bearer " + SUPABASE_KEY,
+"Content-Type": "application/json"
 };
 
-let adultIndex=0;
-let currentAdult=null;
-let snackTime="am";
-let groupTime="am";
 
-let selectedDate=
-new Date()
-.toISOString()
-.slice(0,10);
+/* =========================================================
+   APP VARIABLES
+   ========================================================= */
 
-let recordId=null;
-let recordAmount="";
+let adults = [];
+let entries = [];
 
+let adultIndex = 0;
+let currentAdult = null;
+
+let snackTime = "am";
+let groupTime = "am";
+
+let selectedDate =
+new Date().toISOString().slice(0,10);
+
+let recordId = null;
+let recordAmount = "";
+
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
 
 function $(id){
 return document.getElementById(id);
 }
 
-
 function show(id){
 $(id).classList.remove("hidden");
 }
-
 
 function hide(id){
 $(id).classList.add("hidden");
 }
 
 
-function saveData(){
+function apiError(response,text){
 
-localStorage.setItem(
-STORAGE_KEY,
-JSON.stringify(data)
+console.error(
+"Supabase error:",
+response.status,
+text
 );
 
 }
 
 
-function loadData(){
+/* =========================================================
+   LOAD EVERYTHING FROM SUPABASE
+   ========================================================= */
+
+async function loadData(){
 
 try{
 
-const saved=
-localStorage.getItem(
-STORAGE_KEY
+const adultResponse =
+await fetch(
+API + "/acorn_adults?select=*&order=id.asc",
+{
+headers:HEADERS
+}
 );
 
-if(saved){
+if(!adultResponse.ok){
 
-const parsed=
-JSON.parse(saved);
+const text =
+await adultResponse.text();
 
-if(
-parsed &&
-Array.isArray(parsed.adults) &&
-Array.isArray(parsed.entries)
-){
+apiError(adultResponse,text);
 
-data=parsed;
+throw new Error(
+"Could not load adult accounts."
+);
+
+}
+
+adults =
+await adultResponse.json();
+
+
+const entryResponse =
+await fetch(
+API + "/acorn_entries?select=*&order=id.asc",
+{
+headers:HEADERS
+}
+);
+
+if(!entryResponse.ok){
+
+const text =
+await entryResponse.text();
+
+apiError(entryResponse,text);
+
+throw new Error(
+"Could not load Acorn lists."
+);
+
+}
+
+entries =
+await entryResponse.json();
+
+
+drawAdults();
+
+hide("loading");
+show("loginScreen");
+
+}catch(error){
+
+console.error(error);
+
+hide("loading");
+show("loginScreen");
+
+$("loginMessage").textContent =
+"Acorn could not connect to the shared database. Please check your Supabase setup.";
+
+$("loginMessage").className =
+"message error";
 
 }
 
 }
 
-}catch(e){
 
-console.log(e);
+/* =========================================================
+   REFRESH DATA
+   ========================================================= */
+
+async function refreshData(){
+
+try{
+
+const adultResponse =
+await fetch(
+API + "/acorn_adults?select=*&order=id.asc",
+{
+headers:HEADERS
+}
+);
+
+if(adultResponse.ok){
+
+adults =
+await adultResponse.json();
+
+}
+
+
+const entryResponse =
+await fetch(
+API + "/acorn_entries?select=*&order=id.asc",
+{
+headers:HEADERS
+}
+);
+
+if(entryResponse.ok){
+
+entries =
+await entryResponse.json();
+
+}
+
+
+if(currentAdult){
+
+const freshAdult =
+adults.find(
+a => a.id === currentAdult.id
+);
+
+if(freshAdult){
+
+currentAdult =
+freshAdult;
 
 }
 
 }
 
+renderAll();
+
+if(currentAdult){
+
+$("menuName").textContent =
+currentAdult.name;
+
+setPhoto(
+$("smallPhoto"),
+currentAdult.photo
+);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}
+
+
+/* =========================================================
+   PHOTO
+   ========================================================= */
 
 function setPhoto(element,url){
 
-element.innerHTML="";
+element.innerHTML = "";
 
 if(!url){
 
-element.textContent="👤";
+element.textContent = "👤";
 
 return;
 
 }
 
-const img=
+const img =
 document.createElement("img");
 
-img.src=url;
-img.alt="Profile photo";
+img.src = url;
+img.alt = "Profile photo";
 
-img.onload=function(){
+img.onload = function(){
 
-element.innerHTML="";
+element.innerHTML = "";
 element.appendChild(img);
 
 };
 
-img.onerror=function(){
+img.onerror = function(){
 
-element.textContent="👤";
+element.textContent = "👤";
 
 };
 
 }
 
 
-/* LOGIN ADULTS */
+/* =========================================================
+   LOGIN ADULTS
+   ========================================================= */
 
 function drawAdults(){
 
-if(data.adults.length===0){
+if(adults.length === 0){
 
 hide("selector");
 show("noAccounts");
@@ -1238,34 +1354,44 @@ return;
 hide("noAccounts");
 show("selector");
 
-if(adultIndex>=data.adults.length){
 
-adultIndex=0;
+if(adultIndex >= adults.length){
+
+adultIndex = 0;
 
 }
 
-const adult=
-data.adults[adultIndex];
 
-$("adultName").textContent=
+const adult =
+adults[adultIndex];
+
+
+$("adultName").textContent =
 adult.name;
+
 
 setPhoto(
 $("adultPhoto"),
 adult.photo
 );
 
-$("dots").innerHTML="";
 
-data.adults.forEach(
-function(_,i){
+$("dots").innerHTML = "";
 
-const dot=
+
+adults.forEach(
+function(_,index){
+
+const dot =
 document.createElement("div");
 
-dot.className=
-"dot "+
-(i===adultIndex?"active":"");
+dot.className =
+"dot " +
+(
+index === adultIndex
+? "active"
+: ""
+);
 
 $("dots").appendChild(dot);
 
@@ -1274,17 +1400,21 @@ $("dots").appendChild(dot);
 }
 
 
-$("left").onclick=function(){
+/* =========================================================
+   ADULT SCROLL
+   ========================================================= */
 
-if(!data.adults.length)
+$("left").onclick = function(){
+
+if(!adults.length)
 return;
 
 adultIndex--;
 
-if(adultIndex<0){
+if(adultIndex < 0){
 
-adultIndex=
-data.adults.length-1;
+adultIndex =
+adults.length - 1;
 
 }
 
@@ -1293,16 +1423,16 @@ drawAdults();
 };
 
 
-$("right").onclick=function(){
+$("right").onclick = function(){
 
-if(!data.adults.length)
+if(!adults.length)
 return;
 
 adultIndex++;
 
-if(adultIndex>=data.adults.length){
+if(adultIndex >= adults.length){
 
-adultIndex=0;
+adultIndex = 0;
 
 }
 
@@ -1311,15 +1441,17 @@ drawAdults();
 };
 
 
-/* ADD ADULT */
+/* =========================================================
+   ADD ADULT
+   ========================================================= */
 
 function openAdult(){
 
-$("newAdultName").value="";
-$("newCode").value="";
-$("confirmCode").value="";
+$("newAdultName").value = "";
+$("newCode").value = "";
+$("confirmCode").value = "";
 
-$("newPhoto").dataset.photo="";
+$("newPhoto").dataset.photo = "";
 
 setPhoto(
 $("newPhoto"),
@@ -1333,36 +1465,40 @@ show("adultModal");
 }
 
 
-$("plus").onclick=
-openAdult;
+$("plus").onclick = openAdult;
 
-$("firstAdd").onclick=
-openAdult;
+$("firstAdd").onclick = openAdult;
 
 
-$("cancelAdult").onclick=
-function(){
+$("cancelAdult").onclick = function(){
 
 hide("adultModal");
 
 };
 
 
-$("newPhotoFile").onchange=
+/* =========================================================
+   NEW ADULT PHOTO
+   ========================================================= */
+
+$("newPhotoFile").onchange =
 function(){
 
-const file=this.files[0];
+const file =
+this.files[0];
 
 if(!file)
 return;
 
-const reader=
+
+const reader =
 new FileReader();
 
-reader.onload=function(){
 
-$("newPhoto")
-.dataset.photo=
+reader.onload =
+function(){
+
+$("newPhoto").dataset.photo =
 reader.result;
 
 setPhoto(
@@ -1372,42 +1508,45 @@ reader.result
 
 };
 
+
 reader.readAsDataURL(file);
 
 };
 
 
-/* CREATE ADULT */
+/* =========================================================
+   CREATE ADULT
+   ========================================================= */
 
-$("createAdult").onclick=
-function(){
+$("createAdult").onclick =
+async function(){
 
-const name=
+const name =
 $("newAdultName")
 .value
 .trim();
 
-const code=
+const code =
 $("newCode")
 .value
 .trim();
 
-const confirm=
+const confirmCode =
 $("confirmCode")
 .value
 .trim();
 
-const picture=
+const picture =
 $("newPhoto")
-.dataset.photo||"";
+.dataset.photo || "";
 
 
 if(!name){
 
-$("adultError").textContent=
+$("adultError").textContent =
 "Please enter the adult's name.";
 
-$("adultError").className=
+$("adultError").className =
 "message error";
 
 return;
@@ -1417,10 +1556,10 @@ return;
 
 if(!/^[0-9]{4}$/.test(code)){
 
-$("adultError").textContent=
+$("adultError").textContent =
 "The code must be exactly 4 numbers.";
 
-$("adultError").className=
+$("adultError").className =
 "message error";
 
 return;
@@ -1428,31 +1567,62 @@ return;
 }
 
 
-if(code!==confirm){
+if(code !== confirmCode){
 
-$("adultError").textContent=
+$("adultError").textContent =
 "The codes don't match.";
 
-$("adultError").className=
+$("adultError").className =
 "message error";
 
 return;
 
 }
 
+
+try{
+
+const response =
+await fetch(
+API + "/acorn_adults",
+{
+method:"POST",
+headers:{
+...HEADERS,
+"Prefer":"return=representation"
+},
+body:JSON.stringify({
+name:name,
+code:code,
+photo:picture
+})
+}
+);
+
+
+if(!response.ok){
+
+const text =
+await response.text();
+
+console.log(text);
 
 if(
-data.adults.some(
-a=>
-a.name.toLowerCase()===
-name.toLowerCase()
-)
+text.toLowerCase()
+.includes("duplicate")
 ){
 
-$("adultError").textContent=
+$("adultError").textContent =
 "That adult already exists.";
 
-$("adultError").className=
+}else{
+
+$("adultError").textContent =
+"Could not create the adult. Please try again.";
+
+}
+
+$("adultError").className =
 "message error";
 
 return;
@@ -1460,52 +1630,71 @@ return;
 }
 
 
-const adult={
-
-id:
-Date.now().toString(),
-
-name:name,
-
-code:code,
-
-photo:picture
-
-};
+const created =
+await response.json();
 
 
-data.adults.push(adult);
+await refreshData();
 
-saveData();
 
-adultIndex=
-data.adults.length-1;
+const createdAdult =
+created[0] ||
+adults.find(
+a => a.name === name
+);
+
+
+if(createdAdult){
+
+adultIndex =
+adults.findIndex(
+a => a.id === createdAdult.id
+);
+
+}
+
 
 hide("adultModal");
 
 drawAdults();
 
-$("loginMessage").textContent=
-name+
+
+$("loginMessage").textContent =
+name +
 " has been added. Select their account and enter their code.";
 
-$("loginMessage").className=
+$("loginMessage").className =
 "message success";
+
+
+}catch(error){
+
+console.error(error);
+
+$("adultError").textContent =
+"Something went wrong. Please try again.";
+
+$("adultError").className =
+"message error";
+
+}
 
 };
 
 
-/* LOGIN */
+/* =========================================================
+   LOGIN
+   ========================================================= */
 
-$("loginBtn").onclick=
-function(){
+$("loginBtn").onclick =
+async function(){
 
-if(!data.adults.length){
+if(!adults.length){
 
-$("loginMessage").textContent=
+$("loginMessage").textContent =
 "No adult accounts yet.";
 
-$("loginMessage").className=
+$("loginMessage").className =
 "message error";
 
 return;
@@ -1513,21 +1702,22 @@ return;
 }
 
 
-const adult=
-data.adults[adultIndex];
+const adult =
+adults[adultIndex];
 
-const code=
+
+const code =
 $("loginCode")
 .value
 .trim();
 
 
-if(code!==adult.code){
+if(code !== adult.code){
 
-$("loginMessage").textContent=
+$("loginMessage").textContent =
 "Incorrect code.";
 
-$("loginMessage").className=
+$("loginMessage").className =
 "message error";
 
 return;
@@ -1535,19 +1725,20 @@ return;
 }
 
 
-currentAdult=adult;
+currentAdult =
+adult;
 
-localStorage.setItem(
-CURRENT_ADULT_KEY,
-adult.id
-);
 
-$("loginCode").value="";
+$("loginCode").value = "";
 
 openApp();
 
 };
 
+
+/* =========================================================
+   OPEN APP
+   ========================================================= */
 
 function openApp(){
 
@@ -1555,48 +1746,52 @@ hide("loginScreen");
 
 show("app");
 
-$("menuName").textContent=
+
+$("menuName").textContent =
 currentAdult.name;
+
 
 setPhoto(
 $("smallPhoto"),
 currentAdult.photo
 );
 
-$("date").value=
+
+$("date").value =
 selectedDate;
+
 
 renderAll();
 
 }
 
 
-/* LOGOUT */
+/* =========================================================
+   LOGOUT
+   ========================================================= */
 
-$("logout").onclick=
+$("logout").onclick =
 function(){
 
-currentAdult=null;
-
-localStorage.removeItem(
-CURRENT_ADULT_KEY
-);
+currentAdult = null;
 
 hide("menu");
 hide("app");
 
 show("loginScreen");
 
-$("loginCode").value="";
+$("loginCode").value = "";
 
 drawAdults();
 
 };
 
 
-/* PROFILE MENU */
+/* =========================================================
+   PROFILE MENU
+   ========================================================= */
 
-$("profileBtn").onclick=
+$("profileBtn").onclick =
 function(){
 
 $("menu")
@@ -1606,7 +1801,7 @@ $("menu")
 };
 
 
-$("addAdultAgain").onclick=
+$("addAdultAgain").onclick =
 function(){
 
 hide("menu");
@@ -1616,24 +1811,30 @@ openAdult();
 };
 
 
-/* EDIT PROFILE */
+/* =========================================================
+   EDIT PROFILE
+   ========================================================= */
 
-$("editProfile").onclick=
+$("editProfile").onclick =
 function(){
 
 hide("menu");
 
-$("profileName").value=
+
+$("profileName").value =
 currentAdult.name;
 
+
 $("profilePhoto")
-.dataset.photo=
-currentAdult.photo||"";
+.dataset.photo =
+currentAdult.photo || "";
+
 
 setPhoto(
 $("profilePhoto"),
 currentAdult.photo
 );
+
 
 hide("profileError");
 
@@ -1642,7 +1843,7 @@ show("profileModal");
 };
 
 
-$("cancelProfile").onclick=
+$("cancelProfile").onclick =
 function(){
 
 hide("profileModal");
@@ -1650,22 +1851,31 @@ hide("profileModal");
 };
 
 
-$("profileFile").onchange=
+/* =========================================================
+   PROFILE PHOTO
+   ========================================================= */
+
+$("profileFile").onchange =
 function(){
 
-const file=this.files[0];
+const file =
+this.files[0];
 
 if(!file)
 return;
 
-const reader=
+
+const reader =
 new FileReader();
 
-reader.onload=function(){
+
+reader.onload =
+function(){
 
 $("profilePhoto")
-.dataset.photo=
+.dataset.photo =
 reader.result;
+
 
 setPhoto(
 $("profilePhoto"),
@@ -1674,17 +1884,20 @@ reader.result
 
 };
 
+
 reader.readAsDataURL(file);
 
 };
 
 
-/* SAVE PROFILE */
+/* =========================================================
+   SAVE PROFILE
+   ========================================================= */
 
-$("saveProfile").onclick=
-function(){
+$("saveProfile").onclick =
+async function(){
 
-const name=
+const name =
 $("profileName")
 .value
 .trim();
@@ -1692,10 +1905,10 @@ $("profileName")
 
 if(!name){
 
-$("profileError").textContent=
+$("profileError").textContent =
 "Please enter a name.";
 
-$("profileError").className=
+$("profileError").className =
 "message error";
 
 return;
@@ -1703,60 +1916,98 @@ return;
 }
 
 
-currentAdult.name=name;
+try{
 
-currentAdult.photo=
+const response =
+await fetch(
+API +
+"/acorn_adults?id=eq." +
+currentAdult.id,
+{
+method:"PATCH",
+headers:{
+...HEADERS,
+"Prefer":"return=representation"
+},
+body:JSON.stringify({
+name:name,
+photo:
 $("profilePhoto")
-.dataset.photo||"";
-
-
-const index=
-data.adults.findIndex(
-a=>
-a.id===
-currentAdult.id
+.dataset.photo || ""
+})
+}
 );
 
 
-if(index!==-1){
+if(!response.ok){
 
-data.adults[index]=
-currentAdult;
+throw new Error(
+await response.text()
+);
 
 }
 
 
-saveData();
+await refreshData();
 
-$("menuName").textContent=
+
+const fresh =
+adults.find(
+a => a.id === currentAdult.id
+);
+
+
+if(fresh)
+currentAdult = fresh;
+
+
+hide("profileModal");
+
+
+$("menuName").textContent =
 currentAdult.name;
+
 
 setPhoto(
 $("smallPhoto"),
 currentAdult.photo
 );
 
-hide("profileModal");
 
 drawAdults();
+
+
+}catch(error){
+
+console.error(error);
+
+$("profileError").textContent =
+"Could not save the profile.";
+
+$("profileError").className =
+"message error";
+
+}
 
 };
 
 
-/* DELETE ADULT PROFILE */
+/* =========================================================
+   DELETE ADULT PROFILE
+   ========================================================= */
 
-$("deleteAdult").onclick=
-function(){
+$("deleteAdult").onclick =
+async function(){
 
 if(!currentAdult)
 return;
 
 
-const message=
-"Delete the adult profile for "+
-currentAdult.name+
-"?\n\n"+
-"This will remove their name, photo and login code.\n\n"+
+const message =
+"Delete the adult profile for " +
+currentAdult.name +
+"?\n\n" +
+"This removes their name, photo and login code.\n\n" +
 "The shared children and saved days will NOT be deleted.";
 
 
@@ -1764,52 +2015,79 @@ if(!confirm(message))
 return;
 
 
-const deletedId=
-currentAdult.id;
+try{
 
-
-data.adults=
-data.adults.filter(
-a=>
-a.id!==deletedId
+const response =
+await fetch(
+API +
+"/acorn_adults?id=eq." +
+currentAdult.id,
+{
+method:"DELETE",
+headers:HEADERS
+}
 );
 
 
-saveData();
+if(!response.ok){
 
-
-currentAdult=null;
-
-localStorage.removeItem(
-CURRENT_ADULT_KEY
+throw new Error(
+await response.text()
 );
+
+}
+
+
+const deletedName =
+currentAdult.name;
+
+
+await refreshData();
+
+
+currentAdult = null;
 
 hide("menu");
 hide("app");
 
 show("loginScreen");
 
-adultIndex=0;
+adultIndex = 0;
 
-$("loginCode").value="";
+$("loginCode").value = "";
 
-$("loginMessage").textContent=
-"Adult profile deleted.";
+$("loginMessage").textContent =
+deletedName +
+" adult profile has been deleted.";
 
-$("loginMessage").className=
+$("loginMessage").className =
 "message success";
 
+
 drawAdults();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not delete the adult profile. Please try again."
+);
+
+}
 
 };
 
 
-/* DATE */
+/* =========================================================
+   DATE
+   ========================================================= */
 
-$("date").onchange=
+$("date").onchange =
 function(){
 
-selectedDate=
+selectedDate =
 this.value;
 
 renderAll();
@@ -1817,12 +2095,14 @@ renderAll();
 };
 
 
-/* AM */
+/* =========================================================
+   AM / PM
+   ========================================================= */
 
-$("amBtn").onclick=
+$("amBtn").onclick =
 function(){
 
-snackTime="am";
+snackTime = "am";
 
 $("amBtn")
 .classList
@@ -1832,7 +2112,7 @@ $("pmBtn")
 .classList
 .remove("active");
 
-$("listTitle").textContent=
+$("listTitle").textContent =
 "AM Snack List";
 
 renderSnacks();
@@ -1840,12 +2120,10 @@ renderSnacks();
 };
 
 
-/* PM */
-
-$("pmBtn").onclick=
+$("pmBtn").onclick =
 function(){
 
-snackTime="pm";
+snackTime = "pm";
 
 $("pmBtn")
 .classList
@@ -1855,7 +2133,7 @@ $("amBtn")
 .classList
 .remove("active");
 
-$("listTitle").textContent=
+$("listTitle").textContent =
 "PM Snack List";
 
 renderSnacks();
@@ -1863,12 +2141,14 @@ renderSnacks();
 };
 
 
-/* ADD CHILD */
+/* =========================================================
+   ADD CHILD
+   ========================================================= */
 
-$("addChild").onclick=
-function(){
+$("addChild").onclick =
+async function(){
 
-const name=
+const name =
 $("childName")
 .value
 .trim();
@@ -1885,78 +2165,108 @@ return;
 }
 
 
-data.entries.push({
+try{
 
-id:
-Date.now().toString(),
+const response =
+await fetch(
+API + "/acorn_entries",
+{
+method:"POST",
+headers:{
+...HEADERS,
+"Prefer":"return=representation"
+},
+body:JSON.stringify({
 
-date:
+list_date:
 selectedDate,
 
-time:
+list_type:
 snackTime,
 
-child:
+child_name:
 name,
 
 allergy:
 $("allergy").value,
 
-milk:
-$("milk")
-.value
-.trim(),
+alternative_milk:
+$("milk").value.trim(),
+
+done:false,
 
 amount:"",
 
 food:"",
 
-done:false,
+suncream_product:"",
 
-suncream:false,
+suncream_done:false
 
-product:"",
-
-sunDone:false
-
-});
+})
+}
+);
 
 
-saveData();
+if(!response.ok){
 
-$("childName").value="";
-$("milk").value="";
+throw new Error(
+await response.text()
+);
 
-renderAll();
+}
+
+
+await refreshData();
+
+
+$("childName").value = "";
+$("milk").value = "";
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not add the child. Please try again."
+);
+
+}
 
 };
 
 
-/* SNACK LIST */
+/* =========================================================
+   SNACK LIST
+   ========================================================= */
+
+function getSnacks(){
+
+return entries.filter(
+e =>
+e.list_date === selectedDate &&
+e.list_type === snackTime
+);
+
+}
+
 
 function renderSnacks(){
 
-const box=
+const box =
 $("snackList");
 
-box.innerHTML="";
+box.innerHTML = "";
 
-const list=
-data.entries.filter(
-e=>
-e.date===
-selectedDate &&
 
-e.time===
-snackTime &&
-
-!e.suncream
-);
+const list =
+getSnacks();
 
 
 if(!list.length){
 
-box.innerHTML=
+box.innerHTML =
 '<div class="empty">No children added yet.</div>';
 
 return;
@@ -1967,64 +2277,68 @@ return;
 list.forEach(
 function(entry){
 
-const child=
+const child =
 document.createElement("div");
 
-child.className=
-"child "+
-(entry.done?"done":"");
+child.className =
+"child " +
+(entry.done ? "done" : "");
 
 
-const top=
+const top =
 document.createElement("div");
 
-top.className=
+top.className =
 "child-top";
 
 
-const tick=
+const tick =
 document.createElement("button");
 
-tick.className=
+tick.className =
 "tick";
 
-tick.textContent=
-entry.done?"✓":"";
+tick.textContent =
+entry.done ? "✓" : "";
 
 
-tick.onclick=
-function(){
+tick.onclick =
+async function(){
 
-entry.done=
-!entry.done;
-
-saveData();
-
-renderAll();
+await updateEntry(
+entry.id,
+{
+done:!entry.done
+}
+);
 
 };
 
 
-const name=
+const name =
 document.createElement("div");
 
-name.className=
+name.className =
 "child-name";
 
-name.textContent=
-entry.child;
+name.textContent =
+entry.child_name;
 
 
-const record=
+const record =
 document.createElement("button");
 
-record.className=
+record.className =
 "record";
 
-record.textContent=
+record.textContent =
 "📝";
 
-record.onclick=
+record.title =
+"Record what they had";
+
+
+record.onclick =
 function(){
 
 openRecord(entry);
@@ -2032,16 +2346,17 @@ openRecord(entry);
 };
 
 
-const remove=
+const remove =
 document.createElement("button");
 
-remove.className=
+remove.className =
 "remove-child";
 
-remove.textContent=
+remove.textContent =
 "Remove";
 
-remove.onclick=
+
+remove.onclick =
 function(){
 
 removeChild(entry);
@@ -2059,34 +2374,36 @@ remove
 child.appendChild(top);
 
 
-const details=
+const details =
 document.createElement("div");
 
-details.className=
+details.className =
 "details";
 
-let text="";
+let text = "";
 
 
-if(entry.allergy==="red"){
+if(entry.allergy === "red"){
 
-text+="🔴 Allergy<br>";
-
-}
-
-
-if(entry.allergy==="green"){
-
-text+="🟢 Preference<br>";
+text +=
+"🔴 Allergy<br>";
 
 }
 
 
-if(entry.milk){
+if(entry.allergy === "green"){
 
-text+=
-"Milk: "+
-entry.milk+
+text +=
+"🟢 Preference<br>";
+
+}
+
+
+if(entry.alternative_milk){
+
+text +=
+"Milk: " +
+entry.alternative_milk +
 "<br>";
 
 }
@@ -2094,9 +2411,9 @@ entry.milk+
 
 if(entry.amount){
 
-text+=
-"Amount: <strong>"+
-entry.amount+
+text +=
+"Amount: <strong>" +
+entry.amount +
 "</strong><br>";
 
 }
@@ -2104,15 +2421,17 @@ entry.amount+
 
 if(entry.food){
 
-text+=
-"Had: <strong>"+
-entry.food+
+text +=
+"Had: <strong>" +
+entry.food +
 "</strong>";
 
 }
 
 
-details.innerHTML=text;
+details.innerHTML =
+text;
+
 
 child.appendChild(details);
 
@@ -2123,64 +2442,143 @@ box.appendChild(child);
 }
 
 
-/* REMOVE CHILD */
+/* =========================================================
+   UPDATE ENTRY
+   ========================================================= */
 
-function removeChild(entry){
+async function updateEntry(id,changes){
+
+try{
+
+const response =
+await fetch(
+API +
+"/acorn_entries?id=eq." +
+id,
+{
+method:"PATCH",
+headers:{
+...HEADERS,
+"Prefer":"return=representation"
+},
+body:JSON.stringify(changes)
+}
+);
+
+
+if(!response.ok){
+
+throw new Error(
+await response.text()
+);
+
+}
+
+
+await refreshData();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not save the change. Please try again."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   REMOVE CHILD
+   ========================================================= */
+
+async function removeChild(entry){
 
 if(
 !confirm(
-"Remove "+
-entry.child+
+"Remove " +
+entry.child_name +
 " from this day's list?"
 )
 )
 return;
 
 
-data.entries=
-data.entries.filter(
-e=>
-e.id!==entry.id
+try{
+
+const response =
+await fetch(
+API +
+"/acorn_entries?id=eq." +
+entry.id,
+{
+method:"DELETE",
+headers:HEADERS
+}
 );
 
 
-saveData();
+if(!response.ok){
 
-renderAll();
+throw new Error(
+await response.text()
+);
 
 }
 
 
-/* RECORD */
+await refreshData();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not remove the child."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   RECORD SNACK
+   ========================================================= */
 
 function openRecord(entry){
 
-recordId=
+recordId =
 entry.id;
 
-recordAmount=
-entry.amount||"";
+recordAmount =
+entry.amount || "";
+
 
 $("recordChildName")
-.textContent=
-entry.child;
+.textContent =
+entry.child_name;
 
-$("recordFood").value=
-entry.food||"";
+
+$("recordFood").value =
+entry.food || "";
 
 
 document
 .querySelectorAll(".amount")
 .forEach(
-button=>{
+button => {
 
 button.classList.toggle(
 "selected",
-button.dataset.value===
+button.dataset.value ===
 recordAmount
 );
 
-});
+}
+);
 
 
 show("recordModal");
@@ -2191,19 +2589,19 @@ show("recordModal");
 document
 .querySelectorAll(".amount")
 .forEach(
-button=>{
+button => {
 
-button.onclick=
+button.onclick =
 function(){
 
-recordAmount=
+recordAmount =
 this.dataset.value;
 
 
 document
 .querySelectorAll(".amount")
 .forEach(
-b=>
+b =>
 b.classList
 .remove("selected")
 );
@@ -2215,63 +2613,54 @@ this.classList.add(
 
 };
 
-});
+}
+);
 
 
-$("cancelRecord").onclick=
+$("cancelRecord").onclick =
 function(){
 
 hide("recordModal");
 
-recordId=null;
+recordId = null;
 
 };
 
 
-$("saveRecord").onclick=
-function(){
+$("saveRecord").onclick =
+async function(){
 
 if(!recordId)
 return;
 
 
-const entry=
-data.entries.find(
-e=>
-e.id===
-recordId
+await updateEntry(
+recordId,
+{
+amount:recordAmount,
+food:
+$("recordFood")
+.value
+.trim()
+}
 );
 
 
-if(!entry)
-return;
-
-
-entry.amount=
-recordAmount;
-
-entry.food=
-$("recordFood")
-.value
-.trim();
-
-saveData();
-
 hide("recordModal");
 
-recordId=null;
-
-renderAll();
+recordId = null;
 
 };
 
 
-/* GROUP */
+/* =========================================================
+   GROUP
+   ========================================================= */
 
-$("groupAm").onclick=
+$("groupAm").onclick =
 function(){
 
-groupTime="am";
+groupTime = "am";
 
 $("groupAm")
 .classList
@@ -2286,10 +2675,10 @@ renderGroup();
 };
 
 
-$("groupPm").onclick=
+$("groupPm").onclick =
 function(){
 
-groupTime="pm";
+groupTime = "pm";
 
 $("groupPm")
 .classList
@@ -2306,30 +2695,24 @@ renderGroup();
 
 function renderGroup(){
 
-const box=
+const box =
 $("groupList");
 
-box.innerHTML="";
+box.innerHTML = "";
 
 
-const list=
-data.entries.filter(
-e=>
-e.date===
-selectedDate &&
-
-e.time===
-groupTime &&
-
-!e.suncream &&
-
+const list =
+entries.filter(
+e =>
+e.list_date === selectedDate &&
+e.list_type === groupTime &&
 e.food
 );
 
 
 if(!list.length){
 
-box.innerHTML=
+box.innerHTML =
 '<div class="empty">Nothing has been recorded yet.</div>';
 
 return;
@@ -2337,26 +2720,26 @@ return;
 }
 
 
-const groups={};
+const groups = {};
 
 
 list.forEach(
 function(entry){
 
-const key=
-(entry.amount||
-"Amount not recorded")+
-"|||"+
-(entry.food||
+const key =
+(entry.amount ||
+"Amount not recorded") +
+"|||" +
+(entry.food ||
 "Food not recorded");
 
 
 if(!groups[key])
-groups[key]=[];
+groups[key] = [];
 
 
 groups[key].push(
-entry.child
+entry.child_name
 );
 
 });
@@ -2366,43 +2749,45 @@ Object.keys(groups)
 .forEach(
 function(key){
 
-const parts=
+const parts =
 key.split("|||");
 
-const group=
+
+const group =
 document.createElement("div");
 
-group.className=
+group.className =
 "group-box";
 
 
-const title=
+const title =
 document.createElement("div");
 
-title.className=
+title.className =
 "group-title";
 
-title.textContent=
-parts[0]+
-" — "+
+title.textContent =
+parts[0] +
+" — " +
 parts[1];
+
 
 group.appendChild(title);
 
 
-groups[key]
-.forEach(
+groups[key].forEach(
 function(childName){
 
-const child=
+const child =
 document.createElement("div");
 
-child.className=
+child.className =
 "group-child";
 
-child.textContent=
-"• "+
+child.textContent =
+"• " +
 childName;
+
 
 group.appendChild(child);
 
@@ -2416,12 +2801,14 @@ box.appendChild(group);
 }
 
 
-/* SUNCREAM */
+/* =========================================================
+   SUNCREAM
+   ========================================================= */
 
-$("addSun").onclick=
-function(){
+$("addSun").onclick =
+async function(){
 
-const name=
+const name =
 $("sunChild")
 .value
 .trim();
@@ -2438,73 +2825,100 @@ return;
 }
 
 
-data.entries.push({
+try{
 
-id:
-Date.now().toString(),
+const response =
+await fetch(
+API + "/acorn_entries",
+{
+method:"POST",
+headers:{
+...HEADERS,
+"Prefer":"return=representation"
+},
+body:JSON.stringify({
 
-date:
+list_date:
 selectedDate,
 
-time:
+list_type:
 "sun",
 
-child:
+child_name:
 name,
 
 allergy:
 "none",
 
-milk:"",
+alternative_milk:
+"",
+
+done:false,
 
 amount:"",
 
 food:"",
 
-done:false,
-
-suncream:true,
-
-product:
+suncream_product:
 $("sunProduct")
 .value
 .trim(),
 
-sunDone:false
+suncream_done:false
 
-});
+})
+}
+);
 
 
-saveData();
+if(!response.ok){
+
+throw new Error(
+await response.text()
+);
+
+}
+
+
+await refreshData();
+
 
 $("sunChild").value="";
 $("sunProduct").value="";
 
-renderSun();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not add the child."
+);
+
+}
 
 };
 
 
 function renderSun(){
 
-const box=
+const box =
 $("sunList");
 
-box.innerHTML="";
+box.innerHTML = "";
 
 
-const list=
-data.entries.filter(
-e=>
-e.date===
-selectedDate &&
-e.suncream===true
+const list =
+entries.filter(
+e =>
+e.list_date === selectedDate &&
+e.list_type === "sun"
 );
 
 
 if(!list.length){
 
-box.innerHTML=
+box.innerHTML =
 '<div class="empty">No children added yet.</div>';
 
 return;
@@ -2515,86 +2929,71 @@ return;
 list.forEach(
 function(entry){
 
-const child=
+const child =
 document.createElement("div");
 
-child.className=
-"child "+
-(entry.sunDone?"done":"");
+child.className =
+"child " +
+(entry.suncream_done ? "done" : "");
 
 
-const top=
+const top =
 document.createElement("div");
 
-top.className=
+top.className =
 "child-top";
 
 
-const tick=
+const tick =
 document.createElement("button");
 
-tick.className=
+tick.className =
 "tick";
 
-tick.textContent=
-entry.sunDone?"✓":"";
+tick.textContent =
+entry.suncream_done
+? "✓"
+: "";
 
 
-tick.onclick=
-function(){
+tick.onclick =
+async function(){
 
-entry.sunDone=
-!entry.sunDone;
-
-saveData();
-
-renderSun();
+await updateEntry(
+entry.id,
+{
+suncream_done:
+!entry.suncream_done
+}
+);
 
 };
 
 
-const name=
+const name =
 document.createElement("div");
 
-name.className=
+name.className =
 "child-name";
 
-name.textContent=
-entry.child;
+name.textContent =
+entry.child_name;
 
 
-const remove=
+const remove =
 document.createElement("button");
 
-remove.className=
+remove.className =
 "remove-child";
 
-remove.textContent=
+remove.textContent =
 "Remove";
 
 
-remove.onclick=
+remove.onclick =
 function(){
 
-if(
-!confirm(
-"Remove "+
-entry.child+
-" from the suncream list?"
-)
-)
-return;
-
-
-data.entries=
-data.entries.filter(
-e=>
-e.id!==entry.id
-);
-
-saveData();
-
-renderSun();
+removeSun(entry);
 
 };
 
@@ -2608,16 +3007,18 @@ remove
 child.appendChild(top);
 
 
-const details=
+const details =
 document.createElement("div");
 
-details.className=
+details.className =
 "details";
 
-details.textContent=
-"Product: "+
-(entry.product||
-"Not entered");
+details.textContent =
+"Product: " +
+(
+entry.suncream_product ||
+"Not entered"
+);
 
 
 child.appendChild(details);
@@ -2629,18 +3030,71 @@ box.appendChild(child);
 }
 
 
-/* SAVED DAYS */
+async function removeSun(entry){
+
+if(
+!confirm(
+"Remove " +
+entry.child_name +
+" from the suncream list?"
+)
+)
+return;
+
+
+try{
+
+const response =
+await fetch(
+API +
+"/acorn_entries?id=eq." +
+entry.id,
+{
+method:"DELETE",
+headers:HEADERS
+}
+);
+
+
+if(!response.ok){
+
+throw new Error(
+await response.text()
+);
+
+}
+
+
+await refreshData();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not remove the child."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   SAVED DAYS
+   ========================================================= */
 
 function getSavedDates(){
 
 return[
 ...new Set(
-data.entries
-.map(e=>e.date)
+entries
+.map(e => e.list_date)
 .filter(Boolean)
 )
-].sort(
-(a,b)=>
+]
+.sort(
+(a,b) =>
 b.localeCompare(a)
 );
 
@@ -2650,7 +3104,7 @@ b.localeCompare(a)
 function formatDate(dateString){
 
 return new Date(
-dateString+
+dateString +
 "T12:00:00"
 )
 .toLocaleDateString(
@@ -2668,18 +3122,19 @@ year:"numeric"
 
 function renderSavedDays(){
 
-const box=
+const box =
 $("savedDays");
 
-box.innerHTML="";
+box.innerHTML = "";
 
-const dates=
+
+const dates =
 getSavedDates();
 
 
 if(!dates.length){
 
-box.innerHTML=
+box.innerHTML =
 '<div class="empty">No saved days yet.</div>';
 
 return;
@@ -2690,30 +3145,31 @@ return;
 dates.forEach(
 function(date){
 
-const row=
+const row =
 document.createElement("div");
 
-row.className=
+row.className =
 "saved-day";
 
 
-const open=
+const open =
 document.createElement("button");
 
-open.className=
+open.className =
 "saved-day-open";
 
-open.textContent=
-"📅 "+
+open.textContent =
+"📅 " +
 formatDate(date);
 
 
-open.onclick=
+open.onclick =
 function(){
 
-selectedDate=date;
+selectedDate =
+date;
 
-$("date").value=
+$("date").value =
 date;
 
 renderAll();
@@ -2726,53 +3182,20 @@ behavior:"smooth"
 };
 
 
-const remove=
+const remove =
 document.createElement("button");
 
-remove.className=
+remove.className =
 "saved-day-delete";
 
-remove.textContent=
+remove.textContent =
 "🗑️ Delete";
 
 
-remove.onclick=
+remove.onclick =
 function(){
 
-if(
-!confirm(
-"Delete the saved day "+
-formatDate(date)+
-"?\n\n"+
-"This will remove all children and records for this day."
-)
-)
-return;
-
-
-data.entries=
-data.entries.filter(
-e=>
-e.date!==date
-);
-
-saveData();
-
-
-if(selectedDate===date){
-
-selectedDate=
-new Date()
-.toISOString()
-.slice(0,10);
-
-$("date").value=
-selectedDate;
-
-}
-
-
-renderAll();
+deleteSavedDay(date);
 
 };
 
@@ -2789,9 +3212,82 @@ box.appendChild(row);
 }
 
 
-/* NAVIGATION */
+/* =========================================================
+   DELETE SAVED DAY
+   ========================================================= */
 
-$("snackNav").onclick=
+async function deleteSavedDay(date){
+
+if(
+!confirm(
+"Delete the saved day " +
+formatDate(date) +
+"?\n\n" +
+"This will remove all children and records for this day."
+)
+)
+return;
+
+
+try{
+
+const response =
+await fetch(
+API +
+"/acorn_entries?list_date=eq." +
+encodeURIComponent(date),
+{
+method:"DELETE",
+headers:HEADERS
+}
+);
+
+
+if(!response.ok){
+
+throw new Error(
+await response.text()
+);
+
+}
+
+
+await refreshData();
+
+
+if(selectedDate === date){
+
+selectedDate =
+new Date()
+.toISOString()
+.slice(0,10);
+
+$("date").value =
+selectedDate;
+
+renderAll();
+
+}
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not delete the saved day."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+$("snackNav").onclick =
 function(){
 
 show("snackPage");
@@ -2813,7 +3309,7 @@ $("sunNav")
 };
 
 
-$("groupNav").onclick=
+$("groupNav").onclick =
 function(){
 
 hide("snackPage");
@@ -2837,7 +3333,7 @@ renderGroup();
 };
 
 
-$("sunNav").onclick=
+$("sunNav").onclick =
 function(){
 
 hide("snackPage");
@@ -2861,7 +3357,9 @@ renderSun();
 };
 
 
-/* RENDER */
+/* =========================================================
+   RENDER EVERYTHING
+   ========================================================= */
 
 function renderAll(){
 
@@ -2873,49 +3371,11 @@ renderSavedDays();
 }
 
 
-/* START */
-
-function start(){
+/* =========================================================
+   START
+   ========================================================= */
 
 loadData();
-
-$("date").value=
-selectedDate;
-
-drawAdults();
-
-
-const savedAdult=
-localStorage.getItem(
-CURRENT_ADULT_KEY
-);
-
-
-if(savedAdult){
-
-const adult=
-data.adults.find(
-a=>
-a.id===
-savedAdult
-);
-
-
-if(adult){
-
-currentAdult=
-adult;
-
-openApp();
-
-}
-
-}
-
-}
-
-
-start();
 
 </script>
 

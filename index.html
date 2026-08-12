@@ -12,293 +12,31 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   background:#f3f7f3;
-  color:#29362c;
+  color:#29372d;
 }
 
 button,input,select{font:inherit}
 button{cursor:pointer}
-
 .hidden{display:none!important}
-
-.login-screen{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-
-.login-box{
-  width:100%;
-  max-width:520px;
-  background:white;
-  border-radius:30px;
-  padding:30px 22px 35px;
-  box-shadow:0 8px 35px rgba(0,0,0,.08);
-  text-align:center;
-}
-
-.logo{
-  font-size:52px;
-  font-weight:900;
-  color:#40774d;
-  margin-bottom:5px;
-}
-
-.heading{
-  font-size:28px;
-  font-weight:900;
-  margin-bottom:25px;
-}
-
-.message{
-  padding:13px;
-  border-radius:12px;
-  margin:12px 0;
-  font-weight:700;
-}
-
-.error{
-  background:#f7dddd;
-  color:#922e2e;
-}
-
-.success{
-  background:#dff0e1;
-  color:#28613a;
-}
-
-.no-accounts{
-  padding:20px 10px;
-}
-
-.no-icon{
-  font-size:65px;
-  margin-bottom:10px;
-}
-
-.no-text{
-  font-size:20px;
-  font-weight:800;
-  margin-bottom:20px;
-  color:#59645b;
-}
-
-.green-button{
-  width:100%;
-  border:0;
-  background:#40774d;
-  color:white;
-  padding:15px;
-  border-radius:13px;
-  font-size:18px;
-  font-weight:900;
-}
-
-.grey-button{
-  width:100%;
-  border:0;
-  background:#e8eee9;
-  color:#315b3d;
-  padding:14px;
-  border-radius:13px;
-  font-weight:800;
-  margin-top:9px;
-}
-
-/* ADULT SELECTOR */
-
-.selector{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-}
-
-.arrow{
-  width:52px;
-  height:52px;
-  flex:none;
-  border:0;
-  border-radius:50%;
-  background:#e8eee9;
-  color:#40774d;
-  font-size:38px;
-  line-height:1;
-}
-
-.adult-card{
-  width:245px;
-  min-height:320px;
-  border:4px solid #40774d;
-  border-radius:27px;
-  background:#f0f5f0;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-
-.adult-photo{
-  width:175px;
-  height:175px;
-  border-radius:50%;
-  background:#dfe8df;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-  font-size:75px;
-}
-
-.adult-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.adult-name{
-  color:#40774d;
-  font-size:28px;
-  font-weight:900;
-  margin-top:16px;
-}
-
-.dots{
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  margin:16px 0;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-  background:#ccd6cd;
-  border-radius:20px;
-}
-
-.dot.active{
-  width:23px;
-  background:#40774d;
-}
-
-label{
-  display:block;
-  text-align:left;
-  font-weight:800;
-  margin:12px 0 6px;
-}
-
-input,select{
-  width:100%;
-  border:2px solid #d5ded6;
-  border-radius:12px;
-  padding:14px;
-  background:white;
-}
-
-.code{
-  text-align:center;
-  font-size:25px;
-  letter-spacing:8px;
-}
-
-.plus{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  width:66px;
-  height:66px;
-  border:0;
-  border-radius:50%;
-  background:#40774d;
-  color:white;
-  font-size:40px;
-  box-shadow:0 5px 20px rgba(0,0,0,.2);
-}
-
-/* MODALS */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  z-index:100;
-}
-
-.modal-box{
-  width:100%;
-  max-width:450px;
-  max-height:90vh;
-  overflow:auto;
-  background:white;
-  border-radius:22px;
-  padding:22px;
-}
-
-.modal-box h2{
-  margin-top:0;
-}
-
-.preview-photo{
-  width:125px;
-  height:125px;
-  border-radius:50%;
-  background:#e0e9e0;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:55px;
-  margin:10px auto 15px;
-}
-
-.preview-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.photo-label{
-  display:block;
-  text-align:center;
-  background:#e8eee9;
-  color:#315b3d;
-  padding:13px;
-  border-radius:12px;
-  font-weight:800;
-}
-
-.photo-label input{
-  display:none;
-}
-
-/* APP */
 
 .top{
   background:#40774d;
   color:white;
-  padding:12px 15px;
+  padding:12px 16px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:30;
 }
 
-.app-title{
-  font-size:23px;
+.title{
+  font-size:24px;
   font-weight:900;
 }
 
-.profile{
+.top-right{
   display:flex;
   align-items:center;
   gap:8px;
@@ -308,7 +46,7 @@ input,select{
   width:40px;
   height:40px;
   border-radius:50%;
-  background:#e1e9e1;
+  background:#e5ece5;
   overflow:hidden;
   display:flex;
   align-items:center;
@@ -321,7 +59,7 @@ input,select{
   object-fit:cover;
 }
 
-.profile-button{
+.profile-btn{
   border:0;
   border-radius:10px;
   padding:9px 12px;
@@ -335,16 +73,19 @@ input,select{
   padding:8px;
   background:white;
   overflow-x:auto;
+  position:sticky;
+  top:64px;
+  z-index:25;
 }
 
 .nav button{
-  white-space:nowrap;
   border:0;
-  border-radius:10px;
-  padding:10px 14px;
   background:#e8eee9;
   color:#315b3d;
+  padding:10px 15px;
+  border-radius:11px;
   font-weight:800;
+  white-space:nowrap;
 }
 
 .nav button.active{
@@ -353,17 +94,35 @@ input,select{
 }
 
 .main{
-  max-width:900px;
+  max-width:950px;
   margin:auto;
   padding:15px;
 }
 
 .card{
   background:white;
-  border-radius:16px;
+  border-radius:17px;
   padding:16px;
   margin-bottom:14px;
   box-shadow:0 2px 9px rgba(0,0,0,.05);
+}
+
+h2{
+  margin-top:0;
+}
+
+label{
+  display:block;
+  font-weight:800;
+  margin:10px 0 6px;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  border:2px solid #d7e0d8;
+  border-radius:12px;
+  background:white;
 }
 
 .row{
@@ -376,45 +135,74 @@ input,select{
   flex:1 1 180px;
 }
 
+.green{
+  width:100%;
+  border:0;
+  background:#40774d;
+  color:white;
+  border-radius:12px;
+  padding:14px;
+  font-weight:900;
+}
+
+.grey{
+  width:100%;
+  border:0;
+  background:#e8eee9;
+  color:#315b3d;
+  border-radius:12px;
+  padding:13px;
+  font-weight:800;
+  margin-top:8px;
+}
+
 .tabs{
   display:flex;
   gap:8px;
+  margin-bottom:15px;
 }
 
-.tab{
+.tabs button{
   flex:1;
   border:0;
-  padding:11px;
-  border-radius:10px;
+  padding:12px;
+  border-radius:11px;
   background:#e8eee9;
   color:#315b3d;
-  font-weight:800;
+  font-weight:900;
 }
 
-.tab.active{
+.tabs button.active{
   background:#40774d;
   color:white;
 }
 
+/* CHILD ROW */
+
 .child{
   border:1px solid #dce4dd;
-  border-radius:12px;
+  border-radius:14px;
   padding:12px;
-  margin-top:9px;
+  margin-bottom:9px;
+  background:white;
+}
+
+.child.done{
+  background:#edf5ee;
 }
 
 .child-top{
   display:flex;
   align-items:center;
-  gap:7px;
+  gap:8px;
 }
 
 .tick{
-  width:36px;
-  height:36px;
+  width:37px;
+  height:37px;
   border:0;
   border-radius:50%;
-  background:#edf1ed;
+  background:#e8eee9;
   color:#40774d;
   font-weight:900;
 }
@@ -426,37 +214,288 @@ input,select{
 
 .child-name{
   flex:1;
+  font-size:18px;
   font-weight:900;
 }
 
-.remove{
+.small-btn{
   border:0;
-  border-radius:8px;
+  border-radius:9px;
+  padding:8px 10px;
+  font-weight:800;
+}
+
+.edit-btn{
+  background:#e8eee9;
+  color:#315b3d;
+}
+
+.delete-btn{
   background:#f5dddd;
   color:#922e2e;
-  padding:7px;
+}
+
+.details{
+  margin:9px 0 0 45px;
+  color:#566158;
+}
+
+.details strong{
+  color:#29372d;
 }
 
 .empty{
   text-align:center;
+  padding:25px;
+  color:#6a746c;
+}
+
+/* GROUPED PAGE */
+
+.group-box{
+  border:1px solid #d9e1da;
+  border-radius:15px;
+  padding:14px;
+  margin-bottom:12px;
+}
+
+.group-title{
+  font-size:19px;
+  font-weight:900;
+  color:#40774d;
+  margin-bottom:7px;
+}
+
+.group-child{
+  padding:4px 0;
+  font-weight:700;
+}
+
+/* LOGIN */
+
+.login{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   padding:20px;
-  color:#69736b;
+}
+
+.login-box{
+  width:100%;
+  max-width:540px;
+  background:white;
+  border-radius:30px;
+  padding:30px 22px;
+  box-shadow:0 8px 35px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+.logo{
+  font-size:52px;
+  font-weight:900;
+  color:#40774d;
+}
+
+.login-title{
+  font-size:29px;
+  font-weight:900;
+  margin:8px 0 25px;
+}
+
+.selector{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+}
+
+.arrow{
+  width:50px;
+  height:50px;
+  border:0;
+  border-radius:50%;
+  background:#e8eee9;
+  color:#40774d;
+  font-size:38px;
+}
+
+.adult-card{
+  width:240px;
+  min-height:315px;
+  border:4px solid #40774d;
+  border-radius:27px;
+  background:#f0f5f0;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.adult-photo{
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  background:#dfe8df;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:75px;
+}
+
+.adult-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.adult-name{
+  margin-top:15px;
+  font-size:27px;
+  font-weight:900;
+  color:#40774d;
+}
+
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:5px;
+  margin:15px;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#ccd6cd;
+}
+
+.dot.active{
+  width:23px;
+  background:#40774d;
+  border-radius:8px;
+}
+
+.code{
+  text-align:center;
+  letter-spacing:8px;
+  font-size:24px;
+}
+
+.plus{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:65px;
+  height:65px;
+  border:0;
+  border-radius:50%;
+  background:#40774d;
+  color:white;
+  font-size:40px;
+  box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+.message{
+  padding:12px;
+  border-radius:12px;
+  margin:12px 0;
+  font-weight:800;
+}
+
+.error{
+  background:#f7dddd;
+  color:#922e2e;
+}
+
+.success{
+  background:#dff0e1;
+  color:#28613a;
+}
+
+.no-account{
+  padding:20px;
+}
+
+.no-account-icon{
+  font-size:65px;
+}
+
+.no-account-text{
+  font-size:20px;
+  font-weight:800;
+  color:#687169;
+  margin:10px 0 20px;
+}
+
+/* MODALS */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+
+.modal-box{
+  width:100%;
+  max-width:470px;
+  max-height:90vh;
+  overflow:auto;
+  background:white;
+  border-radius:22px;
+  padding:22px;
+}
+
+.preview{
+  width:125px;
+  height:125px;
+  border-radius:50%;
+  background:#e0e9e0;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:55px;
+  margin:10px auto 15px;
+}
+
+.preview img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.photo-label{
+  display:block;
+  text-align:center;
+  padding:13px;
+  border-radius:12px;
+  background:#e8eee9;
+  color:#315b3d;
+  font-weight:800;
+}
+
+.photo-label input{
+  display:none;
 }
 
 .menu{
   position:fixed;
   right:12px;
-  top:70px;
-  width:260px;
+  top:68px;
+  width:250px;
   background:white;
-  padding:14px;
   border-radius:15px;
+  padding:14px;
   box-shadow:0 5px 25px rgba(0,0,0,.2);
-  z-index:50;
-}
-
-.menu button{
-  width:100%;
+  z-index:80;
 }
 
 @media(max-width:600px){
@@ -468,51 +507,49 @@ input,select{
     width:150px;
     height:150px;
   }
+
+  .adult-name{
+    font-size:24px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN SCREEN -->
+<!-- LOGIN -->
 
-<div id="loginScreen" class="login-screen">
+<div id="loginScreen" class="login">
 
   <div class="login-box">
 
     <div class="logo">🌳 Acorn</div>
 
-    <div class="heading">
+    <div class="login-title">
       Who's logging in?
     </div>
 
     <div id="loginMessage" class="message hidden"></div>
 
-    <!-- THIS IS SHOWN WHEN THERE ARE ZERO ADULTS -->
+    <div id="noAccounts" class="no-account hidden">
 
-    <div id="noAccounts" class="no-accounts hidden">
+      <div class="no-account-icon">👤</div>
 
-      <div class="no-icon">👤</div>
-
-      <div class="no-text">
+      <div class="no-account-text">
         No adult accounts yet
       </div>
 
-      <button id="addFirstAdult" class="green-button">
+      <button id="firstAdd" class="green">
         + Add adult
       </button>
 
     </div>
 
-    <!-- THIS ONLY APPEARS AFTER AN ACCOUNT EXISTS -->
-
-    <div id="adultSelector" class="hidden">
+    <div id="selector" class="hidden">
 
       <div class="selector">
 
-        <button id="previous" class="arrow">
-          ‹
-        </button>
+        <button id="left" class="arrow">‹</button>
 
         <div class="adult-card">
 
@@ -520,14 +557,11 @@ input,select{
             👤
           </div>
 
-          <div id="adultName" class="adult-name">
-          </div>
+          <div id="adultName" class="adult-name"></div>
 
         </div>
 
-        <button id="next" class="arrow">
-          ›
-        </button>
+        <button id="right" class="arrow">›</button>
 
       </div>
 
@@ -545,7 +579,7 @@ input,select{
         maxlength="4"
         placeholder="••••">
 
-      <button id="loginButton" class="green-button">
+      <button id="loginBtn" class="green">
         Log in
       </button>
 
@@ -553,30 +587,28 @@ input,select{
 
   </div>
 
-  <button id="plusButton" class="plus">
-    +
-  </button>
+  <button id="plus" class="plus">+</button>
 
 </div>
 
 
-<!-- MAIN APP -->
+<!-- APP -->
 
 <div id="app" class="hidden">
 
   <div class="top">
 
-    <div class="app-title">
+    <div class="title">
       🌳 Acorn
     </div>
 
-    <div class="profile">
+    <div class="top-right">
 
       <div id="smallPhoto" class="small-photo">
         👤
       </div>
 
-      <button id="profileButton" class="profile-button">
+      <button id="profileBtn" class="profile-btn">
         Profile
       </button>
 
@@ -584,10 +616,15 @@ input,select{
 
   </div>
 
+
   <div class="nav">
 
     <button id="snackNav" class="active">
-      🍎 Snacks
+      🍎 Snack List
+    </button>
+
+    <button id="groupNav">
+      📋 Group
     </button>
 
     <button id="sunNav">
@@ -596,20 +633,19 @@ input,select{
 
   </div>
 
+
   <div class="main">
 
     <div class="card">
 
-      <label>
-        Date
-      </label>
+      <label>Date</label>
 
       <input id="date" type="date">
 
     </div>
 
 
-    <!-- SNACKS -->
+    <!-- SNACK PAGE -->
 
     <div id="snackPage">
 
@@ -617,23 +653,22 @@ input,select{
 
         <div class="tabs">
 
-          <button id="amButton" class="tab active">
-            AM Snack
+          <button id="amBtn" class="active">
+            AM
           </button>
 
-          <button id="pmButton" class="tab">
-            PM Snack
+          <button id="pmBtn">
+            PM
           </button>
 
         </div>
+
 
         <div class="row">
 
           <div class="field">
 
-            <label>
-              Child's name
-            </label>
+            <label>Child's name</label>
 
             <input
               id="childName"
@@ -643,14 +678,12 @@ input,select{
 
           <div class="field">
 
-            <label>
-              Allergy / preference
-            </label>
+            <label>Allergy / preference</label>
 
             <select id="allergy">
 
               <option value="none">
-                No allergy / preference
+                None
               </option>
 
               <option value="green">
@@ -667,9 +700,7 @@ input,select{
 
           <div class="field">
 
-            <label>
-              Alternative milk
-            </label>
+            <label>Alternative milk</label>
 
             <input
               id="milk"
@@ -679,19 +710,49 @@ input,select{
 
         </div>
 
-        <button id="addSnack" class="green-button">
+        <button id="addChild" class="green">
           Add child
         </button>
 
       </div>
 
+
       <div class="card">
 
-        <h2 id="snackHeading">
-          AM Snack
+        <h2 id="listTitle">
+          AM Snack List
         </h2>
 
         <div id="snackList"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- GROUP PAGE -->
+
+    <div id="groupPage" class="hidden">
+
+      <div class="card">
+
+        <h2>
+          📋 Grouped Snacks
+        </h2>
+
+        <div class="tabs">
+
+          <button id="groupAm" class="active">
+            AM
+          </button>
+
+          <button id="groupPm">
+            PM
+          </button>
+
+        </div>
+
+        <div id="groupList"></div>
 
       </div>
 
@@ -705,16 +766,14 @@ input,select{
       <div class="card">
 
         <h2>
-          ☀️ Suncream
+          ☀️ Suncream List
         </h2>
 
         <div class="row">
 
           <div class="field">
 
-            <label>
-              Child's name
-            </label>
+            <label>Child's name</label>
 
             <input
               id="sunChild"
@@ -724,9 +783,7 @@ input,select{
 
           <div class="field">
 
-            <label>
-              Product
-            </label>
+            <label>Product</label>
 
             <input
               id="sunProduct"
@@ -736,7 +793,7 @@ input,select{
 
         </div>
 
-        <button id="addSun" class="green-button">
+        <button id="addSun" class="green">
           Add child
         </button>
 
@@ -755,17 +812,15 @@ input,select{
 </div>
 
 
-<!-- ADD ADULT MODAL -->
+<!-- ADD ADULT -->
 
 <div id="adultModal" class="modal hidden">
 
   <div class="modal-box">
 
-    <h2>
-      Add adult
-    </h2>
+    <h2>Add adult</h2>
 
-    <div id="newPhoto" class="preview-photo">
+    <div id="newPhoto" class="preview">
       👤
     </div>
 
@@ -774,23 +829,17 @@ input,select{
       📷 Choose profile photo
 
       <input
-        id="photoFile"
+        id="newPhotoFile"
         type="file"
         accept="image/*">
 
     </label>
 
-    <label>
-      Adult name
-    </label>
+    <label>Adult name</label>
 
-    <input
-      id="newName"
-      placeholder="Adult name">
+    <input id="newAdultName">
 
-    <label>
-      4-digit code
-    </label>
+    <label>4-digit code</label>
 
     <input
       id="newCode"
@@ -798,9 +847,7 @@ input,select{
       inputmode="numeric"
       maxlength="4">
 
-    <label>
-      Confirm 4-digit code
-    </label>
+    <label>Confirm 4-digit code</label>
 
     <input
       id="confirmCode"
@@ -808,13 +855,13 @@ input,select{
       inputmode="numeric"
       maxlength="4">
 
-    <div id="adultMessage" class="message hidden"></div>
+    <div id="adultError" class="message hidden"></div>
 
-    <button id="createAdult" class="green-button">
+    <button id="createAdult" class="green">
       Create account
     </button>
 
-    <button id="cancelAdult" class="grey-button">
+    <button id="cancelAdult" class="grey">
       Cancel
     </button>
 
@@ -823,17 +870,73 @@ input,select{
 </div>
 
 
-<!-- PROFILE MODAL -->
+<!-- EDIT CHILD -->
+
+<div id="childModal" class="modal hidden">
+
+  <div class="modal-box">
+
+    <h2>Edit child</h2>
+
+    <input type="hidden" id="editId">
+
+    <label>Child's name</label>
+    <input id="editChildName">
+
+    <label>Allergy / preference</label>
+
+    <select id="editAllergy">
+
+      <option value="none">None</option>
+
+      <option value="green">
+        Green - Preference
+      </option>
+
+      <option value="red">
+        Red - Allergy
+      </option>
+
+    </select>
+
+    <label>Alternative milk</label>
+
+    <input id="editMilk">
+
+    <label>Amount</label>
+
+    <input
+      id="editAmount"
+      placeholder="e.g. 1 portion">
+
+    <label>What they had</label>
+
+    <input
+      id="editFood"
+      placeholder="e.g. Banana">
+
+    <button id="saveChild" class="green">
+      Save changes
+    </button>
+
+    <button id="cancelChild" class="grey">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- PROFILE -->
 
 <div id="profileModal" class="modal hidden">
 
   <div class="modal-box">
 
-    <h2>
-      Edit profile
-    </h2>
+    <h2>Edit profile</h2>
 
-    <div id="profilePhoto" class="preview-photo">
+    <div id="profilePhoto" class="preview">
       👤
     </div>
 
@@ -848,19 +951,17 @@ input,select{
 
     </label>
 
-    <label>
-      Name
-    </label>
+    <label>Name</label>
 
     <input id="profileName">
 
-    <div id="profileMessage" class="message hidden"></div>
+    <div id="profileError" class="message hidden"></div>
 
-    <button id="saveProfile" class="green-button">
+    <button id="saveProfile" class="green">
       Save changes
     </button>
 
-    <button id="cancelProfile" class="grey-button">
+    <button id="cancelProfile" class="grey">
       Cancel
     </button>
 
@@ -869,23 +970,21 @@ input,select{
 </div>
 
 
-<!-- PROFILE MENU -->
+<!-- MENU -->
 
 <div id="menu" class="menu hidden">
 
-  <strong id="menuName">
-    Adult
-  </strong>
+  <strong id="menuName"></strong>
 
-  <button id="editProfile" class="grey-button">
+  <button id="editProfile" class="grey">
     ✏️ Edit profile
   </button>
 
-  <button id="addAnother" class="grey-button">
+  <button id="addAdultAgain" class="grey">
     ➕ Add another adult
   </button>
 
-  <button id="logout" class="grey-button">
+  <button id="logout" class="grey">
     🚪 Log out
   </button>
 
@@ -900,22 +999,21 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0";
 
+
 let adults=[];
-let selectedAdult=0;
+let adultIndex=0;
 let currentAdult=null;
 
-let snacks=[];
-let suncream=[];
+let entries=[];
 
 let snackTime="am";
+let groupTime="am";
 
-let currentDate=
+let selectedDate=
 new Date().toISOString().slice(0,10);
 
 
-function $(id){
-  return document.getElementById(id);
-}
+const $=id=>document.getElementById(id);
 
 
 function show(id){
@@ -928,24 +1026,25 @@ function hide(id){
 }
 
 
-function message(id,text,type){
+function setMessage(id,text,type){
 
-  const el=$(id);
+  const e=$(id);
 
-  el.textContent=text;
+  e.textContent=text;
 
-  el.className=
+  e.className=
     "message "+type;
 }
 
 
-function photo(element,url){
+function setPhoto(element,url){
 
   element.innerHTML="";
 
   if(url){
 
-    const img=document.createElement("img");
+    const img=
+      document.createElement("img");
 
     img.src=url;
 
@@ -959,18 +1058,18 @@ function photo(element,url){
 }
 
 
-/* SUPABASE */
+/* SUPABASE REQUEST */
 
-async function supabase(path,options={}){
+async function db(path,options={}){
 
-  const response=
+  const r=
     await fetch(
       SUPABASE_URL+path,
       {
         ...options,
         headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":
+          apikey:SUPABASE_KEY,
+          Authorization:
             "Bearer "+SUPABASE_KEY,
           "Content-Type":
             "application/json",
@@ -980,7 +1079,7 @@ async function supabase(path,options={}){
     );
 
   const text=
-    await response.text();
+    await r.text();
 
   let data=null;
 
@@ -990,14 +1089,14 @@ async function supabase(path,options={}){
     data=text;
   }
 
-  if(!response.ok){
+  if(!r.ok){
 
     throw new Error(
       data?.message ||
       data?.hint ||
       data?.error ||
       text ||
-      "Supabase error"
+      "Database error"
     );
 
   }
@@ -1006,14 +1105,14 @@ async function supabase(path,options={}){
 }
 
 
-/* LOAD ADULTS */
+/* ADULTS */
 
 async function loadAdults(){
 
   try{
 
     const data=
-      await supabase(
+      await db(
         "/rest/v1/rpc/list_adults",
         {
           method:"POST",
@@ -1023,35 +1122,31 @@ async function loadAdults(){
 
     adults=
       Array.isArray(data)
-        ?data
-        :[];
+      ?data
+      :[];
 
-    if(adults.length===0){
+    if(!adults.length){
 
-      hide("adultSelector");
+      hide("selector");
       show("noAccounts");
 
     }else{
 
       hide("noAccounts");
-      show("adultSelector");
+      show("selector");
 
-      if(selectedAdult>=adults.length){
-        selectedAdult=0;
-      }
+      if(adultIndex>=adults.length)
+        adultIndex=0;
 
       drawAdult();
 
     }
 
-  }catch(error){
+  }catch(e){
 
-    console.error(error);
-
-    message(
+    setMessage(
       "loginMessage",
-      "Couldn't load adult accounts: "+
-      error.message,
+      e.message,
       "error"
     );
 
@@ -1059,19 +1154,17 @@ async function loadAdults(){
 }
 
 
-/* DRAW SELECTED ADULT */
-
 function drawAdult(){
 
   if(!adults.length)return;
 
   const adult=
-    adults[selectedAdult];
+    adults[adultIndex];
 
   $("adultName").textContent=
     adult.name;
 
-  photo(
+  setPhoto(
     $("adultPhoto"),
     adult.photo_url
   );
@@ -1079,88 +1172,84 @@ function drawAdult(){
   $("dots").innerHTML="";
 
   adults.forEach(
-    function(_,index){
+    (_,i)=>{
 
-      const dot=
+      const d=
         document.createElement("div");
 
-      dot.className=
+      d.className=
         "dot "+
-        (
-          index===selectedAdult
-          ?"active"
-          :""
-        );
+        (i===adultIndex?"active":"");
 
-      $("dots").appendChild(dot);
+      $("dots").appendChild(d);
 
     }
   );
+
 }
 
 
-/* ARROWS */
-
-$("previous").onclick=function(){
+$("left").onclick=function(){
 
   if(!adults.length)return;
 
-  selectedAdult--;
+  adultIndex--;
 
-  if(selectedAdult<0)
-    selectedAdult=
-      adults.length-1;
+  if(adultIndex<0)
+    adultIndex=adults.length-1;
 
   drawAdult();
+
 };
 
 
-$("next").onclick=function(){
+$("right").onclick=function(){
 
   if(!adults.length)return;
 
-  selectedAdult++;
+  adultIndex++;
 
-  if(selectedAdult>=adults.length)
-    selectedAdult=0;
+  if(adultIndex>=adults.length)
+    adultIndex=0;
 
   drawAdult();
+
 };
 
 
-/* PHOTO CONVERSION */
+/* PHOTO */
 
-function convertPhoto(file){
+function resizePhoto(file){
 
   return new Promise(
-    function(resolve,reject){
+    (resolve,reject)=>{
 
       const reader=
         new FileReader();
 
-      reader.onload=function(){
+      reader.onload=()=>{
 
-        const image=
+        const img=
           new Image();
 
-        image.onload=function(){
+        img.onload=()=>{
 
           const canvas=
             document.createElement("canvas");
 
           const max=500;
 
-          let w=image.width;
-          let h=image.height;
+          let w=img.width;
+          let h=img.height;
 
           if(w>h){
 
-            h=h*(max/w);
+            h*=max/w;
             w=max;
 
           }else{
 
-            w=w*(max/h);
+            w*=max/h;
             h=max;
 
           }
@@ -1171,142 +1260,127 @@ function convertPhoto(file){
           canvas
             .getContext("2d")
             .drawImage(
-              image,
-              0,
-              0,
-              w,
-              h
+              img,0,0,w,h
             );
 
           resolve(
             canvas.toDataURL(
               "image/jpeg",
-              .7
+              .72
             )
           );
 
         };
 
-        image.onerror=reject;
-
-        image.src=reader.result;
+        img.onerror=reject;
+        img.src=reader.result;
 
       };
 
       reader.onerror=reject;
-
       reader.readAsDataURL(file);
 
     }
   );
+
 }
 
 
-/* OPEN ADD ADULT */
+/* ADD ADULT */
 
 function openAdult(){
 
-  $("newName").value="";
+  $("newAdultName").value="";
   $("newCode").value="";
   $("confirmCode").value="";
 
   $("newPhoto").dataset.photo="";
 
-  photo(
+  setPhoto(
     $("newPhoto"),
     ""
   );
 
-  hide("loginMessage");
-  hide("adultMessage");
-
+  hide("adultError");
   show("adultModal");
+
 }
 
 
-$("plusButton").onclick=openAdult;
+$("plus").onclick=openAdult;
+$("firstAdd").onclick=openAdult;
 
-$("addFirstAdult").onclick=openAdult;
 
-
-$("cancelAdult").onclick=function(){
-
+$("cancelAdult").onclick=()=>
   hide("adultModal");
 
-};
 
-
-/* NEW PHOTO */
-
-$("photoFile").onchange=
+$("newPhotoFile").onchange=
 async function(){
 
-  const file=
-    this.files[0];
-
-  if(!file)return;
+  if(!this.files[0])return;
 
   try{
 
-    const result=
-      await convertPhoto(file);
+    const p=
+      await resizePhoto(
+        this.files[0]
+      );
 
-    $("newPhoto").dataset.photo=
-      result;
+    $("newPhoto").dataset.photo=p;
 
-    photo(
+    setPhoto(
       $("newPhoto"),
-      result
+      p
     );
 
   }catch{
 
-    message(
-      "adultMessage",
-      "The photo could not be added.",
+    setMessage(
+      "adultError",
+      "Couldn't add that photo.",
       "error"
     );
 
   }
+
 };
 
-
-/* CREATE ADULT */
 
 $("createAdult").onclick=
 async function(){
 
-  hide("adultMessage");
-
   const name=
-    $("newName").value.trim();
+    $("newAdultName")
+    .value.trim();
 
   const code=
-    $("newCode").value.trim();
+    $("newCode")
+    .value.trim();
 
   const confirm=
-    $("confirmCode").value.trim();
+    $("confirmCode")
+    .value.trim();
 
-  const picture=
+  const photo=
     $("newPhoto").dataset.photo||"";
 
 
   if(!name){
 
-    message(
-      "adultMessage",
-      "Please enter the adult's name.",
+    setMessage(
+      "adultError",
+      "Please enter a name.",
       "error"
     );
 
     return;
   }
 
+  if(!/^\d{4}$/.test(code)){
 
-  if(!/^[0-9]{4}$/.test(code)){
-
-    message(
-      "adultMessage",
+    setMessage(
+      "adultError",
       "The code must be exactly 4 numbers.",
       "error"
     );
@@ -1314,12 +1388,11 @@ async function(){
     return;
   }
 
-
   if(code!==confirm){
 
-    message(
-      "adultMessage",
-      "The two codes don't match.",
+    setMessage(
+      "adultError",
+      "The codes don't match.",
       "error"
     );
 
@@ -1327,88 +1400,68 @@ async function(){
   }
 
 
-  const button=
-    $("createAdult");
-
-  button.disabled=true;
-  button.textContent=
-    "Creating...";
-
-
   try{
 
-    await supabase(
+    await db(
       "/rest/v1/rpc/create_adult",
       {
         method:"POST",
         body:JSON.stringify({
           p_name:name,
           p_code:code,
-          p_photo:picture
+          p_photo:photo
         })
       }
     );
 
+    hide("adultModal");
 
     await loadAdults();
 
-
-    const index=
+    const i=
       adults.findIndex(
         a=>
           a.name.toLowerCase()===
           name.toLowerCase()
       );
 
+    if(i>=0){
 
-    if(index>=0){
-
-      selectedAdult=index;
+      adultIndex=i;
 
       drawAdult();
 
     }
 
-
-    hide("adultModal");
-
-    message(
+    setMessage(
       "loginMessage",
-      name+
-      " has been added. Select their account and enter their code.",
+      "Adult added. Select the account and enter the code.",
       "success"
     );
 
+  }catch(e){
 
-  }catch(error){
-
-    message(
-      "adultMessage",
-      error.message,
+    setMessage(
+      "adultError",
+      e.message,
       "error"
     );
 
   }
 
-
-  button.disabled=false;
-  button.textContent=
-    "Create account";
 };
 
 
 /* LOGIN */
 
-$("loginButton").onclick=
+$("loginBtn").onclick=
 async function(){
-
-  hide("loginMessage");
 
   if(!adults.length){
 
-    message(
+    setMessage(
       "loginMessage",
-      "No adult accounts yet. Tap + to add one.",
+      "There are no adult accounts yet. Tap + to add one.",
       "error"
     );
 
@@ -1417,17 +1470,18 @@ async function(){
 
 
   const adult=
-    adults[selectedAdult];
+    adults[adultIndex];
 
   const code=
-    $("loginCode").value.trim();
+    $("loginCode")
+    .value.trim();
 
 
-  if(!/^[0-9]{4}$/.test(code)){
+  if(!/^\d{4}$/.test(code)){
 
-    message(
+    setMessage(
       "loginMessage",
-      "Please enter your 4-digit code.",
+      "Enter your 4-digit code.",
       "error"
     );
 
@@ -1438,7 +1492,7 @@ async function(){
   try{
 
     const result=
-      await supabase(
+      await db(
         "/rest/v1/rpc/login_adult",
         {
           method:"POST",
@@ -1449,26 +1503,25 @@ async function(){
         }
       );
 
-
     currentAdult=
       Array.isArray(result)
       ?result[0]
       :result;
 
-
     localStorage.setItem(
       "acornAdult",
-      JSON.stringify(currentAdult)
+      JSON.stringify(
+        currentAdult
+      )
     );
-
 
     $("loginCode").value="";
 
     openApp();
 
-  }catch(error){
+  }catch{
 
-    message(
+    setMessage(
       "loginMessage",
       "Incorrect code.",
       "error"
@@ -1479,26 +1532,26 @@ async function(){
 };
 
 
-/* OPEN APP */
+/* APP */
 
 function openApp(){
 
   hide("loginScreen");
-
   show("app");
 
   $("menuName").textContent=
     currentAdult.name;
 
-  photo(
+  setPhoto(
     $("smallPhoto"),
     currentAdult.photo_url
   );
 
   $("date").value=
-    currentDate;
+    selectedDate;
 
-  loadLists();
+  loadEntries();
+
 }
 
 
@@ -1513,38 +1566,30 @@ $("logout").onclick=function(){
   currentAdult=null;
 
   hide("menu");
-
   hide("app");
 
   show("loginScreen");
 
-  $("loginCode").value="";
-
   loadAdults();
+
 };
 
 
 /* PROFILE MENU */
 
-$("profileButton").onclick=function(){
-
-  $("menu").classList.toggle(
-    "hidden"
-  );
-
-};
+$("profileBtn").onclick=()=>
+  $("menu").classList.toggle("hidden");
 
 
-$("addAnother").onclick=function(){
+$("addAdultAgain").onclick=()=>{
 
   hide("menu");
-
   openAdult();
 
 };
 
 
-$("editProfile").onclick=function(){
+$("editProfile").onclick=()=>{
 
   hide("menu");
 
@@ -1554,75 +1599,70 @@ $("editProfile").onclick=function(){
   $("profilePhoto").dataset.photo=
     currentAdult.photo_url||"";
 
-  photo(
+  setPhoto(
     $("profilePhoto"),
     currentAdult.photo_url
   );
 
-  hide("profileMessage");
+  hide("profileError");
 
   show("profileModal");
+
 };
 
 
-$("cancelProfile").onclick=function(){
-
+$("cancelProfile").onclick=()=>
   hide("profileModal");
 
-};
-
-
-/* PROFILE PHOTO */
 
 $("profileFile").onchange=
 async function(){
 
-  const file=
-    this.files[0];
-
-  if(!file)return;
+  if(!this.files[0])return;
 
   try{
 
-    const result=
-      await convertPhoto(file);
+    const p=
+      await resizePhoto(
+        this.files[0]
+      );
 
-    $("profilePhoto").dataset.photo=
-      result;
+    $("profilePhoto").dataset.photo=p;
 
-    photo(
+    setPhoto(
       $("profilePhoto"),
-      result
+      p
     );
 
   }catch{
 
-    message(
-      "profileMessage",
-      "The photo could not be added.",
+    setMessage(
+      "profileError",
+      "Couldn't add that photo.",
       "error"
     );
 
   }
+
 };
 
-
-/* SAVE PROFILE */
 
 $("saveProfile").onclick=
 async function(){
 
   const name=
-    $("profileName").value.trim();
+    $("profileName")
+    .value.trim();
 
-  const picture=
-    $("profilePhoto").dataset.photo||"";
+  const photo=
+    $("profilePhoto")
+    .dataset.photo||"";
 
 
   if(!name){
 
-    message(
-      "profileMessage",
+    setMessage(
+      "profileError",
       "Please enter a name.",
       "error"
     );
@@ -1633,7 +1673,7 @@ async function(){
 
   try{
 
-    await supabase(
+    await db(
       "/rest/v1/adults?id=eq."+
       encodeURIComponent(
         currentAdult.id
@@ -1641,21 +1681,18 @@ async function(){
       {
         method:"PATCH",
         headers:{
-          "Prefer":
-            "return=minimal"
+          Prefer:"return=minimal"
         },
         body:JSON.stringify({
           name:name,
-          photo_url:picture
+          photo_url:photo
         })
       }
     );
 
 
     currentAdult.name=name;
-    currentAdult.photo_url=
-      picture;
-
+    currentAdult.photo_url=photo;
 
     localStorage.setItem(
       "acornAdult",
@@ -1664,30 +1701,27 @@ async function(){
       )
     );
 
+    $("menuName").textContent=name;
 
-    $("menuName").textContent=
-      name;
-
-    photo(
+    setPhoto(
       $("smallPhoto"),
-      picture
+      photo
     );
-
 
     await loadAdults();
 
     hide("profileModal");
 
+  }catch(e){
 
-  }catch(error){
-
-    message(
-      "profileMessage",
-      error.message,
+    setMessage(
+      "profileError",
+      e.message,
       "error"
     );
 
   }
+
 };
 
 
@@ -1695,157 +1729,113 @@ async function(){
 
 $("date").onchange=function(){
 
-  currentDate=
-    this.value;
+  selectedDate=this.value;
 
-  loadLists();
-
-};
-
-
-/* SNACK TABS */
-
-$("amButton").onclick=function(){
-
-  snackTime="am";
-
-  $("amButton")
-    .classList.add("active");
-
-  $("pmButton")
-    .classList.remove("active");
-
-  $("snackHeading")
-    .textContent="AM Snack";
-
-  renderSnacks();
-};
-
-
-$("pmButton").onclick=function(){
-
-  snackTime="pm";
-
-  $("pmButton")
-    .classList.add("active");
-
-  $("amButton")
-    .classList.remove("active");
-
-  $("snackHeading")
-    .textContent="PM Snack";
-
-  renderSnacks();
-};
-
-
-/* NAVIGATION */
-
-$("snackNav").onclick=function(){
-
-  show("snackPage");
-  hide("sunPage");
-
-  $("snackNav")
-    .classList.add("active");
-
-  $("sunNav")
-    .classList.remove("active");
+  loadEntries();
 
 };
 
 
-$("sunNav").onclick=function(){
+/* LOAD SHARED ENTRIES */
 
-  hide("snackPage");
-  show("sunPage");
-
-  $("snackNav")
-    .classList.remove("active");
-
-  $("sunNav")
-    .classList.add("active");
-
-  renderSun();
-};
-
-
-/* LOAD LISTS */
-
-async function loadLists(){
+async function loadEntries(){
 
   try{
 
-    snacks=
-      await supabase(
-        "/rest/v1/snack_lists?select=*&order=id.asc"
-      );
-
-    suncream=
-      await supabase(
-        "/rest/v1/suncream_lists?select=*&order=id.asc"
+    entries=
+      await db(
+        "/rest/v1/acorn_entries?select=*&order=id.asc"
       );
 
     renderSnacks();
+    renderGroup();
     renderSun();
 
-  }catch(error){
+  }catch(e){
 
-    console.error(error);
+    console.error(e);
 
   }
+
 }
 
 
-/* ADD SNACK */
+/* SNACK AM PM */
 
-$("addSnack").onclick=
+$("amBtn").onclick=()=>{
+
+  snackTime="am";
+
+  $("amBtn").classList.add("active");
+  $("pmBtn").classList.remove("active");
+
+  $("listTitle").textContent=
+    "AM Snack List";
+
+  renderSnacks();
+
+};
+
+
+$("pmBtn").onclick=()=>{
+
+  snackTime="pm";
+
+  $("pmBtn").classList.add("active");
+  $("amBtn").classList.remove("active");
+
+  $("listTitle").textContent=
+    "PM Snack List";
+
+  renderSnacks();
+
+};
+
+
+/* ADD CHILD */
+
+$("addChild").onclick=
 async function(){
 
   const name=
     $("childName")
-    .value
-    .trim();
+    .value.trim();
 
   if(!name){
 
-    alert(
-      "Please enter the child's name."
-    );
+    alert("Please enter the child's name.");
 
     return;
+
   }
 
 
   try{
 
-    await supabase(
-      "/rest/v1/snack_lists",
+    await db(
+      "/rest/v1/acorn_entries",
       {
         method:"POST",
         headers:{
-          "Prefer":
-            "return=minimal"
+          Prefer:"return=minimal"
         },
         body:JSON.stringify({
 
-          adult_id:
-            currentAdult.id,
+          list_date:selectedDate,
 
-          list_date:
-            currentDate,
+          snack_time:snackTime,
 
-          snack_time:
-            snackTime,
-
-          child_name:
-            name,
+          child_name:name,
 
           allergy_status:
             $("allergy").value,
 
           alternative_milk:
-            $("milk").value,
+            $("milk").value.trim(),
+
+          amount:"",
+
+          food:"",
 
           done:false
 
@@ -1857,17 +1847,18 @@ async function(){
     $("childName").value="";
     $("milk").value="";
 
-    loadLists();
+    await loadEntries();
 
-  }catch(error){
+  }catch(e){
 
-    alert(error.message);
+    alert(e.message);
 
   }
+
 };
 
 
-/* RENDER SNACKS */
+/* RENDER SNACK LIST */
 
 function renderSnacks(){
 
@@ -1878,12 +1869,11 @@ function renderSnacks(){
 
 
   const list=
-    snacks.filter(
-      x=>
-        x.list_date===
-        currentDate &&
-        x.snack_time===
-        snackTime
+    entries.filter(
+      e=>
+        e.list_date===selectedDate &&
+        e.snack_time===snackTime &&
+        !e.suncream_product
     );
 
 
@@ -1893,150 +1883,413 @@ function renderSnacks(){
       '<div class="empty">No children added yet.</div>';
 
     return;
+
   }
 
 
-  list.forEach(
-    function(child){
+  list.forEach(e=>{
 
-      const item=
-        document.createElement("div");
+    const item=
+      document.createElement("div");
 
-      item.className=
-        "child";
-
-
-      if(child.done)
-        item.classList.add("done");
+    item.className=
+      "child "+
+      (e.done?"done":"");
 
 
-      const top=
-        document.createElement("div");
+    const top=
+      document.createElement("div");
 
-      top.className=
-        "child-top";
-
-
-      const tick=
-        document.createElement("button");
-
-      tick.className=
-        "tick";
-
-      tick.textContent=
-        child.done
-        ?"✓"
-        :"";
+    top.className="child-top";
 
 
-      tick.onclick=
-      async function(){
+    const tick=
+      document.createElement("button");
 
-        await supabase(
-          "/rest/v1/snack_lists?id=eq."+
-          child.id,
-          {
-            method:"PATCH",
-            body:JSON.stringify({
-              done:!child.done
-            })
-          }
-        );
+    tick.className="tick";
 
-        loadLists();
-
-      };
+    tick.textContent=
+      e.done?"✓":"";
 
 
-      const name=
-        document.createElement("div");
-
-      name.className=
-        "child-name";
-
-      name.textContent=
-        child.child_name;
+    tick.onclick=
+    ()=>toggleDone(e);
 
 
-      const remove=
-        document.createElement("button");
+    const name=
+      document.createElement("div");
 
-      remove.className=
-        "remove";
+    name.className="child-name";
 
-      remove.textContent=
-        "Remove";
-
-
-      remove.onclick=
-      async function(){
-
-        if(!confirm(
-          "Remove "+
-          child.child_name+
-          "?"
-        ))return;
+    name.textContent=
+      e.child_name;
 
 
-        await supabase(
-          "/rest/v1/snack_lists?id=eq."+
-          child.id,
-          {
-            method:"DELETE"
-          }
-        );
+    const edit=
+      document.createElement("button");
 
-        loadLists();
+    edit.className=
+      "small-btn edit-btn";
 
-      };
+    edit.textContent="✏️ Edit";
 
-
-      top.append(
-        tick,
-        name,
-        remove
-      );
-
-      item.appendChild(top);
+    edit.onclick=
+      ()=>openChildEdit(e);
 
 
-      if(child.alternative_milk){
+    const del=
+      document.createElement("button");
 
-        const detail=
-          document.createElement("div");
+    del.className=
+      "small-btn delete-btn";
 
-        detail.style.marginTop=
-          "7px";
+    del.textContent="Delete";
 
-        detail.style.marginLeft=
-          "43px";
-
-        detail.textContent=
-          "Alternative milk: "+
-          child.alternative_milk;
-
-        item.appendChild(detail);
-
-      }
+    del.onclick=
+      ()=>deleteEntry(e.id);
 
 
-      box.appendChild(item);
+    top.append(
+      tick,
+      name,
+      edit,
+      del
+    );
 
-    }
-  );
+
+    item.appendChild(top);
+
+
+    const details=
+      document.createElement("div");
+
+    details.className="details";
+
+
+    let html="";
+
+
+    if(e.allergy_status==="red")
+      html+="🔴 Allergy<br>";
+
+    if(e.allergy_status==="green")
+      html+="🟢 Preference<br>";
+
+    if(e.alternative_milk)
+      html+=
+        "<strong>Milk:</strong> "+
+        escapeHtml(e.alternative_milk)+
+        "<br>";
+
+
+    if(e.amount)
+      html+=
+        "<strong>Amount:</strong> "+
+        escapeHtml(e.amount)+
+        "<br>";
+
+
+    if(e.food)
+      html+=
+        "<strong>Had:</strong> "+
+        escapeHtml(e.food);
+
+
+    details.innerHTML=html;
+
+    item.appendChild(details);
+
+
+    box.appendChild(item);
+
+  });
+
 }
 
 
-/* ADD SUNCREAM */
+/* EDIT CHILD */
+
+function openChildEdit(e){
+
+  $("editId").value=e.id;
+
+  $("editChildName").value=
+    e.child_name||"";
+
+  $("editAllergy").value=
+    e.allergy_status||"none";
+
+  $("editMilk").value=
+    e.alternative_milk||"";
+
+  $("editAmount").value=
+    e.amount||"";
+
+  $("editFood").value=
+    e.food||"";
+
+  show("childModal");
+
+}
+
+
+$("cancelChild").onclick=()=>
+  hide("childModal");
+
+
+$("saveChild").onclick=
+async function(){
+
+  const id=
+    $("editId").value;
+
+
+  try{
+
+    await db(
+      "/rest/v1/acorn_entries?id=eq."+id,
+      {
+        method:"PATCH",
+        headers:{
+          Prefer:"return=minimal"
+        },
+        body:JSON.stringify({
+
+          child_name:
+            $("editChildName")
+            .value.trim(),
+
+          allergy_status:
+            $("editAllergy").value,
+
+          alternative_milk:
+            $("editMilk")
+            .value.trim(),
+
+          amount:
+            $("editAmount")
+            .value.trim(),
+
+          food:
+            $("editFood")
+            .value.trim(),
+
+          updated_at:
+            new Date().toISOString()
+
+        })
+      }
+    );
+
+
+    hide("childModal");
+
+    await loadEntries();
+
+  }catch(e){
+
+    alert(e.message);
+
+  }
+
+};
+
+
+/* TOGGLE DONE */
+
+async function toggleDone(e){
+
+  try{
+
+    await db(
+      "/rest/v1/acorn_entries?id=eq."+e.id,
+      {
+        method:"PATCH",
+        headers:{
+          Prefer:"return=minimal"
+        },
+        body:JSON.stringify({
+          done:!e.done
+        })
+      }
+    );
+
+    await loadEntries();
+
+  }catch(err){
+
+    alert(err.message);
+
+  }
+
+}
+
+
+/* DELETE */
+
+async function deleteEntry(id){
+
+  if(!confirm(
+    "Delete this child from the list?"
+  ))return;
+
+
+  try{
+
+    await db(
+      "/rest/v1/acorn_entries?id=eq."+id,
+      {
+        method:"DELETE"
+      }
+    );
+
+    await loadEntries();
+
+  }catch(e){
+
+    alert(e.message);
+
+  }
+
+}
+
+
+/* GROUPED PAGE */
+
+$("groupAm").onclick=()=>{
+
+  groupTime="am";
+
+  $("groupAm").classList.add("active");
+  $("groupPm").classList.remove("active");
+
+  renderGroup();
+
+};
+
+
+$("groupPm").onclick=()=>{
+
+  groupTime="pm";
+
+  $("groupPm").classList.add("active");
+  $("groupAm").classList.remove("active");
+
+  renderGroup();
+
+};
+
+
+function renderGroup(){
+
+  const box=
+    $("groupList");
+
+  box.innerHTML="";
+
+
+  const list=
+    entries.filter(
+      e=>
+        e.list_date===selectedDate &&
+        e.snack_time===groupTime &&
+        !e.suncream_product &&
+        e.food
+    );
+
+
+  if(!list.length){
+
+    box.innerHTML=
+      '<div class="empty">Nothing has been recorded yet.</div>';
+
+    return;
+
+  }
+
+
+  const groups={};
+
+
+  list.forEach(e=>{
+
+    const amount=
+      e.amount||"Amount not entered";
+
+    const food=
+      e.food||"Food not entered";
+
+    const key=
+      amount+"|||"+food;
+
+
+    if(!groups[key])
+      groups[key]=[];
+
+    groups[key].push(e.child_name);
+
+  });
+
+
+  Object.keys(groups)
+    .sort()
+    .forEach(key=>{
+
+      const parts=
+        key.split("|||");
+
+      const group=
+        document.createElement("div");
+
+      group.className=
+        "group-box";
+
+
+      const title=
+        document.createElement("div");
+
+      title.className=
+        "group-title";
+
+      title.textContent=
+        parts[0]+" — "+parts[1];
+
+
+      group.appendChild(title);
+
+
+      groups[key]
+        .forEach(name=>{
+
+          const child=
+            document.createElement("div");
+
+          child.className=
+            "group-child";
+
+          child.textContent=
+            "• "+name;
+
+          group.appendChild(child);
+
+        });
+
+
+      box.appendChild(group);
+
+    });
+
+}
+
+
+/* SUNCREAM */
 
 $("addSun").onclick=
 async function(){
 
   const name=
     $("sunChild")
-    .value
-    .trim();
-
+    .value.trim();
 
   if(!name){
 
@@ -2045,36 +2298,32 @@ async function(){
     );
 
     return;
+
   }
 
 
   try{
 
-    await supabase(
-      "/rest/v1/suncream_lists",
+    await db(
+      "/rest/v1/acorn_entries",
       {
         method:"POST",
         headers:{
-          "Prefer":
-            "return=minimal"
+          Prefer:"return=minimal"
         },
         body:JSON.stringify({
 
-          adult_id:
-            currentAdult.id,
+          list_date:selectedDate,
 
-          list_date:
-            currentDate,
+          snack_time:"am",
 
-          child_name:
-            name,
+          child_name:name,
 
-          product:
+          suncream_product:
             $("sunProduct")
-            .value
-            .trim(),
+            .value.trim(),
 
-          done:false
+          suncream_done:false
 
         })
       }
@@ -2084,17 +2333,16 @@ async function(){
     $("sunChild").value="";
     $("sunProduct").value="";
 
-    loadLists();
+    await loadEntries();
 
-  }catch(error){
+  }catch(e){
 
-    alert(error.message);
+    alert(e.message);
 
   }
+
 };
 
-
-/* SUNCREAM LIST */
 
 function renderSun(){
 
@@ -2105,10 +2353,10 @@ function renderSun(){
 
 
   const list=
-    suncream.filter(
-      x=>
-        x.list_date===
-        currentDate
+    entries.filter(
+      e=>
+        e.list_date===selectedDate &&
+        e.suncream_product
     );
 
 
@@ -2118,130 +2366,171 @@ function renderSun(){
       '<div class="empty">No children added yet.</div>';
 
     return;
+
   }
 
 
-  list.forEach(
-    function(child){
+  list.forEach(e=>{
 
-      const item=
-        document.createElement("div");
+    const item=
+      document.createElement("div");
 
-      item.className=
-        "child";
-
-
-      if(child.done)
-        item.classList.add("done");
+    item.className=
+      "child "+
+      (e.suncream_done?"done":"");
 
 
-      const top=
-        document.createElement("div");
+    const top=
+      document.createElement("div");
 
-      top.className=
-        "child-top";
-
-
-      const tick=
-        document.createElement("button");
-
-      tick.className=
-        "tick";
-
-      tick.textContent=
-        child.done
-        ?"✓"
-        :"";
+    top.className="child-top";
 
 
-      tick.onclick=
-      async function(){
+    const tick=
+      document.createElement("button");
 
-        await supabase(
-          "/rest/v1/suncream_lists?id=eq."+
-          child.id,
-          {
-            method:"PATCH",
-            body:JSON.stringify({
-              done:!child.done
-            })
-          }
-        );
+    tick.className="tick";
 
-        loadLists();
-
-      };
+    tick.textContent=
+      e.suncream_done?"✓":"";
 
 
-      const name=
-        document.createElement("div");
+    tick.onclick=
+    async()=>{
 
-      name.className=
-        "child-name";
-
-      name.textContent=
-        child.child_name;
-
-
-      const remove=
-        document.createElement("button");
-
-      remove.className=
-        "remove";
-
-      remove.textContent=
-        "Remove";
-
-
-      remove.onclick=
-      async function(){
-
-        await supabase(
-          "/rest/v1/suncream_lists?id=eq."+
-          child.id,
-          {
-            method:"DELETE"
-          }
-        );
-
-        loadLists();
-
-      };
-
-
-      top.append(
-        tick,
-        name,
-        remove
+      await db(
+        "/rest/v1/acorn_entries?id=eq."+e.id,
+        {
+          method:"PATCH",
+          body:JSON.stringify({
+            suncream_done:
+              !e.suncream_done
+          })
+        }
       );
 
-      item.appendChild(top);
+      loadEntries();
+
+    };
 
 
-      if(child.product){
+    const name=
+      document.createElement("div");
 
-        const detail=
-          document.createElement("div");
+    name.className="child-name";
 
-        detail.style.marginTop=
-          "7px";
-
-        detail.style.marginLeft=
-          "43px";
-
-        detail.textContent=
-          "Suncream: "+
-          child.product;
-
-        item.appendChild(detail);
-
-      }
+    name.textContent=
+      e.child_name;
 
 
-      box.appendChild(item);
+    const edit=
+      document.createElement("button");
 
-    }
-  );
+    edit.className=
+      "small-btn edit-btn";
+
+    edit.textContent="✏️ Edit";
+
+    edit.onclick=()=>{
+
+      $("sunChild").value=
+        e.child_name;
+
+      $("sunProduct").value=
+        e.suncream_product;
+
+      $("sunChild").focus();
+
+    };
+
+
+    top.append(
+      tick,
+      name,
+      edit
+    );
+
+
+    item.appendChild(top);
+
+
+    const details=
+      document.createElement("div");
+
+    details.className="details";
+
+    details.innerHTML=
+      "<strong>Product:</strong> "+
+      escapeHtml(
+        e.suncream_product
+      );
+
+    item.appendChild(details);
+
+
+    box.appendChild(item);
+
+  });
+
+}
+
+
+/* NAVIGATION */
+
+$("snackNav").onclick=()=>{
+
+  show("snackPage");
+  hide("groupPage");
+  hide("sunPage");
+
+  $("snackNav").classList.add("active");
+  $("groupNav").classList.remove("active");
+  $("sunNav").classList.remove("active");
+
+};
+
+
+$("groupNav").onclick=()=>{
+
+  hide("snackPage");
+  show("groupPage");
+  hide("sunPage");
+
+  $("snackNav").classList.remove("active");
+  $("groupNav").classList.add("active");
+  $("sunNav").classList.remove("active");
+
+  renderGroup();
+
+};
+
+
+$("sunNav").onclick=()=>{
+
+  hide("snackPage");
+  hide("groupPage");
+  show("sunPage");
+
+  $("snackNav").classList.remove("active");
+  $("groupNav").classList.remove("active");
+  $("sunNav").classList.add("active");
+
+  renderSun();
+
+};
+
+
+/* ESCAPE HTML */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
 }
 
 
@@ -2250,7 +2539,7 @@ function renderSun(){
 async function start(){
 
   $("date").value=
-    currentDate;
+    selectedDate;
 
   await loadAdults();
 
@@ -2268,8 +2557,7 @@ async function start(){
       currentAdult=
         JSON.parse(saved);
 
-      if(currentAdult &&
-         currentAdult.id){
+      if(currentAdult?.id){
 
         openApp();
 

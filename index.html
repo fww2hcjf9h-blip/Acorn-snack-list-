@@ -15,20 +15,16 @@ background:#f3f7f3;
 color:#202520;
 }
 
-button,input,select{
-font:inherit;
-}
+button,input,select{font:inherit}
 
 button{
 border:0;
 cursor:pointer;
 }
 
-.hidden{
-display:none!important;
-}
+.hidden{display:none!important}
 
-/* ================= LOGIN ================= */
+/* LOGIN */
 
 .login-screen{
 position:fixed;
@@ -94,6 +90,7 @@ flex-direction:column;
 align-items:center;
 justify-content:center;
 border:3px solid #397249;
+touch-action:pan-y;
 }
 
 .selected-profile-photo{
@@ -214,7 +211,7 @@ font-weight:400;
 box-shadow:0 5px 18px rgba(0,0,0,.22);
 }
 
-/* ================= APP ================= */
+/* APP */
 
 .app{
 min-height:100vh;
@@ -498,8 +495,6 @@ padding:20px;
 color:#69736b;
 }
 
-/* GROUPED */
-
 .grouped-section{
 border:1px solid #dce3dc;
 border-radius:14px;
@@ -576,7 +571,7 @@ height:100%;
 object-fit:cover;
 }
 
-/* MODAL */
+/* MODALS */
 
 .modal{
 position:fixed;
@@ -676,8 +671,7 @@ flex-wrap:wrap;
 
 <body>
 
-
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 
 <div id="loginScreen" class="login-screen">
 
@@ -695,9 +689,7 @@ Who's logging in?
 
 <div id="profileCarousel" class="profile-carousel">
 
-<button id="previousAdult" class="carousel-arrow" type="button">
-‹
-</button>
+<button id="previousAdult" class="carousel-arrow" type="button">‹</button>
 
 <div id="selectedProfile" class="selected-profile">
 
@@ -711,22 +703,15 @@ Adult
 
 </div>
 
-<button id="nextAdult" class="carousel-arrow" type="button">
-›
-</button>
+<button id="nextAdult" class="carousel-arrow" type="button">›</button>
 
 </div>
 
 <div id="profileDots" class="profile-dots"></div>
 
 <div id="noAdults" class="no-adults hidden">
-
-No adult accounts yet.
-
-<br><br>
-
+No adult accounts yet.<br><br>
 Tap the <b>+</b> button to create the first adult account.
-
 </div>
 
 <div id="codeArea">
@@ -748,9 +733,7 @@ autocomplete="off">
 id="loginButton"
 class="primary login-button"
 type="button">
-
 Log in
-
 </button>
 
 </div>
@@ -761,75 +744,50 @@ Log in
 id="loginAddButton"
 class="login-add"
 type="button">
-
 +
-
 </button>
 
 </div>
 
 
-<!-- ================= APP ================= -->
+<!-- APP -->
 
 <div id="app" class="hidden">
 
 <header class="topbar">
 
-<div class="topbar-title">
-🌳 Acorn
-</div>
+<div class="topbar-title">🌳 Acorn</div>
 
 <div class="topbar-user">
 
-<div id="miniAvatar" class="mini-avatar">
-👤
-</div>
+<div id="miniAvatar" class="mini-avatar">👤</div>
 
 <button
 id="profileButton"
 class="profile-button"
 type="button">
-
 Profile
-
 </button>
 
 </div>
 
 </header>
 
-
 <nav class="navigation">
 
-<button
-id="snackNav"
-class="nav-button active"
-type="button">
-
+<button id="snackNav" class="nav-button active" type="button">
 🍎 Snacks
-
 </button>
 
-<button
-id="groupedNav"
-class="nav-button"
-type="button">
-
+<button id="groupedNav" class="nav-button" type="button">
 📋 Grouped
-
 </button>
 
-<button
-id="suncreamNav"
-class="nav-button"
-type="button">
-
+<button id="suncreamNav" class="nav-button" type="button">
 ☀️ Suncream
-
 </button>
 
 </nav>
-
 
 <main class="main">
 
@@ -839,13 +797,9 @@ type="button">
 
 <div class="field">
 
-<label>
-Date
-</label>
+<label>Date</label>
 
-<input
-id="date"
-type="date">
+<input id="date" type="date">
 
 </div>
 
@@ -855,9 +809,7 @@ type="date">
 id="newDayButton"
 class="secondary"
 type="button">
-
 Create new day
-
 </button>
 
 </div>
@@ -879,18 +831,14 @@ Create new day
 id="amButton"
 class="snack-tab active"
 type="button">
-
 AM Snack
-
 </button>
 
 <button
 id="pmButton"
 class="snack-tab"
 type="button">
-
 PM Snack
-
 </button>
 
 </div>
@@ -899,9 +847,7 @@ PM Snack
 
 <div class="field">
 
-<label>
-Child's name
-</label>
+<label>Child's name</label>
 
 <input
 id="snackName"
@@ -912,23 +858,13 @@ autocomplete="off">
 
 <div class="field">
 
-<label>
-Allergy / preference
-</label>
+<label>Allergy / preference</label>
 
 <select id="snackStatus">
 
-<option value="none">
-No allergy / preference
-</option>
-
-<option value="green">
-Green - Preference
-</option>
-
-<option value="red">
-Red - Allergy
-</option>
+<option value="none">No allergy / preference</option>
+<option value="green">Green - Preference</option>
+<option value="red">Red - Allergy</option>
 
 </select>
 
@@ -936,9 +872,7 @@ Red - Allergy
 
 <div class="field">
 
-<label>
-Alternative milk
-</label>
+<label>Alternative milk</label>
 
 <input
 id="snackMilk"
@@ -953,19 +887,14 @@ id="addSnackButton"
 class="primary"
 style="margin-top:10px"
 type="button">
-
 Add child
-
 </button>
 
 </section>
 
-
 <section class="card">
 
-<h2 id="snackTitle">
-AM Snack
-</h2>
+<h2 id="snackTitle">AM Snack</h2>
 
 <div id="snackChildren"></div>
 
@@ -980,9 +909,7 @@ AM Snack
 
 <section class="card">
 
-<h2>
-📋 Grouped Snacks
-</h2>
+<h2>📋 Grouped Snacks</h2>
 
 <div class="snack-tabs">
 
@@ -990,18 +917,14 @@ AM Snack
 id="groupedAmButton"
 class="snack-tab active"
 type="button">
-
 AM Snack
-
 </button>
 
 <button
 id="groupedPmButton"
 class="snack-tab"
 type="button">
-
 PM Snack
-
 </button>
 
 </div>
@@ -1019,17 +942,13 @@ PM Snack
 
 <section class="card">
 
-<h2>
-☀️ Suncream List
-</h2>
+<h2>☀️ Suncream List</h2>
 
 <div class="row">
 
 <div class="field">
 
-<label>
-Child's name
-</label>
+<label>Child's name</label>
 
 <input
 id="suncreamName"
@@ -1039,9 +958,7 @@ placeholder="Child's name">
 
 <div class="field">
 
-<label>
-Suncream
-</label>
+<label>Suncream</label>
 
 <input
 id="suncreamProduct"
@@ -1056,9 +973,7 @@ id="addSuncreamButton"
 class="primary"
 style="margin-top:10px"
 type="button">
-
 Add child
-
 </button>
 
 </section>
@@ -1074,9 +989,7 @@ Add child
 
 <section class="card">
 
-<h2>
-Saved Days
-</h2>
+<h2>Saved Days</h2>
 
 <div id="savedDays"></div>
 
@@ -1093,18 +1006,16 @@ Saved Days
 
 <div class="profile-header">
 
-<div id="menuAvatar" class="profile-avatar">
-👤
-</div>
+<div id="menuAvatar" class="profile-avatar">👤</div>
 
 <div>
-<strong id="menuName">
-Adult
-</strong>
+
+<strong id="menuName">Adult</strong>
 
 <div style="font-size:12px;color:#69736b">
 Adult account
 </div>
+
 </div>
 
 </div>
@@ -1113,41 +1024,33 @@ Adult account
 id="editProfileButton"
 class="secondary"
 type="button">
-
 ✏️ Edit profile
-
 </button>
 
 <button
 id="addAdultButton"
 class="secondary"
 type="button">
-
 ➕ Add another adult
-
 </button>
 
 <button
 id="logoutButton"
 class="danger"
 type="button">
-
 🚪 Log out
-
 </button>
 
 </div>
 
 
-<!-- PROFILE MODAL -->
+<!-- EDIT PROFILE -->
 
 <div id="profileModal" class="modal hidden">
 
 <div class="modal-box">
 
-<h2>
-Edit profile
-</h2>
+<h2>Edit profile</h2>
 
 <div id="profilePhotoPreview" class="photo-preview">
 👤
@@ -1166,9 +1069,7 @@ accept="image/*">
 
 <div class="field" style="margin-top:15px">
 
-<label>
-Your name
-</label>
+<label>Your name</label>
 
 <input
 id="profileName"
@@ -1187,9 +1088,7 @@ id="saveProfile"
 class="primary"
 style="width:100%;margin-top:12px"
 type="button">
-
 Save changes
-
 </button>
 
 <button
@@ -1197,9 +1096,7 @@ id="closeProfile"
 class="secondary"
 style="width:100%;margin-top:7px"
 type="button">
-
 Close
-
 </button>
 
 </div>
@@ -1207,17 +1104,17 @@ Close
 </div>
 
 
-<!-- ADD ADULT MODAL -->
+<!-- ADD ADULT -->
 
 <div id="addAdultModal" class="modal hidden">
 
 <div class="modal-box">
 
-<h2>
-➕ Add adult
-</h2>
+<h2>➕ Add adult</h2>
 
-<div class="photo-preview" id="newPhotoPreview">
+<div
+class="photo-preview"
+id="newPhotoPreview">
 👤
 </div>
 
@@ -1234,9 +1131,7 @@ accept="image/*">
 
 <div class="field" style="margin-top:15px">
 
-<label>
-Adult name
-</label>
+<label>Adult name</label>
 
 <input
 id="newAdultName"
@@ -1247,9 +1142,7 @@ autocomplete="off">
 
 <div class="field">
 
-<label>
-4-digit code
-</label>
+<label>4-digit code</label>
 
 <input
 id="newAdultCode"
@@ -1263,9 +1156,7 @@ autocomplete="off">
 
 <div class="field">
 
-<label>
-Confirm code
-</label>
+<label>Confirm code</label>
 
 <input
 id="newAdultConfirm"
@@ -1287,9 +1178,7 @@ id="createAdult"
 class="primary"
 style="width:100%;margin-top:10px"
 type="button">
-
 Create adult
-
 </button>
 
 <button
@@ -1297,9 +1186,7 @@ id="closeAddAdult"
 class="secondary"
 style="width:100%;margin-top:7px"
 type="button">
-
 Cancel
-
 </button>
 
 </div>
@@ -1315,15 +1202,13 @@ createClient
 "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
-/* ================= SUPABASE ================= */
-
 const supabase=createClient(
 "https://zzyyetnklrwzdzoraqqz.supabase.co",
 "sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0"
 );
 
 
-/* ================= STATE ================= */
+const $=id=>document.getElementById(id);
 
 let adults=[];
 let selectedAdultIndex=0;
@@ -1338,17 +1223,13 @@ let openNoteIndex=null;
 let data={};
 
 
-/* ================= HELPERS ================= */
-
-const $=id=>document.getElementById(id);
-
+/* HELPERS */
 
 function today(){
 
 const d=new Date();
 
-const local=
-new Date(
+const local=new Date(
 d.getTime()-
 d.getTimezoneOffset()*60000
 );
@@ -1389,12 +1270,11 @@ year:"numeric"
 }
 
 
-/* ================= PHOTO ================= */
+/* PHOTO */
 
 function compressPhoto(file){
 
-return new Promise(
-(resolve,reject)=>{
+return new Promise((resolve,reject)=>{
 
 const reader=new FileReader();
 
@@ -1412,35 +1292,25 @@ let height=image.height;
 if(width>height){
 
 if(width>max){
-
-height=
-height*(max/width);
-
+height=height*(max/width);
 width=max;
-
 }
 
 }else{
 
 if(height>max){
-
-width=
-width*(max/height);
-
+width=width*(max/height);
 height=max;
-
 }
 
 }
 
-const canvas=
-document.createElement("canvas");
+const canvas=document.createElement("canvas");
 
 canvas.width=width;
 canvas.height=height;
 
-const ctx=
-canvas.getContext("2d");
+const ctx=canvas.getContext("2d");
 
 ctx.drawImage(
 image,
@@ -1453,7 +1323,7 @@ height
 resolve(
 canvas.toDataURL(
 "image/jpeg",
-0.75
+0.72
 )
 );
 
@@ -1469,8 +1339,6 @@ reader.onerror=reject;
 
 reader.readAsDataURL(file);
 
-});
-
 }
 
 
@@ -1480,8 +1348,7 @@ element.innerHTML="";
 
 if(url){
 
-const img=
-document.createElement("img");
+const img=document.createElement("img");
 
 img.src=url;
 
@@ -1500,12 +1367,26 @@ element.textContent="👤";
 }
 
 
-/* ================= ADULTS ================= */
+/* LOGIN MESSAGE */
+
+function showLoginMessage(text,success=false){
+
+const box=$("loginMessage");
+
+box.textContent=text;
+
+box.className=
+"login-message "+
+(success?"success":"error");
+
+}
+
+
+/* LOAD ADULTS */
 
 async function loadAdults(){
 
-const result=
-await supabase
+const result=await supabase
 .from("adults")
 .select("id,name,photo_url")
 .order("name");
@@ -1536,74 +1417,46 @@ renderAdultCarousel();
 }
 
 
+/* CAROUSEL */
+
 function renderAdultCarousel(){
-
-const noAdults=
-$("noAdults");
-
-const area=
-$("codeArea");
 
 if(!adults.length){
 
-noAdults.classList.remove("hidden");
-
-area.classList.add("hidden");
-
-$("profileCarousel")
-.classList.add("hidden");
-
-$("profileDots")
-.classList.add("hidden");
+$("profileCarousel").classList.add("hidden");
+$("profileDots").classList.add("hidden");
+$("codeArea").classList.add("hidden");
+$("noAdults").classList.remove("hidden");
 
 return;
 
 }
 
-noAdults.classList.add("hidden");
+$("profileCarousel").classList.remove("hidden");
+$("profileDots").classList.remove("hidden");
+$("codeArea").classList.remove("hidden");
+$("noAdults").classList.add("hidden");
 
-area.classList.remove("hidden");
+const adult=adults[selectedAdultIndex];
 
-$("profileCarousel")
-.classList.remove("hidden");
-
-$("profileDots")
-.classList.remove("hidden");
-
-
-const adult=
-adults[selectedAdultIndex];
-
-
-$("selectedProfileName")
-.textContent=
-adult.name;
-
+$("selectedProfileName").textContent=adult.name;
 
 setImage(
 $("selectedProfilePhoto"),
 adult.photo_url
 );
 
-
-const dots=
-$("profileDots");
+const dots=$("profileDots");
 
 dots.innerHTML="";
 
+adults.forEach((adult,index)=>{
 
-adults.forEach(
-function(_,index){
-
-const dot=
-document.createElement("div");
+const dot=document.createElement("div");
 
 dot.className=
 "profile-dot"+
-(
-index===selectedAdultIndex
-?" active":""
-);
+(index===selectedAdultIndex?" active":"");
 
 dots.appendChild(dot);
 
@@ -1617,9 +1470,8 @@ $("previousAdult").onclick=()=>{
 if(!adults.length)return;
 
 selectedAdultIndex=
-(
-selectedAdultIndex-1+adults.length
-)%adults.length;
+(selectedAdultIndex-1+adults.length)
+%adults.length;
 
 renderAdultCarousel();
 
@@ -1633,9 +1485,8 @@ $("nextAdult").onclick=()=>{
 if(!adults.length)return;
 
 selectedAdultIndex=
-(
-selectedAdultIndex+1
-)%adults.length;
+(selectedAdultIndex+1)
+%adults.length;
 
 renderAdultCarousel();
 
@@ -1644,10 +1495,9 @@ $("loginCode").focus();
 };
 
 
-/* TOUCH SWIPE */
+/* SWIPE */
 
 let touchStartX=0;
-
 
 $("selectedProfile").addEventListener(
 "touchstart",
@@ -1657,25 +1507,19 @@ touchStartX=e.changedTouches[0].screenX;
 {passive:true}
 );
 
-
 $("selectedProfile").addEventListener(
 "touchend",
 e=>{
 
 const difference=
-e.changedTouches[0].screenX-
-touchStartX;
+e.changedTouches[0].screenX-touchStartX;
 
 if(Math.abs(difference)<40)return;
 
 if(difference<0){
-
 $("nextAdult").click();
-
 }else{
-
 $("previousAdult").click();
-
 }
 
 },
@@ -1683,26 +1527,9 @@ $("previousAdult").click();
 );
 
 
-/* ================= LOGIN ================= */
-
-function showLoginMessage(text,success=false){
-
-const box=
-$("loginMessage");
-
-box.textContent=text;
-
-box.classList.remove("hidden");
-
-box.classList.toggle("success",success);
-
-box.classList.toggle("error",!success);
-
-}
-
+/* LOGIN */
 
 $("loginButton").onclick=login;
-
 
 async function login(){
 
@@ -1716,13 +1543,9 @@ return;
 
 }
 
-const adult=
-adults[selectedAdultIndex];
+const adult=adults[selectedAdultIndex];
 
-const code=
-$("loginCode")
-.value.trim();
-
+const code=$("loginCode").value.trim();
 
 if(!/^\d{4}$/.test(code)){
 
@@ -1734,16 +1557,13 @@ return;
 
 }
 
-
-const result=
-await supabase.rpc(
+const result=await supabase.rpc(
 "login_adult",
 {
 p_name:adult.name,
 p_code:code
 }
 );
-
 
 if(result.error){
 
@@ -1759,8 +1579,10 @@ return;
 
 }
 
-
-currentAdult=result.data;
+currentAdult={
+...adult,
+...result.data
+};
 
 localStorage.setItem(
 "acornAdult",
@@ -1774,49 +1596,9 @@ showApp();
 }
 
 
-/* ================= ADD ADULT ================= */
+/* PHOTO FOR NEW ADULT */
 
-function openAddAdult(){
-
-$("addAdultModal")
-.classList.remove("hidden");
-
-$("newAdultName").value="";
-$("newAdultCode").value="";
-$("newAdultConfirm").value="";
-
-$("newPhotoPreview")
-.textContent="👤";
-
-$("addAdultMessage")
-.classList.add("hidden");
-
-}
-
-
-$("loginAddButton").onclick=
-openAddAdult;
-
-$("addAdultButton").onclick=()=>{
-
-$("profileMenu")
-.classList.add("hidden");
-
-openAddAdult();
-
-};
-
-
-$("closeAddAdult").onclick=()=>{
-
-$("addAdultModal")
-.classList.add("hidden");
-
-};
-
-
-$("newPhotoFile").onchange=
-async function(){
+$("newPhotoFile").onchange=async function(){
 
 const file=this.files[0];
 
@@ -1824,18 +1606,16 @@ if(!file)return;
 
 try{
 
-const photo=
-await compressPhoto(file);
+const photo=await compressPhoto(file);
 
 setImage(
 $("newPhotoPreview"),
 photo
 );
 
-$("newPhotoPreview").dataset.photo=
-photo;
+$("newPhotoPreview").dataset.photo=photo;
 
-}catch{
+}catch(error){
 
 alert("Could not use that photo.");
 
@@ -1844,66 +1624,89 @@ alert("Could not use that photo.");
 };
 
 
-$("createAdult").onclick=
-async function(){
+/* ADD ADULT */
 
-const name=
-$("newAdultName")
-.value.trim();
+function openAddAdult(){
 
-const code=
-$("newAdultCode")
-.value.trim();
+$("addAdultModal").classList.remove("hidden");
 
-const confirm=
-$("newAdultConfirm")
-.value.trim();
+$("newAdultName").value="";
+$("newAdultCode").value="";
+$("newAdultConfirm").value="";
 
-const message=
-$("addAdultMessage");
+$("newPhotoPreview").dataset.photo="";
 
+setImage(
+$("newPhotoPreview"),
+""
+);
+
+$("addAdultMessage").className=
+"login-message hidden";
+
+}
+
+
+$("loginAddButton").onclick=openAddAdult;
+
+
+$("addAdultButton").onclick=()=>{
+
+$("profileMenu").classList.add("hidden");
+
+openAddAdult();
+
+};
+
+
+$("closeAddAdult").onclick=()=>{
+
+$("addAdultModal").classList.add("hidden");
+
+};
+
+
+$("createAdult").onclick=async function(){
+
+const name=$("newAdultName").value.trim();
+
+const code=$("newAdultCode").value.trim();
+
+const confirm=$("newAdultConfirm").value.trim();
+
+const message=$("addAdultMessage");
 
 if(name.length<2){
 
-message.textContent=
-"Please enter the adult's name.";
+message.textContent="Please enter the adult's name.";
 
-message.className=
-"login-message error";
+message.className="login-message error";
 
 return;
 
 }
-
 
 if(!/^\d{4}$/.test(code)){
 
-message.textContent=
-"The code must be 4 numbers.";
+message.textContent="The code must be 4 numbers.";
 
-message.className=
-"login-message error";
+message.className="login-message error";
 
 return;
 
 }
-
 
 if(code!==confirm){
 
-message.textContent=
-"The codes do not match.";
+message.textContent="The codes do not match.";
 
-message.className=
-"login-message error";
+message.className="login-message error";
 
 return;
 
 }
 
-
-const result=
-await supabase.rpc(
+const result=await supabase.rpc(
 "create_adult",
 {
 p_name:name,
@@ -1911,31 +1714,24 @@ p_code:code
 }
 );
 
-
 if(result.error){
 
-message.textContent=
-result.error.message;
+message.textContent=result.error.message;
 
-message.className=
-"login-message error";
+message.className="login-message error";
 
 return;
 
 }
 
-
-const adultId=
-result.data.id;
+const adultId=result.data.id;
 
 const photo=
-$("newPhotoPreview")
-.dataset.photo||"";
-
+$("newPhotoPreview").dataset.photo||"";
 
 if(photo){
 
-const update=
+const photoResult=
 await supabase
 .from("adults")
 .update({
@@ -1943,30 +1739,27 @@ photo_url:photo
 })
 .eq("id",adultId);
 
-
-if(update.error){
-
-console.error(update.error);
-
-}
-
-}
-
+if(photoResult.error){
 
 message.textContent=
-"Adult created successfully!";
+"Account created, but the photo could not be saved.";
 
-message.className=
-"login-message success";
+message.className="login-message error";
 
+return;
+
+}
+
+}
+
+message.textContent="Adult created successfully!";
+
+message.className="login-message success";
 
 await loadAdults();
 
-
 const newIndex=
-adults.findIndex(
-a=>a.id===adultId
-);
+adults.findIndex(a=>a.id===adultId);
 
 if(newIndex>=0){
 
@@ -1976,47 +1769,207 @@ renderAdultCarousel();
 
 }
 
-
-setTimeout(
-()=>{
+setTimeout(()=>{
 
 $("addAdultModal")
 .classList.add("hidden");
 
-},
-500
-);
+},700);
 
 };
 
 
-/* ================= APP LOGIN ================= */
+/* PROFILE MENU */
 
-function showApp(){
+$("profileButton").onclick=()=>{
 
-$("loginScreen")
+$("profileMenu")
+.classList.toggle("hidden");
+
+};
+
+
+$("editProfileButton").onclick=async()=>{
+
+$("profileMenu")
 .classList.add("hidden");
 
-$("app")
+const result=await supabase
+.from("adults")
+.select("*")
+.eq("id",currentAdult.id)
+.single();
+
+if(result.error){
+
+alert(result.error.message);
+
+return;
+
+}
+
+$("profileName").value=result.data.name||"";
+
+$("profilePhotoPreview").dataset.photo=
+result.data.photo_url||"";
+
+setImage(
+$("profilePhotoPreview"),
+result.data.photo_url
+);
+
+$("profileSaveMessage")
+.className=
+"login-message hidden";
+
+$("profileModal")
 .classList.remove("hidden");
 
-currentDate=today();
+};
 
-updateProfileDisplay();
 
-loadData().then(render);
+/* PROFILE PHOTO */
+
+$("profilePhotoFile").onchange=async function(){
+
+const file=this.files[0];
+
+if(!file)return;
+
+try{
+
+const photo=await compressPhoto(file);
+
+setImage(
+$("profilePhotoPreview"),
+photo
+);
+
+$("profilePhotoPreview").dataset.photo=photo;
+
+}catch(error){
+
+alert("Could not use that photo.");
+
+}
+
+};
+
+
+/* SAVE PROFILE - FIXED */
+
+$("saveProfile").onclick=async function(){
+
+const name=$("profileName").value.trim();
+
+const photo=
+$("profilePhotoPreview").dataset.photo||"";
+
+const message=$("profileSaveMessage");
+
+if(!name){
+
+message.textContent="Please enter your name.";
+
+message.className="login-message error";
+
+return;
+
+}
+
+message.textContent="Saving...";
+
+message.className="login-message success";
+
+
+const result=await supabase
+.from("adults")
+.update({
+name:name,
+photo_url:photo
+})
+.eq("id",currentAdult.id);
+
+
+if(result.error){
+
+console.error(result.error);
+
+message.textContent=
+"Couldn't save: "+
+result.error.message;
+
+message.className="login-message error";
+
+return;
 
 }
 
 
-/* ================= PROFILE ================= */
+/* UPDATE CURRENT ADULT */
+
+currentAdult.name=name;
+
+currentAdult.photo_url=photo;
+
+localStorage.setItem(
+"acornAdult",
+JSON.stringify(currentAdult)
+);
+
+
+/* REFRESH PROFILES */
+
+await loadAdults();
+
+const newIndex=
+adults.findIndex(
+a=>a.id===currentAdult.id
+);
+
+if(newIndex>=0){
+
+selectedAdultIndex=newIndex;
+
+}
+
+
+/* UPDATE APP */
+
+updateProfileDisplay();
+
+renderAdultCarousel();
+
+message.textContent="Profile saved!";
+
+message.className="login-message success";
+
+
+setTimeout(()=>{
+
+$("profileModal")
+.classList.add("hidden");
+
+},700);
+
+};
+
+
+$("closeProfile").onclick=()=>{
+
+$("profileModal")
+.classList.add("hidden");
+
+};
+
+
+/* PROFILE DISPLAY */
 
 function updateProfileDisplay(){
 
 if(!currentAdult)return;
 
-$("menuName")
-.textContent=
+$("menuName").textContent=
 currentAdult.name;
 
 setImage(
@@ -2032,159 +1985,11 @@ currentAdult.photo_url
 }
 
 
-$("profileButton").onclick=()=>{
-
-$("profileMenu")
-.classList.toggle("hidden");
-
-};
-
-
-$("editProfileButton").onclick=()=>{
-
-$("profileMenu")
-.classList.add("hidden");
-
-$("profileName").value=
-currentAdult.name||"";
-
-$("profilePhotoFile").value="";
-
-$("profileSaveMessage")
-.classList.add("hidden");
-
-setImage(
-$("profilePhotoPreview"),
-currentAdult.photo_url
-);
-
-$("profilePhotoPreview")
-.dataset.photo=
-currentAdult.photo_url||"";
-
-$("profileModal")
-.classList.remove("hidden");
-
-};
-
-
-$("closeProfile").onclick=()=>{
-
-$("profileModal")
-.classList.add("hidden");
-
-};
-
-
-$("profilePhotoFile").onchange=
-async function(){
-
-const file=this.files[0];
-
-if(!file)return;
-
-try{
-
-const photo=
-await compressPhoto(file);
-
-setImage(
-$("profilePhotoPreview"),
-photo
-);
-
-$("profilePhotoPreview")
-.dataset.photo=photo;
-
-}catch{
-
-alert("Could not use that photo.");
-
-}
-
-};
-
-
-$("saveProfile").onclick=
-async function(){
-
-const name=
-$("profileName")
-.value.trim();
-
-const photo=
-$("profilePhotoPreview")
-.dataset.photo||"";
-
-
-if(!name){
-
-$("profileSaveMessage")
-.textContent=
-"Please enter your name.";
-
-$("profileSaveMessage")
-.className=
-"login-message error";
-
-return;
-
-}
-
-
-const result=
-await supabase.rpc(
-"update_adult",
-{
-p_id:currentAdult.id,
-p_name:name,
-p_photo_url:photo
-}
-);
-
-
-if(result.error){
-
-$("profileSaveMessage")
-.textContent=
-result.error.message;
-
-$("profileSaveMessage")
-.className=
-"login-message error";
-
-return;
-
-}
-
-
-currentAdult.name=name;
-currentAdult.photo_url=photo;
-
-
-localStorage.setItem(
-"acornAdult",
-JSON.stringify(currentAdult)
-);
-
-
-await loadAdults();
-
-updateProfileDisplay();
-
-$("profileModal")
-.classList.add("hidden");
-
-};
-
-
-/* ================= LOGOUT ================= */
+/* LOGOUT */
 
 $("logoutButton").onclick=()=>{
 
-localStorage.removeItem(
-"acornAdult"
-);
+localStorage.removeItem("acornAdult");
 
 currentAdult=null;
 
@@ -2204,28 +2009,44 @@ loadAdults();
 };
 
 
-/* ================= DATA ================= */
+/* SHOW APP */
+
+async function showApp(){
+
+$("loginScreen")
+.classList.add("hidden");
+
+$("app")
+.classList.remove("hidden");
+
+currentDate=today();
+
+updateProfileDisplay();
+
+await loadData();
+
+render();
+
+}
+
+
+/* DATA */
 
 async function loadData(){
 
 data={};
 
-
-const snacks=
-await supabase
+const snacks=await supabase
 .from("snack_lists")
 .select("*")
 .order("list_date",{ascending:false})
 .order("id");
 
-
-const suncream=
-await supabase
+const suncream=await supabase
 .from("suncream_lists")
 .select("*")
 .order("list_date",{ascending:false})
 .order("id");
-
 
 if(snacks.error){
 
@@ -2235,7 +2056,6 @@ return;
 
 }
 
-
 if(suncream.error){
 
 alert(suncream.error.message);
@@ -2244,9 +2064,7 @@ return;
 
 }
 
-
-(snacks.data||[]).forEach(
-item=>{
+(snacks.data||[]).forEach(item=>{
 
 createDay(item.list_date);
 
@@ -2258,13 +2076,9 @@ item.snack_time==="am"
 data[item.list_date][key].push({
 
 id:item.id,
-
 name:item.child_name,
-
 status:item.allergy_status||"none",
-
 milk:item.alternative_milk||"",
-
 done:!!item.done,
 
 note:{
@@ -2277,20 +2091,15 @@ what:item.food||""
 });
 
 
-(suncream.data||[]).forEach(
-item=>{
+(suncream.data||[]).forEach(item=>{
 
 createDay(item.list_date);
 
-data[item.list_date]
-.suncream.push({
+data[item.list_date].suncream.push({
 
 id:item.id,
-
 name:item.child_name,
-
 product:item.product||"",
-
 done:!!item.done
 
 });
@@ -2300,7 +2109,7 @@ done:!!item.done
 }
 
 
-/* ================= NAVIGATION ================= */
+/* NAVIGATION */
 
 function showPage(page){
 
@@ -2340,7 +2149,6 @@ render();
 
 }
 
-
 $("snackNav").onclick=
 ()=>showPage("snacks");
 
@@ -2351,7 +2159,7 @@ $("suncreamNav").onclick=
 ()=>showPage("suncream");
 
 
-/* ================= SNACK TABS ================= */
+/* SNACK TABS */
 
 $("amButton").onclick=()=>{
 
@@ -2361,8 +2169,7 @@ $("amButton").classList.add("active");
 
 $("pmButton").classList.remove("active");
 
-$("snackTitle").textContent=
-"AM Snack";
+$("snackTitle").textContent="AM Snack";
 
 renderSnackList();
 
@@ -2377,8 +2184,7 @@ $("pmButton").classList.add("active");
 
 $("amButton").classList.remove("active");
 
-$("snackTitle").textContent=
-"PM Snack";
+$("snackTitle").textContent="PM Snack";
 
 renderSnackList();
 
@@ -2411,7 +2217,7 @@ renderGrouped();
 };
 
 
-/* ================= RENDER ================= */
+/* RENDER */
 
 function render(){
 
@@ -2419,23 +2225,16 @@ createDay(currentDate);
 
 $("date").value=currentDate;
 
-
 if(currentPage==="snacks"){
-
 renderSnackList();
-
 }
 
 if(currentPage==="grouped"){
-
 renderGrouped();
-
 }
 
 if(currentPage==="suncream"){
-
 renderSuncreamList();
-
 }
 
 renderSavedDays();
@@ -2443,12 +2242,11 @@ renderSavedDays();
 }
 
 
-/* ================= SNACK LIST ================= */
+/* SNACK LIST */
 
 function renderSnackList(){
 
-const container=
-$("snackChildren");
+const container=$("snackChildren");
 
 container.innerHTML="";
 
@@ -2459,9 +2257,7 @@ currentSnack==="am"
 ?"amSnack"
 :"pmSnack";
 
-const children=
-data[currentDate][key];
-
+const children=data[currentDate][key];
 
 if(!children.length){
 
@@ -2472,40 +2268,30 @@ return;
 
 }
 
+children.forEach((child,index)=>{
 
-children.forEach(
-(child,index)=>{
-
-const item=
-document.createElement("div");
+const item=document.createElement("div");
 
 item.className=
 "child"+(child.done?" done":"");
 
-
-const top=
-document.createElement("div");
+const top=document.createElement("div");
 
 top.className="child-top";
 
 
-const tick=
-document.createElement("button");
+const tick=document.createElement("button");
 
 tick.className="tick";
 
 tick.textContent=
 child.done?"✓":"";
 
-
 tick.onclick=async()=>{
 
-const result=
-await supabase
+const result=await supabase
 .from("snack_lists")
-.update({
-done:!child.done
-})
+.update({done:!child.done})
 .eq("id",child.id);
 
 if(result.error){
@@ -2523,46 +2309,39 @@ renderSnackList();
 };
 
 
-const name=
-document.createElement("div");
+const name=document.createElement("div");
 
 name.className="child-name";
 
 name.textContent=child.name;
 
 
-const badge=
-document.createElement("span");
+const badge=document.createElement("span");
 
 if(child.status==="red"){
 
 badge.className="badge red";
-
 badge.textContent="RED";
 
 }else if(child.status==="green"){
 
 badge.className="badge green";
-
 badge.textContent="GREEN";
 
 }else{
 
 badge.className="badge none";
-
 badge.textContent="NONE";
 
 }
 
 
-const note=
-document.createElement("button");
+const note=document.createElement("button");
 
 note.className=
 "note-button"+
 (
-child.note.amount||
-child.note.what
+child.note.amount||child.note.what
 ?" has-note":""
 );
 
@@ -2571,16 +2350,14 @@ note.textContent="📝";
 note.onclick=()=>{
 
 openNoteIndex=
-openNoteIndex===index
-?null:index;
+openNoteIndex===index?null:index;
 
 renderSnackList();
 
 };
 
 
-const remove=
-document.createElement("button");
+const remove=document.createElement("button");
 
 remove.className="danger small";
 
@@ -2588,12 +2365,9 @@ remove.textContent="Remove";
 
 remove.onclick=async()=>{
 
-if(!confirm(
-"Remove "+child.name+"?"
-))return;
+if(!confirm("Remove "+child.name+"?"))return;
 
-const result=
-await supabase
+const result=await supabase
 .from("snack_lists")
 .delete()
 .eq("id",child.id);
@@ -2626,8 +2400,7 @@ item.appendChild(top);
 
 if(child.milk){
 
-const milk=
-document.createElement("div");
+const milk=document.createElement("div");
 
 milk.className="detail";
 
@@ -2641,8 +2414,7 @@ item.appendChild(milk);
 
 if(child.note.amount||child.note.what){
 
-const eaten=
-document.createElement("div");
+const eaten=document.createElement("div");
 
 eaten.className="eaten-detail";
 
@@ -2676,24 +2448,20 @@ container.appendChild(item);
 }
 
 
-/* ================= NOTES ================= */
+/* NOTES */
 
 function createNoteBox(child){
 
-const box=
-document.createElement("div");
+const box=document.createElement("div");
 
 box.className="note-box";
 
-
-const label=
-document.createElement("label");
+const label=document.createElement("label");
 
 label.textContent=
 "How much did they have?";
 
 box.appendChild(label);
-
 
 const amounts=[
 "Little",
@@ -2702,26 +2470,17 @@ const amounts=[
 "All"
 ];
 
+const buttons=document.createElement("div");
 
-const buttons=
-document.createElement("div");
+buttons.className="amount-buttons";
 
-buttons.className=
-"amount-buttons";
+amounts.forEach(amount=>{
 
-
-amounts.forEach(
-amount=>{
-
-const b=
-document.createElement("button");
+const b=document.createElement("button");
 
 b.className=
 "amount-button"+
-(
-child.note.amount===amount
-?" selected":""
-);
+(child.note.amount===amount?" selected":"");
 
 b.textContent=amount;
 
@@ -2737,12 +2496,10 @@ buttons.appendChild(b);
 
 });
 
-
 box.appendChild(buttons);
 
 
-const foodLabel=
-document.createElement("label");
+const foodLabel=document.createElement("label");
 
 foodLabel.textContent=
 "What did they have?";
@@ -2750,11 +2507,9 @@ foodLabel.textContent=
 box.appendChild(foodLabel);
 
 
-const input=
-document.createElement("input");
+const input=document.createElement("input");
 
-input.value=
-child.note.what;
+input.value=child.note.what;
 
 input.placeholder=
 "e.g. banana, apple, yoghurt";
@@ -2762,14 +2517,12 @@ input.placeholder=
 box.appendChild(input);
 
 
-const row=
-document.createElement("div");
+const row=document.createElement("div");
 
 row.className="note-save";
 
 
-const save=
-document.createElement("button");
+const save=document.createElement("button");
 
 save.className="primary";
 
@@ -2777,16 +2530,14 @@ save.textContent="Save";
 
 save.onclick=async()=>{
 
-child.note.what=
-input.value.trim();
+child.note.what=input.value.trim();
 
 await saveNote(child);
 
 };
 
 
-const close=
-document.createElement("button");
+const close=document.createElement("button");
 
 close.className="secondary";
 
@@ -2812,8 +2563,7 @@ return box;
 
 async function saveNote(child){
 
-const result=
-await supabase
+const result=await supabase
 .from("snack_lists")
 .update({
 amount:child.note.amount||"",
@@ -2836,25 +2586,22 @@ renderSnackList();
 }
 
 
-/* ================= GROUPED ================= */
+/* GROUPED */
 
 function renderGrouped(){
 
-const container=
-$("groupedChildren");
+const container=$("groupedChildren");
 
 container.innerHTML="";
 
 createDay(currentDate);
 
-const children=
-data[currentDate]
+const children=data[currentDate]
 [
 groupedSnack==="am"
 ?"amSnack"
 :"pmSnack"
 ];
-
 
 const amounts=[
 "All",
@@ -2865,12 +2612,9 @@ const amounts=[
 
 let found=false;
 
+amounts.forEach(amount=>{
 
-amounts.forEach(
-amount=>{
-
-const matching=
-children.filter(
+const matching=children.filter(
 child=>
 child.note.amount===amount &&
 child.note.what.trim()
@@ -2880,36 +2624,24 @@ if(!matching.length)return;
 
 found=true;
 
+const section=document.createElement("div");
 
-const section=
-document.createElement("div");
+section.className="grouped-section";
 
-section.className=
-"grouped-section";
+const heading=document.createElement("div");
 
+heading.className="grouped-heading";
 
-const heading=
-document.createElement("div");
-
-heading.className=
-"grouped-heading";
-
-heading.textContent=
-amount.toUpperCase();
+heading.textContent=amount.toUpperCase();
 
 section.appendChild(heading);
 
-
 const groups={};
 
-
-matching.forEach(
-child=>{
+matching.forEach(child=>{
 
 const key=
-child.note.what
-.trim()
-.toLowerCase();
+child.note.what.trim().toLowerCase();
 
 if(!groups[key]){
 
@@ -2920,52 +2652,35 @@ children:[]
 
 }
 
-groups[key]
-.children
-.push(child.name);
+groups[key].children.push(child.name);
 
 });
 
 
-Object.values(groups).forEach(
-group=>{
+Object.values(groups).forEach(group=>{
 
-const snack=
-document.createElement("div");
+const snack=document.createElement("div");
 
-snack.className=
-"grouped-snack";
+snack.className="grouped-snack";
 
+const food=document.createElement("div");
 
-const food=
-document.createElement("div");
+food.className="grouped-food";
 
-food.className=
-"grouped-food";
+food.textContent="🍎 "+group.name;
 
-food.textContent=
-"🍎 "+group.name;
+const names=document.createElement("div");
 
-
-const names=
-document.createElement("div");
-
-names.className=
-"grouped-names";
+names.className="grouped-names";
 
 names.textContent=
 group.children.join(" • ");
 
-
-snack.append(
-food,
-names
-);
+snack.append(food,names);
 
 section.appendChild(snack);
 
 });
-
 
 container.appendChild(section);
 
@@ -2982,20 +2697,17 @@ container.innerHTML=
 }
 
 
-/* ================= SUNCREAM ================= */
+/* SUNCREAM */
 
 function renderSuncreamList(){
 
-const container=
-$("suncreamChildren");
+const container=$("suncreamChildren");
 
 container.innerHTML="";
 
 createDay(currentDate);
 
-const children=
-data[currentDate].suncream;
-
+const children=data[currentDate].suncream;
 
 if(!children.length){
 
@@ -3006,40 +2718,29 @@ return;
 
 }
 
+children.forEach(child=>{
 
-children.forEach(
-child=>{
-
-const item=
-document.createElement("div");
+const item=document.createElement("div");
 
 item.className=
 "child"+(child.done?" done":"");
 
-
-const top=
-document.createElement("div");
+const top=document.createElement("div");
 
 top.className="child-top";
 
-
-const tick=
-document.createElement("button");
+const tick=document.createElement("button");
 
 tick.className="tick";
 
 tick.textContent=
 child.done?"✓":"";
 
-
 tick.onclick=async()=>{
 
-const result=
-await supabase
+const result=await supabase
 .from("suncream_lists")
-.update({
-done:!child.done
-})
+.update({done:!child.done})
 .eq("id",child.id);
 
 if(result.error){
@@ -3057,16 +2758,14 @@ renderSuncreamList();
 };
 
 
-const name=
-document.createElement("div");
+const name=document.createElement("div");
 
 name.className="child-name";
 
 name.textContent=child.name;
 
 
-const remove=
-document.createElement("button");
+const remove=document.createElement("button");
 
 remove.className="danger small";
 
@@ -3074,12 +2773,9 @@ remove.textContent="Remove";
 
 remove.onclick=async()=>{
 
-if(!confirm(
-"Remove "+child.name+"?"
-))return;
+if(!confirm("Remove "+child.name+"?"))return;
 
-const result=
-await supabase
+const result=await supabase
 .from("suncream_lists")
 .delete()
 .eq("id",child.id);
@@ -3099,17 +2795,12 @@ render();
 };
 
 
-top.append(
-tick,
-name,
-remove
-);
+top.append(tick,name,remove);
 
 item.appendChild(top);
 
 
-const detail=
-document.createElement("div");
+const detail=document.createElement("div");
 
 detail.className="detail";
 
@@ -3127,18 +2818,18 @@ container.appendChild(item);
 }
 
 
-/* ================= SAVED DAYS ================= */
+/* SAVED DAYS */
 
 function renderSavedDays(){
 
-const container=
-$("savedDays");
+const container=$("savedDays");
 
 container.innerHTML="";
 
 const dates=
-Object.keys(data).sort().reverse();
-
+Object.keys(data)
+.sort()
+.reverse();
 
 if(!dates.length){
 
@@ -3149,25 +2840,17 @@ return;
 
 }
 
+dates.forEach(date=>{
 
-dates.forEach(
-date=>{
-
-const row=
-document.createElement("div");
+const row=document.createElement("div");
 
 row.className="saved-day";
 
+const title=document.createElement("strong");
 
-const title=
-document.createElement("strong");
+title.textContent=formatDate(date);
 
-title.textContent=
-formatDate(date);
-
-
-const open=
-document.createElement("button");
+const open=document.createElement("button");
 
 open.className="secondary small";
 
@@ -3183,11 +2866,7 @@ render();
 
 };
 
-
-row.append(
-title,
-open
-);
+row.append(title,open);
 
 container.appendChild(row);
 
@@ -3196,54 +2875,35 @@ container.appendChild(row);
 }
 
 
-/* ================= ADD SNACK ================= */
+/* ADD SNACK */
 
-$("addSnackButton").onclick=
-async function(){
+$("addSnackButton").onclick=async()=>{
 
-const name=
-$("snackName")
-.value.trim();
+const name=$("snackName").value.trim();
 
 if(!name){
 
-alert(
-"Please enter the child's name."
-);
+alert("Please enter the child's name.");
 
 return;
 
 }
 
-
-const result=
-await supabase
+const result=await supabase
 .from("snack_lists")
 .insert({
 
 user_id:currentAdult.id,
-
 list_date:currentDate,
-
 snack_time:currentSnack,
-
 child_name:name,
-
-allergy_status:
-$("snackStatus").value,
-
-alternative_milk:
-$("snackMilk")
-.value.trim(),
-
+allergy_status:$("snackStatus").value,
+alternative_milk:$("snackMilk").value.trim(),
 done:false,
-
 amount:"",
-
 food:""
 
 });
-
 
 if(result.error){
 
@@ -3253,11 +2913,8 @@ return;
 
 }
 
-
 $("snackName").value="";
-
 $("snackMilk").value="";
-
 $("snackStatus").value="none";
 
 await loadData();
@@ -3267,45 +2924,31 @@ renderSnackList();
 };
 
 
-/* ================= ADD SUNCREAM ================= */
+/* ADD SUNCREAM */
 
-$("addSuncreamButton").onclick=
-async function(){
+$("addSuncreamButton").onclick=async()=>{
 
-const name=
-$("suncreamName")
-.value.trim();
+const name=$("suncreamName").value.trim();
 
 if(!name){
 
-alert(
-"Please enter the child's name."
-);
+alert("Please enter the child's name.");
 
 return;
 
 }
 
-
-const result=
-await supabase
+const result=await supabase
 .from("suncream_lists")
 .insert({
 
 user_id:currentAdult.id,
-
 list_date:currentDate,
-
 child_name:name,
-
-product:
-$("suncreamProduct")
-.value.trim(),
-
+product:$("suncreamProduct").value.trim(),
 done:false
 
 });
-
 
 if(result.error){
 
@@ -3315,9 +2958,7 @@ return;
 
 }
 
-
 $("suncreamName").value="";
-
 $("suncreamProduct").value="";
 
 await loadData();
@@ -3327,35 +2968,29 @@ renderSuncreamList();
 };
 
 
-/* ================= NEW DAY ================= */
+/* NEW DAY */
 
 $("newDayButton").onclick=()=>{
 
-const value=
-prompt(
+const value=prompt(
 "Enter date as DD/MM/YYYY"
 );
 
 if(!value)return;
 
-const parts=
-value.split("/");
+const parts=value.split("/");
 
 if(parts.length!==3){
 
-alert(
-"Please use DD/MM/YYYY."
-);
+alert("Please use DD/MM/YYYY.");
 
 return;
 
 }
 
-const day=
-parts[0].padStart(2,"0");
+const day=parts[0].padStart(2,"0");
 
-const month=
-parts[1].padStart(2,"0");
+const month=parts[1].padStart(2,"0");
 
 const year=parts[2];
 
@@ -3369,10 +3004,9 @@ render();
 };
 
 
-/* ================= DATE ================= */
+/* DATE */
 
-$("date").onchange=
-async function(){
+$("date").onchange=async function(){
 
 currentDate=this.value;
 
@@ -3383,7 +3017,7 @@ render();
 };
 
 
-/* ================= ENTER ================= */
+/* ENTER LOGIN */
 
 $("loginCode").onkeydown=e=>{
 
@@ -3398,14 +3032,13 @@ login();
 };
 
 
-/* ================= START ================= */
+/* START */
+
+async function start(){
 
 currentDate=today();
 
-loadAdults();
-
-
-/* ================= AUTO LOGIN ================= */
+await loadAdults();
 
 const saved=
 localStorage.getItem("acornAdult");
@@ -3414,30 +3047,33 @@ if(saved){
 
 try{
 
-const savedAdult=
-JSON.parse(saved);
+const savedAdult=JSON.parse(saved);
 
 const found=
-adults.findIndex(
-a=>a.id===savedAdult.id
-);
+adults.find(a=>a.id===savedAdult.id);
 
-if(found>=0){
-
-selectedAdultIndex=found;
+if(found){
 
 currentAdult={
-...savedAdult,
-...adults[found]
+...found,
+...savedAdult
 };
 
 showApp();
 
 }
 
-}catch{}
+}catch(error){
+
+localStorage.removeItem("acornAdult");
 
 }
+
+}
+
+}
+
+start();
 
 </script>
 

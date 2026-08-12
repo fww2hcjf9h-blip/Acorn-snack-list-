@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,15 +25,19 @@ font-weight:bold;
 cursor:pointer;
 }
 
+button:active{
+transform:scale(.98);
+}
+
 .hidden{
 display:none!important;
 }
 
 /* =========================
-   LOGIN
+LOGIN
 ========================= */
 
-#loginPage{
+.login-screen{
 min-height:100vh;
 background:#f4f7f4;
 display:flex;
@@ -45,21 +48,25 @@ padding:20px;
 
 .login-box{
 width:100%;
-max-width:500px;
+max-width:520px;
+background:white;
+border-radius:22px;
+padding:25px;
+box-shadow:0 4px 25px rgba(0,0,0,.08);
 }
 
 .login-logo{
 text-align:center;
-font-size:34px;
+font-size:32px;
 font-weight:bold;
 color:#2f6f45;
-margin-bottom:8px;
+margin-bottom:5px;
 }
 
 .login-subtitle{
 text-align:center;
 color:#687068;
-margin-bottom:20px;
+margin-bottom:22px;
 }
 
 .profile-scroll{
@@ -70,100 +77,113 @@ padding:5px 2px 15px;
 }
 
 .profile-card{
-background:white;
+min-width:125px;
+background:#f4f7f4;
 border:2px solid #dce2dc;
 border-radius:15px;
-min-width:115px;
-padding:13px 10px;
+padding:13px 8px;
 text-align:center;
 cursor:pointer;
-box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
 .profile-card:hover{
 border-color:#2f6f45;
 }
 
+.profile-card.selected{
+border-color:#2f6f45;
+background:#eaf3ec;
+}
+
 .profile-photo{
-width:65px;
-height:65px;
+width:70px;
+height:70px;
 border-radius:50%;
 object-fit:cover;
-background:#dcefe0;
+background:#dce8de;
 display:block;
 margin:0 auto 8px;
 }
 
-.profile-initial{
-width:65px;
-height:65px;
+.profile-placeholder{
+width:70px;
+height:70px;
 border-radius:50%;
-background:#dcefe0;
-color:#2f6f45;
+background:#dce8de;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:25px;
-font-weight:bold;
+font-size:30px;
 margin:0 auto 8px;
 }
 
 .profile-name{
 font-weight:bold;
-font-size:14px;
+color:#294e34;
 word-break:break-word;
 }
 
-.add-profile-card{
-background:#eef3ee;
-border:2px dashed #9db5a2;
+.login-form{
+margin-top:15px;
 }
 
-.add-profile-card .profile-initial{
-background:white;
-font-size:30px;
-}
-
-.login-message{
-text-align:center;
-color:#8d2525;
-font-size:14px;
-margin:10px 0;
-}
-
-.pin-box{
-background:white;
-border-radius:16px;
-padding:18px;
-box-shadow:0 2px 10px rgba(0,0,0,.06);
-margin-top:5px;
-}
-
-.pin-title{
-font-size:18px;
+.login-form label{
+display:block;
+font-size:13px;
 font-weight:bold;
-text-align:center;
-margin-bottom:12px;
+margin-bottom:6px;
 }
 
-.pin-input{
-text-align:center;
-font-size:24px;
-letter-spacing:6px;
+.login-form input{
+width:100%;
+padding:12px;
+border:1px solid #d2d9d2;
+border-radius:10px;
+margin-bottom:10px;
 }
 
-.pin-buttons{
+.login-buttons{
 display:flex;
 gap:8px;
-margin-top:10px;
 }
 
-.pin-buttons button{
+.login-buttons button{
 flex:1;
 }
 
+.profile-actions{
+display:flex;
+gap:8px;
+margin-top:15px;
+}
+
+.profile-actions button{
+flex:1;
+}
+
+/* ADD ACCOUNT CIRCLE */
+
+.add-account-button{
+position:fixed;
+right:20px;
+bottom:20px;
+width:62px;
+height:62px;
+border-radius:50%;
+background:#2f6f45;
+color:white;
+font-size:32px;
+padding:0;
+box-shadow:0 4px 15px rgba(0,0,0,.2);
+z-index:1000;
+}
+
+.add-account-button:hover{
+background:#245d36;
+}
+
 /* =========================
-   APP
+APP
 ========================= */
 
 .app{
@@ -213,43 +233,54 @@ background:#2f6f45;
 color:white;
 }
 
-.logged-user{
-border-top:1px solid #e1e5e1;
-margin-top:15px;
-padding-top:15px;
+/* LOGGED IN PROFILE */
+
+.logged-profile{
+background:#f4f7f4;
+border-radius:12px;
+padding:10px;
+margin-bottom:12px;
 }
 
-.logged-user-top{
+.logged-profile-row{
 display:flex;
 align-items:center;
 gap:8px;
-margin-bottom:8px;
 }
 
-.logged-user-photo{
-width:35px;
-height:35px;
+.logged-profile-photo{
+width:38px;
+height:38px;
 border-radius:50%;
 object-fit:cover;
-background:#dcefe0;
+background:#dce8de;
 }
 
-.logged-user-initial{
-width:35px;
-height:35px;
+.logged-profile-placeholder{
+width:38px;
+height:38px;
 border-radius:50%;
-background:#dcefe0;
-color:#2f6f45;
+background:#dce8de;
 display:flex;
 align-items:center;
 justify-content:center;
-font-weight:bold;
+font-size:18px;
 }
 
-.logged-user-name{
+.logged-profile-name{
 font-weight:bold;
 font-size:13px;
 flex:1;
+}
+
+.profile-menu-button{
+width:100%;
+margin-top:8px;
+background:white;
+color:#294e34;
+border:1px solid #dce2dc;
+font-size:12px;
+padding:8px;
 }
 
 .main{
@@ -471,7 +502,7 @@ padding:20px;
 }
 
 /* =========================
-   GROUPED
+GROUPED
 ========================= */
 
 .grouped-section{
@@ -518,53 +549,7 @@ margin-bottom:12px;
 }
 
 /* =========================
-   PROFILE
-========================= */
-
-.profile-header{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.profile-large-photo{
-width:85px;
-height:85px;
-border-radius:50%;
-object-fit:cover;
-background:#dcefe0;
-}
-
-.profile-large-initial{
-width:85px;
-height:85px;
-border-radius:50%;
-background:#dcefe0;
-color:#2f6f45;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:34px;
-font-weight:bold;
-}
-
-.profile-header-info{
-flex:1;
-}
-
-.profile-header-name{
-font-size:22px;
-font-weight:bold;
-}
-
-.profile-header-small{
-font-size:13px;
-color:#687068;
-margin-top:3px;
-}
-
-/* =========================
-   SAVED DAYS
+SAVED DAYS
 ========================= */
 
 .history-item{
@@ -582,81 +567,38 @@ gap:6px;
 }
 
 /* =========================
-   FLOATING +
+EDIT PROFILE
 ========================= */
 
-.add-account-floating{
-position:fixed;
-right:22px;
-bottom:22px;
-width:58px;
-height:58px;
-border-radius:50%;
-background:#2f6f45;
-color:white;
-font-size:31px;
-padding:0;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 4px 14px rgba(0,0,0,.25);
-z-index:999;
-}
-
-.add-account-floating:hover{
-transform:scale(1.05);
-}
-
-/* =========================
-   MODAL
-========================= */
-
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.45);
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-z-index:1000;
-}
-
-.modal-box{
-background:white;
-width:100%;
-max-width:480px;
-border-radius:18px;
-padding:20px;
-max-height:90vh;
-overflow:auto;
-}
-
-.modal-title{
-font-size:22px;
-font-weight:bold;
+.profile-preview{
+text-align:center;
 margin-bottom:15px;
 }
 
-.modal-buttons{
-display:flex;
-gap:8px;
-margin-top:15px;
+.profile-preview img,
+.profile-preview .profile-placeholder{
+width:100px;
+height:100px;
+margin:0 auto 10px;
 }
 
-.modal-buttons button{
-flex:1;
-}
-
-.photo-preview{
-width:85px;
-height:85px;
+.profile-preview img{
 border-radius:50%;
 object-fit:cover;
-background:#dcefe0;
-display:block;
-margin:8px 0 12px;
 }
+
+.profile-preview .profile-placeholder{
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#dce8de;
+font-size:42px;
+}
+
+/* =========================
+MOBILE
+========================= */
 
 @media(max-width:650px){
 
@@ -685,8 +627,8 @@ white-space:nowrap;
 margin:0;
 }
 
-.logged-user{
-display:none;
+.logged-profile{
+min-width:170px;
 }
 
 .main{
@@ -697,7 +639,7 @@ padding:10px;
 flex-wrap:wrap;
 }
 
-.add-account-floating{
+.add-account-button{
 right:16px;
 bottom:16px;
 }
@@ -709,10 +651,10 @@ bottom:16px;
 <body>
 
 <!-- =========================
-     LOGIN PAGE
+LOGIN SCREEN
 ========================= -->
 
-<div id="loginPage">
+<div id="loginScreen" class="login-screen">
 
 <div class="login-box">
 
@@ -730,62 +672,73 @@ class="profile-scroll">
 </div>
 
 <div
-id="pinArea"
-class="pin-box hidden">
+id="noAccountsMessage"
+class="empty hidden">
+No adult accounts yet.<br>
+Tap + to create the first account.
+</div>
 
 <div
-id="pinTitle"
-class="pin-title">
+id="loginForm"
+class="login-form hidden">
+
+<label>
 Enter your code
-</div>
+</label>
 
 <input
 id="loginPin"
-class="pin-input"
 type="password"
 inputmode="numeric"
 maxlength="8"
-placeholder="••••">
+placeholder="Enter your code">
 
-<div class="pin-buttons">
-
-<button
-type="button"
-class="secondary"
-id="cancelLoginButton">
-Cancel
-</button>
+<div class="login-buttons">
 
 <button
 type="button"
 class="primary"
 id="loginButton">
-Log in
+
+Log In
+
+</button>
+
+<button
+type="button"
+class="secondary"
+id="clearLoginButton">
+
+Clear
+
 </button>
 
 </div>
 
-<div
-id="loginMessage"
-class="login-message">
 </div>
 
 </div>
 
-</div>
+<button
+type="button"
+class="add-account-button"
+id="addAccountButton"
+title="Add account">
+
++
+
+</button>
 
 </div>
 
 
 <!-- =========================
-     MAIN APP
+MAIN APP
 ========================= -->
 
 <div
-id="appPage"
-class="hidden">
-
-<div class="app">
+id="mainApp"
+class="app hidden">
 
 <aside class="sidebar">
 
@@ -793,57 +746,37 @@ class="hidden">
 Acorn
 </div>
 
+<div
+id="loggedProfile"
+class="logged-profile">
+</div>
+
 <button
 type="button"
 class="folder-button active"
 id="snackFolder">
+
 Snack Lists
+
 </button>
 
 <button
 type="button"
 class="grouped-button"
 id="groupedButton">
+
 📋 Grouped
+
 </button>
 
 <button
 type="button"
 class="folder-button"
 id="suncreamFolder">
+
 Suncream Lists
+
 </button>
-
-<div class="logged-user">
-
-<div class="logged-user-top">
-
-<div id="sidebarUserPhoto"></div>
-
-<div
-id="sidebarUserName"
-class="logged-user-name">
-</div>
-
-</div>
-
-<button
-type="button"
-class="secondary small"
-id="profileButton"
-style="width:100%;margin-bottom:6px">
-👤 My Profile
-</button>
-
-<button
-type="button"
-class="danger small"
-id="logoutButton"
-style="width:100%">
-Log out
-</button>
-
-</div>
 
 </aside>
 
@@ -869,7 +802,9 @@ Daily records
 
 <div class="field">
 
-<label>Date</label>
+<label>
+Date
+</label>
 
 <input
 id="date"
@@ -897,7 +832,9 @@ Create new day
 </section>
 
 
-<!-- SNACK PAGE -->
+<!-- =========================
+SNACK PAGE
+========================= -->
 
 <div id="snackPage">
 
@@ -909,23 +846,30 @@ Create new day
 type="button"
 class="snack-tab active"
 id="amButton">
+
 AM Snack
+
 </button>
 
 <button
 type="button"
 class="snack-tab"
 id="pmButton">
+
 PM Snack
+
 </button>
 
 </div>
+
 
 <div class="row">
 
 <div class="field">
 
-<label>Child's name</label>
+<label>
+Child's name
+</label>
 
 <input
 id="snackName"
@@ -934,9 +878,12 @@ autocomplete="off">
 
 </div>
 
+
 <div class="field">
 
-<label>Allergy / preference</label>
+<label>
+Allergy / preference
+</label>
 
 <select id="snackStatus">
 
@@ -956,9 +903,12 @@ Red - Allergy
 
 </div>
 
+
 <div class="field">
 
-<label>Alternative milk</label>
+<label>
+Alternative milk
+</label>
 
 <input
 id="snackMilk"
@@ -967,6 +917,7 @@ placeholder="e.g. oat milk">
 </div>
 
 </div>
+
 
 <button
 type="button"
@@ -994,7 +945,9 @@ AM Snack
 </div>
 
 
-<!-- GROUPED PAGE -->
+<!-- =========================
+GROUPED PAGE
+========================= -->
 
 <div
 id="groupedPage"
@@ -1009,6 +962,7 @@ id="backToSnackButton">
 
 </button>
 
+
 <section class="card">
 
 <h2>
@@ -1021,23 +975,29 @@ Snacks are grouped by amount and then by snack.
 
 </p>
 
+
 <div class="snack-tabs">
 
 <button
 type="button"
 class="snack-tab active"
 id="groupedAmButton">
+
 AM Snack
+
 </button>
 
 <button
 type="button"
 class="snack-tab"
 id="groupedPmButton">
+
 PM Snack
+
 </button>
 
 </div>
+
 
 <div id="groupedChildren"></div>
 
@@ -1046,7 +1006,9 @@ PM Snack
 </div>
 
 
-<!-- SUNCREAM PAGE -->
+<!-- =========================
+SUNCREAM
+========================= -->
 
 <div
 id="suncreamPage"
@@ -1062,7 +1024,9 @@ Suncream List
 
 <div class="field">
 
-<label>Child's name</label>
+<label>
+Child's name
+</label>
 
 <input
 id="suncreamName"
@@ -1071,9 +1035,12 @@ autocomplete="off">
 
 </div>
 
+
 <div class="field">
 
-<label>Suncream</label>
+<label>
+Suncream
+</label>
 
 <input
 id="suncreamProduct"
@@ -1082,6 +1049,7 @@ placeholder="e.g. child's own SPF 50">
 </div>
 
 </div>
+
 
 <button
 type="button"
@@ -1094,6 +1062,7 @@ Add child
 </button>
 
 </section>
+
 
 <section class="card">
 
@@ -1108,7 +1077,9 @@ Today's Suncream
 </div>
 
 
-<!-- PROFILE PAGE -->
+<!-- =========================
+PROFILE PAGE
+========================= -->
 
 <div
 id="profilePage"
@@ -1116,36 +1087,62 @@ class="hidden">
 
 <section class="card">
 
-<div class="profile-header">
+<h2>
+👤 My Profile
+</h2>
 
-<div id="profileLargePhoto"></div>
+<div id="profileDetails"></div>
 
-<div class="profile-header-info">
+<div class="profile-actions">
 
-<div
-id="profileLargeName"
-class="profile-header-name">
-</div>
+<button
+type="button"
+class="secondary"
+id="editProfileButton">
 
-<div class="profile-header-small">
-Your Acorn account
-</div>
+✏️ Edit Profile
 
-</div>
+</button>
+
+<button
+type="button"
+class="danger"
+id="logoutButton">
+
+🚪 Log Out
+
+</button>
 
 </div>
 
 </section>
 
+</div>
+
+
+<!-- =========================
+EDIT PROFILE
+========================= -->
+
+<div
+id="editProfilePage"
+class="hidden">
+
 <section class="card">
 
 <h2>
-Edit Profile
+✏️ Edit Profile
 </h2>
+
+<div class="profile-preview"
+id="editProfilePreview">
+</div>
 
 <div class="field">
 
-<label>Name</label>
+<label>
+Name
+</label>
 
 <input
 id="editProfileName"
@@ -1153,28 +1150,13 @@ placeholder="Your name">
 
 </div>
 
-<div
-class="field"
-style="margin-top:12px">
+<br>
 
-<label>Profile photo</label>
+<div class="field">
 
-<input
-id="editProfilePhoto"
-type="file"
-accept="image/*">
-
-</div>
-
-<img
-id="editPhotoPreview"
-class="photo-preview hidden">
-
-<div
-class="field"
-style="margin-top:12px">
-
-<label>Change code / PIN</label>
+<label>
+Change code
+</label>
 
 <input
 id="editProfilePin"
@@ -1185,20 +1167,40 @@ placeholder="Leave blank to keep current code">
 
 </div>
 
-<div class="modal-buttons">
+<br>
 
-<button
-type="button"
-class="secondary"
-id="cancelProfileEdit">
-Cancel
-</button>
+<div class="field">
+
+<label>
+Profile photo
+</label>
+
+<input
+id="editProfilePhoto"
+type="file"
+accept="image/*">
+
+</div>
+
+<div
+style="margin-top:15px;display:flex;gap:8px">
 
 <button
 type="button"
 class="primary"
-id="saveProfileEdit">
-Save changes
+id="saveProfileButton">
+
+Save Changes
+
+</button>
+
+<button
+type="button"
+class="secondary"
+id="cancelEditProfileButton">
+
+Cancel
+
 </button>
 
 </div>
@@ -1208,7 +1210,9 @@ Save changes
 </div>
 
 
-<!-- SAVED DAYS -->
+<!-- =========================
+SAVED DAYS
+========================= -->
 
 <section
 id="savedDaysSection"
@@ -1226,171 +1230,97 @@ Saved Days
 
 </div>
 
-</div>
-
-
-<!-- =========================
-     ADD ACCOUNT MODAL
-========================= -->
-
-<div
-id="accountModal"
-class="modal hidden">
-
-<div class="modal-box">
-
-<div class="modal-title">
-Create Adult Account
-</div>
-
-<div class="field">
-
-<label>Name</label>
-
-<input
-id="newProfileName"
-placeholder="Adult's name">
-
-</div>
-
-<div
-class="field"
-style="margin-top:12px">
-
-<label>Profile photo (optional)</label>
-
-<input
-id="newProfilePhoto"
-type="file"
-accept="image/*">
-
-</div>
-
-<img
-id="newPhotoPreview"
-class="photo-preview hidden">
-
-<div
-class="field"
-style="margin-top:12px">
-
-<label>Create your code / PIN</label>
-
-<input
-id="newProfilePin"
-type="password"
-inputmode="numeric"
-maxlength="8"
-placeholder="Choose a code">
-
-</div>
-
-<div
-class="field"
-style="margin-top:12px">
-
-<label>Confirm code / PIN</label>
-
-<input
-id="newProfilePinConfirm"
-type="password"
-inputmode="numeric"
-maxlength="8"
-placeholder="Enter it again">
-
-</div>
-
-<div
-id="accountMessage"
-class="login-message">
-</div>
-
-<div class="modal-buttons">
-
-<button
-type="button"
-class="secondary"
-id="closeAccountModal">
-Cancel
-</button>
-
-<button
-type="button"
-class="primary"
-id="createAccountButton">
-Create account
-</button>
-
-</div>
-
-</div>
-
-</div>
-
 
 <script>
 
-/* =========================
-   STORAGE
-========================= */
+/* =====================================================
+ACORN LISTS
+LOGIN + PROFILE SYSTEM
+===================================================== */
 
-const DATA_KEY="acornListsDataV10";
-
-const PROFILE_KEY="acornAdultProfilesV1";
+const STORAGE_KEY="acornListsV10";
+const ACCOUNT_KEY="acornAdultAccountsV1";
+const CURRENT_ACCOUNT_KEY="acornCurrentAccountV1";
 
 let data={};
-
-let profiles=[];
-
-let currentProfile=null;
+let accounts=[];
+let currentAccountId=null;
 
 let currentDate="";
-
 let currentPage="snacks";
-
 let currentSnack="am";
-
 let groupedSnack="am";
-
 let openNoteIndex=null;
+let selectedLoginAccount=null;
+let editPhotoData="";
 
 
-/* =========================
-   HELPERS
-========================= */
+/* =====================================================
+HELPERS
+===================================================== */
 
 function get(id){
 return document.getElementById(id);
 }
 
 
-function loadEverything(){
+/* =====================================================
+LOAD / SAVE
+===================================================== */
+
+function loadAccounts(){
 
 try{
 
-const savedData=
-localStorage.getItem(DATA_KEY);
+const saved=
+localStorage.getItem(ACCOUNT_KEY);
 
-if(savedData){
-data=JSON.parse(savedData);
+if(saved){
+accounts=JSON.parse(saved);
 }
 
-}catch(e){
+}catch(error){
+
+accounts=[];
+
+}
+
+}
+
+
+function saveAccounts(){
+
+try{
+
+localStorage.setItem(
+ACCOUNT_KEY,
+JSON.stringify(accounts)
+);
+
+}catch(error){
+
+console.log("Account save error",error);
+
+}
+
+}
+
+
+function loadData(){
+
+try{
+
+const saved=
+localStorage.getItem(STORAGE_KEY);
+
+if(saved){
+data=JSON.parse(saved);
+}
+
+}catch(error){
+
 data={};
-}
 
-
-try{
-
-const savedProfiles=
-localStorage.getItem(PROFILE_KEY);
-
-if(savedProfiles){
-profiles=JSON.parse(savedProfiles);
-}
-
-}catch(e){
-profiles=[];
 }
 
 }
@@ -1398,23 +1328,25 @@ profiles=[];
 
 function saveData(){
 
+try{
+
 localStorage.setItem(
-DATA_KEY,
+STORAGE_KEY,
 JSON.stringify(data)
 );
 
-}
+}catch(error){
 
-
-function saveProfiles(){
-
-localStorage.setItem(
-PROFILE_KEY,
-JSON.stringify(profiles)
-);
+console.log("Data save error",error);
 
 }
 
+}
+
+
+/* =====================================================
+DATE
+===================================================== */
 
 function getToday(){
 
@@ -1461,53 +1393,9 @@ year:"numeric"
 }
 
 
-function getInitial(name){
-
-return name
-?name.trim().charAt(0).toUpperCase()
-:"?";
-
-}
-
-
-/* =========================
-   PROFILE PHOTO
-========================= */
-
-function makeProfileVisual(profile,className){
-
-if(profile.photo){
-
-const img=
-document.createElement("img");
-
-img.src=profile.photo;
-
-img.className=className;
-
-return img;
-
-}
-
-const div=
-document.createElement("div");
-
-div.className=
-className==="profile-large-photo"
-?"profile-large-initial"
-:"profile-initial";
-
-div.textContent=
-getInitial(profile.name);
-
-return div;
-
-}
-
-
-/* =========================
-   LOGIN SCREEN
-========================= */
+/* =====================================================
+LOGIN SCREEN
+===================================================== */
 
 function renderLoginProfiles(){
 
@@ -1516,8 +1404,25 @@ get("loginProfiles");
 
 container.innerHTML="";
 
+selectedLoginAccount=null;
 
-profiles.forEach(function(profile,index){
+get("loginForm")
+.classList.add("hidden");
+
+if(!accounts.length){
+
+get("noAccountsMessage")
+.classList.remove("hidden");
+
+return;
+
+}
+
+get("noAccountsMessage")
+.classList.add("hidden");
+
+
+accounts.forEach(function(account){
 
 const card=
 document.createElement("div");
@@ -1525,129 +1430,249 @@ document.createElement("div");
 card.className="profile-card";
 
 
-const visual=
-makeProfileVisual(
-profile,
-"profile-photo"
-);
+function selectProfile(){
 
-card.appendChild(visual);
+document
+.querySelectorAll(".profile-card")
+.forEach(function(item){
 
-
-const name=
-document.createElement("div");
-
-name.className="profile-name";
-
-name.textContent=profile.name;
-
-card.appendChild(name);
-
-
-card.onclick=function(){
-
-selectProfile(index);
-
-};
-
-
-container.appendChild(card);
+item.classList.remove("selected");
 
 });
 
+card.classList.add("selected");
 
-const add=
-document.createElement("div");
+selectedLoginAccount=account;
 
-add.className=
-"profile-card add-profile-card";
-
-
-const visual=
-document.createElement("div");
-
-visual.className="profile-initial";
-
-visual.textContent="+";
-
-add.appendChild(visual);
-
-
-const name=
-document.createElement("div");
-
-name.className="profile-name";
-
-name.textContent="Add Account";
-
-add.appendChild(name);
-
-
-add.onclick=function(){
-
-openAccountModal();
-
-};
-
-
-container.appendChild(add);
-
-}
-
-
-let selectedProfileIndex=null;
-
-
-function selectProfile(index){
-
-selectedProfileIndex=index;
-
-const profile=
-profiles[index];
-
-get("pinArea")
+get("loginForm")
 .classList.remove("hidden");
 
-get("pinTitle")
-.textContent=
-"Enter code for "+profile.name;
-
 get("loginPin").value="";
-
-get("loginMessage").textContent="";
 
 get("loginPin").focus();
 
 }
 
 
-function attemptLogin(){
+if(account.photo){
 
-if(selectedProfileIndex===null){
-return;
+const image=
+document.createElement("img");
+
+image.className="profile-photo";
+
+image.src=account.photo;
+
+card.appendChild(image);
+
+}else{
+
+const placeholder=
+document.createElement("div");
+
+placeholder.className=
+"profile-placeholder";
+
+placeholder.textContent="👤";
+
+card.appendChild(placeholder);
+
 }
 
-const profile=
-profiles[selectedProfileIndex];
 
-const entered=
-get("loginPin").value;
+const name=
+document.createElement("div");
+
+name.className="profile-name";
+
+name.textContent=account.name;
+
+card.appendChild(name);
 
 
-if(entered===profile.pin){
+card.addEventListener(
+"click",
+selectProfile
+);
 
-currentProfile=profile;
 
-get("pinArea")
+container.appendChild(card);
+
+});
+
+}
+
+
+function showLogin(){
+
+get("mainApp")
 .classList.add("hidden");
 
-get("loginPage")
-.classList.add("hidden");
-
-get("appPage")
+get("loginScreen")
 .classList.remove("hidden");
 
-updateLoggedUser();
+renderLoginProfiles();
+
+}
+
+
+/* =====================================================
+ADD ACCOUNT
+===================================================== */
+
+function showAddAccount(){
+
+const name=
+prompt("Enter your name:");
+
+
+if(!name || !name.trim()){
+
+return;
+
+}
+
+
+const cleanName=
+name.trim();
+
+
+const existing=
+accounts.some(function(account){
+
+return account.name.toLowerCase()===
+cleanName.toLowerCase();
+
+});
+
+
+if(existing){
+
+alert(
+"That name already has an account."
+);
+
+return;
+
+}
+
+
+const pin=
+prompt(
+"Create your personal code.\n\nUse 4–8 numbers."
+);
+
+
+if(!pin){
+
+return;
+
+}
+
+
+if(!/^[0-9]{4,8}$/.test(pin)){
+
+alert(
+"Your code must be between 4 and 8 numbers."
+);
+
+return;
+
+}
+
+
+const account={
+
+id:
+"account_"+Date.now()+"_"+Math.random()
+.toString(36)
+.substring(2,8),
+
+name:cleanName,
+
+pin:pin,
+
+photo:""
+
+};
+
+
+accounts.push(account);
+
+saveAccounts();
+
+alert(
+"Account created! You can now log in."
+);
+
+renderLoginProfiles();
+
+}
+
+
+/* =====================================================
+LOGIN
+===================================================== */
+
+function login(){
+
+if(!selectedLoginAccount){
+
+alert(
+"Please select your profile first."
+);
+
+return;
+
+}
+
+
+const enteredPin=
+get("loginPin").value.trim();
+
+
+if(!enteredPin){
+
+alert(
+"Please enter your code."
+);
+
+return;
+
+}
+
+
+if(enteredPin!==selectedLoginAccount.pin){
+
+alert(
+"Incorrect code. Please try again."
+);
+
+get("loginPin").value="";
+
+get("loginPin").focus();
+
+return;
+
+}
+
+
+currentAccountId=
+selectedLoginAccount.id;
+
+
+localStorage.setItem(
+CURRENT_ACCOUNT_KEY,
+currentAccountId
+);
+
+
+get("loginScreen")
+.classList.add("hidden");
+
+get("mainApp")
+.classList.remove("hidden");
+
 
 currentDate=getToday();
 
@@ -1655,300 +1680,323 @@ createDay(currentDate);
 
 saveData();
 
-openSnackList();
+renderLoggedProfile();
 
-return;
-
-}
-
-
-get("loginMessage")
-.textContent=
-"Incorrect code. Please try again.";
-
-get("loginPin").value="";
-
-get("loginPin").focus();
+render();
 
 }
 
+
+/* =====================================================
+LOGOUT
+===================================================== */
 
 function logout(){
 
-currentProfile=null;
+const confirmed=
+confirm(
+"Are you sure you want to log out?"
+);
 
-selectedProfileIndex=null;
 
-get("appPage")
-.classList.add("hidden");
+if(!confirmed){
+return;
+}
 
-get("loginPage")
-.classList.remove("hidden");
 
-get("pinArea")
-.classList.add("hidden");
+currentAccountId=null;
+
+localStorage.removeItem(
+CURRENT_ACCOUNT_KEY
+);
+
+selectedLoginAccount=null;
 
 get("loginPin").value="";
 
-renderLoginProfiles();
+showLogin();
 
 }
 
 
-/* =========================
-   ACCOUNT CREATION
-========================= */
+/* =====================================================
+CURRENT ACCOUNT
+===================================================== */
 
-function openAccountModal(){
+function getCurrentAccount(){
 
-get("accountModal")
-.classList.remove("hidden");
+return accounts.find(function(account){
 
-get("newProfileName").value="";
+return account.id===currentAccountId;
 
-get("newProfilePin").value="";
-
-get("newProfilePinConfirm").value="";
-
-get("newProfilePhoto").value="";
-
-get("newPhotoPreview")
-.classList.add("hidden");
-
-get("accountMessage").textContent="";
-
-get("newProfileName").focus();
+});
 
 }
 
 
-function closeAccountModal(){
+/* =====================================================
+PROFILE DISPLAY
+===================================================== */
 
-get("accountModal")
-.classList.add("hidden");
+function renderLoggedProfile(){
 
-}
+const container=
+get("loggedProfile");
 
-
-function createAccount(){
-
-const name=
-get("newProfileName")
-.value.trim();
-
-const pin=
-get("newProfilePin")
-.value;
-
-const confirmPin=
-get("newProfilePinConfirm")
-.value;
+const account=
+getCurrentAccount();
 
 
-if(!name){
+if(!account){
 
-get("accountMessage")
-.textContent=
-"Please enter a name.";
+container.innerHTML="";
 
 return;
 
 }
 
 
-if(!pin){
-
-get("accountMessage")
-.textContent=
-"Please create a code.";
-
-return;
-
-}
+container.innerHTML="";
 
 
-if(pin!==confirmPin){
+const row=
+document.createElement("div");
 
-get("accountMessage")
-.textContent=
-"The codes do not match.";
-
-return;
-
-}
+row.className="logged-profile-row";
 
 
-if(profiles.some(function(p){
+if(account.photo){
 
-return p.name.toLowerCase()===name.toLowerCase();
+const image=
+document.createElement("img");
 
-})){
+image.className="logged-profile-photo";
 
-get("accountMessage")
-.textContent=
-"An account with that name already exists.";
+image.src=account.photo;
 
-return;
-
-}
-
-
-const photoInput=
-get("newProfilePhoto");
-
-
-function finishCreate(photo){
-
-const profile={
-id:Date.now().toString(),
-name:name,
-pin:pin,
-photo:photo||""
-};
-
-profiles.push(profile);
-
-saveProfiles();
-
-closeAccountModal();
-
-renderLoginProfiles();
-
-selectProfile(profiles.length-1);
-
-}
-
-
-if(
-photoInput.files &&
-photoInput.files[0]
-){
-
-const reader=
-new FileReader();
-
-reader.onload=function(e){
-
-finishCreate(e.target.result);
-
-};
-
-reader.readAsDataURL(
-photoInput.files[0]
-);
+row.appendChild(image);
 
 }else{
 
-finishCreate("");
+const placeholder=
+document.createElement("div");
 
-}
+placeholder.className=
+"logged-profile-placeholder";
 
-}
+placeholder.textContent="👤";
 
-
-/* =========================
-   LOGGED USER
-========================= */
-
-function updateLoggedUser(){
-
-if(!currentProfile){
-return;
-}
-
-
-get("sidebarUserName")
-.textContent=currentProfile.name;
-
-
-const old=
-get("sidebarUserPhoto");
-
-old.innerHTML="";
-
-
-const visual=
-makeProfileVisual(
-currentProfile,
-"profile-photo"
-);
-
-old.appendChild(visual);
+row.appendChild(placeholder);
 
 }
 
 
-/* =========================
-   PROFILE EDIT
-========================= */
+const name=
+document.createElement("div");
+
+name.className="logged-profile-name";
+
+name.textContent=account.name;
+
+row.appendChild(name);
+
+
+container.appendChild(row);
+
+
+const button=
+document.createElement("button");
+
+button.type="button";
+
+button.className=
+"profile-menu-button";
+
+button.textContent=
+"👤 My Profile";
+
+
+button.onclick=function(){
+
+openProfilePage();
+
+};
+
+
+container.appendChild(button);
+
+}
+
+
+/* =====================================================
+PROFILE PAGE
+===================================================== */
 
 function openProfilePage(){
 
-if(!currentProfile){
-return;
-}
-
 currentPage="profile";
 
-get("snackPage").classList.add("hidden");
-get("groupedPage").classList.add("hidden");
-get("suncreamPage").classList.add("hidden");
-get("savedDaysSection").classList.add("hidden");
-get("profilePage").classList.remove("hidden");
+hideAllPages();
 
-get("snackFolder").classList.remove("active");
-get("groupedButton").classList.remove("active");
-get("suncreamFolder").classList.remove("active");
+get("profilePage")
+.classList.remove("hidden");
 
-get("pageTitle").textContent="My Profile";
-get("pageSubtitle").textContent=currentProfile.name;
-
-get("editProfileName").value=currentProfile.name;
-get("editProfilePin").value="";
-
-get("editProfilePhoto").value="";
-
-get("editPhotoPreview")
+get("savedDaysSection")
 .classList.add("hidden");
 
+get("pageTitle")
+.textContent="My Profile";
 
-const large=
-get("profileLargePhoto");
-
-large.innerHTML="";
-
-large.appendChild(
-makeProfileVisual(
-currentProfile,
-"profile-large-photo"
-)
-);
-
-get("profileLargeName")
-.textContent=currentProfile.name;
+renderProfileDetails();
 
 }
 
 
-function cancelProfile(){
+function renderProfileDetails(){
 
-openSnackList();
+const container=
+get("profileDetails");
 
-}
+container.innerHTML="";
+
+const account=
+getCurrentAccount();
 
 
-function saveProfileEdit(){
-
-if(!currentProfile){
+if(!account){
 return;
 }
+
+
+const preview=
+document.createElement("div");
+
+preview.className="profile-preview";
+
+
+if(account.photo){
+
+const image=
+document.createElement("img");
+
+image.src=account.photo;
+
+preview.appendChild(image);
+
+}else{
+
+const placeholder=
+document.createElement("div");
+
+placeholder.className="profile-placeholder";
+
+placeholder.textContent="👤";
+
+preview.appendChild(placeholder);
+
+}
+
+
+container.appendChild(preview);
+
+
+const name=
+document.createElement("h3");
+
+name.style.textAlign="center";
+
+name.textContent=account.name;
+
+container.appendChild(name);
+
+}
+
+
+/* =====================================================
+EDIT PROFILE
+===================================================== */
+
+function openEditProfile(){
+
+const account=
+getCurrentAccount();
+
+if(!account){
+return;
+}
+
+currentPage="editProfile";
+
+hideAllPages();
+
+get("editProfilePage")
+.classList.remove("hidden");
+
+get("savedDaysSection")
+.classList.add("hidden");
+
+get("pageTitle")
+.textContent="Edit Profile";
+
+get("editProfileName").value=
+account.name;
+
+get("editProfilePin").value="";
+
+editPhotoData=
+account.photo||"";
+
+renderEditPreview();
+
+}
+
+
+function renderEditPreview(){
+
+const container=
+get("editProfilePreview");
+
+container.innerHTML="";
+
+
+if(editPhotoData){
+
+const image=
+document.createElement("img");
+
+image.src=editPhotoData;
+
+container.appendChild(image);
+
+}else{
+
+const placeholder=
+document.createElement("div");
+
+placeholder.className="profile-placeholder";
+
+placeholder.textContent="👤";
+
+container.appendChild(placeholder);
+
+}
+
+}
+
+
+function saveProfile(){
+
+const account=
+getCurrentAccount();
+
+if(!account){
+return;
+}
+
 
 const name=
 get("editProfileName")
 .value.trim();
-
-const newPin=
-get("editProfilePin").value;
 
 
 if(!name){
@@ -1960,88 +2008,131 @@ return;
 }
 
 
-if(newPin && newPin.length<1){
+const duplicate=
+accounts.some(function(other){
 
-alert("Please enter a valid code.");
-
-return;
-
-}
-
-
-const profileIndex=
-profiles.findIndex(function(p){
-
-return p.id===currentProfile.id;
+return other.id!==account.id &&
+other.name.toLowerCase()===
+name.toLowerCase();
 
 });
 
 
-if(profileIndex===-1){
+if(duplicate){
+
+alert(
+"Another account already uses that name."
+);
+
+return;
+
+}
+
+
+const newPin=
+get("editProfilePin")
+.value.trim();
+
+
+if(newPin){
+
+if(!/^[0-9]{4,8}$/.test(newPin)){
+
+alert(
+"Your code must be between 4 and 8 numbers."
+);
+
+return;
+
+}
+
+account.pin=newPin;
+
+}
+
+
+account.name=name;
+
+account.photo=editPhotoData;
+
+
+saveAccounts();
+
+renderLoggedProfile();
+
+openProfilePage();
+
+alert(
+"Your profile has been updated."
+);
+
+}
+
+
+/* =====================================================
+PHOTO UPLOAD
+===================================================== */
+
+get("editProfilePhoto")
+.addEventListener(
+"change",
+function(event){
+
+const file=
+event.target.files[0];
+
+if(!file){
 return;
 }
 
 
-profiles[profileIndex].name=name;
-
-if(newPin){
-profiles[profileIndex].pin=newPin;
-}
-
-
-const photoInput=
-get("editProfilePhoto");
-
-
-function finish(){
-
-currentProfile=
-profiles[profileIndex];
-
-saveProfiles();
-
-updateLoggedUser();
-
-openProfilePage();
-
-alert("Profile updated.");
-
-}
-
-
-if(
-photoInput.files &&
-photoInput.files[0]
-){
-
 const reader=
 new FileReader();
 
-reader.onload=function(e){
 
-profiles[profileIndex].photo=
-e.target.result;
+reader.onload=function(){
 
-finish();
+editPhotoData=
+reader.result;
+
+renderEditPreview();
 
 };
 
-reader.readAsDataURL(
-photoInput.files[0]
+
+reader.readAsDataURL(file);
+
+}
 );
 
-}else{
 
-finish();
+/* =====================================================
+HIDE PAGES
+===================================================== */
+
+function hideAllPages(){
+
+get("snackPage")
+.classList.add("hidden");
+
+get("groupedPage")
+.classList.add("hidden");
+
+get("suncreamPage")
+.classList.add("hidden");
+
+get("profilePage")
+.classList.add("hidden");
+
+get("editProfilePage")
+.classList.add("hidden");
 
 }
 
-}
 
-
-/* =========================
-   APP NAVIGATION
-========================= */
+/* =====================================================
+SNACK PAGE
+===================================================== */
 
 function openSnackList(){
 
@@ -2049,22 +2140,34 @@ currentPage="snacks";
 
 openNoteIndex=null;
 
-get("snackPage").classList.remove("hidden");
-get("groupedPage").classList.add("hidden");
-get("suncreamPage").classList.add("hidden");
-get("profilePage").classList.add("hidden");
-get("savedDaysSection").classList.remove("hidden");
+hideAllPages();
 
-get("snackFolder").classList.add("active");
-get("groupedButton").classList.remove("active");
-get("suncreamFolder").classList.remove("active");
+get("snackPage")
+.classList.remove("hidden");
 
-get("pageTitle").textContent="Acorn Snack List";
+get("savedDaysSection")
+.classList.remove("hidden");
+
+get("snackFolder")
+.classList.add("active");
+
+get("groupedButton")
+.classList.remove("active");
+
+get("suncreamFolder")
+.classList.remove("active");
+
+get("pageTitle")
+.textContent="Acorn Snack List";
 
 render();
 
 }
 
+
+/* =====================================================
+GROUPED
+===================================================== */
 
 function openGroupedList(){
 
@@ -2072,49 +2175,67 @@ currentPage="grouped";
 
 openNoteIndex=null;
 
-get("snackPage").classList.add("hidden");
-get("groupedPage").classList.remove("hidden");
-get("suncreamPage").classList.add("hidden");
-get("profilePage").classList.add("hidden");
-get("savedDaysSection").classList.remove("hidden");
+hideAllPages();
 
-get("snackFolder").classList.remove("active");
-get("groupedButton").classList.add("active");
-get("suncreamFolder").classList.remove("active");
+get("groupedPage")
+.classList.remove("hidden");
 
-get("pageTitle").textContent="Grouped Snacks";
+get("savedDaysSection")
+.classList.remove("hidden");
 
-renderGrouped();
+get("snackFolder")
+.classList.remove("active");
 
-renderSavedDays();
+get("groupedButton")
+.classList.add("active");
 
-}
+get("suncreamFolder")
+.classList.remove("active");
 
-
-function openSuncreamList(){
-
-currentPage="suncream";
-
-get("snackPage").classList.add("hidden");
-get("groupedPage").classList.add("hidden");
-get("suncreamPage").classList.remove("hidden");
-get("profilePage").classList.add("hidden");
-get("savedDaysSection").classList.remove("hidden");
-
-get("snackFolder").classList.remove("active");
-get("groupedButton").classList.remove("active");
-get("suncreamFolder").classList.add("active");
-
-get("pageTitle").textContent="Acorn Suncream List";
+get("pageTitle")
+.textContent="Grouped Snacks";
 
 render();
 
 }
 
 
-/* =========================
-   AM / PM
-========================= */
+/* =====================================================
+SUNCREAM
+===================================================== */
+
+function openSuncreamList(){
+
+currentPage="suncream";
+
+hideAllPages();
+
+get("suncreamPage")
+.classList.remove("hidden");
+
+get("savedDaysSection")
+.classList.remove("hidden");
+
+get("snackFolder")
+.classList.remove("active");
+
+get("groupedButton")
+.classList.remove("active");
+
+get("suncreamFolder")
+.classList.add("active");
+
+get("pageTitle")
+.textContent="Acorn Suncream List";
+
+render();
+
+}
+
+
+/* =====================================================
+AM / PM
+===================================================== */
 
 function openAM(){
 
@@ -2122,10 +2243,14 @@ currentSnack="am";
 
 openNoteIndex=null;
 
-get("amButton").classList.add("active");
-get("pmButton").classList.remove("active");
+get("amButton")
+.classList.add("active");
 
-get("snackTitle").textContent="AM Snack";
+get("pmButton")
+.classList.remove("active");
+
+get("snackTitle")
+.textContent="AM Snack";
 
 renderSnackList();
 
@@ -2138,10 +2263,14 @@ currentSnack="pm";
 
 openNoteIndex=null;
 
-get("pmButton").classList.add("active");
-get("amButton").classList.remove("active");
+get("pmButton")
+.classList.add("active");
 
-get("snackTitle").textContent="PM Snack";
+get("amButton")
+.classList.remove("active");
+
+get("snackTitle")
+.textContent="PM Snack";
 
 renderSnackList();
 
@@ -2152,8 +2281,11 @@ function openGroupedAM(){
 
 groupedSnack="am";
 
-get("groupedAmButton").classList.add("active");
-get("groupedPmButton").classList.remove("active");
+get("groupedAmButton")
+.classList.add("active");
+
+get("groupedPmButton")
+.classList.remove("active");
 
 renderGrouped();
 
@@ -2164,17 +2296,20 @@ function openGroupedPM(){
 
 groupedSnack="pm";
 
-get("groupedPmButton").classList.add("active");
-get("groupedAmButton").classList.remove("active");
+get("groupedPmButton")
+.classList.add("active");
+
+get("groupedAmButton")
+.classList.remove("active");
 
 renderGrouped();
 
 }
 
 
-/* =========================
-   RENDER
-========================= */
+/* =====================================================
+MAIN RENDER
+===================================================== */
 
 function render(){
 
@@ -2185,11 +2320,20 @@ get("date").value=currentDate;
 get("pageSubtitle")
 .textContent=formatDate(currentDate);
 
+
 if(currentPage==="snacks"){
 
 renderSnackList();
 
-}else if(currentPage==="suncream"){
+}
+
+else if(currentPage==="grouped"){
+
+renderGrouped();
+
+}
+
+else if(currentPage==="suncream"){
 
 renderSuncreamList();
 
@@ -2200,9 +2344,9 @@ renderSavedDays();
 }
 
 
-/* =========================
-   SNACK LIST
-========================= */
+/* =====================================================
+SNACK LIST
+===================================================== */
 
 function renderSnackList(){
 
@@ -2245,12 +2389,18 @@ document.createElement("div");
 top.className="child-top";
 
 
+/* TICK */
+
 const tick=
 document.createElement("button");
 
 tick.type="button";
+
 tick.className="tick";
-tick.textContent=child.done?"✓":"";
+
+tick.textContent=
+child.done?"✓":"";
+
 
 tick.onclick=function(){
 
@@ -2263,33 +2413,48 @@ renderSnackList();
 };
 
 
+/* NAME */
+
 const name=
 document.createElement("div");
 
 name.className="child-name";
+
 name.textContent=child.name;
 
+
+/* ALLERGY */
 
 const badge=
 document.createElement("span");
 
+
 if(child.status==="red"){
 
 badge.className="badge red";
+
 badge.textContent="RED";
 
-}else if(child.status==="green"){
+}
+
+else if(child.status==="green"){
 
 badge.className="badge green";
+
 badge.textContent="GREEN";
 
-}else{
+}
+
+else{
 
 badge.className="badge none";
+
 badge.textContent="NONE";
 
 }
 
+
+/* NOTE */
 
 const noteButton=
 document.createElement("button");
@@ -2306,6 +2471,9 @@ child.note &&
 );
 
 noteButton.textContent="📝";
+
+noteButton.title="Add snack";
+
 
 noteButton.onclick=function(){
 
@@ -2324,12 +2492,17 @@ renderSnackList();
 };
 
 
+/* REMOVE */
+
 const remove=
 document.createElement("button");
 
 remove.type="button";
+
 remove.className="danger small";
+
 remove.textContent="Remove";
+
 
 remove.onclick=function(){
 
@@ -2344,6 +2517,8 @@ renderSnackList();
 };
 
 
+/* TOP */
+
 top.append(
 tick,
 name,
@@ -2354,6 +2529,8 @@ remove
 
 item.appendChild(top);
 
+
+/* MILK */
 
 if(child.milk){
 
@@ -2370,6 +2547,8 @@ item.appendChild(milk);
 }
 
 
+/* EATEN */
+
 if(
 child.note &&
 (child.note.amount||child.note.what)
@@ -2383,13 +2562,17 @@ eaten.className="eaten-detail";
 let text="Eaten: ";
 
 if(child.note.amount){
+
 text+=child.note.amount;
+
 }
 
 if(child.note.what){
 
 if(child.note.amount){
+
 text+=" — ";
+
 }
 
 text+=child.note.what;
@@ -2402,6 +2585,8 @@ item.appendChild(eaten);
 
 }
 
+
+/* NOTE BOX */
 
 if(openNoteIndex===index){
 
@@ -2419,9 +2604,9 @@ container.appendChild(item);
 }
 
 
-/* =========================
-   NOTE BOX
-========================= */
+/* =====================================================
+NOTE BOX
+===================================================== */
 
 function createNoteBox(child){
 
@@ -2431,13 +2616,13 @@ document.createElement("div");
 box.className="note-box";
 
 
-const label=
+const amountLabel=
 document.createElement("label");
 
-label.textContent=
+amountLabel.textContent=
 "How much did they have?";
 
-box.appendChild(label);
+box.appendChild(amountLabel);
 
 
 const amounts=[
@@ -2476,7 +2661,9 @@ button.textContent=amount;
 button.onclick=function(){
 
 if(!child.note){
+
 child.note={};
+
 }
 
 child.note.amount=amount;
@@ -2487,12 +2674,16 @@ renderSnackList();
 
 };
 
+
 amountButtons.appendChild(button);
 
 });
 
+
 box.appendChild(amountButtons);
 
+
+/* WHAT */
 
 const whatLabel=
 document.createElement("label");
@@ -2520,6 +2711,8 @@ child.note.what
 box.appendChild(whatInput);
 
 
+/* SAVE */
+
 const saveRow=
 document.createElement("div");
 
@@ -2530,13 +2723,18 @@ const saveButton=
 document.createElement("button");
 
 saveButton.type="button";
+
 saveButton.className="primary";
+
 saveButton.textContent="Save";
+
 
 saveButton.onclick=function(){
 
 if(!child.note){
+
 child.note={};
+
 }
 
 child.note.what=
@@ -2551,12 +2749,17 @@ renderSnackList();
 };
 
 
+/* CLOSE */
+
 const closeButton=
 document.createElement("button");
 
 closeButton.type="button";
+
 closeButton.className="secondary";
+
 closeButton.textContent="Close";
+
 
 closeButton.onclick=function(){
 
@@ -2574,14 +2777,174 @@ closeButton
 
 box.appendChild(saveRow);
 
+
 return box;
 
 }
 
 
-/* =========================
-   GROUPED
-========================= */
+/* =====================================================
+FOOD ICON
+===================================================== */
+
+function getFoodIcon(food){
+
+const text=
+food.toLowerCase();
+
+
+if(
+text.includes("banana")
+){
+return "🍌";
+}
+
+if(
+text.includes("apple")
+){
+return "🍎";
+}
+
+if(
+text.includes("orange")
+||
+text.includes("clementine")
+||
+text.includes("mandarin")
+){
+return "🍊";
+}
+
+if(
+text.includes("pear")
+){
+return "🍐";
+}
+
+if(
+text.includes("grape")
+){
+return "🍇";
+}
+
+if(
+text.includes("strawberry")
+||
+text.includes("berry")
+){
+return "🍓";
+}
+
+if(
+text.includes("watermelon")
+){
+return "🍉";
+}
+
+if(
+text.includes("melon")
+){
+return "🍈";
+}
+
+if(
+text.includes("pineapple")
+){
+return "🍍";
+}
+
+if(
+text.includes("kiwi")
+){
+return "🥝";
+}
+
+if(
+text.includes("carrot")
+){
+return "🥕";
+}
+
+if(
+text.includes("cucumber")
+){
+return "🥒";
+}
+
+if(
+text.includes("tomato")
+){
+return "🍅";
+}
+
+if(
+text.includes("biscuit")
+||
+text.includes("cookie")
+){
+return "🍪";
+}
+
+if(
+text.includes("cake")
+){
+return "🍰";
+}
+
+if(
+text.includes("cracker")
+){
+return "🧇";
+}
+
+if(
+text.includes("bread")
+||
+text.includes("toast")
+){
+return "🍞";
+}
+
+if(
+text.includes("yoghurt")
+||
+text.includes("yogurt")
+){
+return "🥣";
+}
+
+if(
+text.includes("cheese")
+){
+return "🧀";
+}
+
+if(
+text.includes("milk")
+){
+return "🥛";
+}
+
+if(
+text.includes("cereal")
+){
+return "🥣";
+}
+
+if(
+text.includes("sandwich")
+){
+return "🥪";
+}
+
+return "🍽️";
+
+}
+
+
+/* =====================================================
+GROUPED
+===================================================== */
 
 function renderGrouped(){
 
@@ -2635,8 +2998,11 @@ child.note.what.trim();
 
 
 if(!matching.length){
+
 return;
+
 }
+
 
 found=true;
 
@@ -2679,6 +3045,7 @@ children:[]
 
 }
 
+
 groups[groupKey].children.push(
 child.name
 );
@@ -2706,13 +3073,13 @@ document.createElement("div");
 snackName.className=
 "grouped-snack-name";
 
-/*
- No banana icon is automatically added.
- The actual food name is shown.
-*/
+
+const icon=
+getFoodIcon(group.name);
+
 
 snackName.textContent=
-group.name;
+icon+" "+group.name;
 
 
 const names=
@@ -2749,9 +3116,9 @@ container.innerHTML=
 }
 
 
-/* =========================
-   SUNCREAM
-========================= */
+/* =====================================================
+SUNCREAM
+===================================================== */
 
 function renderSuncreamList(){
 
@@ -2793,8 +3160,12 @@ const tick=
 document.createElement("button");
 
 tick.type="button";
+
 tick.className="tick";
-tick.textContent=child.done?"✓":"";
+
+tick.textContent=
+child.done?"✓":"";
+
 
 tick.onclick=function(){
 
@@ -2811,6 +3182,7 @@ const name=
 document.createElement("div");
 
 name.className="child-name";
+
 name.textContent=child.name;
 
 
@@ -2818,8 +3190,11 @@ const remove=
 document.createElement("button");
 
 remove.type="button";
+
 remove.className="danger small";
+
 remove.textContent="Remove";
+
 
 remove.onclick=function(){
 
@@ -2860,9 +3235,9 @@ container.appendChild(item);
 }
 
 
-/* =========================
-   SAVED DAYS
-========================= */
+/* =====================================================
+SAVED DAYS
+===================================================== */
 
 function renderSavedDays(){
 
@@ -2912,12 +3287,16 @@ const open=
 document.createElement("button");
 
 open.type="button";
+
 open.className="secondary small";
+
 open.textContent="Open";
+
 
 open.onclick=function(){
 
 currentDate=date;
+
 currentPage="snacks";
 
 render();
@@ -2934,8 +3313,11 @@ const deleteButton=
 document.createElement("button");
 
 deleteButton.type="button";
+
 deleteButton.className="danger small";
+
 deleteButton.textContent="Delete";
+
 
 deleteButton.onclick=function(){
 
@@ -2946,13 +3328,16 @@ formatDate(date)+
 "?\n\nThis will delete the AM snack, PM snack and suncream list for this day."
 );
 
+
 if(!confirmed){
 return;
 }
 
+
 delete data[date];
 
 saveData();
+
 
 if(currentDate===date){
 
@@ -2963,6 +3348,7 @@ createDay(currentDate);
 saveData();
 
 }
+
 
 render();
 
@@ -2986,9 +3372,9 @@ container.appendChild(row);
 }
 
 
-/* =========================
-   ADD SNACK
-========================= */
+/* =====================================================
+ADD SNACK
+===================================================== */
 
 function addSnack(){
 
@@ -3040,8 +3426,11 @@ what:""
 
 
 get("snackName").value="";
+
 get("snackMilk").value="";
+
 get("snackStatus").value="none";
+
 
 saveData();
 
@@ -3052,9 +3441,9 @@ get("snackName").focus();
 }
 
 
-/* =========================
-   ADD SUNCREAM
-========================= */
+/* =====================================================
+ADD SUNCREAM
+===================================================== */
 
 function addSuncream(){
 
@@ -3077,7 +3466,9 @@ return;
 }
 
 
-data[currentDate].suncream.push({
+data[currentDate]
+.suncream
+.push({
 
 name:name,
 
@@ -3092,7 +3483,9 @@ done:false
 
 
 get("suncreamName").value="";
+
 get("suncreamProduct").value="";
+
 
 saveData();
 
@@ -3103,9 +3496,9 @@ get("suncreamName").focus();
 }
 
 
-/* =========================
-   NEW DAY
-========================= */
+/* =====================================================
+NEW DAY
+===================================================== */
 
 function createNewDay(){
 
@@ -3114,12 +3507,15 @@ prompt(
 "Enter the date as DD/MM/YYYY"
 );
 
+
 if(!answer){
 return;
 }
 
+
 const parts=
 answer.split("/");
+
 
 if(parts.length!==3){
 
@@ -3130,6 +3526,7 @@ alert(
 return;
 
 }
+
 
 const day=
 parts[0].padStart(2,"0");
@@ -3170,88 +3567,30 @@ render();
 }
 
 
-/* =========================
-   PHOTO PREVIEWS
-========================= */
+/* =====================================================
+BUTTON EVENTS
+===================================================== */
 
-get("newProfilePhoto")
+get("addAccountButton")
 .addEventListener(
-"change",
-function(){
+"click",
+showAddAccount
+);
 
-const file=this.files[0];
-
-if(!file){
-return;
-}
-
-const reader=
-new FileReader();
-
-reader.onload=function(e){
-
-get("newPhotoPreview").src=
-e.target.result;
-
-get("newPhotoPreview")
-.classList.remove("hidden");
-
-};
-
-reader.readAsDataURL(file);
-
-});
-
-
-get("editProfilePhoto")
-.addEventListener(
-"change",
-function(){
-
-const file=this.files[0];
-
-if(!file){
-return;
-}
-
-const reader=
-new FileReader();
-
-reader.onload=function(e){
-
-get("editPhotoPreview").src=
-e.target.result;
-
-get("editPhotoPreview")
-.classList.remove("hidden");
-
-};
-
-reader.readAsDataURL(file);
-
-});
-
-
-/* =========================
-   BUTTON EVENTS
-========================= */
 
 get("loginButton")
 .addEventListener(
 "click",
-attemptLogin
+login
 );
 
 
-get("cancelLoginButton")
+get("clearLoginButton")
 .addEventListener(
 "click",
 function(){
 
-get("pinArea")
-.classList.add("hidden");
-
-selectedProfileIndex=null;
+get("loginPin").value="";
 
 }
 );
@@ -3266,24 +3605,11 @@ if(event.key==="Enter"){
 
 event.preventDefault();
 
-attemptLogin();
+login();
 
 }
 
-});
-
-
-get("closeAccountModal")
-.addEventListener(
-"click",
-closeAccountModal
-);
-
-
-get("createAccountButton")
-.addEventListener(
-"click",
-createAccount
+}
 );
 
 
@@ -3364,10 +3690,10 @@ createNewDay
 );
 
 
-get("profileButton")
+get("editProfileButton")
 .addEventListener(
 "click",
-openProfilePage
+openEditProfile
 );
 
 
@@ -3378,42 +3704,23 @@ logout
 );
 
 
-get("cancelProfileEdit")
+get("saveProfileButton")
 .addEventListener(
 "click",
-cancelProfile
+saveProfile
 );
 
 
-get("saveProfileEdit")
+get("cancelEditProfileButton")
 .addEventListener(
 "click",
-saveProfileEdit
+openProfilePage
 );
 
 
-/* FLOATING + */
-
-const floating=
-document.createElement("button");
-
-floating.type="button";
-floating.className="add-account-floating";
-floating.textContent="+";
-floating.title="Add adult account";
-
-floating.onclick=function(){
-
-openAccountModal();
-
-};
-
-document.body.appendChild(floating);
-
-
-/* =========================
-   DATE
-========================= */
+/* =====================================================
+DATE
+===================================================== */
 
 get("date")
 .addEventListener(
@@ -3433,9 +3740,9 @@ render();
 );
 
 
-/* =========================
-   ENTER KEYS
-========================= */
+/* =====================================================
+ENTER KEYS
+===================================================== */
 
 get("snackName")
 .addEventListener(
@@ -3471,19 +3778,52 @@ addSuncream();
 );
 
 
-/* =========================
-   START
-========================= */
+/* =====================================================
+START
+===================================================== */
 
-loadEverything();
+loadAccounts();
+loadData();
 
-renderLoginProfiles();
+const savedCurrentAccount=
+localStorage.getItem(
+CURRENT_ACCOUNT_KEY
+);
+
+
+if(
+savedCurrentAccount &&
+accounts.some(function(account){
+
+return account.id===savedCurrentAccount;
+
+})
+){
+
+currentAccountId=
+savedCurrentAccount;
+
+get("loginScreen")
+.classList.add("hidden");
+
+get("mainApp")
+.classList.remove("hidden");
 
 currentDate=getToday();
 
 createDay(currentDate);
 
 saveData();
+
+renderLoggedProfile();
+
+render();
+
+}else{
+
+showLogin();
+
+}
 
 </script>
 

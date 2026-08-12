@@ -1,69 +1,1055 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#7868ed">
-<title>Acorn Snack List</title>
-<style>
-  .allergy{
-  color:#d64545; 
-  font-weight:700;
-}
-.preference{
-  color:#2e9d50;
-  font-weight:700;
-}
-*{box-sizing:border-box}body{margin:0;background:#f5f6fb;color:#25283d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app{max-width:520px;margin:auto;min-height:100vh}.top{padding:27px 20px 19px;background:linear-gradient(145deg,#8877f4,#63b7ef);color:white;border-radius:0 0 30px 30px}.top small{opacity:.88}.top h1{margin:4px 0 0;font-size:27px}.content{padding:15px 15px 105px}.seg{display:flex;background:#e9eaf3;padding:4px;border-radius:16px;margin-bottom:14px}.seg button{flex:1;border:0;background:transparent;padding:11px 6px;border-radius:13px;font-weight:800;color:#62677d}.seg .on{background:#fff;color:#6556dc;box-shadow:0 2px 8px #0001}.card{background:#fff;border:1px solid #e7e8ef;border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 6px 20px #30334d0b}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.card h2{font-size:18px;margin:0 0 3px}.muted{color:#7b8092;font-size:13px}.btn{border:0;border-radius:13px;padding:11px 14px;background:#7868ed;color:#fff;font-weight:800}.btn.light{background:#eeeef6;color:#3b3f52}.btn.danger{color:#d54e55}.food{display:flex;justify-content:space-between;align-items:center;background:#f7f7fb;border-radius:13px;padding:10px 11px;margin-top:8px}.food button{border:0;background:none;color:#d54e55;font-weight:800}.child{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #eeeef3}.child:last-child{border-bottom:0}.check{width:27px;height:27px;accent-color:#7868ed}.avatar{width:42px;height:42px;border-radius:50%;background:#ebe8ff;display:grid;place-items:center;font-weight:900;color:#6354d8;flex:none}.name{font-weight:800}.allergy{font-size:12px;font-weight:800;color:#d54e55;margin-top:2px}.none{font-size:12px;color:#8b90a2}.input{width:100%;padding:13px;border:1px solid #dedfea;border-radius:13px;font-size:16px;margin:7px 0 11px}.date{width:100%;padding:12px;border:1px solid #dedfea;border-radius:13px;background:#fff;font-size:16px}.smallbtn{border:0;background:#eeeef6;border-radius:10px;padding:7px 9px;font-weight:700}.warn{background:#fff0f0;border:1px solid #ffd2d2;border-radius:14px;padding:11px;margin-top:10px;color:#b93c45;font-size:13px;font-weight:700}.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e6e7ee;padding:8px 12px calc(8px + env(safe-area-inset-bottom));z-index:5}.nav{max-width:500px;margin:auto;display:flex;justify-content:space-around}.nav button{border:0;background:none;color:#85899a;font-weight:700;padding:7px 16px}.nav .active{color:#6556dc}.hidden{display:none}.empty{text-align:center;padding:22px;color:#888da0}.toast{position:fixed;top:15px;left:50%;transform:translateX(-50%);background:#25283d;color:#fff;padding:10px 15px;border-radius:12px;display:none;z-index:20}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2f6f45">
+  <title>Acorn Snack List</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: #f5f7f5;
+      color: #202520;
+    }
+
+    .app {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 18px 14px 40px;
+    }
+
+    header {
+      background: #2f6f45;
+      color: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 5px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .row {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .field {
+      flex: 1 1 180px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid #d4d9d4;
+      border-radius: 11px;
+      padding: 12px;
+      background: white;
+      color: #202520;
+    }
+
+    button {
+      border: 0;
+      border-radius: 11px;
+      padding: 12px 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #2f6f45;
+      color: white;
+    }
+
+    .secondary {
+      background: #e9eee9;
+      color: #244d32;
+    }
+
+    .danger {
+      background: #f8dddd;
+      color: #8b2222;
+    }
+
+    .small {
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+
+    .list-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .list-title {
+      margin: 0;
+      font-size: 21px;
+    }
+
+    .person {
+      border: 1px solid #dfe4df;
+      border-radius: 14px;
+      padding: 13px;
+      margin-top: 9px;
+      transition: 0.15s;
+    }
+
+    .person.done {
+      background: #f0f7f1;
+      border-color: #b9d4bf;
+    }
+
+    .person-top {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .tick {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      padding: 0;
+      flex: 0 0 30px;
+      background: #edf0ed;
+      color: #2f6f45;
+      border: 1px solid #ccd4cc;
+    }
+
+    .done .tick {
+      background: #2f6f45;
+      color: white;
+      border-color: #2f6f45;
+    }
+
+    .name {
+      font-size: 17px;
+      font-weight: 800;
+      flex: 1;
+    }
+
+    .status {
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 8px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    .green {
+      background: #dff1e3;
+      color: #236337;
+    }
+
+    .red {
+      background: #f7dddd;
+      color: #9a2525;
+    }
+
+    .milk {
+      margin: 9px 0 0 41px;
+      color: #555d56;
+      font-size: 13px;
+    }
+
+    .milk strong {
+      color: #303730;
+    }
+
+    .empty {
+      text-align: center;
+      color: #687068;
+      padding: 18px 5px;
+    }
+
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid #e5e8e5;
+      padding: 11px 0;
+    }
+
+    .history-item:first-child {
+      border-top: 0;
+    }
+
+    .date-title {
+      font-weight: 800;
+    }
+
+    .count {
+      color: #626962;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #666d66;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 520px) {
+      .app {
+        padding: 10px 10px 30px;
+      }
+
+      header {
+        border-radius: 14px;
+      }
+
+      .card {
+        border-radius: 14px;
+      }
+
+      .person-top {
+        align-items: flex-start;
+      }
+
+      .status {
+        margin-left: auto;
+      }
+    }
+  </style>
 </head>
-<body><div class="app">
-<header class="top"><small id="topDate"></small><h1>ð± Acorn Snack List</h1><small>Nursery snack tracker</small></header>
-<main class="content">
-<section id="home">
-<div class="card"><div class="row"><div><h2>Snack date</h2><div class="muted">Choose the day you're recording</div></div></div><input class="date" id="datePicker" type="date" onchange="selectedDate=this.value;ensureDay();render()"></div>
-<div class="seg"><button id="amBtn" class="on" onclick="session='AM';render()">âï¸ AM</button><button id="pmBtn" onclick="session='PM';render()">ð PM</button></div>
-<div class="card"><div class="row"><div><h2 id="sessionTitle">âï¸ AM Snack</h2><div class="muted">Food being served</div></div><button class="btn" onclick="addFood()">+ Add food</button></div><div id="foods"></div></div>
-<div class="card"><div class="row"><div><h2>Children</h2><div class="muted" id="progress"></div></div></div><div id="children"></div></div>
-</section>
 
-<section id="people" class="hidden">
-<div class="card"><h2>Add child</h2><div class="muted">Add attendance and allergy information.</div>
-<input class="input" id="newName" placeholder="Child's name"><input class="input" id="newAllergy" placeholder="Allergy / dietary requirement (or None)">
-<label><input id="newAM" type="checkbox" checked> AM attendance</label>&nbsp;&nbsp;<label><input id="newPM" type="checkbox" checked> PM attendance</label><br><br>
-<button class="btn" onclick="addChild()">Save child</button></div>
-<div class="card"><h2>Children</h2><div id="manage"></div></div>
-</section>
+<body>
 
-<section id="history" class="hidden"><div class="card"><h2>Snack history</h2><div class="muted">Choose a date to review the record.</div><div id="logs"></div></div></section>
-</main>
-<nav class="bottom"><div class="nav"><button id="navHome" class="active" onclick="tab('home',this)"> <br>Home</button><button id="navPeople" onclick="tab('people',this)"<br>Children</button><button id="navHistory" onclick="tab('history',this)"><br>History</button></div></nav>
-<div id="toast" class="toast"></div></div>
+  <main class="app">
+
+    <header>
+      <h1>Acorn Snack List</h1>
+      <p class="subtitle">Daily snack record</p>
+    </header>
+
+    <section class="card">
+
+      <div class="list-header">
+
+        <div>
+          <label for="datePicker">Select a day</label>
+          <input id="datePicker" type="date">
+        </div>
+
+        <button class="secondary" id="newDayBtn">
+          Create new day
+        </button>
+
+      </div>
+
+    </section>
+
+    <section class="card">
+
+      <h2 style="margin-top:0;">
+        Add a child
+      </h2>
+
+      <div class="row">
+
+        <div class="field">
+
+          <label for="nameInput">
+            Name
+          </label>
+
+          <input
+            id="nameInput"
+            type="text"
+            placeholder="Child's name"
+          >
+
+        </div>
+
+        <div class="field">
+
+          <label for="statusInput">
+            Allergy / preference
+          </label>
+
+          <select id="statusInput">
+
+            <option value="none">
+              No allergy / preference
+            </option>
+
+            <option value="green">
+              Green - Preference
+            </option>
+
+            <option value="red">
+              Red - Allergy
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="field">
+
+          <label for="milkInput">
+            Alternative milk
+          </label>
+
+          <input
+            id="milkInput"
+            type="text"
+            placeholder="e.g. oat milk"
+          >
+
+        </div>
+
+      </div>
+
+      <div style="margin-top:10px;">
+
+        <button
+          class="primary"
+          id="addBtn"
+        >
+          Add child
+        </button>
+
+      </div>
+
+    </section>
+
+    <section class="card">
+
+      <div class="list-header">
+
+        <div>
+
+          <h2
+            class="list-title"
+            id="dayTitle"
+          >
+            Today's list
+          </h2>
+
+          <div
+            id="summary"
+            class="count"
+          ></div>
+
+        </div>
+
+        <button
+          class="secondary small"
+          id="clearDayBtn"
+        >
+          Clear this day
+        </button>
+
+      </div>
+
+      <div id="people"></div>
+
+    </section>
+
+    <section class="card">
+
+      <h2 style="margin-top:0;">
+        Saved days
+      </h2>
+
+      <div id="history"></div>
+
+    </section>
+
+  </main>
+
 
 <script>
-const today=new Date().toISOString().slice(0,10);let selectedDate=today,session='AM';
-let state=JSON.parse(localStorage.getItem('acornSnackV2')||'null')||{children:[{id:1,name:'Emma',allergy:'Peanuts',am:true,pm:true},{id:2,name:'Jack',allergy:'None',preference:'None'am:true,pm:true},{id:3,name:'Lily',allergy:'Milk',am:true,pm:false}],days:{}};
-function ensureDay(){state.days[selectedDate] ||= {AM:{foods:[],done:[]},PM:{foods:[],done:[]}}}
-ensureDay();
-function save(){localStorage.setItem('acornSnackV2',JSON.stringify(state))}
-function tab(id,b){['home','people','history'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render()}
-function addFood(){let x=prompt('What food is being served?');if(x?.trim()){ensureDay();state.days[selectedDate][session].foods.push(x.trim());save();render();toast('Food added')}}
-function removeFood(i){state.days[selectedDate][session].foods.splice(i,1);save();render()}
-function addChild(){let n=newName.value.trim();if(!n)return toast('Please enter the child's name');state.children.push({id:Date.now(),name:n,allergy:newAllergy.value.trim()||'None',am:newAM.checked,pm:newPM.checked});newName.value='';newAllergy.value='';save();render();toast('Child added')}
-function editChild(id){let c=state.children.find(x=>x.id===id);if(!c)return;let n=prompt('Child name',c.name);if(n===null)return;let a=prompt('Allergy / dietary requirement',c.allergy);if(a===null)return;c.name=n.trim()||c.name;c.allergy=a.trim()||'None';save();render();toast('Child updated')}
-function removeChild(id){if(confirm('Remove this child?')){state.children=state.children.filter(c=>c.id!==id);Object.values(state.days).forEach(d=>['AM','PM'].forEach(s=>d[s].done=d[s].done.filter(x=>x!==id)));save();render();}}
-function toggle(id){ensureDay();let d=state.days[selectedDate][session],i=d.done.indexOf(id);i<0?d.done.push(id):d.done.splice(i,1);save();render()}
-function toast(t){let x=document.getElementById('toast');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',1400)}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function render(){
-ensureDay();datePicker.value=selectedDate;topDate.textContent=new Date(selectedDate+'T12:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-sessionTitle.textContent=session==='AM'?'¸AM Snack':' PM Snack';amBtn.classList.toggle('on',session==='AM');pmBtn.classList.toggle('on',session==='PM');
-let d=state.days[selectedDate][session],kids=state.children.filter(c=>c[session.toLowerCase()]);
-foods.innerHTML=d.foods.length?d.foods.map((x,i)=>`<div class="food"><span ${esc(x)}</span><button onclick="removeFood(${i})">Remove</button></div>`).join(''):'<div class="empty">No food added yet.</div>';
-let done=d.done.filter(id=>kids.some(c=>c.id===id));progress.textContent=`${done.length} of ${kids.length} completed`;
-children.innerHTML=kids.length?kids.map(c=>`<div class="child"><input class="check" type="checkbox" ${d.done.includes(c.id)?'checked':''} onchange="toggle(${c.id})"><div class="avatar">${esc(c.name[0])}</div><div style="flex:1"><div class="name">${esc(c.name)}</div><div class="${c.allergy.toLowerCase()==='none'?'none':'allergy'}">${c.allergy.toLowerCase()==='none'?'No allergies':' ALLERGY: '+esc(c.allergy)}</div>${c.allergy.toLowerCase()!=='none'?'<div class="warn"> Check this childâs allergy before serving.</div>':''}</div></div>`).join(''):'<div class="empty">No children attending this session.</div>';
-manage.innerHTML=state.children.map(c=>`<div class="child"><div class="avatar">${esc(c.name[0])}</div><div style="flex:1"><div class="name">${esc(c.name)}</div><div class="${c.allergy.toLowerCase()==='none'?'none':'allergy'}">${esc(c.allergy)}</div><div class="muted">AM ${c.am?'':'} Â· PM ${c.pm?'':''}</div></div><button class="smallbtn" onclick="editChild(${c.id})">Edit</button><button class="smallbtn danger" onclick="removeChild(${c.id})">Delete</button></div>`).join('');
-let entries=Object.entries(state.days).sort().reverse().slice(0,20);logs.innerHTML=entries.length?entries.map(([dt,v])=>`<div style="padding:12px 0;border-bottom:1px solid #eee"><b>${new Date(dt+'T12:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'})}</b><br><span class="muted">¸ AM: ${v.AM.done.length} completed Â· ${v.AM.foods.join(', ')||'No food'}<br> PM: ${v.PM.done.length} completed Â· ${v.PM.foods.join(', ')||'No food'}</span></div>`).join(''):'<div class="empty">No records yet.</div>';
-}
-render();
-</script></body></html>
+
+(function () {
+
+  const STORAGE_KEY = "acornSnackListV2";
+
+  const datePicker =
+    document.getElementById("datePicker");
+
+  const nameInput =
+    document.getElementById("nameInput");
+
+  const statusInput =
+    document.getElementById("statusInput");
+
+  const milkInput =
+    document.getElementById("milkInput");
+
+  const people =
+    document.getElementById("people");
+
+  const history =
+    document.getElementById("history");
+
+  const dayTitle =
+    document.getElementById("dayTitle");
+
+  const summary =
+    document.getElementById("summary");
+
+
+  let data = load();
+
+  let currentDate = today();
+
+  datePicker.value = currentDate;
+
+
+  function today() {
+
+    const d = new Date();
+
+    const local =
+      new Date(
+        d.getTime() -
+        d.getTimezoneOffset() * 60000
+      );
+
+    return local
+      .toISOString()
+      .slice(0, 10);
+  }
+
+
+  function load() {
+
+    try {
+
+      const saved =
+        JSON.parse(
+          localStorage.getItem(STORAGE_KEY)
+        );
+
+      return saved &&
+        typeof saved === "object"
+        ? saved
+        : {};
+
+    } catch (error) {
+
+      return {};
+
+    }
+  }
+
+
+  function save() {
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(data)
+    );
+  }
+
+
+  function ensureDay(date) {
+
+    if (!data[date]) {
+
+      data[date] = {
+        children: []
+      };
+
+    }
+  }
+
+
+  function prettyDate(date) {
+
+    return new Date(
+      date + "T12:00:00"
+    ).toLocaleDateString(
+      "en-GB",
+      {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }
+    );
+
+  }
+
+
+  function render() {
+
+    ensureDay(currentDate);
+
+    datePicker.value =
+      currentDate;
+
+    dayTitle.textContent =
+      prettyDate(currentDate);
+
+
+    const children =
+      data[currentDate].children;
+
+
+    const done =
+      children.filter(
+        child => child.done
+      ).length;
+
+
+    summary.textContent =
+      children.length
+        ? `${done} of ${children.length} completed`
+        : "No children added yet";
+
+
+    people.innerHTML = "";
+
+
+    if (!children.length) {
+
+      people.innerHTML =
+        '<div class="empty">' +
+        'No children on this day yet. Add one above.' +
+        '</div>';
+
+    } else {
+
+      children.forEach(
+        (child, index) => {
+
+          const item =
+            document.createElement("div");
+
+          item.className =
+            "person" +
+            (child.done
+              ? " done"
+              : "");
+
+
+          const top =
+            document.createElement("div");
+
+          top.className =
+            "person-top";
+
+
+          const tick =
+            document.createElement("button");
+
+          tick.className =
+            "tick";
+
+          tick.title =
+            child.done
+              ? "Mark as not done"
+              : "Mark as done";
+
+          tick.textContent =
+            child.done
+              ? "✓"
+              : "";
+
+
+          tick.addEventListener(
+            "click",
+            () => {
+
+              child.done =
+                !child.done;
+
+              save();
+
+              render();
+
+            }
+          );
+
+
+          const name =
+            document.createElement("div");
+
+          name.className =
+            "name";
+
+          name.textContent =
+            child.name;
+
+
+          const status =
+            document.createElement("span");
+
+
+          if (
+            child.status === "none"
+          ) {
+
+            status.className =
+              "status";
+
+            status.style.background =
+              "#edf0ed";
+
+            status.style.color =
+              "#596159";
+
+            status.textContent =
+              "NONE";
+
+          } else {
+
+            status.className =
+              "status " +
+              (
+                child.status === "red"
+                  ? "red"
+                  : "green"
+              );
+
+            status.textContent =
+              child.status === "red"
+                ? "RED"
+                : "GREEN";
+
+          }
+
+
+          const remove =
+            document.createElement("button");
+
+          remove.className =
+            "danger small";
+
+          remove.textContent =
+            "Remove";
+
+
+          remove.addEventListener(
+            "click",
+            () => {
+
+              if (
+                confirm(
+                  "Remove " +
+                  child.name +
+                  " from this day's list?"
+                )
+              ) {
+
+                children.splice(
+                  index,
+                  1
+                );
+
+                save();
+
+                render();
+
+              }
+
+            }
+          );
+
+
+          top.append(
+            tick,
+            name,
+            status,
+            remove
+          );
+
+
+          item.appendChild(top);
+
+
+          if (
+            child.milk &&
+            child.milk.trim()
+          ) {
+
+            const milk =
+              document.createElement("div");
+
+            milk.className =
+              "milk";
+
+
+            const strong =
+              document.createElement("strong");
+
+            strong.textContent =
+              "Alternative milk: ";
+
+
+            milk.appendChild(strong);
+
+
+            milk.appendChild(
+              document.createTextNode(
+                child.milk
+              )
+            );
+
+
+            item.appendChild(milk);
+
+          }
+
+
+          people.appendChild(item);
+
+        }
+      );
+
+    }
+
+
+    renderHistory();
+
+  }
+
+
+  function renderHistory() {
+
+    history.innerHTML = "";
+
+
+    const dates =
+      Object.keys(data)
+        .sort()
+        .reverse();
+
+
+    if (!dates.length) {
+
+      history.innerHTML =
+        '<div class="empty">' +
+        'Your saved days will appear here.' +
+        '</div>';
+
+      return;
+
+    }
+
+
+    dates.forEach(
+      date => {
+
+        const children =
+          data[date].children || [];
+
+
+        const done =
+          children.filter(
+            child => child.done
+          ).length;
+
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          "history-item";
+
+
+        const info =
+          document.createElement("div");
+
+
+        const title =
+          document.createElement("div");
+
+        title.className =
+          "date-title";
+
+        title.textContent =
+          prettyDate(date);
+
+
+        const count =
+          document.createElement("div");
+
+        count.className =
+          "count";
+
+        count.textContent =
+          `${done} of ${children.length} completed`;
+
+
+        info.append(
+          title,
+          count
+        );
+
+
+        const open =
+          document.createElement("button");
+
+        open.className =
+          "secondary small";
+
+        open.textContent =
+          "Open";
+
+
+        open.addEventListener(
+          "click",
+          () => {
+
+            currentDate =
+              date;
+
+            render();
+
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+
+          }
+        );
+
+
+        row.append(
+          info,
+          open
+        );
+
+
+        history.appendChild(row);
+
+      }
+    );
+
+  }
+
+
+  document
+    .getElementById("addBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        const name =
+          nameInput.value.trim();
+
+
+        if (!name) {
+
+          alert(
+            "Please enter the child's name."
+          );
+
+          nameInput.focus();
+
+          return;
+
+        }
+
+
+        ensureDay(currentDate);
+
+
+        data[currentDate]
+          .children
+          .push({
+
+            name: name,
+
+            status:
+              statusInput.value,
+
+            milk:
+              milkInput.value.trim(),
+
+            done: false
+
+          });
+
+
+        save();
+
+
+        nameInput.value = "";
+
+        milkInput.value = "";
+
+        statusInput.value =
+          "none";
+
+
+        nameInput.focus();
+
+        render();
+
+      }
+    );
+
+
+  nameInput.addEventListener(
+    "keydown",
+    event => {
+
+      if (
+        event.key === "Enter"
+      ) {
+
+        document
+          .getElementById("addBtn")
+          .click();
+
+      }
+
+    }
+  );
+
+
+  datePicker.addEventListener(
+    "change",
+    () => {
+
+      currentDate =
+        datePicker.value;
+
+      ensureDay(currentDate);
+
+      save();
+
+      render();
+
+    }
+  );
+
+
+  document
+    .getElementById("newDayBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        const date =
+          prompt(
+            "Enter the date for the new list (DD/MM/YYYY):"
+          );
+
+
+        if (!date) {
+          return;
+        }
+
+
+        const parts =
+          date.split("/");
+
+
+        if (
+          parts.length !== 3
+        ) {
+
+          alert(
+            "Please use DD/MM/YYYY."
+          );
+
+          return;
+
+        }
+
+
+        const iso =
+          `${parts[2].padStart(4, "0")}-${parts[1].padStart(2, "0")}-${parts[0].padStart(2, "0")}`;
+
+
+        currentDate =
+          iso;
+
+
+        ensureDay(currentDate);
+
+        save();
+
+        render();
+
+      }
+    );
+
+
+  document
+    .getElementById("clearDayBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        if (
+          !data[currentDate] ||
+          !data[currentDate].children.length
+        ) {
+
+          return;
+
+        }
+
+
+        if (
+          confirm(
+            "Clear everyone from this day's list? This cannot be undone."
+          )
+        ) {
+
+          data[currentDate]
+            .children = [];
+
+          save();
+
+          render();
+
+        }
+
+      }
+    );
+
+
+  ensureDay(currentDate);
+
+  render();
+
+})();
+
+</script>
+
+</body>
+</html>

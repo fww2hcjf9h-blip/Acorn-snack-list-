@@ -12,16 +12,15 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   background:#f3f7f3;
-  color:#26352a;
+  color:#29362c;
 }
 
 button,input,select{font:inherit}
-
 button{cursor:pointer}
 
 .hidden{display:none!important}
 
-.login{
+.login-screen{
   min-height:100vh;
   display:flex;
   justify-content:center;
@@ -29,136 +28,160 @@ button{cursor:pointer}
   padding:20px;
 }
 
-.box{
+.login-box{
   width:100%;
   max-width:520px;
   background:white;
-  border-radius:28px;
-  padding:30px 20px;
-  box-shadow:0 8px 30px rgba(0,0,0,.08);
+  border-radius:30px;
+  padding:30px 22px 35px;
+  box-shadow:0 8px 35px rgba(0,0,0,.08);
   text-align:center;
 }
 
 .logo{
-  font-size:48px;
+  font-size:52px;
   font-weight:900;
-  color:#397249;
+  color:#40774d;
+  margin-bottom:5px;
 }
 
-.subtitle{
-  font-size:24px;
-  font-weight:800;
-  margin:5px 0 25px;
+.heading{
+  font-size:28px;
+  font-weight:900;
+  margin-bottom:25px;
 }
 
 .message{
-  padding:12px;
+  padding:13px;
   border-radius:12px;
-  margin-bottom:15px;
+  margin:12px 0;
   font-weight:700;
 }
 
 .error{
-  background:#f8dede;
-  color:#8d2929;
+  background:#f7dddd;
+  color:#922e2e;
 }
 
 .success{
-  background:#dff1e2;
-  color:#28643a;
+  background:#dff0e1;
+  color:#28613a;
 }
 
 .no-accounts{
-  padding:25px 10px;
-  font-size:19px;
-  font-weight:700;
+  padding:20px 10px;
+}
+
+.no-icon{
+  font-size:65px;
+  margin-bottom:10px;
+}
+
+.no-text{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:20px;
   color:#59645b;
 }
 
-.add-first{
+.green-button{
   width:100%;
-  padding:15px;
-  background:#397249;
-  color:white;
   border:0;
+  background:#40774d;
+  color:white;
+  padding:15px;
+  border-radius:13px;
+  font-size:18px;
+  font-weight:900;
+}
+
+.grey-button{
+  width:100%;
+  border:0;
+  background:#e8eee9;
+  color:#315b3d;
+  padding:14px;
   border-radius:13px;
   font-weight:800;
-  font-size:18px;
+  margin-top:9px;
 }
+
+/* ADULT SELECTOR */
 
 .selector{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:12px;
+  gap:10px;
 }
 
 .arrow{
-  width:48px;
-  height:48px;
+  width:52px;
+  height:52px;
+  flex:none;
   border:0;
   border-radius:50%;
-  background:#e7eee8;
-  color:#397249;
+  background:#e8eee9;
+  color:#40774d;
   font-size:38px;
   line-height:1;
 }
 
 .adult-card{
-  width:235px;
-  min-height:290px;
-  background:#f1f6f1;
-  border:4px solid #397249;
-  border-radius:25px;
+  width:245px;
+  min-height:320px;
+  border:4px solid #40774d;
+  border-radius:27px;
+  background:#f0f5f0;
+  padding:20px;
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
-  padding:18px;
+  justify-content:center;
 }
 
-.photo{
-  width:165px;
-  height:165px;
+.adult-photo{
+  width:175px;
+  height:175px;
   border-radius:50%;
   background:#dfe8df;
   display:flex;
   justify-content:center;
   align-items:center;
   overflow:hidden;
-  font-size:70px;
+  font-size:75px;
 }
 
-.photo img{
+.adult-photo img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
 .adult-name{
-  margin-top:15px;
-  font-size:27px;
+  color:#40774d;
+  font-size:28px;
   font-weight:900;
-  color:#397249;
+  margin-top:16px;
 }
 
 .dots{
   display:flex;
   justify-content:center;
   gap:6px;
-  margin:15px 0;
+  margin:16px 0;
 }
 
 .dot{
   width:8px;
   height:8px;
-  border-radius:20px;
   background:#ccd6cd;
+  border-radius:20px;
 }
 
 .dot.active{
-  width:22px;
-  background:#397249;
+  width:23px;
+  background:#40774d;
 }
 
 label{
@@ -170,9 +193,9 @@ label{
 
 input,select{
   width:100%;
-  padding:14px;
-  border:2px solid #d4ddd5;
+  border:2px solid #d5ded6;
   border-radius:12px;
+  padding:14px;
   background:white;
 }
 
@@ -182,42 +205,21 @@ input,select{
   letter-spacing:8px;
 }
 
-.green{
-  width:100%;
-  padding:14px;
-  margin-top:12px;
-  border:0;
-  border-radius:12px;
-  background:#397249;
-  color:white;
-  font-weight:900;
-  font-size:18px;
-}
-
-.grey{
-  width:100%;
-  padding:13px;
-  margin-top:8px;
-  border:0;
-  border-radius:12px;
-  background:#e7eee8;
-  color:#315b3d;
-  font-weight:800;
-}
-
 .plus{
   position:fixed;
   right:22px;
   bottom:22px;
-  width:64px;
-  height:64px;
+  width:66px;
+  height:66px;
   border:0;
   border-radius:50%;
-  background:#397249;
+  background:#40774d;
   color:white;
   font-size:40px;
   box-shadow:0 5px 20px rgba(0,0,0,.2);
 }
+
+/* MODALS */
 
 .modal{
   position:fixed;
@@ -227,7 +229,7 @@ input,select{
   align-items:center;
   justify-content:center;
   padding:18px;
-  z-index:50;
+  z-index:100;
 }
 
 .modal-box{
@@ -244,20 +246,20 @@ input,select{
   margin-top:0;
 }
 
-.big-photo{
+.preview-photo{
   width:125px;
   height:125px;
   border-radius:50%;
-  margin:10px auto 15px;
-  background:#e2ebe2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  background:#e0e9e0;
   overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   font-size:55px;
+  margin:10px auto 15px;
 }
 
-.big-photo img{
+.preview-photo img{
   width:100%;
   height:100%;
   object-fit:cover;
@@ -266,12 +268,11 @@ input,select{
 .photo-label{
   display:block;
   text-align:center;
-  padding:12px;
-  border-radius:11px;
-  background:#e7eee8;
+  background:#e8eee9;
   color:#315b3d;
+  padding:13px;
+  border-radius:12px;
   font-weight:800;
-  cursor:pointer;
 }
 
 .photo-label input{
@@ -281,7 +282,7 @@ input,select{
 /* APP */
 
 .top{
-  background:#397249;
+  background:#40774d;
   color:white;
   padding:12px 15px;
   display:flex;
@@ -292,7 +293,7 @@ input,select{
   z-index:20;
 }
 
-.title{
+.app-title{
   font-size:23px;
   font-weight:900;
 }
@@ -307,12 +308,11 @@ input,select{
   width:40px;
   height:40px;
   border-radius:50%;
-  background:#e3ece3;
+  background:#e1e9e1;
   overflow:hidden;
   display:flex;
-  justify-content:center;
   align-items:center;
-  font-size:23px;
+  justify-content:center;
 }
 
 .small-photo img{
@@ -325,8 +325,8 @@ input,select{
   border:0;
   border-radius:10px;
   padding:9px 12px;
-  font-weight:800;
   color:#315b3d;
+  font-weight:800;
 }
 
 .nav{
@@ -335,21 +335,20 @@ input,select{
   padding:8px;
   background:white;
   overflow-x:auto;
-  border-bottom:1px solid #ddd;
 }
 
 .nav button{
-  border:0;
-  background:#e7eee8;
-  color:#315b3d;
-  padding:10px 14px;
-  border-radius:10px;
-  font-weight:800;
   white-space:nowrap;
+  border:0;
+  border-radius:10px;
+  padding:10px 14px;
+  background:#e8eee9;
+  color:#315b3d;
+  font-weight:800;
 }
 
 .nav button.active{
-  background:#397249;
+  background:#40774d;
   color:white;
 }
 
@@ -385,20 +384,20 @@ input,select{
 .tab{
   flex:1;
   border:0;
-  border-radius:10px;
   padding:11px;
-  background:#e7eee8;
+  border-radius:10px;
+  background:#e8eee9;
   color:#315b3d;
   font-weight:800;
 }
 
 .tab.active{
-  background:#397249;
+  background:#40774d;
   color:white;
 }
 
 .child{
-  border:1px solid #dce3dc;
+  border:1px solid #dce4dd;
   border-radius:12px;
   padding:12px;
   margin-top:9px;
@@ -416,12 +415,12 @@ input,select{
   border:0;
   border-radius:50%;
   background:#edf1ed;
-  color:#397249;
+  color:#40774d;
   font-weight:900;
 }
 
 .done .tick{
-  background:#397249;
+  background:#40774d;
   color:white;
 }
 
@@ -433,43 +432,15 @@ input,select{
 .remove{
   border:0;
   border-radius:8px;
-  background:#f5dcdc;
-  color:#922c2c;
+  background:#f5dddd;
+  color:#922e2e;
   padding:7px;
-}
-
-.badge{
-  padding:5px 7px;
-  border-radius:6px;
-  font-size:10px;
-  font-weight:900;
-}
-
-.badge.red{
-  background:#f5dcdc;
-  color:#922c2c;
-}
-
-.badge.green{
-  background:#dff1e2;
-  color:#28643a;
-}
-
-.badge.none{
-  background:#edf1ed;
-  color:#59645b;
-}
-
-.detail{
-  margin:7px 0 0 43px;
-  color:#59645b;
-  font-size:13px;
 }
 
 .empty{
   text-align:center;
   padding:20px;
-  color:#687269;
+  color:#69736b;
 }
 
 .menu{
@@ -481,40 +452,21 @@ input,select{
   padding:14px;
   border-radius:15px;
   box-shadow:0 5px 25px rgba(0,0,0,.2);
-  z-index:40;
+  z-index:50;
 }
 
 .menu button{
   width:100%;
-  margin-top:8px;
-}
-
-.group{
-  border:1px solid #dce3dc;
-  border-radius:11px;
-  overflow:hidden;
-  margin-bottom:10px;
-}
-
-.group-title{
-  background:#e7eee8;
-  padding:11px;
-  font-weight:900;
-  color:#315b3d;
-}
-
-.group-names{
-  padding:11px;
 }
 
 @media(max-width:600px){
   .adult-card{
-    width:210px;
+    width:220px;
   }
 
-  .photo{
-    width:145px;
-    height:145px;
+  .adult-photo{
+    width:150px;
+    height:150px;
   }
 }
 </style>
@@ -522,56 +474,68 @@ input,select{
 
 <body>
 
-<!-- LOGIN -->
+<!-- LOGIN SCREEN -->
 
-<div id="loginScreen" class="login">
+<div id="loginScreen" class="login-screen">
 
-  <div class="box">
+  <div class="login-box">
 
     <div class="logo">🌳 Acorn</div>
-    <div class="subtitle">Who's logging in?</div>
+
+    <div class="heading">
+      Who's logging in?
+    </div>
 
     <div id="loginMessage" class="message hidden"></div>
 
-    <!-- NO ADULTS -->
+    <!-- THIS IS SHOWN WHEN THERE ARE ZERO ADULTS -->
+
     <div id="noAccounts" class="no-accounts hidden">
 
-      <div style="font-size:50px">👤</div>
+      <div class="no-icon">👤</div>
 
-      <div style="margin:10px 0">
-        There are no adult accounts yet.
+      <div class="no-text">
+        No adult accounts yet
       </div>
 
-      <button id="firstAdult" class="add-first">
+      <button id="addFirstAdult" class="green-button">
         + Add adult
       </button>
 
     </div>
 
-    <!-- ADULT SELECTOR -->
+    <!-- THIS ONLY APPEARS AFTER AN ACCOUNT EXISTS -->
+
     <div id="adultSelector" class="hidden">
 
       <div class="selector">
 
-        <button id="previous" class="arrow">‹</button>
+        <button id="previous" class="arrow">
+          ‹
+        </button>
 
         <div class="adult-card">
 
-          <div id="loginPhoto" class="photo">👤</div>
+          <div id="adultPhoto" class="adult-photo">
+            👤
+          </div>
 
-          <div id="loginName" class="adult-name">
-            Adult
+          <div id="adultName" class="adult-name">
           </div>
 
         </div>
 
-        <button id="next" class="arrow">›</button>
+        <button id="next" class="arrow">
+          ›
+        </button>
 
       </div>
 
       <div id="dots" class="dots"></div>
 
-      <label>Enter your 4-digit code</label>
+      <label>
+        Enter your 4-digit code
+      </label>
 
       <input
         id="loginCode"
@@ -581,7 +545,7 @@ input,select{
         maxlength="4"
         placeholder="••••">
 
-      <button id="loginButton" class="green">
+      <button id="loginButton" class="green-button">
         Log in
       </button>
 
@@ -589,22 +553,28 @@ input,select{
 
   </div>
 
-  <button id="plusButton" class="plus">+</button>
+  <button id="plusButton" class="plus">
+    +
+  </button>
 
 </div>
 
 
-<!-- APP -->
+<!-- MAIN APP -->
 
 <div id="app" class="hidden">
 
   <div class="top">
 
-    <div class="title">🌳 Acorn</div>
+    <div class="app-title">
+      🌳 Acorn
+    </div>
 
     <div class="profile">
 
-      <div id="smallPhoto" class="small-photo">👤</div>
+      <div id="smallPhoto" class="small-photo">
+        👤
+      </div>
 
       <button id="profileButton" class="profile-button">
         Profile
@@ -620,10 +590,6 @@ input,select{
       🍎 Snacks
     </button>
 
-    <button id="groupNav">
-      📋 Grouped
-    </button>
-
     <button id="sunNav">
       ☀️ Suncream
     </button>
@@ -634,14 +600,16 @@ input,select{
 
     <div class="card">
 
-      <label>Date</label>
+      <label>
+        Date
+      </label>
 
       <input id="date" type="date">
 
     </div>
 
 
-    <!-- SNACK PAGE -->
+    <!-- SNACKS -->
 
     <div id="snackPage">
 
@@ -663,7 +631,9 @@ input,select{
 
           <div class="field">
 
-            <label>Child's name</label>
+            <label>
+              Child's name
+            </label>
 
             <input
               id="childName"
@@ -673,7 +643,9 @@ input,select{
 
           <div class="field">
 
-            <label>Allergy / preference</label>
+            <label>
+              Allergy / preference
+            </label>
 
             <select id="allergy">
 
@@ -695,7 +667,9 @@ input,select{
 
           <div class="field">
 
-            <label>Alternative milk</label>
+            <label>
+              Alternative milk
+            </label>
 
             <input
               id="milk"
@@ -705,7 +679,7 @@ input,select{
 
         </div>
 
-        <button id="addSnack" class="green">
+        <button id="addSnack" class="green-button">
           Add child
         </button>
 
@@ -713,36 +687,11 @@ input,select{
 
       <div class="card">
 
-        <h2 id="snackHeading">AM Snack</h2>
+        <h2 id="snackHeading">
+          AM Snack
+        </h2>
 
         <div id="snackList"></div>
-
-      </div>
-
-    </div>
-
-
-    <!-- GROUPED PAGE -->
-
-    <div id="groupPage" class="hidden">
-
-      <div class="card">
-
-        <h2>📋 Grouped Snacks</h2>
-
-        <div class="tabs">
-
-          <button id="groupAm" class="tab active">
-            AM Snack
-          </button>
-
-          <button id="groupPm" class="tab">
-            PM Snack
-          </button>
-
-        </div>
-
-        <div id="groups"></div>
 
       </div>
 
@@ -755,13 +704,17 @@ input,select{
 
       <div class="card">
 
-        <h2>☀️ Suncream</h2>
+        <h2>
+          ☀️ Suncream
+        </h2>
 
         <div class="row">
 
           <div class="field">
 
-            <label>Child's name</label>
+            <label>
+              Child's name
+            </label>
 
             <input
               id="sunChild"
@@ -771,7 +724,9 @@ input,select{
 
           <div class="field">
 
-            <label>Product</label>
+            <label>
+              Product
+            </label>
 
             <input
               id="sunProduct"
@@ -781,7 +736,7 @@ input,select{
 
         </div>
 
-        <button id="addSun" class="green">
+        <button id="addSun" class="green-button">
           Add child
         </button>
 
@@ -800,36 +755,17 @@ input,select{
 </div>
 
 
-<!-- MENU -->
-
-<div id="menu" class="menu hidden">
-
-  <strong id="menuName">Adult</strong>
-
-  <button id="editProfile" class="grey">
-    ✏️ Edit profile
-  </button>
-
-  <button id="addAnother" class="grey">
-    ➕ Add another adult
-  </button>
-
-  <button id="logout" class="grey">
-    🚪 Log out
-  </button>
-
-</div>
-
-
-<!-- ADD ADULT -->
+<!-- ADD ADULT MODAL -->
 
 <div id="adultModal" class="modal hidden">
 
   <div class="modal-box">
 
-    <h2>➕ Add adult</h2>
+    <h2>
+      Add adult
+    </h2>
 
-    <div id="newPhoto" class="big-photo">
+    <div id="newPhoto" class="preview-photo">
       👤
     </div>
 
@@ -838,41 +774,47 @@ input,select{
       📷 Choose profile photo
 
       <input
-        id="newPhotoFile"
+        id="photoFile"
         type="file"
         accept="image/*">
 
     </label>
 
-    <label>Adult name</label>
+    <label>
+      Adult name
+    </label>
 
     <input
-      id="newAdultName"
+      id="newName"
       placeholder="Adult name">
 
-    <label>4-digit code</label>
+    <label>
+      4-digit code
+    </label>
 
     <input
-      id="newAdultCode"
+      id="newCode"
       type="password"
       inputmode="numeric"
       maxlength="4">
 
-    <label>Confirm 4-digit code</label>
+    <label>
+      Confirm 4-digit code
+    </label>
 
     <input
-      id="newAdultConfirm"
+      id="confirmCode"
       type="password"
       inputmode="numeric"
       maxlength="4">
 
     <div id="adultMessage" class="message hidden"></div>
 
-    <button id="createAdult" class="green">
+    <button id="createAdult" class="green-button">
       Create account
     </button>
 
-    <button id="cancelAdult" class="grey">
+    <button id="cancelAdult" class="grey-button">
       Cancel
     </button>
 
@@ -881,21 +823,23 @@ input,select{
 </div>
 
 
-<!-- PROFILE -->
+<!-- PROFILE MODAL -->
 
 <div id="profileModal" class="modal hidden">
 
   <div class="modal-box">
 
-    <h2>Edit profile</h2>
+    <h2>
+      Edit profile
+    </h2>
 
-    <div id="profilePhoto" class="big-photo">
+    <div id="profilePhoto" class="preview-photo">
       👤
     </div>
 
     <label class="photo-label">
 
-      📷 Choose profile photo
+      📷 Change profile photo
 
       <input
         id="profileFile"
@@ -904,21 +848,46 @@ input,select{
 
     </label>
 
-    <label>Name</label>
+    <label>
+      Name
+    </label>
 
     <input id="profileName">
 
     <div id="profileMessage" class="message hidden"></div>
 
-    <button id="saveProfile" class="green">
+    <button id="saveProfile" class="green-button">
       Save changes
     </button>
 
-    <button id="cancelProfile" class="grey">
+    <button id="cancelProfile" class="grey-button">
       Cancel
     </button>
 
   </div>
+
+</div>
+
+
+<!-- PROFILE MENU -->
+
+<div id="menu" class="menu hidden">
+
+  <strong id="menuName">
+    Adult
+  </strong>
+
+  <button id="editProfile" class="grey-button">
+    ✏️ Edit profile
+  </button>
+
+  <button id="addAnother" class="grey-button">
+    ➕ Add another adult
+  </button>
+
+  <button id="logout" class="grey-button">
+    🚪 Log out
+  </button>
 
 </div>
 
@@ -931,73 +900,18 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0";
 
-
-/* ---------------------------
-   BASIC SUPABASE REQUEST
----------------------------- */
-
-async function request(path,options={}){
-
-  const headers={
-    "apikey":SUPABASE_KEY,
-    "Authorization":"Bearer "+SUPABASE_KEY,
-    "Content-Type":"application/json",
-    ...(options.headers||{})
-  };
-
-  const response=await fetch(
-    SUPABASE_URL+path,
-    {
-      ...options,
-      headers
-    }
-  );
-
-  const text=await response.text();
-
-  let data=null;
-
-  try{
-    data=text?JSON.parse(text):null;
-  }catch{
-    data=text;
-  }
-
-  if(!response.ok){
-
-    throw new Error(
-      data?.message ||
-      data?.error_description ||
-      data?.hint ||
-      text ||
-      "Something went wrong"
-    );
-
-  }
-
-  return data;
-
-}
-
-
-/* ---------------------------
-   VARIABLES
----------------------------- */
-
 let adults=[];
 let selectedAdult=0;
 let currentAdult=null;
 
+let snacks=[];
+let suncream=[];
+
+let snackTime="am";
+
 let currentDate=
 new Date().toISOString().slice(0,10);
 
-let snackTime="am";
-let groupTime="am";
-
-
-/* ---------------------------
-   HELPERS
----------------------------- */
 
 function $(id){
   return document.getElementById(id);
@@ -1014,7 +928,7 @@ function hide(id){
 }
 
 
-function showMessage(id,text,type){
+function message(id,text,type){
 
   const el=$(id);
 
@@ -1022,19 +936,10 @@ function showMessage(id,text,type){
 
   el.className=
     "message "+type;
-
 }
 
 
-function clearMessage(id){
-
-  $(id).textContent="";
-  $(id).className="message hidden";
-
-}
-
-
-function putPhoto(element,url){
+function photo(element,url){
 
   element.innerHTML="";
 
@@ -1051,20 +956,64 @@ function putPhoto(element,url){
     element.textContent="👤";
 
   }
-
 }
 
 
-/* ---------------------------
-   LOAD ADULTS
----------------------------- */
+/* SUPABASE */
+
+async function supabase(path,options={}){
+
+  const response=
+    await fetch(
+      SUPABASE_URL+path,
+      {
+        ...options,
+        headers:{
+          "apikey":SUPABASE_KEY,
+          "Authorization":
+            "Bearer "+SUPABASE_KEY,
+          "Content-Type":
+            "application/json",
+          ...(options.headers||{})
+        }
+      }
+    );
+
+  const text=
+    await response.text();
+
+  let data=null;
+
+  try{
+    data=text?JSON.parse(text):null;
+  }catch{
+    data=text;
+  }
+
+  if(!response.ok){
+
+    throw new Error(
+      data?.message ||
+      data?.hint ||
+      data?.error ||
+      text ||
+      "Supabase error"
+    );
+
+  }
+
+  return data;
+}
+
+
+/* LOAD ADULTS */
 
 async function loadAdults(){
 
   try{
 
-    adults=
-      await request(
+    const data=
+      await supabase(
         "/rest/v1/rpc/list_adults",
         {
           method:"POST",
@@ -1072,12 +1021,15 @@ async function loadAdults(){
         }
       );
 
-    adults=adults||[];
+    adults=
+      Array.isArray(data)
+        ?data
+        :[];
 
     if(adults.length===0){
 
-      show("noAccounts");
       hide("adultSelector");
+      show("noAccounts");
 
     }else{
 
@@ -1096,54 +1048,58 @@ async function loadAdults(){
 
     console.error(error);
 
-    showMessage(
+    message(
       "loginMessage",
-      "We couldn't load the adult accounts: "+error.message,
+      "Couldn't load adult accounts: "+
+      error.message,
       "error"
     );
 
   }
-
 }
 
 
-/* ---------------------------
-   DRAW ADULT SELECTOR
----------------------------- */
+/* DRAW SELECTED ADULT */
 
 function drawAdult(){
 
   if(!adults.length)return;
 
-  const adult=adults[selectedAdult];
+  const adult=
+    adults[selectedAdult];
 
-  $("loginName").textContent=adult.name;
+  $("adultName").textContent=
+    adult.name;
 
-  putPhoto(
-    $("loginPhoto"),
+  photo(
+    $("adultPhoto"),
     adult.photo_url
   );
 
   $("dots").innerHTML="";
 
-  adults.forEach((adult,index)=>{
+  adults.forEach(
+    function(_,index){
 
-    const dot=document.createElement("div");
+      const dot=
+        document.createElement("div");
 
-    dot.className=
-      "dot "+
-      (index===selectedAdult?"active":"");
+      dot.className=
+        "dot "+
+        (
+          index===selectedAdult
+          ?"active"
+          :""
+        );
 
-    $("dots").appendChild(dot);
+      $("dots").appendChild(dot);
 
-  });
-
+    }
+  );
 }
 
 
-/* ---------------------------
-   ARROWS
----------------------------- */
+/* ARROWS */
 
 $("previous").onclick=function(){
 
@@ -1151,12 +1107,11 @@ $("previous").onclick=function(){
 
   selectedAdult--;
 
-  if(selectedAdult<0){
-    selectedAdult=adults.length-1;
-  }
+  if(selectedAdult<0)
+    selectedAdult=
+      adults.length-1;
 
   drawAdult();
-
 };
 
 
@@ -1166,42 +1121,112 @@ $("next").onclick=function(){
 
   selectedAdult++;
 
-  if(selectedAdult>=adults.length){
+  if(selectedAdult>=adults.length)
     selectedAdult=0;
-  }
 
   drawAdult();
-
 };
 
 
-/* ---------------------------
-   ADD ADULT OPEN
----------------------------- */
+/* PHOTO CONVERSION */
 
-function openAdultModal(){
+function convertPhoto(file){
 
-  clearMessage("adultMessage");
+  return new Promise(
+    function(resolve,reject){
 
-  $("newAdultName").value="";
-  $("newAdultCode").value="";
-  $("newAdultConfirm").value="";
+      const reader=
+        new FileReader();
+
+      reader.onload=function(){
+
+        const image=
+          new Image();
+
+        image.onload=function(){
+
+          const canvas=
+            document.createElement("canvas");
+
+          const max=500;
+
+          let w=image.width;
+          let h=image.height;
+
+          if(w>h){
+
+            h=h*(max/w);
+            w=max;
+
+          }else{
+
+            w=w*(max/h);
+            h=max;
+
+          }
+
+          canvas.width=w;
+          canvas.height=h;
+
+          canvas
+            .getContext("2d")
+            .drawImage(
+              image,
+              0,
+              0,
+              w,
+              h
+            );
+
+          resolve(
+            canvas.toDataURL(
+              "image/jpeg",
+              .7
+            )
+          );
+
+        };
+
+        image.onerror=reject;
+
+        image.src=reader.result;
+
+      };
+
+      reader.onerror=reject;
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+}
+
+
+/* OPEN ADD ADULT */
+
+function openAdult(){
+
+  $("newName").value="";
+  $("newCode").value="";
+  $("confirmCode").value="";
 
   $("newPhoto").dataset.photo="";
 
-  putPhoto(
+  photo(
     $("newPhoto"),
     ""
   );
 
-  show("adultModal");
+  hide("loginMessage");
+  hide("adultMessage");
 
+  show("adultModal");
 }
 
 
-$("plusButton").onclick=openAdultModal;
+$("plusButton").onclick=openAdult;
 
-$("firstAdult").onclick=openAdultModal;
+$("addFirstAdult").onclick=openAdult;
 
 
 $("cancelAdult").onclick=function(){
@@ -1211,222 +1236,134 @@ $("cancelAdult").onclick=function(){
 };
 
 
-/* ---------------------------
-   PHOTO CONVERTER
----------------------------- */
+/* NEW PHOTO */
 
-function convertPhoto(file){
-
-  return new Promise((resolve,reject)=>{
-
-    const reader=new FileReader();
-
-    reader.onload=function(){
-
-      const image=new Image();
-
-      image.onload=function(){
-
-        const canvas=
-          document.createElement("canvas");
-
-        const max=500;
-
-        let width=image.width;
-        let height=image.height;
-
-        if(width>height){
-
-          height=
-            height*(max/width);
-
-          width=max;
-
-        }else{
-
-          width=
-            width*(max/height);
-
-          height=max;
-
-        }
-
-        canvas.width=width;
-        canvas.height=height;
-
-        canvas
-          .getContext("2d")
-          .drawImage(
-            image,
-            0,
-            0,
-            width,
-            height
-          );
-
-        resolve(
-          canvas.toDataURL(
-            "image/jpeg",
-            .7
-          )
-        );
-
-      };
-
-      image.onerror=reject;
-
-      image.src=reader.result;
-
-    };
-
-    reader.onerror=reject;
-
-    reader.readAsDataURL(file);
-
-  });
-
-}
-
-
-/* ---------------------------
-   NEW PHOTO
----------------------------- */
-
-$("newPhotoFile").onchange=
+$("photoFile").onchange=
 async function(){
 
-  const file=this.files[0];
+  const file=
+    this.files[0];
 
   if(!file)return;
 
   try{
 
-    const photo=
+    const result=
       await convertPhoto(file);
 
-    $("newPhoto").dataset.photo=photo;
+    $("newPhoto").dataset.photo=
+      result;
 
-    putPhoto(
+    photo(
       $("newPhoto"),
-      photo
+      result
     );
 
-  }catch(error){
+  }catch{
 
-    showMessage(
+    message(
       "adultMessage",
-      "Could not load that photo.",
+      "The photo could not be added.",
       "error"
     );
 
   }
-
 };
 
 
-/* ---------------------------
-   CREATE ADULT
----------------------------- */
+/* CREATE ADULT */
 
 $("createAdult").onclick=
 async function(){
 
-  clearMessage("adultMessage");
+  hide("adultMessage");
 
   const name=
-    $("newAdultName").value.trim();
+    $("newName").value.trim();
 
   const code=
-    $("newAdultCode").value.trim();
+    $("newCode").value.trim();
 
-  const confirmCode=
-    $("newAdultConfirm").value.trim();
+  const confirm=
+    $("confirmCode").value.trim();
 
-  const photo=
+  const picture=
     $("newPhoto").dataset.photo||"";
 
 
   if(!name){
 
-    showMessage(
+    message(
       "adultMessage",
       "Please enter the adult's name.",
       "error"
     );
 
     return;
-
   }
 
 
   if(!/^[0-9]{4}$/.test(code)){
 
-    showMessage(
+    message(
       "adultMessage",
       "The code must be exactly 4 numbers.",
       "error"
     );
 
     return;
-
   }
 
 
-  if(code!==confirmCode){
+  if(code!==confirm){
 
-    showMessage(
+    message(
       "adultMessage",
       "The two codes don't match.",
       "error"
     );
 
     return;
-
   }
 
 
-  const button=$("createAdult");
+  const button=
+    $("createAdult");
 
   button.disabled=true;
-  button.textContent="Creating...";
+  button.textContent=
+    "Creating...";
 
 
   try{
 
-    const result=
-      await request(
-        "/rest/v1/rpc/create_adult",
-        {
-          method:"POST",
-          body:JSON.stringify({
-            p_name:name,
-            p_code:code,
-            p_photo:photo
-          })
-        }
-      );
-
-
-    /* Immediately add it to the selector */
-
-    const newAdult=
-      Array.isArray(result)
-        ?result[0]
-        :result;
+    await supabase(
+      "/rest/v1/rpc/create_adult",
+      {
+        method:"POST",
+        body:JSON.stringify({
+          p_name:name,
+          p_code:code,
+          p_photo:picture
+        })
+      }
+    );
 
 
     await loadAdults();
 
 
-    const newIndex=
+    const index=
       adults.findIndex(
-        a=>a.id===newAdult.id
+        a=>
+          a.name.toLowerCase()===
+          name.toLowerCase()
       );
 
 
-    if(newIndex>=0){
+    if(index>=0){
 
-      selectedAdult=newIndex;
+      selectedAdult=index;
 
       drawAdult();
 
@@ -1435,18 +1372,17 @@ async function(){
 
     hide("adultModal");
 
-    showMessage(
+    message(
       "loginMessage",
-      name+" has been added! Select their account and enter their code.",
+      name+
+      " has been added. Select their account and enter their code.",
       "success"
     );
 
 
   }catch(error){
 
-    console.error(error);
-
-    showMessage(
+    message(
       "adultMessage",
       error.message,
       "error"
@@ -1456,30 +1392,27 @@ async function(){
 
 
   button.disabled=false;
-  button.textContent="Create account";
-
+  button.textContent=
+    "Create account";
 };
 
 
-/* ---------------------------
-   LOGIN
----------------------------- */
+/* LOGIN */
 
 $("loginButton").onclick=
 async function(){
 
-  clearMessage("loginMessage");
+  hide("loginMessage");
 
   if(!adults.length){
 
-    showMessage(
+    message(
       "loginMessage",
-      "There are no adult accounts yet. Tap + to add one.",
+      "No adult accounts yet. Tap + to add one.",
       "error"
     );
 
     return;
-
   }
 
 
@@ -1492,27 +1425,20 @@ async function(){
 
   if(!/^[0-9]{4}$/.test(code)){
 
-    showMessage(
+    message(
       "loginMessage",
-      "Please enter the 4-digit code.",
+      "Please enter your 4-digit code.",
       "error"
     );
 
     return;
-
   }
-
-
-  const button=$("loginButton");
-
-  button.disabled=true;
-  button.textContent="Logging in...";
 
 
   try{
 
     const result=
-      await request(
+      await supabase(
         "/rest/v1/rpc/login_adult",
         {
           method:"POST",
@@ -1526,8 +1452,8 @@ async function(){
 
     currentAdult=
       Array.isArray(result)
-        ?result[0]
-        :result;
+      ?result[0]
+      :result;
 
 
     localStorage.setItem(
@@ -1540,12 +1466,9 @@ async function(){
 
     openApp();
 
-
   }catch(error){
 
-    console.error(error);
-
-    showMessage(
+    message(
       "loginMessage",
       "Incorrect code.",
       "error"
@@ -1553,698 +1476,43 @@ async function(){
 
   }
 
-
-  button.disabled=false;
-  button.textContent="Log in";
-
 };
 
 
-/* ---------------------------
-   OPEN APP
----------------------------- */
+/* OPEN APP */
 
 function openApp(){
 
   hide("loginScreen");
+
   show("app");
 
   $("menuName").textContent=
     currentAdult.name;
 
-  putPhoto(
+  photo(
     $("smallPhoto"),
     currentAdult.photo_url
   );
 
-  $("date").value=currentDate;
+  $("date").value=
+    currentDate;
 
-  loadEverything();
-
+  loadLists();
 }
 
 
-/* ---------------------------
-   NAVIGATION
----------------------------- */
-
-$("snackNav").onclick=function(){
-
-  show("snackPage");
-  hide("groupPage");
-  hide("sunPage");
-
-  $("snackNav").classList.add("active");
-  $("groupNav").classList.remove("active");
-  $("sunNav").classList.remove("active");
-
-  renderSnacks();
-
-};
-
-
-$("groupNav").onclick=function(){
-
-  hide("snackPage");
-  show("groupPage");
-  hide("sunPage");
-
-  $("snackNav").classList.remove("active");
-  $("groupNav").classList.add("active");
-  $("sunNav").classList.remove("active");
-
-  renderGroups();
-
-};
-
-
-$("sunNav").onclick=function(){
-
-  hide("snackPage");
-  hide("groupPage");
-  show("sunPage");
-
-  $("snackNav").classList.remove("active");
-  $("groupNav").classList.remove("active");
-  $("sunNav").classList.add("active");
-
-  renderSun();
-
-};
-
-
-/* ---------------------------
-   DATE
----------------------------- */
-
-$("date").onchange=function(){
-
-  currentDate=this.value;
-
-  loadEverything();
-
-};
-
-
-/* ---------------------------
-   SNACK TABS
----------------------------- */
-
-$("amButton").onclick=function(){
-
-  snackTime="am";
-
-  $("amButton").classList.add("active");
-  $("pmButton").classList.remove("active");
-
-  $("snackHeading").textContent="AM Snack";
-
-  renderSnacks();
-
-};
-
-
-$("pmButton").onclick=function(){
-
-  snackTime="pm";
-
-  $("pmButton").classList.add("active");
-  $("amButton").classList.remove("active");
-
-  $("snackHeading").textContent="PM Snack";
-
-  renderSnacks();
-
-};
-
-
-/* ---------------------------
-   ADD SNACK
----------------------------- */
-
-$("addSnack").onclick=
-async function(){
-
-  const name=
-    $("childName").value.trim();
-
-  if(!name){
-
-    alert("Please enter the child's name.");
-
-    return;
-
-  }
-
-
-  try{
-
-    await request(
-      "/rest/v1/snack_lists",
-      {
-        method:"POST",
-        headers:{
-          "Prefer":"return=minimal"
-        },
-        body:JSON.stringify({
-          adult_id:currentAdult.id,
-          list_date:currentDate,
-          snack_time:snackTime,
-          child_name:name,
-          allergy_status:$("allergy").value,
-          alternative_milk:$("milk").value,
-          done:false,
-          amount:"",
-          food:""
-        })
-      }
-    );
-
-
-    $("childName").value="";
-    $("milk").value="";
-
-    await loadEverything();
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-};
-
-
-/* ---------------------------
-   LOAD DATA
----------------------------- */
-
-let snacks=[];
-let suncream=[];
-
-
-async function loadEverything(){
-
-  try{
-
-    snacks=
-      await request(
-        "/rest/v1/snack_lists?select=*&order=id.asc"
-      );
-
-    suncream=
-      await request(
-        "/rest/v1/suncream_lists?select=*&order=id.asc"
-      );
-
-
-    renderSnacks();
-    renderGroups();
-    renderSun();
-
-  }catch(error){
-
-    console.error(error);
-
-  }
-
-}
-
-
-/* ---------------------------
-   RENDER SNACKS
----------------------------- */
-
-function renderSnacks(){
-
-  const box=$("snackList");
-
-  box.innerHTML="";
-
-  const list=
-    snacks.filter(
-      x=>
-        x.list_date===currentDate &&
-        x.snack_time===snackTime
-    );
-
-
-  if(!list.length){
-
-    box.innerHTML=
-      '<div class="empty">No children added yet.</div>';
-
-    return;
-
-  }
-
-
-  list.forEach(child=>{
-
-    const item=
-      document.createElement("div");
-
-    item.className=
-      "child"+
-      (child.done?" done":"");
-
-
-    const top=
-      document.createElement("div");
-
-    top.className="child-top";
-
-
-    const tick=
-      document.createElement("button");
-
-    tick.className="tick";
-
-    tick.textContent=
-      child.done?"✓":"";
-
-
-    tick.onclick=async function(){
-
-      await request(
-        "/rest/v1/snack_lists?id=eq."+child.id,
-        {
-          method:"PATCH",
-          headers:{
-            "Prefer":"return=minimal"
-          },
-          body:JSON.stringify({
-            done:!child.done
-          })
-        }
-      );
-
-      loadEverything();
-
-    };
-
-
-    const name=
-      document.createElement("div");
-
-    name.className="child-name";
-
-    name.textContent=
-      child.child_name;
-
-
-    const badge=
-      document.createElement("span");
-
-    badge.className=
-      "badge "+child.allergy_status;
-
-    badge.textContent=
-      child.allergy_status==="red"
-        ?"ALLERGY"
-        :
-      child.allergy_status==="green"
-        ?"PREFERENCE"
-        :
-        "NONE";
-
-
-    const remove=
-      document.createElement("button");
-
-    remove.className="remove";
-
-    remove.textContent="Remove";
-
-
-    remove.onclick=async function(){
-
-      if(!confirm(
-        "Remove "+child.child_name+"?"
-      ))return;
-
-      await request(
-        "/rest/v1/snack_lists?id=eq."+child.id,
-        {
-          method:"DELETE"
-        }
-      );
-
-      loadEverything();
-
-    };
-
-
-    top.append(
-      tick,
-      name,
-      badge,
-      remove
-    );
-
-    item.appendChild(top);
-
-
-    if(child.alternative_milk){
-
-      const detail=
-        document.createElement("div");
-
-      detail.className="detail";
-
-      detail.textContent=
-        "Alternative milk: "+
-        child.alternative_milk;
-
-      item.appendChild(detail);
-
-    }
-
-
-    box.appendChild(item);
-
-  });
-
-}
-
-
-/* ---------------------------
-   GROUPED
----------------------------- */
-
-$("groupAm").onclick=function(){
-
-  groupTime="am";
-
-  $("groupAm").classList.add("active");
-  $("groupPm").classList.remove("active");
-
-  renderGroups();
-
-};
-
-
-$("groupPm").onclick=function(){
-
-  groupTime="pm";
-
-  $("groupPm").classList.add("active");
-  $("groupAm").classList.remove("active");
-
-  renderGroups();
-
-};
-
-
-function renderGroups(){
-
-  const box=$("groups");
-
-  box.innerHTML="";
-
-
-  const list=
-    snacks.filter(
-      x=>
-        x.list_date===currentDate &&
-        x.snack_time===groupTime &&
-        x.food
-    );
-
-
-  if(!list.length){
-
-    box.innerHTML=
-      '<div class="empty">No food has been recorded yet.</div>';
-
-    return;
-
-  }
-
-
-  const groups={};
-
-
-  list.forEach(child=>{
-
-    const key=
-      child.food.trim();
-
-    if(!groups[key])
-      groups[key]=[];
-
-    groups[key].push(
-      child.child_name
-    );
-
-  });
-
-
-  Object.keys(groups).forEach(food=>{
-
-    const group=
-      document.createElement("div");
-
-    group.className="group";
-
-
-    const title=
-      document.createElement("div");
-
-    title.className="group-title";
-
-    title.textContent=food;
-
-
-    const names=
-      document.createElement("div");
-
-    names.className="group-names";
-
-    names.textContent=
-      groups[food].join(" • ");
-
-
-    group.append(
-      title,
-      names
-    );
-
-    box.appendChild(group);
-
-  });
-
-}
-
-
-/* ---------------------------
-   SUNCREAM
----------------------------- */
-
-$("addSun").onclick=
-async function(){
-
-  const name=
-    $("sunChild").value.trim();
-
-  if(!name){
-
-    alert("Please enter the child's name.");
-
-    return;
-
-  }
-
-
-  try{
-
-    await request(
-      "/rest/v1/suncream_lists",
-      {
-        method:"POST",
-        headers:{
-          "Prefer":"return=minimal"
-        },
-        body:JSON.stringify({
-          adult_id:currentAdult.id,
-          list_date:currentDate,
-          child_name:name,
-          product:$("sunProduct").value.trim(),
-          done:false
-        })
-      }
-    );
-
-
-    $("sunChild").value="";
-    $("sunProduct").value="";
-
-    loadEverything();
-
-  }catch(error){
-
-    alert(error.message);
-
-  }
-
-};
-
-
-function renderSun(){
-
-  const box=$("sunList");
-
-  box.innerHTML="";
-
-
-  const list=
-    suncream.filter(
-      x=>x.list_date===currentDate
-    );
-
-
-  if(!list.length){
-
-    box.innerHTML=
-      '<div class="empty">No children added yet.</div>';
-
-    return;
-
-  }
-
-
-  list.forEach(child=>{
-
-    const item=
-      document.createElement("div");
-
-    item.className=
-      "child"+
-      (child.done?" done":"");
-
-
-    const top=
-      document.createElement("div");
-
-    top.className="child-top";
-
-
-    const tick=
-      document.createElement("button");
-
-    tick.className="tick";
-
-    tick.textContent=
-      child.done?"✓":"";
-
-
-    tick.onclick=async function(){
-
-      await request(
-        "/rest/v1/suncream_lists?id=eq."+child.id,
-        {
-          method:"PATCH",
-          headers:{
-            "Prefer":"return=minimal"
-          },
-          body:JSON.stringify({
-            done:!child.done
-          })
-        }
-      );
-
-      loadEverything();
-
-    };
-
-
-    const name=
-      document.createElement("div");
-
-    name.className="child-name";
-
-    name.textContent=
-      child.child_name;
-
-
-    const remove=
-      document.createElement("button");
-
-    remove.className="remove";
-
-    remove.textContent="Remove";
-
-
-    remove.onclick=async function(){
-
-      await request(
-        "/rest/v1/suncream_lists?id=eq."+child.id,
-        {
-          method:"DELETE"
-        }
-      );
-
-      loadEverything();
-
-    };
-
-
-    top.append(
-      tick,
-      name,
-      remove
-    );
-
-    item.appendChild(top);
-
-
-    if(child.product){
-
-      const detail=
-        document.createElement("div");
-
-      detail.className="detail";
-
-      detail.textContent=
-        "Suncream: "+child.product;
-
-      item.appendChild(detail);
-
-    }
-
-
-    box.appendChild(item);
-
-  });
-
-}
-
-
-/* ---------------------------
-   PROFILE MENU
----------------------------- */
-
-$("profileButton").onclick=function(){
-
-  $("menu").classList.toggle("hidden");
-
-};
-
-
-$("addAnother").onclick=function(){
-
-  hide("menu");
-
-  openAdultModal();
-
-};
-
+/* LOGOUT */
 
 $("logout").onclick=function(){
 
-  localStorage.removeItem("acornAdult");
+  localStorage.removeItem(
+    "acornAdult"
+  );
 
   currentAdult=null;
+
+  hide("menu");
 
   hide("app");
 
@@ -2253,6 +1521,25 @@ $("logout").onclick=function(){
   $("loginCode").value="";
 
   loadAdults();
+};
+
+
+/* PROFILE MENU */
+
+$("profileButton").onclick=function(){
+
+  $("menu").classList.toggle(
+    "hidden"
+  );
+
+};
+
+
+$("addAnother").onclick=function(){
+
+  hide("menu");
+
+  openAdult();
 
 };
 
@@ -2264,16 +1551,17 @@ $("editProfile").onclick=function(){
   $("profileName").value=
     currentAdult.name;
 
-  putPhoto(
+  $("profilePhoto").dataset.photo=
+    currentAdult.photo_url||"";
+
+  photo(
     $("profilePhoto"),
     currentAdult.photo_url
   );
 
-  $("profilePhoto").dataset.photo=
-    currentAdult.photo_url||"";
+  hide("profileMessage");
 
   show("profileModal");
-
 };
 
 
@@ -2284,126 +1572,693 @@ $("cancelProfile").onclick=function(){
 };
 
 
+/* PROFILE PHOTO */
+
 $("profileFile").onchange=
 async function(){
 
-  const file=this.files[0];
+  const file=
+    this.files[0];
 
   if(!file)return;
 
-  const photo=
-    await convertPhoto(file);
+  try{
 
-  $("profilePhoto").dataset.photo=
-    photo;
+    const result=
+      await convertPhoto(file);
 
-  putPhoto(
-    $("profilePhoto"),
-    photo
-  );
+    $("profilePhoto").dataset.photo=
+      result;
 
+    photo(
+      $("profilePhoto"),
+      result
+    );
+
+  }catch{
+
+    message(
+      "profileMessage",
+      "The photo could not be added.",
+      "error"
+    );
+
+  }
 };
 
 
-$("saveProfile").onclick=async function(){
+/* SAVE PROFILE */
+
+$("saveProfile").onclick=
+async function(){
 
   const name=
     $("profileName").value.trim();
 
-  const photo=
+  const picture=
     $("profilePhoto").dataset.photo||"";
 
 
   if(!name){
 
-    showMessage(
+    message(
       "profileMessage",
       "Please enter a name.",
       "error"
     );
 
     return;
-
   }
 
 
   try{
 
-    await request(
-      "/rest/v1/adults?id=eq."+currentAdult.id,
+    await supabase(
+      "/rest/v1/adults?id=eq."+
+      encodeURIComponent(
+        currentAdult.id
+      ),
       {
         method:"PATCH",
         headers:{
-          "Prefer":"return=minimal"
+          "Prefer":
+            "return=minimal"
         },
         body:JSON.stringify({
           name:name,
-          photo_url:photo
+          photo_url:picture
         })
       }
     );
 
 
     currentAdult.name=name;
-    currentAdult.photo_url=photo;
+    currentAdult.photo_url=
+      picture;
 
 
     localStorage.setItem(
       "acornAdult",
-      JSON.stringify(currentAdult)
+      JSON.stringify(
+        currentAdult
+      )
     );
 
 
-    $("menuName").textContent=name;
+    $("menuName").textContent=
+      name;
 
-    putPhoto(
+    photo(
       $("smallPhoto"),
-      photo
-    );
-
-
-    showMessage(
-      "profileMessage",
-      "Profile saved!",
-      "success"
+      picture
     );
 
 
     await loadAdults();
 
-
-    setTimeout(
-      ()=>hide("profileModal"),
-      600
-    );
+    hide("profileModal");
 
 
   }catch(error){
 
-    showMessage(
+    message(
       "profileMessage",
       error.message,
       "error"
     );
 
   }
+};
+
+
+/* DATE */
+
+$("date").onchange=function(){
+
+  currentDate=
+    this.value;
+
+  loadLists();
 
 };
 
 
-/* ---------------------------
-   START
----------------------------- */
+/* SNACK TABS */
+
+$("amButton").onclick=function(){
+
+  snackTime="am";
+
+  $("amButton")
+    .classList.add("active");
+
+  $("pmButton")
+    .classList.remove("active");
+
+  $("snackHeading")
+    .textContent="AM Snack";
+
+  renderSnacks();
+};
+
+
+$("pmButton").onclick=function(){
+
+  snackTime="pm";
+
+  $("pmButton")
+    .classList.add("active");
+
+  $("amButton")
+    .classList.remove("active");
+
+  $("snackHeading")
+    .textContent="PM Snack";
+
+  renderSnacks();
+};
+
+
+/* NAVIGATION */
+
+$("snackNav").onclick=function(){
+
+  show("snackPage");
+  hide("sunPage");
+
+  $("snackNav")
+    .classList.add("active");
+
+  $("sunNav")
+    .classList.remove("active");
+
+};
+
+
+$("sunNav").onclick=function(){
+
+  hide("snackPage");
+  show("sunPage");
+
+  $("snackNav")
+    .classList.remove("active");
+
+  $("sunNav")
+    .classList.add("active");
+
+  renderSun();
+};
+
+
+/* LOAD LISTS */
+
+async function loadLists(){
+
+  try{
+
+    snacks=
+      await supabase(
+        "/rest/v1/snack_lists?select=*&order=id.asc"
+      );
+
+    suncream=
+      await supabase(
+        "/rest/v1/suncream_lists?select=*&order=id.asc"
+      );
+
+    renderSnacks();
+    renderSun();
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+}
+
+
+/* ADD SNACK */
+
+$("addSnack").onclick=
+async function(){
+
+  const name=
+    $("childName")
+    .value
+    .trim();
+
+  if(!name){
+
+    alert(
+      "Please enter the child's name."
+    );
+
+    return;
+  }
+
+
+  try{
+
+    await supabase(
+      "/rest/v1/snack_lists",
+      {
+        method:"POST",
+        headers:{
+          "Prefer":
+            "return=minimal"
+        },
+        body:JSON.stringify({
+
+          adult_id:
+            currentAdult.id,
+
+          list_date:
+            currentDate,
+
+          snack_time:
+            snackTime,
+
+          child_name:
+            name,
+
+          allergy_status:
+            $("allergy").value,
+
+          alternative_milk:
+            $("milk").value,
+
+          done:false
+
+        })
+      }
+    );
+
+
+    $("childName").value="";
+    $("milk").value="";
+
+    loadLists();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+};
+
+
+/* RENDER SNACKS */
+
+function renderSnacks(){
+
+  const box=
+    $("snackList");
+
+  box.innerHTML="";
+
+
+  const list=
+    snacks.filter(
+      x=>
+        x.list_date===
+        currentDate &&
+        x.snack_time===
+        snackTime
+    );
+
+
+  if(!list.length){
+
+    box.innerHTML=
+      '<div class="empty">No children added yet.</div>';
+
+    return;
+  }
+
+
+  list.forEach(
+    function(child){
+
+      const item=
+        document.createElement("div");
+
+      item.className=
+        "child";
+
+
+      if(child.done)
+        item.classList.add("done");
+
+
+      const top=
+        document.createElement("div");
+
+      top.className=
+        "child-top";
+
+
+      const tick=
+        document.createElement("button");
+
+      tick.className=
+        "tick";
+
+      tick.textContent=
+        child.done
+        ?"✓"
+        :"";
+
+
+      tick.onclick=
+      async function(){
+
+        await supabase(
+          "/rest/v1/snack_lists?id=eq."+
+          child.id,
+          {
+            method:"PATCH",
+            body:JSON.stringify({
+              done:!child.done
+            })
+          }
+        );
+
+        loadLists();
+
+      };
+
+
+      const name=
+        document.createElement("div");
+
+      name.className=
+        "child-name";
+
+      name.textContent=
+        child.child_name;
+
+
+      const remove=
+        document.createElement("button");
+
+      remove.className=
+        "remove";
+
+      remove.textContent=
+        "Remove";
+
+
+      remove.onclick=
+      async function(){
+
+        if(!confirm(
+          "Remove "+
+          child.child_name+
+          "?"
+        ))return;
+
+
+        await supabase(
+          "/rest/v1/snack_lists?id=eq."+
+          child.id,
+          {
+            method:"DELETE"
+          }
+        );
+
+        loadLists();
+
+      };
+
+
+      top.append(
+        tick,
+        name,
+        remove
+      );
+
+      item.appendChild(top);
+
+
+      if(child.alternative_milk){
+
+        const detail=
+          document.createElement("div");
+
+        detail.style.marginTop=
+          "7px";
+
+        detail.style.marginLeft=
+          "43px";
+
+        detail.textContent=
+          "Alternative milk: "+
+          child.alternative_milk;
+
+        item.appendChild(detail);
+
+      }
+
+
+      box.appendChild(item);
+
+    }
+  );
+}
+
+
+/* ADD SUNCREAM */
+
+$("addSun").onclick=
+async function(){
+
+  const name=
+    $("sunChild")
+    .value
+    .trim();
+
+
+  if(!name){
+
+    alert(
+      "Please enter the child's name."
+    );
+
+    return;
+  }
+
+
+  try{
+
+    await supabase(
+      "/rest/v1/suncream_lists",
+      {
+        method:"POST",
+        headers:{
+          "Prefer":
+            "return=minimal"
+        },
+        body:JSON.stringify({
+
+          adult_id:
+            currentAdult.id,
+
+          list_date:
+            currentDate,
+
+          child_name:
+            name,
+
+          product:
+            $("sunProduct")
+            .value
+            .trim(),
+
+          done:false
+
+        })
+      }
+    );
+
+
+    $("sunChild").value="";
+    $("sunProduct").value="";
+
+    loadLists();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+};
+
+
+/* SUNCREAM LIST */
+
+function renderSun(){
+
+  const box=
+    $("sunList");
+
+  box.innerHTML="";
+
+
+  const list=
+    suncream.filter(
+      x=>
+        x.list_date===
+        currentDate
+    );
+
+
+  if(!list.length){
+
+    box.innerHTML=
+      '<div class="empty">No children added yet.</div>';
+
+    return;
+  }
+
+
+  list.forEach(
+    function(child){
+
+      const item=
+        document.createElement("div");
+
+      item.className=
+        "child";
+
+
+      if(child.done)
+        item.classList.add("done");
+
+
+      const top=
+        document.createElement("div");
+
+      top.className=
+        "child-top";
+
+
+      const tick=
+        document.createElement("button");
+
+      tick.className=
+        "tick";
+
+      tick.textContent=
+        child.done
+        ?"✓"
+        :"";
+
+
+      tick.onclick=
+      async function(){
+
+        await supabase(
+          "/rest/v1/suncream_lists?id=eq."+
+          child.id,
+          {
+            method:"PATCH",
+            body:JSON.stringify({
+              done:!child.done
+            })
+          }
+        );
+
+        loadLists();
+
+      };
+
+
+      const name=
+        document.createElement("div");
+
+      name.className=
+        "child-name";
+
+      name.textContent=
+        child.child_name;
+
+
+      const remove=
+        document.createElement("button");
+
+      remove.className=
+        "remove";
+
+      remove.textContent=
+        "Remove";
+
+
+      remove.onclick=
+      async function(){
+
+        await supabase(
+          "/rest/v1/suncream_lists?id=eq."+
+          child.id,
+          {
+            method:"DELETE"
+          }
+        );
+
+        loadLists();
+
+      };
+
+
+      top.append(
+        tick,
+        name,
+        remove
+      );
+
+      item.appendChild(top);
+
+
+      if(child.product){
+
+        const detail=
+          document.createElement("div");
+
+        detail.style.marginTop=
+          "7px";
+
+        detail.style.marginLeft=
+          "43px";
+
+        detail.textContent=
+          "Suncream: "+
+          child.product;
+
+        item.appendChild(detail);
+
+      }
+
+
+      box.appendChild(item);
+
+    }
+  );
+}
+
+
+/* START */
 
 async function start(){
 
-  $("date").value=currentDate;
+  $("date").value=
+    currentDate;
 
   await loadAdults();
 
 
   const saved=
-    localStorage.getItem("acornAdult");
+    localStorage.getItem(
+      "acornAdult"
+    );
 
 
   if(saved){
@@ -2413,7 +2268,8 @@ async function start(){
       currentAdult=
         JSON.parse(saved);
 
-      if(currentAdult?.id){
+      if(currentAdult &&
+         currentAdult.id){
 
         openApp();
 

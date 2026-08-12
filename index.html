@@ -2,354 +2,527 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acorn</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Acorn Lists</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f7f4;
+color:#202520;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f7f8f4;
-  color: #263326;
+button,input,select{
+font:inherit;
 }
 
-button,
+button{
+border:0;
+border-radius:10px;
+padding:10px 13px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.app{
+display:flex;
+min-height:100vh;
+}
+
+.sidebar{
+width:220px;
+background:white;
+border-right:1px solid #ddd;
+padding:18px 12px;
+flex-shrink:0;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#2f6f45;
+padding:8px;
+margin-bottom:15px;
+}
+
+.folder-button,
+.grouped-button{
+width:100%;
+text-align:left;
+background:#eef3ee;
+color:#294e34;
+margin-bottom:8px;
+}
+
+.folder-button.active,
+.grouped-button.active{
+background:#2f6f45;
+color:white;
+}
+
+.grouped-button{
+background:#dcefe0;
+color:#245d36;
+}
+
+.main{
+width:100%;
+max-width:900px;
+margin:auto;
+padding:18px;
+}
+
+.header{
+background:#2f6f45;
+color:white;
+border-radius:17px;
+padding:20px;
+margin-bottom:15px;
+}
+
+.header h1{
+margin:0 0 5px;
+}
+
+.header p{
+margin:0;
+}
+
+.card{
+background:white;
+border-radius:15px;
+padding:16px;
+margin-bottom:15px;
+box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.row{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.field{
+flex:1 1 180px;
+}
+
+label{
+display:block;
+font-size:13px;
+font-weight:bold;
+margin-bottom:6px;
+}
+
 input,
-select {
-  font: inherit;
+select{
+width:100%;
+padding:11px;
+border:1px solid #d2d9d2;
+border-radius:10px;
+background:white;
 }
 
-button {
-  cursor: pointer;
+.primary{
+background:#2f6f45;
+color:white;
 }
 
-header {
-  background: white;
-  padding: 18px 20px;
-  border-bottom: 1px solid #e4e8df;
-  position: sticky;
-  top: 0;
-  z-index: 20;
+.secondary{
+background:#e8eee9;
+color:#294e34;
 }
 
-.header-inner {
-  max-width: 850px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.danger{
+background:#f7dddd;
+color:#8d2525;
 }
 
-.logo {
-  font-size: 25px;
-  font-weight: 800;
+.small{
+padding:7px 10px;
+font-size:13px;
 }
 
-.profile-button {
-  border: 0;
-  background: #eef3e9;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  font-size: 20px;
+.snack-tabs{
+display:flex;
+gap:8px;
+margin-bottom:15px;
 }
 
-.container {
-  max-width: 850px;
-  margin: auto;
-  padding: 20px;
+.snack-tab{
+flex:1;
+background:#e8eee9;
+color:#294e34;
 }
 
-.hidden {
-  display: none !important;
+.snack-tab.active{
+background:#2f6f45;
+color:white;
+}
+
+.child{
+border:1px solid #dce2dc;
+border-radius:13px;
+padding:12px;
+margin-top:9px;
+}
+
+.child.done{
+background:#f0f7f1;
+border-color:#b9d4bf;
+}
+
+.child-top{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.tick{
+width:32px;
+height:32px;
+padding:0;
+border-radius:50%;
+background:#edf0ed;
+color:#2f6f45;
+border:1px solid #ccd4cc;
+flex-shrink:0;
+}
+
+.child.done .tick{
+background:#2f6f45;
+color:white;
+}
+
+.child-name{
+font-weight:bold;
+flex:1;
+min-width:100px;
+}
+
+.badge{
+font-size:10px;
+font-weight:bold;
+padding:5px 7px;
+border-radius:7px;
+}
+
+.red{
+background:#f7dddd;
+color:#982626;
+}
+
+.green{
+background:#dff1e3;
+color:#246337;
+}
+
+.none{
+background:#edf0ed;
+color:#596159;
+}
+
+.note-button{
+background:#eef3ee;
+color:#294e34;
+padding:7px 9px;
+font-size:15px;
+}
+
+.note-button.has-note{
+background:#dcefe0;
+color:#246337;
+}
+
+.note-box{
+margin:12px 0 2px 40px;
+padding:12px;
+background:#f7faf7;
+border:1px solid #dce5dc;
+border-radius:12px;
+}
+
+.amount-buttons{
+display:flex;
+gap:6px;
+flex-wrap:wrap;
+margin-bottom:10px;
+}
+
+.amount-button{
+background:white;
+border:1px solid #ccd4cc;
+color:#394239;
+}
+
+.amount-button.selected{
+background:#2f6f45;
+color:white;
+}
+
+.note-save-row{
+display:flex;
+gap:7px;
+margin-top:10px;
+}
+
+.detail{
+font-size:13px;
+color:#555;
+margin:8px 0 0 40px;
+}
+
+.eaten-detail{
+font-size:14px;
+font-weight:bold;
+color:#2f6f45;
+margin:7px 0 0 40px;
+}
+
+.empty,
+.grouped-empty{
+text-align:center;
+color:#687068;
+padding:20px;
+}
+
+.grouped-section{
+border:1px solid #dce2dc;
+border-radius:14px;
+margin-bottom:14px;
+overflow:hidden;
+}
+
+.grouped-heading{
+padding:13px 15px;
+font-size:18px;
+font-weight:bold;
+background:#eef3ee;
+color:#294e34;
+}
+
+.grouped-snack{
+padding:13px 15px;
+border-top:1px solid #e4e8e4;
+}
+
+.grouped-snack-name{
+font-size:16px;
+font-weight:bold;
+color:#2f6f45;
+}
+
+.grouped-names{
+font-size:14px;
+color:#555;
+margin-top:5px;
+line-height:1.6;
+}
+
+.history-item{
+border-top:1px solid #e4e8e4;
+padding:12px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+
+.history-buttons{
+display:flex;
+gap:6px;
+}
+
+.hidden{
+display:none!important;
 }
 
 /* LOGIN */
 
-.login-screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
+.login-screen{
+position:fixed;
+inset:0;
+background:#f4f7f4;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:100;
 }
 
-.login-box {
-  width: 100%;
-  max-width: 430px;
-  background: white;
-  padding: 30px;
-  border-radius: 25px;
-  box-shadow: 0 8px 35px rgba(0,0,0,.08);
+.login-box{
+background:white;
+border-radius:20px;
+padding:25px;
+width:100%;
+max-width:430px;
+box-shadow:0 4px 20px rgba(0,0,0,.08);
 }
 
-.login-box h1 {
-  text-align: center;
-  margin-bottom: 8px;
+.login-logo{
+text-align:center;
+font-size:30px;
+font-weight:bold;
+color:#2f6f45;
+margin-bottom:5px;
 }
 
-.login-box p {
-  text-align: center;
-  color: #687267;
+.login-subtitle{
+text-align:center;
+color:#687068;
+margin-bottom:20px;
 }
 
-.field {
-  margin-bottom: 15px;
+.login-tabs{
+display:flex;
+gap:7px;
+margin-bottom:15px;
 }
 
-.field label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 7px;
+.login-tabs button{
+flex:1;
+background:#e8eee9;
+color:#294e34;
 }
 
-.field input,
-.field select {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #d6ddd2;
-  border-radius: 13px;
-  background: white;
+.login-tabs button.active{
+background:#2f6f45;
+color:white;
 }
 
-.primary {
-  width: 100%;
-  border: 0;
-  background: #79a66a;
-  color: white;
-  padding: 14px;
-  border-radius: 13px;
-  font-weight: 800;
-  margin-top: 5px;
+.login-message{
+padding:10px;
+border-radius:10px;
+margin-bottom:12px;
+font-size:14px;
 }
 
-.secondary {
-  width: 100%;
-  border: 1px solid #d4ddd0;
-  background: white;
-  padding: 13px;
-  border-radius: 13px;
-  font-weight: 700;
-  margin-top: 10px;
+.login-message.error{
+background:#f7dddd;
+color:#8d2525;
 }
 
-.error {
-  background: #fff0f0;
-  color: #a33;
-  padding: 12px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-.success {
-  background: #eef8eb;
-  color: #38622f;
-  padding: 12px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-/* APP */
-
-.page-title {
-  margin-top: 5px;
-}
-
-.tabs {
-  display: flex;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.tab {
-  flex: 1;
-  border: 0;
-  padding: 13px;
-  border-radius: 13px;
-  background: #e8ede4;
-  font-weight: 800;
-}
-
-.tab.active {
-  background: #79a66a;
-  color: white;
-}
-
-.date-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.date-row input {
-  flex: 1;
-  padding: 13px;
-  border: 1px solid #d6ddd2;
-  border-radius: 13px;
-  background: white;
-}
-
-.list-card {
-  background: white;
-  border-radius: 18px;
-  padding: 17px;
-  margin-bottom: 12px;
-  border: 1px solid #e4e8df;
-}
-
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-
-.child-name {
-  font-size: 19px;
-  font-weight: 800;
-}
-
-.small-text {
-  color: #6d776b;
-  font-size: 14px;
-  margin-top: 4px;
-}
-
-.badge {
-  display: inline-block;
-  background: #eef3e9;
-  padding: 5px 9px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.card-buttons {
-  display: flex;
-  gap: 8px;
-  margin-top: 13px;
-}
-
-.card-buttons button {
-  flex: 1;
-  border: 0;
-  padding: 10px;
-  border-radius: 10px;
-  font-weight: 700;
-}
-
-.done-button {
-  background: #e5f1df;
-}
-
-.edit-button {
-  background: #edf0f5;
-}
-
-.delete-button {
-  background: #fff0f0;
-  color: #a33;
-}
-
-/* FLOATING ADD */
-
-.add-button {
-  position: fixed;
-  right: 22px;
-  bottom: 25px;
-  width: 62px;
-  height: 62px;
-  border: 0;
-  border-radius: 50%;
-  background: #79a66a;
-  color: white;
-  font-size: 34px;
-  box-shadow: 0 7px 22px rgba(0,0,0,.2);
-  z-index: 30;
-}
-
-/* MODAL */
-
-.modal-background {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  z-index: 50;
-}
-
-.modal {
-  background: white;
-  width: 100%;
-  max-width: 500px;
-  border-radius: 23px;
-  padding: 23px;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.close {
-  border: 0;
-  background: #eef1ec;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-}
-
-.modal-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.modal-actions button {
-  flex: 1;
+.login-message.success{
+background:#dff1e3;
+color:#246337;
 }
 
 /* PROFILE */
 
-.profile-menu {
-  position: fixed;
-  top: 75px;
-  right: 20px;
-  width: 250px;
-  background: white;
-  border-radius: 18px;
-  padding: 15px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.15);
-  z-index: 40;
+.fab{
+position:fixed;
+right:20px;
+bottom:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#2f6f45;
+color:white;
+font-size:30px;
+box-shadow:0 4px 15px rgba(0,0,0,.2);
+z-index:30;
 }
 
-.profile-menu button {
-  width: 100%;
-  padding: 12px;
-  border: 0;
-  background: white;
-  text-align: left;
-  border-radius: 10px;
+.profile-menu{
+position:fixed;
+right:20px;
+top:75px;
+background:white;
+border:1px solid #ddd;
+border-radius:14px;
+padding:12px;
+width:240px;
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+z-index:40;
 }
 
-.profile-menu button:hover {
-  background: #f1f4ef;
+.profile-menu button{
+width:100%;
+margin-top:7px;
+text-align:left;
 }
 
-.empty {
-  text-align: center;
-  padding: 50px 20px;
-  color: #7a8477;
+.profile-header{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.avatar{
+width:50px;
+height:50px;
+border-radius:50%;
+background:#e8eee9;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+font-size:22px;
+flex-shrink:0;
+}
+
+.avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.profile-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.4);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:80;
+}
+
+.profile-modal-box{
+background:white;
+width:100%;
+max-width:500px;
+border-radius:18px;
+padding:20px;
+}
+
+@media(max-width:650px){
+
+.app{
+display:block;
+}
+
+.sidebar{
+width:100%;
+border-right:0;
+border-bottom:1px solid #ddd;
+display:flex;
+gap:7px;
+overflow-x:auto;
+padding:9px;
+}
+
+.logo{
+display:none;
+}
+
+.folder-button,
+.grouped-button{
+width:auto;
+white-space:nowrap;
+margin:0;
+}
+
+.main{
+padding:10px;
+}
+
+.child-top{
+flex-wrap:wrap;
+}
+
 }
 </style>
 </head>
@@ -359,1146 +532,3183 @@ header {
 <!-- LOGIN -->
 
 <div id="loginScreen" class="login-screen">
-  <div class="login-box">
 
-    <h1>🌳 Acorn</h1>
-    <p>Adult login</p>
+<div class="login-box">
 
-    <div id="loginMessage"></div>
+<div class="login-logo">
+🌳 Acorn
+</div>
 
-    <div class="field">
-      <label>Email</label>
-      <input id="email" type="email" placeholder="Email address">
-    </div>
+<div class="login-subtitle">
+Adult access
+</div>
 
-    <div class="field">
-      <label>Password</label>
-      <input id="password" type="password" placeholder="Password">
-    </div>
+<div class="login-tabs">
 
-    <button class="primary" onclick="login()">
-      Log in
-    </button>
+<button
+id="loginModeButton"
+class="active"
+type="button">
+Log in
+</button>
 
-    <button class="secondary" onclick="showSignup()">
-      Create adult account
-    </button>
+<button
+id="signupModeButton"
+type="button">
+Create account
+</button>
 
-  </div>
+</div>
+
+<div
+id="loginMessage"
+class="login-message hidden">
+</div>
+
+<div class="field">
+
+<label>
+Email
+</label>
+
+<input
+id="authEmail"
+type="email"
+placeholder="Email address"
+autocomplete="email">
+
+</div>
+
+<div class="field">
+
+<label>
+Password / code
+</label>
+
+<input
+id="authPassword"
+type="password"
+placeholder="Your password or code"
+autocomplete="current-password">
+
+</div>
+
+<div
+id="authNameField"
+class="field hidden">
+
+<label>
+Your name
+</label>
+
+<input
+id="authName"
+type="text"
+placeholder="Your name"
+autocomplete="name">
+
+</div>
+
+<button
+id="authButton"
+type="button"
+class="primary"
+style="width:100%;margin-top:10px">
+
+Log in
+
+</button>
+
+</div>
+
 </div>
 
 
-<!-- APP -->
+<!-- MAIN APP -->
 
-<div id="app" class="hidden">
+<div
+id="app"
+class="hidden">
 
-<header>
-  <div class="header-inner">
+<div class="app">
 
-    <div class="logo">🌳 Acorn</div>
+<aside class="sidebar">
 
-    <button class="profile-button" onclick="toggleProfileMenu()">
-      👤
-    </button>
+<div class="logo">
+Acorn
+</div>
 
-  </div>
+<button
+type="button"
+class="folder-button active"
+id="snackFolder">
+Snack Lists
+</button>
+
+<button
+type="button"
+class="grouped-button"
+id="groupedButton">
+📋 Grouped
+</button>
+
+<button
+type="button"
+class="folder-button"
+id="suncreamFolder">
+Suncream Lists
+</button>
+
+</aside>
+
+
+<main class="main">
+
+<header class="header">
+
+<div
+style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+
+<div>
+
+<h1 id="pageTitle">
+Acorn Snack List
+</h1>
+
+<p id="pageSubtitle">
+Daily records
+</p>
+
+</div>
+
+<button
+type="button"
+class="secondary small"
+id="profileButton">
+
+👤 Profile
+
+</button>
+
+</div>
+
 </header>
 
 
-<div id="profileMenu" class="profile-menu hidden">
+<section class="card">
 
-  <strong id="profileName">Adult</strong>
+<div class="row">
 
-  <br><br>
+<div class="field">
 
-  <button onclick="openProfile()">
-    ✏️ Edit profile
-  </button>
+<label>
+Date
+</label>
 
-  <button onclick="logout()">
-    🚪 Log out
-  </button>
+<input
+id="date"
+type="date">
+
+</div>
+
+<div
+class="field"
+style="align-self:end">
+
+<button
+type="button"
+class="secondary"
+id="newDayButton">
+
+Create new day
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SNACK PAGE -->
+
+<div id="snackPage">
+
+<section class="card">
+
+<div class="snack-tabs">
+
+<button
+type="button"
+class="snack-tab active"
+id="amButton">
+
+AM Snack
+
+</button>
+
+<button
+type="button"
+class="snack-tab"
+id="pmButton">
+
+PM Snack
+
+</button>
 
 </div>
 
 
-<div class="container">
+<div class="row">
 
-  <h1 class="page-title">Daily lists</h1>
+<div class="field">
 
-  <div class="tabs">
+<label>
+Child's name
+</label>
 
-    <button id="snackTab"
-            class="tab active"
-            onclick="switchList('snacks')">
-      🍎 Snacks
-    </button>
-
-    <button id="suncreamTab"
-            class="tab"
-            onclick="switchList('suncream')">
-      ☀️ Suncream
-    </button>
-
-  </div>
-
-
-  <div class="date-row">
-
-    <input id="listDate" type="date" onchange="loadCurrentList()">
-
-  </div>
-
-
-  <div id="listContainer"></div>
-
-</div>
-
-<button class="add-button" onclick="openAddModal()">+</button>
+<input
+id="snackName"
+placeholder="Child's name"
+autocomplete="off">
 
 </div>
 
 
-<!-- ADD / EDIT MODAL -->
+<div class="field">
 
-<div id="entryModal" class="modal-background hidden">
+<label>
+Allergy / preference
+</label>
 
-  <div class="modal">
+<select id="snackStatus">
 
-    <div class="modal-header">
+<option value="none">
+No allergy / preference
+</option>
 
-      <h2 id="modalTitle">Add child</h2>
+<option value="green">
+Green - Preference
+</option>
 
-      <button class="close" onclick="closeModal()">×</button>
+<option value="red">
+Red - Allergy
+</option>
 
-    </div>
-
-    <div id="modalMessage"></div>
-
-    <div class="field">
-
-      <label>Child's name</label>
-
-      <input id="childName" type="text" placeholder="Enter child's name">
-
-    </div>
-
-
-    <!-- SNACK FIELDS -->
-
-    <div id="snackFields">
-
-      <div class="field">
-
-        <label>Snack time</label>
-
-        <select id="snackTime">
-
-          <option value="am">Morning</option>
-          <option value="pm">Afternoon</option>
-
-        </select>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>Food</label>
-
-        <input id="food" type="text" placeholder="Snack">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>Amount</label>
-
-        <input id="amount" type="text" placeholder="Amount">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>Allergy</label>
-
-        <input id="allergy" type="text" placeholder="None / allergy">
-
-      </div>
-
-
-      <div class="field">
-
-        <label>Alternative milk</label>
-
-        <input id="milk" type="text" placeholder="If needed">
-
-      </div>
-
-    </div>
-
-
-    <!-- SUNCREAM -->
-
-    <div id="suncreamFields" class="hidden">
-
-      <div class="field">
-
-        <label>Suncream product</label>
-
-        <input id="product" type="text" placeholder="Suncream">
-
-      </div>
-
-    </div>
-
-
-    <div class="modal-actions">
-
-      <button class="secondary" onclick="closeModal()">
-        Cancel
-      </button>
-
-      <button class="primary" onclick="saveEntry()">
-        Save
-      </button>
-
-    </div>
-
-  </div>
+</select>
 
 </div>
 
 
-<!-- PROFILE MODAL -->
+<div class="field">
 
-<div id="profileModal" class="modal-background hidden">
+<label>
+Alternative milk
+</label>
 
-  <div class="modal">
+<input
+id="snackMilk"
+placeholder="e.g. oat milk">
 
-    <div class="modal-header">
+</div>
 
-      <h2>Edit profile</h2>
+</div>
 
-      <button class="close" onclick="closeProfile()">
-        ×
-      </button>
 
-    </div>
+<button
+type="button"
+class="primary"
+id="addSnackButton"
+style="margin-top:10px">
 
-    <div id="profileMessage"></div>
+Add child
 
-    <div class="field">
+</button>
 
-      <label>Your name</label>
+</section>
 
-      <input id="profileDisplayName"
-             type="text"
-             placeholder="Your name">
 
-    </div>
+<section class="card">
 
-    <button class="primary" onclick="saveProfile()">
-      Save profile
-    </button>
+<h2 id="snackTitle">
+AM Snack
+</h2>
 
-  </div>
+<div id="snackChildren"></div>
+
+</section>
+
+</div>
+
+
+<!-- GROUPED -->
+
+<div
+id="groupedPage"
+class="hidden">
+
+<button
+type="button"
+class="secondary"
+id="backToSnackButton">
+
+← Back to Snack List
+
+</button>
+
+
+<section class="card">
+
+<h2>
+📋 Grouped Snacks
+</h2>
+
+<p style="color:#687068;font-size:14px">
+
+Snacks are grouped by amount and then by snack.
+
+</p>
+
+
+<div class="snack-tabs">
+
+<button
+type="button"
+class="snack-tab active"
+id="groupedAmButton">
+
+AM Snack
+
+</button>
+
+<button
+type="button"
+class="snack-tab"
+id="groupedPmButton">
+
+PM Snack
+
+</button>
+
+</div>
+
+
+<div id="groupedChildren"></div>
+
+</section>
+
+</div>
+
+
+<!-- SUNCREAM -->
+
+<div
+id="suncreamPage"
+class="hidden">
+
+<section class="card">
+
+<h2>
+Suncream List
+</h2>
+
+<div class="row">
+
+<div class="field">
+
+<label>
+Child's name
+</label>
+
+<input
+id="suncreamName"
+placeholder="Child's name"
+autocomplete="off">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Suncream
+</label>
+
+<input
+id="suncreamProduct"
+placeholder="e.g. child's own SPF 50">
+
+</div>
+
+</div>
+
+
+<button
+type="button"
+class="primary"
+id="addSuncreamButton"
+style="margin-top:10px">
+
+Add child
+
+</button>
+
+</section>
+
+
+<section class="card">
+
+<h2>
+Today's Suncream
+</h2>
+
+<div id="suncreamChildren"></div>
+
+</section>
+
+</div>
+
+
+<!-- SAVED DAYS -->
+
+<section class="card">
+
+<h2>
+Saved Days
+</h2>
+
+<div id="savedDays"></div>
+
+</section>
+
+</main>
+
+</div>
+
+</div>
+
+
+<!-- BOTTOM RIGHT ACCOUNT BUTTON -->
+
+<button
+id="accountFab"
+class="fab"
+type="button"
+title="Account">
+
++
+
+</button>
+
+
+<!-- PROFILE MENU -->
+
+<div
+id="profileMenu"
+class="profile-menu hidden">
+
+<div class="profile-header">
+
+<div
+id="profileAvatar"
+class="avatar">
+
+👤
+
+</div>
+
+<div>
+
+<strong id="profileMenuName">
+Adult
+</strong>
+
+<div
+style="font-size:12px;color:#687068">
+
+Adult account
+
+</div>
+
+</div>
+
+</div>
+
+
+<button
+type="button"
+class="secondary"
+id="editProfileButton">
+
+✏️ Edit profile
+
+</button>
+
+
+<button
+type="button"
+class="danger"
+id="logoutButton">
+
+🚪 Log out
+
+</button>
+
+</div>
+
+
+<!-- EDIT PROFILE -->
+
+<div
+id="profileModal"
+class="profile-modal hidden">
+
+<div class="profile-modal-box">
+
+<h2>
+Edit profile
+</h2>
+
+<div class="field">
+
+<label>
+Your name
+</label>
+
+<input
+id="profileDisplayName"
+type="text"
+placeholder="Your name">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Profile photo URL
+</label>
+
+<input
+id="profilePhotoUrl"
+type="url"
+placeholder="Optional photo URL">
+
+</div>
+
+
+<div
+id="profileMessage"
+class="login-message hidden">
+</div>
+
+
+<button
+type="button"
+class="primary"
+id="saveProfileButton"
+style="width:100%">
+
+Save profile
+
+</button>
+
+
+<button
+type="button"
+class="secondary"
+id="closeProfileButton"
+style="width:100%;margin-top:7px">
+
+Close
+
+</button>
+
+</div>
 
 </div>
 
 
 <script type="module">
 
-/* =========================================================
-   SUPABASE
-   ========================================================= */
-
-import { createClient }
-from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-
-
-const SUPABASE_URL =
-  "https://zzyyetnklrwzdzoraqqz.supabase.co";
+import {
+createClient
+}
+from
+"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
-const SUPABASE_ANON_KEY =
-  "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
+/*
+==================================================
+SUPABASE
+==================================================
+*/
 
+const supabase=createClient(
 
-const supabase = createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
+"https://zzyyetnklrwzdzoraqqz.supabase.co",
+
+"sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0"
+
 );
 
 
-/* =========================================================
-   VARIABLES
-   ========================================================= */
+/*
+==================================================
+VARIABLES
+==================================================
+*/
 
-let currentUser = null;
-let currentList = "snacks";
-let editingId = null;
+let currentUser=null;
+
+let data={};
+
+let currentDate="";
+
+let currentPage="snacks";
+
+let currentSnack="am";
+
+let groupedSnack="am";
+
+let openNoteIndex=null;
+
+let authMode="login";
 
 
-/* =========================================================
-   START
-   ========================================================= */
+/*
+==================================================
+HELPERS
+==================================================
+*/
 
-window.addEventListener("DOMContentLoaded", async () => {
+function get(id){
 
-  document.getElementById("listDate").value =
-    new Date().toISOString().split("T")[0];
+return document.getElementById(id);
 
-  const {
-    data: { session }
-  } = await supabase.auth.getSession();
+}
 
-  if (session) {
 
-    currentUser = session.user;
+function getToday(){
 
-    await showApp();
+const d=new Date();
 
-  } else {
+const local=new Date(
 
-    showLogin();
+d.getTime()-
+d.getTimezoneOffset()*60000
 
-  }
+);
+
+return local.toISOString().slice(0,10);
+
+}
+
+
+function createDay(date){
+
+if(!data[date]){
+
+data[date]={
+
+amSnack:[],
+
+pmSnack:[],
+
+suncream:[]
+
+};
+
+}
+
+}
+
+
+function formatDate(date){
+
+return new Date(date+"T12:00:00")
+
+.toLocaleDateString(
+
+"en-GB",
+
+{
+
+weekday:"long",
+
+day:"numeric",
+
+month:"long",
+
+year:"numeric"
+
+}
+
+);
+
+}
+
+
+/*
+==================================================
+LOGIN MESSAGE
+==================================================
+*/
+
+function showLoginMessage(text,success=false){
+
+const box=get("loginMessage");
+
+box.textContent=text;
+
+box.classList.remove("hidden");
+
+box.classList.toggle(
+"success",
+success
+);
+
+box.classList.toggle(
+"error",
+!success
+);
+
+}
+
+
+/*
+==================================================
+AUTH MODE
+==================================================
+*/
+
+function setAuthMode(mode){
+
+authMode=mode;
+
+get("loginModeButton")
+.classList.toggle(
+"active",
+mode==="login"
+);
+
+get("signupModeButton")
+.classList.toggle(
+"active",
+mode==="signup"
+);
+
+get("authNameField")
+.classList.toggle(
+"hidden",
+mode!=="signup"
+);
+
+get("authButton").textContent=
+
+mode==="login"
+?"Log in"
+:"Create account";
+
+get("loginMessage")
+.classList.add("hidden");
+
+}
+
+
+get("loginModeButton")
+.addEventListener(
+"click",
+function(){
+
+setAuthMode("login");
+
+}
+);
+
+
+get("signupModeButton")
+.addEventListener(
+"click",
+function(){
+
+setAuthMode("signup");
+
+}
+);
+
+
+/*
+==================================================
+LOGIN / CREATE ACCOUNT
+==================================================
+*/
+
+get("authButton")
+.addEventListener(
+"click",
+submitAuth
+);
+
+
+async function submitAuth(){
+
+const email=
+get("authEmail")
+.value
+.trim();
+
+const password=
+get("authPassword")
+.value;
+
+if(!email || !password){
+
+showLoginMessage(
+"Please enter your email and password."
+);
+
+return;
+
+}
+
+
+if(authMode==="signup"){
+
+const name=
+get("authName")
+.value
+.trim();
+
+if(!name){
+
+showLoginMessage(
+"Please enter your name."
+);
+
+return;
+
+}
+
+
+if(password.length<6){
+
+showLoginMessage(
+"Your password/code must be at least 6 characters."
+);
+
+return;
+
+}
+
+
+const result=
+await supabase.auth.signUp({
+
+email:email,
+
+password:password
 
 });
 
 
-supabase.auth.onAuthStateChange(async (_event, session) => {
+if(result.error){
 
-  if (session) {
+showLoginMessage(
+result.error.message
+);
 
-    currentUser = session.user;
+return;
 
-    await showApp();
+}
 
-  } else {
 
-    currentUser = null;
+if(result.data.user){
 
-    showLogin();
+const profileResult=
+await supabase
+.from("profiles")
+.upsert({
 
-  }
+id:result.data.user.id,
+
+display_name:name,
+
+photo_url:""
 
 });
 
 
-/* =========================================================
-   LOGIN
-   ========================================================= */
+if(profileResult.error){
 
-window.login = async function() {
+showLoginMessage(
+profileResult.error.message
+);
 
-  const email =
-    document.getElementById("email").value.trim();
+return;
 
-  const password =
-    document.getElementById("password").value;
-
-  const message =
-    document.getElementById("loginMessage");
-
-  message.innerHTML = "";
-
-  if (!email || !password) {
-
-    message.innerHTML =
-      '<div class="error">Please enter your email and password.</div>';
-
-    return;
-
-  }
-
-  const { error } =
-    await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-
-  if (error) {
-
-    message.innerHTML =
-      `<div class="error">${escapeHtml(error.message)}</div>`;
-
-  }
-
-};
-
-
-/* =========================================================
-   SIGN UP
-   ========================================================= */
-
-window.showSignup = async function() {
-
-  const email =
-    document.getElementById("email").value.trim();
-
-  const password =
-    document.getElementById("password").value;
-
-  const message =
-    document.getElementById("loginMessage");
-
-  if (!email || !password) {
-
-    message.innerHTML =
-      '<div class="error">Enter an email and password first.</div>';
-
-    return;
-
-  }
-
-  if (password.length < 6) {
-
-    message.innerHTML =
-      '<div class="error">Password must be at least 6 characters.</div>';
-
-    return;
-
-  }
-
-  const { error } =
-    await supabase.auth.signUp({
-      email,
-      password
-    });
-
-  if (error) {
-
-    message.innerHTML =
-      `<div class="error">${escapeHtml(error.message)}</div>`;
-
-  } else {
-
-    message.innerHTML =
-      '<div class="success">Account created. Check your email to confirm your account.</div>';
-
-  }
-
-};
-
-
-/* =========================================================
-   LOGOUT
-   ========================================================= */
-
-window.logout = async function() {
-
-  await supabase.auth.signOut();
-
-  document.getElementById("profileMenu")
-    .classList.add("hidden");
-
-};
-
-
-/* =========================================================
-   APP
-   ========================================================= */
-
-async function showApp() {
-
-  document.getElementById("loginScreen")
-    .classList.add("hidden");
-
-  document.getElementById("app")
-    .classList.remove("hidden");
-
-  await loadProfile();
-
-  await loadCurrentList();
+}
 
 }
 
 
-function showLogin() {
+if(!result.data.session){
 
-  document.getElementById("loginScreen")
-    .classList.remove("hidden");
+showLoginMessage(
+"Account created. Check your email to confirm your account before logging in.",
+true
+);
 
-  document.getElementById("app")
-    .classList.add("hidden");
+return;
+
+}
+
+}
+
+else{
+
+const result=
+await supabase.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(result.error){
+
+showLoginMessage(
+result.error.message
+);
+
+return;
+
+}
+
+}
 
 }
 
 
-/* =========================================================
-   PROFILE
-   ========================================================= */
+/*
+==================================================
+START APP
+==================================================
+*/
 
-async function loadProfile() {
+async function startApp(user){
 
-  if (!currentUser) return;
+currentUser=user;
 
-  const { data } =
-    await supabase
-      .from("profiles")
-      .select("*")
-      .eq("id", currentUser.id)
-      .maybeSingle();
+get("loginScreen")
+.classList.add("hidden");
 
-  if (data) {
+get("app")
+.classList.remove("hidden");
 
-    document.getElementById("profileName")
-      .textContent = data.display_name || "Adult";
+await loadProfile();
 
-  } else {
+await loadSharedData();
 
-    const defaultName =
-      currentUser.email?.split("@")[0] || "Adult";
-
-    await supabase
-      .from("profiles")
-      .upsert({
-        id: currentUser.id,
-        display_name: defaultName
-      });
-
-    document.getElementById("profileName")
-      .textContent = defaultName;
-
-  }
+render();
 
 }
 
 
-window.openProfile = async function() {
+/*
+==================================================
+LOGIN SCREEN
+==================================================
+*/
 
-  document.getElementById("profileMenu")
-    .classList.add("hidden");
+function showLogin(){
 
-  const { data } =
-    await supabase
-      .from("profiles")
-      .select("*")
-      .eq("id", currentUser.id)
-      .maybeSingle();
+currentUser=null;
 
-  document.getElementById("profileDisplayName")
-    .value = data?.display_name || "";
+get("loginScreen")
+.classList.remove("hidden");
 
-  document.getElementById("profileModal")
-    .classList.remove("hidden");
-
-};
-
-
-window.closeProfile = function() {
-
-  document.getElementById("profileModal")
-    .classList.add("hidden");
-
-};
-
-
-window.saveProfile = async function() {
-
-  const name =
-    document.getElementById("profileDisplayName")
-      .value.trim();
-
-  const message =
-    document.getElementById("profileMessage");
-
-  if (!name) {
-
-    message.innerHTML =
-      '<div class="error">Please enter your name.</div>';
-
-    return;
-
-  }
-
-  const { error } =
-    await supabase
-      .from("profiles")
-      .upsert({
-        id: currentUser.id,
-        display_name: name
-      });
-
-  if (error) {
-
-    message.innerHTML =
-      `<div class="error">${escapeHtml(error.message)}</div>`;
-
-    return;
-
-  }
-
-  document.getElementById("profileName")
-    .textContent = name;
-
-  closeProfile();
-
-};
-
-
-/* =========================================================
-   PROFILE MENU
-   ========================================================= */
-
-window.toggleProfileMenu = function() {
-
-  document.getElementById("profileMenu")
-    .classList.toggle("hidden");
-
-};
-
-
-/* =========================================================
-   LIST SWITCH
-   ========================================================= */
-
-window.switchList = async function(type) {
-
-  currentList = type;
-
-  document.getElementById("snackTab")
-    .classList.toggle("active", type === "snacks");
-
-  document.getElementById("suncreamTab")
-    .classList.toggle("active", type === "suncream");
-
-  await loadCurrentList();
-
-};
-
-
-/* =========================================================
-   LOAD LIST
-   ========================================================= */
-
-window.loadCurrentList = async function() {
-
-  if (!currentUser) return;
-
-  const date =
-    document.getElementById("listDate").value;
-
-  const container =
-    document.getElementById("listContainer");
-
-  container.innerHTML =
-    '<div class="empty">Loading...</div>';
-
-  let query;
-
-  if (currentList === "snacks") {
-
-    query =
-      supabase
-        .from("snack_lists")
-        .select("*")
-        .eq("list_date", date)
-        .order("child_name", { ascending: true });
-
-  } else {
-
-    query =
-      supabase
-        .from("suncream_lists")
-        .select("*")
-        .eq("list_date", date)
-        .order("child_name", { ascending: true });
-
-  }
-
-  const { data, error } = await query;
-
-  if (error) {
-
-    container.innerHTML =
-      `<div class="error">${escapeHtml(error.message)}</div>`;
-
-    return;
-
-  }
-
-  renderList(data || []);
-
-};
-
-
-/* =========================================================
-   RENDER
-   ========================================================= */
-
-function renderList(items) {
-
-  const container =
-    document.getElementById("listContainer");
-
-  if (!items.length) {
-
-    container.innerHTML =
-      '<div class="empty">No children added yet.<br><br>Tap + to add a child.</div>';
-
-    return;
-
-  }
-
-  container.innerHTML = "";
-
-  items.forEach(item => {
-
-    const card =
-      document.createElement("div");
-
-    card.className = "list-card";
-
-    if (currentList === "snacks") {
-
-      card.innerHTML = `
-
-        <div class="card-top">
-
-          <div>
-
-            <div class="child-name">
-              ${escapeHtml(item.child_name)}
-            </div>
-
-            <div class="small-text">
-              ${item.snack_time === "am"
-                ? "Morning snack"
-                : "Afternoon snack"}
-            </div>
-
-          </div>
-
-          ${item.done
-            ? '<span class="badge">✓ Done</span>'
-            : '<span class="badge">Not done</span>'}
-
-        </div>
-
-        <div class="small-text">
-          🍎 ${escapeHtml(item.food || "No food entered")}
-        </div>
-
-        <div class="small-text">
-          Amount: ${escapeHtml(item.amount || "-")}
-        </div>
-
-        <div class="small-text">
-          Allergy: ${escapeHtml(item.allergy_status || "None")}
-        </div>
-
-        <div class="small-text">
-          Alternative milk: ${escapeHtml(item.alternative_milk || "-")}
-        </div>
-
-        <div class="card-buttons">
-
-          <button class="done-button"
-                  onclick="toggleDone('${item.id}', ${item.done})">
-            ${item.done ? "↩ Undo" : "✓ Done"}
-          </button>
-
-          <button class="edit-button"
-                  onclick="editEntry('${item.id}')">
-            ✏️ Edit
-          </button>
-
-          <button class="delete-button"
-                  onclick="deleteEntry('${item.id}')">
-            🗑 Delete
-          </button>
-
-        </div>
-
-      `;
-
-    } else {
-
-      card.innerHTML = `
-
-        <div class="card-top">
-
-          <div class="child-name">
-            ${escapeHtml(item.child_name)}
-          </div>
-
-          ${item.done
-            ? '<span class="badge">✓ Done</span>'
-            : '<span class="badge">Not done</span>'}
-
-        </div>
-
-        <div class="small-text">
-          ☀️ ${escapeHtml(item.product || "No product entered")}
-        </div>
-
-        <div class="card-buttons">
-
-          <button class="done-button"
-                  onclick="toggleDone('${item.id}', ${item.done})">
-            ${item.done ? "↩ Undo" : "✓ Done"}
-          </button>
-
-          <button class="edit-button"
-                  onclick="editEntry('${item.id}')">
-            ✏️ Edit
-          </button>
-
-          <button class="delete-button"
-                  onclick="deleteEntry('${item.id}')">
-            🗑 Delete
-          </button>
-
-        </div>
-
-      `;
-
-    }
-
-    container.appendChild(card);
-
-  });
+get("app")
+.classList.add("hidden");
 
 }
 
 
-/* =========================================================
-   ADD
-   ========================================================= */
+/*
+==================================================
+PROFILE
+==================================================
+*/
 
-window.openAddModal = function() {
+async function loadProfile(){
 
-  editingId = null;
+if(!currentUser){
 
-  document.getElementById("modalTitle")
-    .textContent = "Add child";
-
-  document.getElementById("childName")
-    .value = "";
-
-  document.getElementById("food")
-    .value = "";
-
-  document.getElementById("amount")
-    .value = "";
-
-  document.getElementById("allergy")
-    .value = "";
-
-  document.getElementById("milk")
-    .value = "";
-
-  document.getElementById("product")
-    .value = "";
-
-  document.getElementById("snackTime")
-    .value = "am";
-
-  updateModalFields();
-
-  document.getElementById("entryModal")
-    .classList.remove("hidden");
-
-};
-
-
-function updateModalFields() {
-
-  document.getElementById("snackFields")
-    .classList.toggle(
-      "hidden",
-      currentList !== "snacks"
-    );
-
-  document.getElementById("suncreamFields")
-    .classList.toggle(
-      "hidden",
-      currentList !== "suncream"
-    );
+return;
 
 }
 
 
-/* =========================================================
-   EDIT
-   ========================================================= */
+let result=
+await supabase
+.from("profiles")
+.select("*")
+.eq("id",currentUser.id)
+.maybeSingle();
 
-window.editEntry = async function(id) {
 
-  editingId = id;
+if(result.error){
 
-  let table =
-    currentList === "snacks"
-      ? "snack_lists"
-      : "suncream_lists";
+console.log(result.error);
 
-  const { data, error } =
-    await supabase
-      .from(table)
-      .select("*")
-      .eq("id", id)
-      .single();
-
-  if (error) {
-
-    alert(error.message);
-
-    return;
-
-  }
-
-  document.getElementById("modalTitle")
-    .textContent = "Edit child";
-
-  document.getElementById("childName")
-    .value = data.child_name || "";
-
-  if (currentList === "snacks") {
-
-    document.getElementById("snackTime")
-      .value = data.snack_time || "am";
-
-    document.getElementById("food")
-      .value = data.food || "";
-
-    document.getElementById("amount")
-      .value = data.amount || "";
-
-    document.getElementById("allergy")
-      .value = data.allergy_status || "";
-
-    document.getElementById("milk")
-      .value = data.alternative_milk || "";
-
-  } else {
-
-    document.getElementById("product")
-      .value = data.product || "";
-
-  }
-
-  updateModalFields();
-
-  document.getElementById("entryModal")
-    .classList.remove("hidden");
-
-};
-
-
-/* =========================================================
-   SAVE
-   ========================================================= */
-
-window.saveEntry = async function() {
-
-  const date =
-    document.getElementById("listDate").value;
-
-  const childName =
-    document.getElementById("childName")
-      .value.trim();
-
-  const message =
-    document.getElementById("modalMessage");
-
-  message.innerHTML = "";
-
-  if (!childName) {
-
-    message.innerHTML =
-      '<div class="error">Please enter the child’s name.</div>';
-
-    return;
-
-  }
-
-  let table;
-  let payload;
-
-  if (currentList === "snacks") {
-
-    table = "snack_lists";
-
-    payload = {
-
-      list_date: date,
-
-      snack_time:
-        document.getElementById("snackTime").value,
-
-      child_name: childName,
-
-      allergy_status:
-        document.getElementById("allergy").value.trim(),
-
-      alternative_milk:
-        document.getElementById("milk").value.trim(),
-
-      amount:
-        document.getElementById("amount").value.trim(),
-
-      food:
-        document.getElementById("food").value.trim()
-
-    };
-
-  } else {
-
-    table = "suncream_lists";
-
-    payload = {
-
-      list_date: date,
-
-      child_name: childName,
-
-      product:
-        document.getElementById("product").value.trim()
-
-    };
-
-  }
-
-
-  if (editingId) {
-
-    const { error } =
-      await supabase
-        .from(table)
-        .update(payload)
-        .eq("id", editingId);
-
-    if (error) {
-
-      message.innerHTML =
-        `<div class="error">${escapeHtml(error.message)}</div>`;
-
-      return;
-
-    }
-
-  } else {
-
-    payload.user_id = currentUser.id;
-
-    const { error } =
-      await supabase
-        .from(table)
-        .insert(payload);
-
-    if (error) {
-
-      message.innerHTML =
-        `<div class="error">${escapeHtml(error.message)}</div>`;
-
-      return;
-
-    }
-
-  }
-
-  closeModal();
-
-  await loadCurrentList();
-
-};
-
-
-/* =========================================================
-   DONE
-   ========================================================= */
-
-window.toggleDone = async function(id, currentValue) {
-
-  const table =
-    currentList === "snacks"
-      ? "snack_lists"
-      : "suncream_lists";
-
-  const { error } =
-    await supabase
-      .from(table)
-      .update({
-        done: !currentValue
-      })
-      .eq("id", id);
-
-  if (error) {
-
-    alert(error.message);
-
-    return;
-
-  }
-
-  await loadCurrentList();
-
-};
-
-
-/* =========================================================
-   DELETE
-   ========================================================= */
-
-window.deleteEntry = async function(id) {
-
-  if (!confirm("Delete this child's entry?")) return;
-
-  const table =
-    currentList === "snacks"
-      ? "snack_lists"
-      : "suncream_lists";
-
-  const { error } =
-    await supabase
-      .from(table)
-      .delete()
-      .eq("id", id);
-
-  if (error) {
-
-    alert(error.message);
-
-    return;
-
-  }
-
-  await loadCurrentList();
-
-};
-
-
-/* =========================================================
-   MODAL
-   ========================================================= */
-
-window.closeModal = function() {
-
-  document.getElementById("entryModal")
-    .classList.add("hidden");
-
-};
-
-
-/* =========================================================
-   ESCAPE HTML
-   ========================================================= */
-
-function escapeHtml(value) {
-
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+return;
 
 }
+
+
+let profile=result.data;
+
+
+if(!profile){
+
+const defaultName=
+(currentUser.email || "Adult")
+.split("@")[0];
+
+
+await supabase
+.from("profiles")
+.upsert({
+
+id:currentUser.id,
+
+display_name:defaultName,
+
+photo_url:""
+
+});
+
+
+profile={
+
+display_name:defaultName,
+
+photo_url:""
+
+};
+
+}
+
+
+get("profileMenuName")
+.textContent=
+profile.display_name || "Adult";
+
+
+setAvatar(
+get("profileAvatar"),
+profile.photo_url
+);
+
+}
+
+
+function setAvatar(element,url){
+
+element.innerHTML="";
+
+
+if(url){
+
+const image=
+document.createElement("img");
+
+image.src=url;
+
+image.alt="Profile photo";
+
+image.onerror=function(){
+
+element.textContent="👤";
+
+};
+
+element.appendChild(image);
+
+}
+
+else{
+
+element.textContent="👤";
+
+}
+
+}
+
+
+/*
+==================================================
+OPEN EDIT PROFILE
+==================================================
+*/
+
+get("editProfileButton")
+.addEventListener(
+"click",
+openEditProfile
+);
+
+
+async function openEditProfile(){
+
+get("profileMenu")
+.classList.add("hidden");
+
+
+const result=
+await supabase
+.from("profiles")
+.select("*")
+.eq("id",currentUser.id)
+.maybeSingle();
+
+
+get("profileDisplayName").value=
+result.data?.display_name || "";
+
+
+get("profilePhotoUrl").value=
+result.data?.photo_url || "";
+
+
+get("profileMessage")
+.classList.add("hidden");
+
+
+get("profileModal")
+.classList.remove("hidden");
+
+}
+
+
+/*
+==================================================
+SAVE PROFILE
+==================================================
+*/
+
+get("saveProfileButton")
+.addEventListener(
+"click",
+saveProfile
+);
+
+
+async function saveProfile(){
+
+const name=
+get("profileDisplayName")
+.value
+.trim();
+
+const photo=
+get("profilePhotoUrl")
+.value
+.trim();
+
+
+if(!name){
+
+get("profileMessage")
+.textContent=
+"Please enter your name.";
+
+get("profileMessage")
+.classList.remove("hidden");
+
+return;
+
+}
+
+
+const result=
+await supabase
+.from("profiles")
+.upsert({
+
+id:currentUser.id,
+
+display_name:name,
+
+photo_url:photo
+
+});
+
+
+if(result.error){
+
+get("profileMessage")
+.textContent=
+result.error.message;
+
+get("profileMessage")
+.classList.remove("hidden");
+
+return;
+
+}
+
+
+get("profileMenuName")
+.textContent=name;
+
+setAvatar(
+get("profileAvatar"),
+photo
+);
+
+get("profileModal")
+.classList.add("hidden");
+
+}
+
+
+/*
+==================================================
+CLOSE PROFILE
+==================================================
+*/
+
+get("closeProfileButton")
+.addEventListener(
+"click",
+function(){
+
+get("profileModal")
+.classList.add("hidden");
+
+}
+);
+
+
+/*
+==================================================
+LOGOUT
+==================================================
+*/
+
+get("logoutButton")
+.addEventListener(
+"click",
+async function(){
+
+get("profileMenu")
+.classList.add("hidden");
+
+await supabase.auth.signOut();
+
+}
+);
+
+
+/*
+==================================================
+LOAD SHARED DATA
+==================================================
+*/
+
+async function loadSharedData(){
+
+if(!currentUser){
+
+return;
+
+}
+
+
+data={};
+
+
+const snacks=
+await supabase
+.from("snack_lists")
+.select("*")
+.order(
+"list_date",
+{
+ascending:false
+}
+)
+.order("id");
+
+
+const suncream=
+await supabase
+.from("suncream_lists")
+.select("*")
+.order(
+"list_date",
+{
+ascending:false
+}
+)
+.order("id");
+
+
+if(snacks.error){
+
+console.log(snacks.error);
+
+alert(snacks.error.message);
+
+return;
+
+}
+
+
+if(suncream.error){
+
+console.log(suncream.error);
+
+alert(suncream.error.message);
+
+return;
+
+}
+
+
+/*
+SNACKS
+*/
+
+(snacks.data || [])
+.forEach(function(item){
+
+createDay(item.list_date);
+
+const key=
+item.snack_time==="am"
+?"amSnack"
+:"pmSnack";
+
+
+data[item.list_date][key].push({
+
+id:item.id,
+
+name:item.child_name,
+
+status:item.allergy_status || "none",
+
+milk:item.alternative_milk || "",
+
+done:!!item.done,
+
+note:{
+
+amount:item.amount || "",
+
+what:item.food || ""
+
+}
+
+});
+
+});
+
+
+/*
+SUNCREAM
+*/
+
+(suncream.data || [])
+.forEach(function(item){
+
+createDay(item.list_date);
+
+data[item.list_date]
+.suncream
+.push({
+
+id:item.id,
+
+name:item.child_name,
+
+product:item.product || "",
+
+done:!!item.done
+
+});
+
+});
+
+}
+
+
+/*
+==================================================
+PAGE NAVIGATION
+==================================================
+*/
+
+function openSnackList(){
+
+currentPage="snacks";
+
+openNoteIndex=null;
+
+get("snackPage")
+.classList.remove("hidden");
+
+get("groupedPage")
+.classList.add("hidden");
+
+get("suncreamPage")
+.classList.add("hidden");
+
+get("snackFolder")
+.classList.add("active");
+
+get("groupedButton")
+.classList.remove("active");
+
+get("suncreamFolder")
+.classList.remove("active");
+
+get("pageTitle")
+.textContent=
+"Acorn Snack List";
+
+render();
+
+}
+
+
+function openGroupedList(){
+
+currentPage="grouped";
+
+openNoteIndex=null;
+
+get("snackPage")
+.classList.add("hidden");
+
+get("groupedPage")
+.classList.remove("hidden");
+
+get("suncreamPage")
+.classList.add("hidden");
+
+get("snackFolder")
+.classList.remove("active");
+
+get("groupedButton")
+.classList.add("active");
+
+get("suncreamFolder")
+.classList.remove("active");
+
+get("pageTitle")
+.textContent=
+"Grouped Snacks";
+
+render();
+
+}
+
+
+function openSuncreamList(){
+
+currentPage="suncream";
+
+get("snackPage")
+.classList.add("hidden");
+
+get("groupedPage")
+.classList.add("hidden");
+
+get("suncreamPage")
+.classList.remove("hidden");
+
+get("snackFolder")
+.classList.remove("active");
+
+get("groupedButton")
+.classList.remove("active");
+
+get("suncreamFolder")
+.classList.add("active");
+
+get("pageTitle")
+.textContent=
+"Acorn Suncream List";
+
+render();
+
+}
+
+
+/*
+==================================================
+SNACK TABS
+==================================================
+*/
+
+function openAM(){
+
+currentSnack="am";
+
+openNoteIndex=null;
+
+get("amButton")
+.classList.add("active");
+
+get("pmButton")
+.classList.remove("active");
+
+get("snackTitle")
+.textContent=
+"AM Snack";
+
+renderSnackList();
+
+}
+
+
+function openPM(){
+
+currentSnack="pm";
+
+openNoteIndex=null;
+
+get("pmButton")
+.classList.add("active");
+
+get("amButton")
+.classList.remove("active");
+
+get("snackTitle")
+.textContent=
+"PM Snack";
+
+renderSnackList();
+
+}
+
+
+/*
+==================================================
+GROUPED TABS
+==================================================
+*/
+
+function openGroupedAM(){
+
+groupedSnack="am";
+
+get("groupedAmButton")
+.classList.add("active");
+
+get("groupedPmButton")
+.classList.remove("active");
+
+renderGrouped();
+
+}
+
+
+function openGroupedPM(){
+
+groupedSnack="pm";
+
+get("groupedPmButton")
+.classList.add("active");
+
+get("groupedAmButton")
+.classList.remove("active");
+
+renderGrouped();
+
+}
+
+
+/*
+==================================================
+MAIN RENDER
+==================================================
+*/
+
+function render(){
+
+createDay(currentDate);
+
+get("date").value=
+currentDate;
+
+get("pageSubtitle")
+.textContent=
+formatDate(currentDate);
+
+
+if(currentPage==="snacks"){
+
+renderSnackList();
+
+}
+
+else if(currentPage==="grouped"){
+
+renderGrouped();
+
+}
+
+else{
+
+renderSuncreamList();
+
+}
+
+
+renderSavedDays();
+
+}
+
+
+/*
+==================================================
+SNACK LIST
+==================================================
+*/
+
+function renderSnackList(){
+
+const container=
+get("snackChildren");
+
+container.innerHTML="";
+
+createDay(currentDate);
+
+const key=
+currentSnack==="am"
+?"amSnack"
+:"pmSnack";
+
+const children=
+data[currentDate][key];
+
+
+if(!children.length){
+
+container.innerHTML=
+'<div class="empty">No children added to this list yet.</div>';
+
+return;
+
+}
+
+
+children.forEach(
+function(child,index){
+
+const item=
+document.createElement("div");
+
+item.className=
+"child"+(child.done?" done":"");
+
+
+const top=
+document.createElement("div");
+
+top.className=
+"child-top";
+
+
+const tick=
+document.createElement("button");
+
+tick.type="button";
+
+tick.className="tick";
+
+tick.textContent=
+child.done?"✓":"";
+
+
+tick.onclick=
+async function(){
+
+const result=
+await supabase
+.from("snack_lists")
+.update({
+
+done:!child.done
+
+})
+.eq("id",child.id);
+
+
+if(result.error){
+
+alert(result.error.message);
+
+return;
+
+}
+
+
+child.done=!child.done;
+
+renderSnackList();
+
+};
+
+
+/* NAME */
+
+const name=
+document.createElement("div");
+
+name.className=
+"child-name";
+
+name.textContent=
+child.name;
+
+
+/* ALLERGY */
+
+const badge=
+document.createElement("span");
+
+if(child.status==="red"){
+
+badge.className=
+"badge red";
+
+badge.textContent=
+"RED";
+
+}
+
+else if(child.status==="green"){
+
+badge.className=
+"badge green";
+
+badge.textContent=
+"GREEN";
+
+}
+
+else{
+
+badge.className=
+"badge none";
+
+badge.textContent=
+"NONE";
+
+}
+
+
+/* NOTE */
+
+const noteButton=
+document.createElement("button");
+
+noteButton.type="button";
+
+noteButton.className=
+"note-button"+
+(
+child.note &&
+(child.note.amount||child.note.what)
+?" has-note"
+:""
+);
+
+noteButton.textContent="📝";
+
+noteButton.title=
+"Add snack";
+
+
+noteButton.onclick=
+function(){
+
+if(openNoteIndex===index){
+
+openNoteIndex=null;
+
+}
+
+else{
+
+openNoteIndex=index;
+
+}
+
+renderSnackList();
+
+};
+
+
+/* REMOVE */
+
+const remove=
+document.createElement("button");
+
+remove.type="button";
+
+remove.className=
+"danger small";
+
+remove.textContent=
+"Remove";
+
+
+remove.onclick=
+async function(){
+
+if(!confirm(
+"Remove "+child.name+"?"
+)){
+
+return;
+
+}
+
+
+const result=
+await supabase
+.from("snack_lists")
+.delete()
+.eq("id",child.id);
+
+
+if(result.error){
+
+alert(result.error.message);
+
+return;
+
+}
+
+
+await loadSharedData();
+
+render();
+
+};
+
+
+/* TOP */
+
+top.append(
+tick,
+name,
+badge,
+noteButton,
+remove
+);
+
+item.appendChild(top);
+
+
+/* MILK */
+
+if(child.milk){
+
+const milk=
+document.createElement("div");
+
+milk.className="detail";
+
+milk.textContent=
+"Alternative milk: "+child.milk;
+
+item.appendChild(milk);
+
+}
+
+
+/* EATEN */
+
+if(
+child.note &&
+(child.note.amount||child.note.what)
+){
+
+const eaten=
+document.createElement("div");
+
+eaten.className=
+"eaten-detail";
+
+let text=
+"Eaten: ";
+
+if(child.note.amount){
+
+text+=
+child.note.amount;
+
+}
+
+if(child.note.what){
+
+if(child.note.amount){
+
+text+=" — ";
+
+}
+
+text+=
+child.note.what;
+
+}
+
+eaten.textContent=
+text;
+
+item.appendChild(eaten);
+
+}
+
+
+/* NOTE BOX */
+
+if(openNoteIndex===index){
+
+item.appendChild(
+createNoteBox(child)
+);
+
+}
+
+
+container.appendChild(item);
+
+});
+
+}
+
+
+/*
+==================================================
+NOTE BOX
+==================================================
+*/
+
+function createNoteBox(child){
+
+const box=
+document.createElement("div");
+
+box.className=
+"note-box";
+
+
+const label=
+document.createElement("label");
+
+label.textContent=
+"How much did they have?";
+
+box.appendChild(label);
+
+
+const amounts=[
+"Little",
+"Half",
+"Almost all",
+"All"
+];
+
+
+const buttons=
+document.createElement("div");
+
+buttons.className=
+"amount-buttons";
+
+
+amounts.forEach(
+function(amount){
+
+const button=
+document.createElement("button");
+
+button.type="button";
+
+button.className=
+"amount-button"+
+(
+child.note &&
+child.note.amount===amount
+?" selected"
+:""
+);
+
+button.textContent=
+amount;
+
+
+button.onclick=
+async function(){
+
+child.note.amount=
+amount;
+
+await saveSnackNote(child);
+
+};
+
+
+buttons.appendChild(button);
+
+});
+
+
+box.appendChild(buttons);
+
+
+const whatLabel=
+document.createElement("label");
+
+whatLabel.textContent=
+"What did they have?";
+
+box.appendChild(whatLabel);
+
+
+const input=
+document.createElement("input");
+
+input.type="text";
+
+input.placeholder=
+"e.g. banana, apple, different fruit";
+
+input.value=
+child.note &&
+child.note.what
+?child.note.what
+:"";
+
+box.appendChild(input);
+
+
+const row=
+document.createElement("div");
+
+row.className=
+"note-save-row";
+
+
+const save=
+document.createElement("button");
+
+save.type="button";
+
+save.className="primary";
+
+save.textContent="Save";
+
+
+save.onclick=
+async function(){
+
+child.note.what=
+input.value.trim();
+
+await saveSnackNote(child);
+
+};
+
+
+const close=
+document.createElement("button");
+
+close.type="button";
+
+close.className=
+"secondary";
+
+close.textContent="Close";
+
+
+close.onclick=
+function(){
+
+openNoteIndex=null;
+
+renderSnackList();
+
+};
+
+
+row.append(
+save,
+close
+);
+
+box.appendChild(row);
+
+
+return box;
+
+}
+
+
+/*
+==================================================
+SAVE SNACK NOTE
+==================================================
+*/
+
+async function saveSnackNote(child){
+
+const result=
+await supabase
+.from("snack_lists")
+.update({
+
+amount:child.note.amount || "",
+
+food:child.note.what || ""
+
+})
+.eq("id",child.id);
+
+
+if(result.error){
+
+alert(result.error.message);
+
+return;
+
+}
+
+
+openNoteIndex=null;
+
+renderSnackList();
+
+}
+
+
+/*
+==================================================
+GROUPED
+==================================================
+*/
+
+function renderGrouped(){
+
+const container=
+get("groupedChildren");
+
+container.innerHTML="";
+
+createDay(currentDate);
+
+const key=
+groupedSnack==="am"
+?"amSnack"
+:"pmSnack";
+
+const children=
+data[currentDate][key];
+
+
+if(!children.length){
+
+container.innerHTML=
+'<div class="grouped-empty">No children have been added yet.</div>';
+
+return;
+
+}
+
+
+const amounts=[
+"All",
+"Almost all",
+"Half",
+"Little"
+];
+
+let found=false;
+
+
+amounts.forEach(
+function(amount){
+
+const matching=
+children.filter(
+function(child){
+
+return child.note &&
+child.note.amount===amount &&
+child.note.what &&
+child.note.what.trim();
+
+});
+
+
+if(!matching.length){
+
+return;
+
+}
+
+
+found=true;
+
+
+const section=
+document.createElement("div");
+
+section.className=
+"grouped-section";
+
+
+const heading=
+document.createElement("div");
+
+heading.className=
+"grouped-heading";
+
+heading.textContent=
+amount.toUpperCase();
+
+section.appendChild(heading);
+
+
+const groups={};
+
+
+matching.forEach(
+function(child){
+
+const food=
+child.note.what.trim();
+
+const key=
+food.toLowerCase();
+
+
+if(!groups[key]){
+
+groups[key]={
+
+name:food,
+
+children:[]
+
+};
+
+}
+
+
+groups[key]
+.children
+.push(child.name);
+
+});
+
+
+Object.values(groups)
+
+.sort(
+function(a,b){
+
+return a.name
+.localeCompare(b.name);
+
+})
+
+.forEach(
+function(group){
+
+const snack=
+document.createElement("div");
+
+snack.className=
+"grouped-snack";
+
+
+const snackName=
+document.createElement("div");
+
+snackName.className=
+"grouped-snack-name";
+
+snackName.textContent=
+"🍌 "+group.name;
+
+
+const names=
+document.createElement("div");
+
+names.className=
+"grouped-names";
+
+names.textContent=
+group.children.join(" • ");
+
+
+snack.append(
+snackName,
+names
+);
+
+section.appendChild(snack);
+
+});
+
+
+container.appendChild(section);
+
+});
+
+
+if(!found){
+
+container.innerHTML=
+'<div class="grouped-empty">Nothing has been recorded yet.<br><br>Use the 📝 button beside a child to add what they ate.</div>';
+
+}
+
+}
+
+
+/*
+==================================================
+SUNCREAM
+==================================================
+*/
+
+function renderSuncreamList(){
+
+const container=
+get("suncreamChildren");
+
+container.innerHTML="";
+
+createDay(currentDate);
+
+const children=
+data[currentDate].suncream;
+
+
+if(!children.length){
+
+container.innerHTML=
+'<div class="empty">No children added to today\'s suncream list yet.</div>';
+
+return;
+
+}
+
+
+children.forEach(
+function(child){
+
+const item=
+document.createElement("div");
+
+item.className=
+"child"+(child.done?" done":"");
+
+
+const top=
+document.createElement("div");
+
+top.className=
+"child-top";
+
+
+const tick=
+document.createElement("button");
+
+tick.type="button";
+
+tick.className="tick";
+
+tick.textContent=
+child.done?"✓":"";
+
+
+tick.onclick=
+async function(){
+
+const result=
+await supabase
+.from("suncream_lists")
+.update({
+
+done:!child.done
+
+})
+.eq("id",child.id);
+
+
+if(result.error){
+
+alert(result.error.message);
+
+return;
+
+}
+
+
+child.done=!child.done;
+
+renderSuncreamList();
+
+};
+
+
+const name=
+document.createElement("div");
+
+name.className=
+"child-name";
+
+name.textContent=
+child.name;
+
+
+const remove=
+document.createElement("button");
+
+remove.type="button";
+
+remove.className=
+"danger small";
+
+remove.textContent=
+"Remove";
+
+
+remove.onclick=
+async function(){
+
+if(!confirm(
+"Remove "+child.name+"?"
+)){
+
+return;
+
+}
+
+
+const result=
+await supabase
+.from("suncream_lists")
+.delete()
+.eq("id",child.id);
+
+
+if(result.error){
+
+alert(result.error.message);
+
+return;
+
+}
+
+
+await loadSharedData();
+
+render();
+
+};
+
+
+top.append(
+tick,
+name,
+remove
+);
+
+item.appendChild(top);
+
+
+const detail=
+document.createElement("div");
+
+detail.className="detail";
+
+detail.textContent=
+child.product
+?"Suncream: "+child.product
+:"No specific suncream recorded";
+
+item.appendChild(detail);
+
+container.appendChild(item);
+
+});
+
+}
+
+
+/*
+==================================================
+SAVED DAYS
+==================================================
+*/
+
+function renderSavedDays(){
+
+const container=
+get("savedDays");
+
+container.innerHTML="";
+
+const dates=
+Object.keys(data)
+.sort()
+.reverse();
+
+
+if(!dates.length){
+
+container.innerHTML=
+'<div class="empty">Saved days will appear here.</div>';
+
+return;
+
+}
+
+
+dates.forEach(
+function(date){
+
+const row=
+document.createElement("div");
+
+row.className=
+"history-item";
+
+
+const title=
+document.createElement("strong");
+
+title.textContent=
+formatDate(date);
+
+
+const buttons=
+document.createElement("div");
+
+buttons.className=
+"history-buttons";
+
+
+const open=
+document.createElement("button");
+
+open.type="button";
+
+open.className=
+"secondary small";
+
+open.textContent=
+"Open";
+
+
+open.onclick=
+function(){
+
+currentDate=date;
+
+currentPage="snacks";
+
+render();
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+
+const deleteButton=
+document.createElement("button");
+
+deleteButton.type="button";
+
+deleteButton.className=
+"danger small";
+
+deleteButton.textContent=
+"Delete";
+
+
+deleteButton.onclick=
+async function(){
+
+if(!confirm(
+"Are you sure you want to delete "+
+formatDate(date)+
+"?\n\nThis will delete the AM snack, PM snack and suncream list for this day."
+)){
+
+return;
+
+}
+
+
+const snackDelete=
+await supabase
+.from("snack_lists")
+.delete()
+.eq("list_date",date);
+
+
+const suncreamDelete=
+await supabase
+.from("suncream_lists")
+.delete()
+.eq("list_date",date);
+
+
+if(
+snackDelete.error ||
+suncreamDelete.error
+){
+
+alert(
+(snackDelete.error ||
+suncreamDelete.error).message
+);
+
+return;
+
+}
+
+
+await loadSharedData();
+
+if(currentDate===date){
+
+currentDate=getToday();
+
+}
+
+render();
+
+};
+
+
+buttons.append(
+open,
+deleteButton
+);
+
+row.append(
+title,
+buttons
+);
+
+container.appendChild(row);
+
+});
+
+}
+
+
+/*
+==================================================
+ADD SNACK
+==================================================
+*/
+
+async function addSnack(){
+
+const name=
+get("snackName")
+.value
+.trim();
+
+
+if(!name){
+
+alert(
+"Please enter the child's name."
+);
+
+get("snackName").focus();
+
+return;
+
+}
+
+
+const result=
+await supabase
+.from("snack_lists")
+.insert({
+
+user_id:currentUser.id,
+
+list_date:currentDate,
+
+snack_time:currentSnack,
+
+child_name:name,
+
+allergy_status:
+get("snackStatus").value,
+
+alternative_milk:
+get("snackMilk").value.trim(),
+
+done:false,
+
+amount:"",
+
+food:""
+
+});
+
+
+if(result.error){
+
+alert(result.error.message);
+
+return;
+
+}
+
+
+get("snackName").value="";
+
+get("snackMilk").value="";
+
+get("snackStatus").value="none";
+
+
+await loadSharedData();
+
+renderSnackList();
+
+get("snackName").focus();
+
+}
+
+
+/*
+==================================================
+ADD SUNCREAM
+==================================================
+*/
+
+async function addSuncream(){
+
+const name=
+get("suncreamName")
+.value
+.trim();
+
+
+if(!name){
+
+alert(
+"Please enter the child's name."
+);
+
+get("suncreamName").focus();
+
+return;
+
+}
+
+
+const result=
+await supabase
+.from("suncream_lists")
+.insert({
+
+user_id:currentUser.id,
+
+list_date:currentDate,
+
+child_name:name,
+
+product:
+get("suncreamProduct")
+.value
+.trim(),
+
+done:false
+
+});
+
+
+if(result.error){
+
+alert(result.error.message);
+
+return;
+
+}
+
+
+get("suncreamName").value="";
+
+get("suncreamProduct").value="";
+
+
+await loadSharedData();
+
+renderSuncreamList();
+
+get("suncreamName").focus();
+
+}
+
+
+/*
+==================================================
+NEW DAY
+==================================================
+*/
+
+function createNewDay(){
+
+const answer=
+prompt(
+"Enter the date as DD/MM/YYYY"
+);
+
+
+if(!answer){
+
+return;
+
+}
+
+
+const parts=
+answer.split("/");
+
+
+if(parts.length!==3){
+
+alert(
+"Please use DD/MM/YYYY."
+);
+
+return;
+
+}
+
+
+const day=
+parts[0].padStart(2,"0");
+
+const month=
+parts[1].padStart(2,"0");
+
+const year=
+parts[2];
+
+
+if(
+year.length!==4 ||
+Number(day)<1 ||
+Number(day)>31 ||
+Number(month)<1 ||
+Number(month)>12
+){
+
+alert(
+"Please enter a valid date using DD/MM/YYYY."
+);
+
+return;
+
+}
+
+
+currentDate=
+year+"-"+month+"-"+day;
+
+createDay(currentDate);
+
+render();
+
+}
+
+
+/*
+==================================================
+BUTTONS
+==================================================
+*/
+
+get("snackFolder")
+.addEventListener(
+"click",
+openSnackList
+);
+
+get("groupedButton")
+.addEventListener(
+"click",
+openGroupedList
+);
+
+get("backToSnackButton")
+.addEventListener(
+"click",
+openSnackList
+);
+
+get("suncreamFolder")
+.addEventListener(
+"click",
+openSuncreamList
+);
+
+get("amButton")
+.addEventListener(
+"click",
+openAM
+);
+
+get("pmButton")
+.addEventListener(
+"click",
+openPM
+);
+
+get("groupedAmButton")
+.addEventListener(
+"click",
+openGroupedAM
+);
+
+get("groupedPmButton")
+.addEventListener(
+"click",
+openGroupedPM
+);
+
+get("addSnackButton")
+.addEventListener(
+"click",
+addSnack
+);
+
+get("addSuncreamButton")
+.addEventListener(
+"click",
+addSuncream
+);
+
+get("newDayButton")
+.addEventListener(
+"click",
+createNewDay
+);
+
+
+/*
+==================================================
+DATE
+==================================================
+*/
+
+get("date")
+.addEventListener(
+"change",
+async function(){
+
+currentDate=
+get("date").value;
+
+await loadSharedData();
+
+render();
+
+}
+);
+
+
+/*
+==================================================
+ENTER KEY
+==================================================
+*/
+
+get("snackName")
+.addEventListener(
+"keydown",
+function(event){
+
+if(event.key==="Enter"){
+
+event.preventDefault();
+
+addSnack();
+
+}
+
+}
+);
+
+
+get("suncreamName")
+.addEventListener(
+"keydown",
+function(event){
+
+if(event.key==="Enter"){
+
+event.preventDefault();
+
+addSuncream();
+
+}
+
+}
+);
+
+
+/*
+==================================================
+PROFILE BUTTONS
+==================================================
+*/
+
+get("profileButton")
+.addEventListener(
+"click",
+function(){
+
+get("profileMenu")
+.classList.toggle("hidden");
+
+}
+);
+
+
+get("accountFab")
+.addEventListener(
+"click",
+function(){
+
+get("profileMenu")
+.classList.toggle("hidden");
+
+}
+);
+
+
+/*
+==================================================
+AUTH STATE
+==================================================
+*/
+
+supabase.auth.getSession()
+
+.then(
+async function(result){
+
+if(result.data.session){
+
+await startApp(
+result.data.session.user
+);
+
+}
+
+else{
+
+showLogin();
+
+}
+
+}
+);
+
+
+supabase.auth.onAuthStateChange(
+
+async function(event,session){
+
+if(session){
+
+await startApp(
+session.user
+);
+
+}
+
+else{
+
+showLogin();
+
+}
+
+}
+);
+
+
+/*
+==================================================
+START
+==================================================
+*/
+
+currentDate=
+getToday();
+
+createDay(
+currentDate
+);
+
+
+/*
+==================================================
+REFRESH SHARED DATA
+==================================================
+*/
+
+setInterval(
+async function(){
+
+if(
+currentUser &&
+document.visibilityState==="visible"
+){
+
+await loadSharedData();
+
+render();
+
+}
+
+},
+15000
+);
 
 </script>
 

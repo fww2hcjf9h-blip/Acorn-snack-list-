@@ -1,519 +1,522 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Acorn</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-background:#f3f7f3;
-color:#263028;
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:#f3f7f3;
+  color:#26352a;
 }
 
 button,input,select{font:inherit}
-button{cursor:pointer;border:0}
+
+button{cursor:pointer}
+
 .hidden{display:none!important}
 
 .login{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
 
-.login-box{
-width:100%;
-max-width:500px;
-background:#fff;
-border-radius:28px;
-padding:28px 18px 35px;
-text-align:center;
-box-shadow:0 8px 35px rgba(0,0,0,.08);
+.box{
+  width:100%;
+  max-width:520px;
+  background:white;
+  border-radius:28px;
+  padding:30px 20px;
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
+  text-align:center;
 }
 
 .logo{
-font-size:46px;
-font-weight:900;
-color:#397249;
+  font-size:48px;
+  font-weight:900;
+  color:#397249;
 }
 
 .subtitle{
-font-size:22px;
-font-weight:800;
-margin:5px 0 20px;
-}
-
-.carousel{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-}
-
-.arrow{
-width:48px;
-height:48px;
-border-radius:50%;
-background:#e7eee8;
-color:#397249;
-font-size:36px;
-}
-
-.person{
-width:240px;
-height:300px;
-border:4px solid #397249;
-border-radius:25px;
-background:#f0f5f0;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-}
-
-.person-photo{
-width:165px;
-height:165px;
-border-radius:50%;
-background:#dfe8df;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-font-size:70px;
-margin-bottom:15px;
-}
-
-.person-photo img,
-.avatar img,
-.big-photo img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.person-name{
-font-size:27px;
-font-weight:900;
-color:#397249;
-}
-
-.dots{
-display:flex;
-justify-content:center;
-gap:6px;
-margin:12px;
-}
-
-.dot{
-width:8px;
-height:8px;
-border-radius:8px;
-background:#ccd5cd;
-}
-
-.dot.active{
-width:22px;
-background:#397249;
-}
-
-label{
-display:block;
-text-align:left;
-font-weight:800;
-margin:10px 0 6px;
-}
-
-input,select{
-width:100%;
-padding:12px;
-border:1px solid #ccd5cc;
-border-radius:11px;
-background:#fff;
-}
-
-.code{
-height:58px;
-text-align:center;
-font-size:26px;
-letter-spacing:10px;
-}
-
-.primary{
-background:#397249;
-color:#fff;
-border-radius:12px;
-padding:13px 17px;
-font-weight:800;
-}
-
-.login-button{
-width:100%;
-margin-top:12px;
-font-size:18px;
-}
-
-.secondary{
-background:#e8eee8;
-color:#315b3d;
-border-radius:11px;
-padding:11px 14px;
-font-weight:800;
+  font-size:24px;
+  font-weight:800;
+  margin:5px 0 25px;
 }
 
 .message{
-padding:11px;
-border-radius:11px;
-margin-bottom:12px;
+  padding:12px;
+  border-radius:12px;
+  margin-bottom:15px;
+  font-weight:700;
 }
 
 .error{
-background:#f6dada;
-color:#8e2929;
+  background:#f8dede;
+  color:#8d2929;
 }
 
 .success{
-background:#dff1e3;
-color:#28623a;
+  background:#dff1e2;
+  color:#28643a;
 }
 
-.add{
-position:fixed;
-right:22px;
-bottom:22px;
-width:64px;
-height:64px;
-border-radius:50%;
-background:#397249;
-color:white;
-font-size:38px;
-box-shadow:0 5px 20px rgba(0,0,0,.2);
+.no-accounts{
+  padding:25px 10px;
+  font-size:19px;
+  font-weight:700;
+  color:#59645b;
+}
+
+.add-first{
+  width:100%;
+  padding:15px;
+  background:#397249;
+  color:white;
+  border:0;
+  border-radius:13px;
+  font-weight:800;
+  font-size:18px;
+}
+
+.selector{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+
+.arrow{
+  width:48px;
+  height:48px;
+  border:0;
+  border-radius:50%;
+  background:#e7eee8;
+  color:#397249;
+  font-size:38px;
+  line-height:1;
+}
+
+.adult-card{
+  width:235px;
+  min-height:290px;
+  background:#f1f6f1;
+  border:4px solid #397249;
+  border-radius:25px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:18px;
+}
+
+.photo{
+  width:165px;
+  height:165px;
+  border-radius:50%;
+  background:#dfe8df;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  font-size:70px;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.adult-name{
+  margin-top:15px;
+  font-size:27px;
+  font-weight:900;
+  color:#397249;
+}
+
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin:15px 0;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:20px;
+  background:#ccd6cd;
+}
+
+.dot.active{
+  width:22px;
+  background:#397249;
+}
+
+label{
+  display:block;
+  text-align:left;
+  font-weight:800;
+  margin:12px 0 6px;
+}
+
+input,select{
+  width:100%;
+  padding:14px;
+  border:2px solid #d4ddd5;
+  border-radius:12px;
+  background:white;
+}
+
+.code{
+  text-align:center;
+  font-size:25px;
+  letter-spacing:8px;
+}
+
+.green{
+  width:100%;
+  padding:14px;
+  margin-top:12px;
+  border:0;
+  border-radius:12px;
+  background:#397249;
+  color:white;
+  font-weight:900;
+  font-size:18px;
+}
+
+.grey{
+  width:100%;
+  padding:13px;
+  margin-top:8px;
+  border:0;
+  border-radius:12px;
+  background:#e7eee8;
+  color:#315b3d;
+  font-weight:800;
+}
+
+.plus{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  width:64px;
+  height:64px;
+  border:0;
+  border-radius:50%;
+  background:#397249;
+  color:white;
+  font-size:40px;
+  box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:50;
+}
+
+.modal-box{
+  width:100%;
+  max-width:450px;
+  max-height:90vh;
+  overflow:auto;
+  background:white;
+  border-radius:22px;
+  padding:22px;
+}
+
+.modal-box h2{
+  margin-top:0;
+}
+
+.big-photo{
+  width:125px;
+  height:125px;
+  border-radius:50%;
+  margin:10px auto 15px;
+  background:#e2ebe2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  font-size:55px;
+}
+
+.big-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.photo-label{
+  display:block;
+  text-align:center;
+  padding:12px;
+  border-radius:11px;
+  background:#e7eee8;
+  color:#315b3d;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.photo-label input{
+  display:none;
 }
 
 /* APP */
 
 .top{
-position:sticky;
-top:0;
-z-index:20;
-background:#397249;
-color:white;
-padding:12px 15px;
-display:flex;
-align-items:center;
-justify-content:space-between;
+  background:#397249;
+  color:white;
+  padding:12px 15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
 
 .title{
-font-size:23px;
-font-weight:900;
+  font-size:23px;
+  font-weight:900;
 }
 
-.user{
-display:flex;
-align-items:center;
-gap:8px;
+.profile{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
-.avatar{
-width:40px;
-height:40px;
-border-radius:50%;
-background:#e2ebe2;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
+.small-photo{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#e3ece3;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:23px;
 }
 
-.profile-btn{
-background:white;
-color:#315b3d;
-border-radius:11px;
-padding:9px 11px;
-font-weight:800;
+.small-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.profile-button{
+  border:0;
+  border-radius:10px;
+  padding:9px 12px;
+  font-weight:800;
+  color:#315b3d;
 }
 
 .nav{
-display:flex;
-gap:7px;
-padding:8px;
-background:white;
-overflow-x:auto;
-border-bottom:1px solid #ddd;
+  display:flex;
+  gap:7px;
+  padding:8px;
+  background:white;
+  overflow-x:auto;
+  border-bottom:1px solid #ddd;
 }
 
 .nav button{
-background:#e8eee8;
-color:#315b3d;
-padding:10px 14px;
-border-radius:10px;
-font-weight:800;
-white-space:nowrap;
+  border:0;
+  background:#e7eee8;
+  color:#315b3d;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:800;
+  white-space:nowrap;
 }
 
 .nav button.active{
-background:#397249;
-color:white;
+  background:#397249;
+  color:white;
 }
 
 .main{
-max-width:900px;
-margin:auto;
-padding:14px;
+  max-width:900px;
+  margin:auto;
+  padding:15px;
 }
 
 .card{
-background:white;
-border-radius:17px;
-padding:16px;
-margin-bottom:14px;
-box-shadow:0 2px 10px rgba(0,0,0,.05);
+  background:white;
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:14px;
+  box-shadow:0 2px 9px rgba(0,0,0,.05);
 }
 
 .row{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
 .field{
-flex:1 1 180px;
+  flex:1 1 180px;
 }
 
 .tabs{
-display:flex;
-gap:8px;
-margin-bottom:14px;
+  display:flex;
+  gap:8px;
 }
 
 .tab{
-flex:1;
-background:#e8eee8;
-color:#315b3d;
-padding:11px;
-border-radius:10px;
-font-weight:800;
+  flex:1;
+  border:0;
+  border-radius:10px;
+  padding:11px;
+  background:#e7eee8;
+  color:#315b3d;
+  font-weight:800;
 }
 
 .tab.active{
-background:#397249;
-color:white;
+  background:#397249;
+  color:white;
 }
 
 .child{
-border:1px solid #dce3dc;
-border-radius:13px;
-padding:12px;
-margin-top:9px;
-}
-
-.child.done{
-background:#f0f7f1;
+  border:1px solid #dce3dc;
+  border-radius:12px;
+  padding:12px;
+  margin-top:9px;
 }
 
 .child-top{
-display:flex;
-align-items:center;
-gap:7px;
+  display:flex;
+  align-items:center;
+  gap:7px;
 }
 
 .tick{
-width:36px;
-height:36px;
-border-radius:50%;
-background:#edf1ed;
-color:#397249;
-font-weight:900;
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  background:#edf1ed;
+  color:#397249;
+  font-weight:900;
 }
 
-.child.done .tick{
-background:#397249;
-color:white;
+.done .tick{
+  background:#397249;
+  color:white;
 }
 
 .child-name{
-font-weight:900;
-flex:1;
-}
-
-.badge{
-font-size:10px;
-font-weight:900;
-padding:5px 7px;
-border-radius:6px;
-}
-
-.red{background:#f6dada;color:#922c2c}
-.green{background:#dff1e3;color:#28623a}
-.none{background:#edf1ed;color:#596159}
-
-.note{
-background:#edf3ed;
-color:#315b3d;
-border-radius:8px;
-padding:7px;
+  flex:1;
+  font-weight:900;
 }
 
 .remove{
-background:#f6dada;
-color:#922c2c;
-border-radius:8px;
-padding:7px;
+  border:0;
+  border-radius:8px;
+  background:#f5dcdc;
+  color:#922c2c;
+  padding:7px;
+}
+
+.badge{
+  padding:5px 7px;
+  border-radius:6px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.badge.red{
+  background:#f5dcdc;
+  color:#922c2c;
+}
+
+.badge.green{
+  background:#dff1e2;
+  color:#28643a;
+}
+
+.badge.none{
+  background:#edf1ed;
+  color:#59645b;
 }
 
 .detail{
-margin:7px 0 0 43px;
-font-size:13px;
-color:#596159;
-}
-
-.eaten{
-margin:7px 0 0 43px;
-font-weight:800;
-color:#397249;
-}
-
-.note-box{
-margin:10px 0 0 43px;
-background:#f6f9f6;
-padding:12px;
-border-radius:11px;
-}
-
-.amounts{
-display:flex;
-gap:5px;
-flex-wrap:wrap;
-}
-
-.amount{
-background:white;
-border:1px solid #ccd5cc;
-border-radius:8px;
-padding:7px;
-}
-
-.amount.selected{
-background:#397249;
-color:white;
+  margin:7px 0 0 43px;
+  color:#59645b;
+  font-size:13px;
 }
 
 .empty{
-text-align:center;
-padding:20px;
-color:#69736b;
-}
-
-.group{
-border:1px solid #dce3dc;
-border-radius:12px;
-overflow:hidden;
-margin-bottom:10px;
-}
-
-.group-title{
-background:#e8eee8;
-padding:11px;
-font-weight:900;
-color:#315b3d;
-}
-
-.group-names{
-padding:11px;
-font-size:14px;
+  text-align:center;
+  padding:20px;
+  color:#687269;
 }
 
 .menu{
-position:fixed;
-right:12px;
-top:68px;
-width:270px;
-background:white;
-border-radius:15px;
-padding:12px;
-box-shadow:0 5px 25px rgba(0,0,0,.2);
-z-index:100;
+  position:fixed;
+  right:12px;
+  top:70px;
+  width:260px;
+  background:white;
+  padding:14px;
+  border-radius:15px;
+  box-shadow:0 5px 25px rgba(0,0,0,.2);
+  z-index:40;
 }
 
 .menu button{
-width:100%;
-margin-top:8px;
-text-align:left;
+  width:100%;
+  margin-top:8px;
 }
 
-.menu-head{
-display:flex;
-align-items:center;
-gap:10px;
+.group{
+  border:1px solid #dce3dc;
+  border-radius:11px;
+  overflow:hidden;
+  margin-bottom:10px;
 }
 
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.45);
-display:flex;
-align-items:center;
-justify-content:center;
-padding:18px;
-z-index:500;
+.group-title{
+  background:#e7eee8;
+  padding:11px;
+  font-weight:900;
+  color:#315b3d;
 }
 
-.modal-box{
-background:white;
-width:100%;
-max-width:430px;
-border-radius:20px;
-padding:20px;
-max-height:90vh;
-overflow:auto;
-}
-
-.big-photo{
-width:125px;
-height:125px;
-border-radius:50%;
-background:#e2ebe2;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-font-size:50px;
-margin:10px auto 15px;
-}
-
-.photo-button{
-display:block;
-text-align:center;
-background:#e8eee8;
-color:#315b3d;
-padding:12px;
-border-radius:11px;
-font-weight:800;
-}
-
-.photo-button input{
-display:none;
-}
-
-.saved{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:12px 0;
-border-top:1px solid #e2e7e2;
+.group-names{
+  padding:11px;
 }
 
 @media(max-width:600px){
-.person{width:205px;height:285px}
-.person-photo{width:145px;height:145px}
-.arrow{width:42px;height:42px}
+  .adult-card{
+    width:210px;
+  }
+
+  .photo{
+    width:145px;
+    height:145px;
+  }
 }
 </style>
 </head>
@@ -524,53 +527,70 @@ border-top:1px solid #e2e7e2;
 
 <div id="loginScreen" class="login">
 
-<div class="login-box">
+  <div class="box">
 
-<div class="logo">🌳 Acorn</div>
+    <div class="logo">🌳 Acorn</div>
+    <div class="subtitle">Who's logging in?</div>
 
-<div class="subtitle">Who's logging in?</div>
+    <div id="loginMessage" class="message hidden"></div>
 
-<div id="loginMessage" class="message hidden"></div>
+    <!-- NO ADULTS -->
+    <div id="noAccounts" class="no-accounts hidden">
 
-<div id="carousel" class="carousel">
+      <div style="font-size:50px">👤</div>
 
-<button id="prev" class="arrow">‹</button>
+      <div style="margin:10px 0">
+        There are no adult accounts yet.
+      </div>
 
-<div class="person">
+      <button id="firstAdult" class="add-first">
+        + Add adult
+      </button>
 
-<div id="loginPhoto" class="person-photo">👤</div>
+    </div>
 
-<div id="loginName" class="person-name">Adult</div>
+    <!-- ADULT SELECTOR -->
+    <div id="adultSelector" class="hidden">
 
-</div>
+      <div class="selector">
 
-<button id="next" class="arrow">›</button>
+        <button id="previous" class="arrow">‹</button>
 
-</div>
+        <div class="adult-card">
 
-<div id="dots" class="dots"></div>
+          <div id="loginPhoto" class="photo">👤</div>
 
-<div id="codeArea">
+          <div id="loginName" class="adult-name">
+            Adult
+          </div>
 
-<label>Enter your 4-digit code</label>
+        </div>
 
-<input
-id="loginCode"
-class="code"
-type="password"
-inputmode="numeric"
-maxlength="4"
-placeholder="••••">
+        <button id="next" class="arrow">›</button>
 
-<button id="loginButton" class="primary login-button">
-Log in
-</button>
+      </div>
 
-</div>
+      <div id="dots" class="dots"></div>
 
-</div>
+      <label>Enter your 4-digit code</label>
 
-<button id="addButton" class="add">+</button>
+      <input
+        id="loginCode"
+        class="code"
+        type="password"
+        inputmode="numeric"
+        maxlength="4"
+        placeholder="••••">
+
+      <button id="loginButton" class="green">
+        Log in
+      </button>
+
+    </div>
+
+  </div>
+
+  <button id="plusButton" class="plus">+</button>
 
 </div>
 
@@ -579,216 +599,225 @@ Log in
 
 <div id="app" class="hidden">
 
-<div class="top">
+  <div class="top">
 
-<div class="title">🌳 Acorn</div>
+    <div class="title">🌳 Acorn</div>
 
-<div class="user">
+    <div class="profile">
 
-<div id="miniAvatar" class="avatar">👤</div>
+      <div id="smallPhoto" class="small-photo">👤</div>
 
-<button id="profileButton" class="profile-btn">
-Profile
-</button>
+      <button id="profileButton" class="profile-button">
+        Profile
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="nav">
+
+    <button id="snackNav" class="active">
+      🍎 Snacks
+    </button>
+
+    <button id="groupNav">
+      📋 Grouped
+    </button>
+
+    <button id="sunNav">
+      ☀️ Suncream
+    </button>
+
+  </div>
+
+  <div class="main">
+
+    <div class="card">
+
+      <label>Date</label>
+
+      <input id="date" type="date">
+
+    </div>
+
+
+    <!-- SNACK PAGE -->
+
+    <div id="snackPage">
+
+      <div class="card">
+
+        <div class="tabs">
+
+          <button id="amButton" class="tab active">
+            AM Snack
+          </button>
+
+          <button id="pmButton" class="tab">
+            PM Snack
+          </button>
+
+        </div>
+
+        <div class="row">
+
+          <div class="field">
+
+            <label>Child's name</label>
+
+            <input
+              id="childName"
+              placeholder="Child's name">
+
+          </div>
+
+          <div class="field">
+
+            <label>Allergy / preference</label>
+
+            <select id="allergy">
+
+              <option value="none">
+                No allergy / preference
+              </option>
+
+              <option value="green">
+                Green - Preference
+              </option>
+
+              <option value="red">
+                Red - Allergy
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="field">
+
+            <label>Alternative milk</label>
+
+            <input
+              id="milk"
+              placeholder="e.g. oat milk">
+
+          </div>
+
+        </div>
+
+        <button id="addSnack" class="green">
+          Add child
+        </button>
+
+      </div>
+
+      <div class="card">
+
+        <h2 id="snackHeading">AM Snack</h2>
+
+        <div id="snackList"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- GROUPED PAGE -->
+
+    <div id="groupPage" class="hidden">
+
+      <div class="card">
+
+        <h2>📋 Grouped Snacks</h2>
+
+        <div class="tabs">
+
+          <button id="groupAm" class="tab active">
+            AM Snack
+          </button>
+
+          <button id="groupPm" class="tab">
+            PM Snack
+          </button>
+
+        </div>
+
+        <div id="groups"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SUNCREAM -->
+
+    <div id="sunPage" class="hidden">
+
+      <div class="card">
+
+        <h2>☀️ Suncream</h2>
+
+        <div class="row">
+
+          <div class="field">
+
+            <label>Child's name</label>
+
+            <input
+              id="sunChild"
+              placeholder="Child's name">
+
+          </div>
+
+          <div class="field">
+
+            <label>Product</label>
+
+            <input
+              id="sunProduct"
+              placeholder="SPF 50">
+
+          </div>
+
+        </div>
+
+        <button id="addSun" class="green">
+          Add child
+        </button>
+
+      </div>
+
+      <div class="card">
+
+        <div id="sunList"></div>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
-</div>
 
-<div class="nav">
-
-<button id="snackNav" class="active">🍎 Snacks</button>
-
-<button id="groupNav">📋 Grouped</button>
-
-<button id="sunNav">☀️ Suncream</button>
-
-</div>
-
-<div class="main">
-
-<div class="card">
-
-<label>Date</label>
-
-<input id="date" type="date">
-
-</div>
-
-
-<!-- SNACKS -->
-
-<div id="snackPage">
-
-<div class="card">
-
-<div class="tabs">
-
-<button id="am" class="tab active">
-AM Snack
-</button>
-
-<button id="pm" class="tab">
-PM Snack
-</button>
-
-</div>
-
-<div class="row">
-
-<div class="field">
-
-<label>Child's name</label>
-
-<input id="child" placeholder="Child's name">
-
-</div>
-
-<div class="field">
-
-<label>Allergy / preference</label>
-
-<select id="allergy">
-
-<option value="none">No allergy / preference</option>
-
-<option value="green">Green - Preference</option>
-
-<option value="red">Red - Allergy</option>
-
-</select>
-
-</div>
-
-<div class="field">
-
-<label>Alternative milk</label>
-
-<input id="milk" placeholder="e.g. oat milk">
-
-</div>
-
-</div>
-
-<button id="addSnack" class="primary" style="margin-top:10px">
-Add child
-</button>
-
-</div>
-
-<div class="card">
-
-<h2 id="snackTitle">AM Snack</h2>
-
-<div id="snacks"></div>
-
-</div>
-
-</div>
-
-
-<!-- GROUPED -->
-
-<div id="groupPage" class="hidden">
-
-<div class="card">
-
-<h2>📋 Grouped Snacks</h2>
-
-<div class="tabs">
-
-<button id="groupAm" class="tab active">AM Snack</button>
-
-<button id="groupPm" class="tab">PM Snack</button>
-
-</div>
-
-<div id="groups"></div>
-
-</div>
-
-</div>
-
-
-<!-- SUNCREAM -->
-
-<div id="sunPage" class="hidden">
-
-<div class="card">
-
-<h2>☀️ Suncream</h2>
-
-<div class="row">
-
-<div class="field">
-
-<label>Child's name</label>
-
-<input id="sunChild" placeholder="Child's name">
-
-</div>
-
-<div class="field">
-
-<label>Product</label>
-
-<input id="sunProduct" placeholder="e.g. SPF 50">
-
-</div>
-
-</div>
-
-<button id="addSun" class="primary" style="margin-top:10px">
-Add child
-</button>
-
-</div>
-
-<div class="card">
-
-<div id="sunList"></div>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>Saved Days</h2>
-
-<div id="savedDays"></div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- PROFILE MENU -->
+<!-- MENU -->
 
 <div id="menu" class="menu hidden">
 
-<div class="menu-head">
+  <strong id="menuName">Adult</strong>
 
-<div id="menuAvatar" class="avatar">👤</div>
+  <button id="editProfile" class="grey">
+    ✏️ Edit profile
+  </button>
 
-<strong id="menuName">Adult</strong>
+  <button id="addAnother" class="grey">
+    ➕ Add another adult
+  </button>
 
-</div>
-
-<button id="editProfile" class="secondary">
-✏️ Edit profile
-</button>
-
-<button id="addAdult" class="secondary">
-➕ Add another adult
-</button>
-
-<button id="logout" class="remove">
-🚪 Log out
-</button>
+  <button id="logout" class="grey">
+    🚪 Log out
+  </button>
 
 </div>
 
@@ -797,43 +826,58 @@ Add child
 
 <div id="adultModal" class="modal hidden">
 
-<div class="modal-box">
+  <div class="modal-box">
 
-<h2>➕ Add adult</h2>
+    <h2>➕ Add adult</h2>
 
-<div id="newPhoto" class="big-photo">👤</div>
+    <div id="newPhoto" class="big-photo">
+      👤
+    </div>
 
-<label class="photo-button">
+    <label class="photo-label">
 
-📷 Choose profile photo
+      📷 Choose profile photo
 
-<input id="newPhotoFile" type="file" accept="image/*">
+      <input
+        id="newPhotoFile"
+        type="file"
+        accept="image/*">
 
-</label>
+    </label>
 
-<label>Adult name</label>
+    <label>Adult name</label>
 
-<input id="newName" placeholder="Adult name">
+    <input
+      id="newAdultName"
+      placeholder="Adult name">
 
-<label>4-digit code</label>
+    <label>4-digit code</label>
 
-<input id="newCode" type="password" inputmode="numeric" maxlength="4">
+    <input
+      id="newAdultCode"
+      type="password"
+      inputmode="numeric"
+      maxlength="4">
 
-<label>Confirm code</label>
+    <label>Confirm 4-digit code</label>
 
-<input id="newConfirm" type="password" inputmode="numeric" maxlength="4">
+    <input
+      id="newAdultConfirm"
+      type="password"
+      inputmode="numeric"
+      maxlength="4">
 
-<div id="adultMessage" class="message hidden"></div>
+    <div id="adultMessage" class="message hidden"></div>
 
-<button id="createAdult" class="primary" style="width:100%;margin-top:12px">
-Create adult
-</button>
+    <button id="createAdult" class="green">
+      Create account
+    </button>
 
-<button id="closeAdult" class="secondary" style="width:100%;margin-top:8px">
-Cancel
-</button>
+    <button id="cancelAdult" class="grey">
+      Cancel
+    </button>
 
-</div>
+  </div>
 
 </div>
 
@@ -842,1419 +886,1554 @@ Cancel
 
 <div id="profileModal" class="modal hidden">
 
-<div class="modal-box">
+  <div class="modal-box">
 
-<h2>Edit profile</h2>
+    <h2>Edit profile</h2>
 
-<div id="profilePhoto" class="big-photo">👤</div>
+    <div id="profilePhoto" class="big-photo">
+      👤
+    </div>
 
-<label class="photo-button">
+    <label class="photo-label">
 
-📷 Choose profile photo
+      📷 Choose profile photo
 
-<input id="profileFile" type="file" accept="image/*">
+      <input
+        id="profileFile"
+        type="file"
+        accept="image/*">
 
-</label>
+    </label>
 
-<label>Your name</label>
+    <label>Name</label>
 
-<input id="profileName">
+    <input id="profileName">
 
-<div id="profileMessage" class="message hidden"></div>
+    <div id="profileMessage" class="message hidden"></div>
 
-<button id="saveProfile" class="primary" style="width:100%;margin-top:12px">
-Save changes
-</button>
+    <button id="saveProfile" class="green">
+      Save changes
+    </button>
 
-<button id="closeProfile" class="secondary" style="width:100%;margin-top:8px">
-Close
-</button>
+    <button id="cancelProfile" class="grey">
+      Cancel
+    </button>
+
+  </div>
 
 </div>
 
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-document.addEventListener("DOMContentLoaded",function(){
+const SUPABASE_URL =
+"https://zzyyetnklrwzdzoraqqz.supabase.co";
 
-const supabase=window.supabase.createClient(
-"https://zzyyetnklrwzdzoraqqz.supabase.co",
-"sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0"
-);
+const SUPABASE_KEY =
+"sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0";
 
-const $=id=>document.getElementById(id);
+
+/* ---------------------------
+   BASIC SUPABASE REQUEST
+---------------------------- */
+
+async function request(path,options={}){
+
+  const headers={
+    "apikey":SUPABASE_KEY,
+    "Authorization":"Bearer "+SUPABASE_KEY,
+    "Content-Type":"application/json",
+    ...(options.headers||{})
+  };
+
+  const response=await fetch(
+    SUPABASE_URL+path,
+    {
+      ...options,
+      headers
+    }
+  );
+
+  const text=await response.text();
+
+  let data=null;
+
+  try{
+    data=text?JSON.parse(text):null;
+  }catch{
+    data=text;
+  }
+
+  if(!response.ok){
+
+    throw new Error(
+      data?.message ||
+      data?.error_description ||
+      data?.hint ||
+      text ||
+      "Something went wrong"
+    );
+
+  }
+
+  return data;
+
+}
+
+
+/* ---------------------------
+   VARIABLES
+---------------------------- */
 
 let adults=[];
-let selected=0;
+let selectedAdult=0;
 let currentAdult=null;
 
-let date=new Date().toISOString().slice(0,10);
+let currentDate=
+new Date().toISOString().slice(0,10);
+
 let snackTime="am";
 let groupTime="am";
 
-let data={};
+
+/* ---------------------------
+   HELPERS
+---------------------------- */
+
+function $(id){
+  return document.getElementById(id);
+}
 
 
-/* MESSAGE */
+function show(id){
+  $(id).classList.remove("hidden");
+}
 
-function message(id,text,type){
 
-const el=$(id);
+function hide(id){
+  $(id).classList.add("hidden");
+}
 
-el.textContent=text;
 
-el.className="message "+type;
+function showMessage(id,text,type){
+
+  const el=$(id);
+
+  el.textContent=text;
+
+  el.className=
+    "message "+type;
 
 }
 
 
-/* PHOTOS */
+function clearMessage(id){
 
-function showPhoto(el,url){
-
-el.innerHTML="";
-
-if(url){
-
-const img=document.createElement("img");
-
-img.src=url;
-
-el.appendChild(img);
-
-}else{
-
-el.textContent="👤";
-
-}
+  $(id).textContent="";
+  $(id).className="message hidden";
 
 }
 
 
-function photoData(file){
+function putPhoto(element,url){
 
-return new Promise((resolve,reject)=>{
+  element.innerHTML="";
 
-const reader=new FileReader();
+  if(url){
 
-reader.onload=function(){
+    const img=document.createElement("img");
 
-const img=new Image();
+    img.src=url;
 
-img.onload=function(){
+    element.appendChild(img);
 
-const canvas=document.createElement("canvas");
+  }else{
 
-const size=500;
+    element.textContent="👤";
 
-let w=img.width;
-let h=img.height;
-
-if(w>h){
-h=h*size/w;
-w=size;
-}else{
-w=w*size/h;
-h=size;
-}
-
-canvas.width=w;
-canvas.height=h;
-
-canvas.getContext("2d").drawImage(
-img,0,0,w,h
-);
-
-resolve(
-canvas.toDataURL("image/jpeg",.7)
-);
-
-};
-
-img.onerror=reject;
-
-img.src=reader.result;
-
-};
-
-reader.onerror=reject;
-
-reader.readAsDataURL(file);
+  }
 
 }
 
 
-/* LOAD ADULTS */
+/* ---------------------------
+   LOAD ADULTS
+---------------------------- */
 
 async function loadAdults(){
 
-const result=await supabase.rpc(
-"list_adults"
-);
+  try{
 
-if(result.error){
+    adults=
+      await request(
+        "/rest/v1/rpc/list_adults",
+        {
+          method:"POST",
+          body:"{}"
+        }
+      );
 
-console.error(result.error);
+    adults=adults||[];
 
-message(
-"loginMessage",
-"Could not load adult accounts.",
-"error"
-);
+    if(adults.length===0){
 
-return;
+      show("noAccounts");
+      hide("adultSelector");
 
-}
+    }else{
 
-adults=result.data||[];
+      hide("noAccounts");
+      show("adultSelector");
 
-if(selected>=adults.length)
-selected=Math.max(0,adults.length-1);
+      if(selectedAdult>=adults.length){
+        selectedAdult=0;
+      }
 
-drawAdults();
+      drawAdult();
 
-}
+    }
 
+  }catch(error){
 
-/* DRAW ADULTS */
+    console.error(error);
 
-function drawAdults(){
+    showMessage(
+      "loginMessage",
+      "We couldn't load the adult accounts: "+error.message,
+      "error"
+    );
 
-if(!adults.length){
-
-$("carousel").classList.add("hidden");
-$("dots").classList.add("hidden");
-
-$("loginName").textContent="No adults";
-
-return;
-
-}
-
-$("carousel").classList.remove("hidden");
-$("dots").classList.remove("hidden");
-
-const adult=adults[selected];
-
-$("loginName").textContent=adult.name;
-
-showPhoto(
-$("loginPhoto"),
-adult.photo_url
-);
-
-$("dots").innerHTML="";
-
-adults.forEach(function(a,i){
-
-const d=document.createElement("div");
-
-d.className=
-"dot"+(i===selected?" active":"");
-
-$("dots").appendChild(d);
-
-});
+  }
 
 }
 
 
-/* ARROWS */
+/* ---------------------------
+   DRAW ADULT SELECTOR
+---------------------------- */
 
-$("prev").onclick=function(){
+function drawAdult(){
 
-if(!adults.length)return;
+  if(!adults.length)return;
 
-selected--;
+  const adult=adults[selectedAdult];
 
-if(selected<0)
-selected=adults.length-1;
+  $("loginName").textContent=adult.name;
 
-drawAdults();
+  putPhoto(
+    $("loginPhoto"),
+    adult.photo_url
+  );
+
+  $("dots").innerHTML="";
+
+  adults.forEach((adult,index)=>{
+
+    const dot=document.createElement("div");
+
+    dot.className=
+      "dot "+
+      (index===selectedAdult?"active":"");
+
+    $("dots").appendChild(dot);
+
+  });
+
+}
+
+
+/* ---------------------------
+   ARROWS
+---------------------------- */
+
+$("previous").onclick=function(){
+
+  if(!adults.length)return;
+
+  selectedAdult--;
+
+  if(selectedAdult<0){
+    selectedAdult=adults.length-1;
+  }
+
+  drawAdult();
 
 };
 
 
 $("next").onclick=function(){
 
-if(!adults.length)return;
+  if(!adults.length)return;
 
-selected++;
+  selectedAdult++;
 
-if(selected>=adults.length)
-selected=0;
+  if(selectedAdult>=adults.length){
+    selectedAdult=0;
+  }
 
-drawAdults();
-
-};
-
-
-/* LOGIN */
-
-$("loginButton").onclick=async function(){
-
-if(!adults.length){
-
-message(
-"loginMessage",
-"No adult accounts yet. Tap + to add one.",
-"error"
-);
-
-return;
-
-}
-
-const code=$("loginCode").value.trim();
-
-if(!/^[0-9]{4}$/.test(code)){
-
-message(
-"loginMessage",
-"Please enter your 4-digit code.",
-"error"
-);
-
-return;
-
-}
-
-const adult=adults[selected];
-
-const result=await supabase.rpc(
-"login_adult",
-{
-p_name:adult.name,
-p_code:code
-}
-);
-
-if(result.error){
-
-console.error(result.error);
-
-message(
-"loginMessage",
-"Incorrect code.",
-"error"
-);
-
-return;
-
-}
-
-let logged=result.data;
-
-if(Array.isArray(logged))
-logged=logged[0];
-
-currentAdult=logged;
-
-localStorage.setItem(
-"acornAdult",
-JSON.stringify(currentAdult)
-);
-
-$("loginCode").value="";
-
-openApp();
+  drawAdult();
 
 };
 
 
-/* ADD ADULT MODAL */
+/* ---------------------------
+   ADD ADULT OPEN
+---------------------------- */
 
-$("addButton").onclick=function(){
-$("adultModal").classList.remove("hidden");
-};
+function openAdultModal(){
 
-$("addAdult").onclick=function(){
+  clearMessage("adultMessage");
 
-$("menu").classList.add("hidden");
+  $("newAdultName").value="";
+  $("newAdultCode").value="";
+  $("newAdultConfirm").value="";
 
-$("adultModal").classList.remove("hidden");
+  $("newPhoto").dataset.photo="";
 
-};
+  putPhoto(
+    $("newPhoto"),
+    ""
+  );
 
-$("closeAdult").onclick=function(){
-$("adultModal").classList.add("hidden");
-};
-
-
-$("newPhotoFile").onchange=async function(){
-
-const file=this.files[0];
-
-if(!file)return;
-
-const photo=await photoData(file);
-
-$("newPhoto").dataset.photo=photo;
-
-showPhoto($("newPhoto"),photo);
-
-};
-
-
-/* CREATE ADULT */
-
-$("createAdult").onclick=async function(){
-
-const name=$("newName").value.trim();
-
-const code=$("newCode").value.trim();
-
-const confirm=$("newConfirm").value.trim();
-
-if(!name){
-
-message(
-"adultMessage",
-"Please enter a name.",
-"error"
-);
-
-return;
+  show("adultModal");
 
 }
 
-if(!/^[0-9]{4}$/.test(code)){
 
-message(
-"adultMessage",
-"Code must be 4 numbers.",
-"error"
-);
+$("plusButton").onclick=openAdultModal;
 
-return;
+$("firstAdult").onclick=openAdultModal;
 
-}
 
-if(code!==confirm){
+$("cancelAdult").onclick=function(){
 
-message(
-"adultMessage",
-"The codes don't match.",
-"error"
-);
-
-return;
-
-}
-
-const result=await supabase.rpc(
-"create_adult",
-{
-p_name:name,
-p_code:code
-}
-);
-
-if(result.error){
-
-console.error(result.error);
-
-message(
-"adultMessage",
-result.error.message,
-"error"
-);
-
-return;
-
-}
-
-let newAdult=result.data;
-
-if(Array.isArray(newAdult))
-newAdult=newAdult[0];
-
-const photo=$("newPhoto").dataset.photo||"";
-
-if(photo && newAdult){
-
-await supabase
-.from("adults")
-.update({photo_url:photo})
-.eq("id",newAdult.id);
-
-}
-
-message(
-"adultMessage",
-"Adult created!",
-"success"
-);
-
-$("newName").value="";
-$("newCode").value="";
-$("newConfirm").value="";
-
-await loadAdults();
-
-setTimeout(function(){
-
-$("adultModal").classList.add("hidden");
-
-},700);
+  hide("adultModal");
 
 };
 
 
-/* PROFILE MENU */
+/* ---------------------------
+   PHOTO CONVERTER
+---------------------------- */
 
-$("profileButton").onclick=function(){
+function convertPhoto(file){
 
-$("menu").classList.toggle("hidden");
+  return new Promise((resolve,reject)=>{
 
-};
+    const reader=new FileReader();
 
+    reader.onload=function(){
 
-/* EDIT PROFILE */
+      const image=new Image();
 
-$("editProfile").onclick=function(){
+      image.onload=function(){
 
-$("menu").classList.add("hidden");
+        const canvas=
+          document.createElement("canvas");
 
-$("profileName").value=currentAdult.name||"";
+        const max=500;
 
-$("profilePhoto").dataset.photo=
-currentAdult.photo_url||"";
+        let width=image.width;
+        let height=image.height;
 
-showPhoto(
-$("profilePhoto"),
-currentAdult.photo_url
-);
+        if(width>height){
 
-$("profileModal").classList.remove("hidden");
+          height=
+            height*(max/width);
 
-};
+          width=max;
 
+        }else{
 
-$("closeProfile").onclick=function(){
+          width=
+            width*(max/height);
 
-$("profileModal").classList.add("hidden");
+          height=max;
 
-};
+        }
 
+        canvas.width=width;
+        canvas.height=height;
 
-$("profileFile").onchange=async function(){
+        canvas
+          .getContext("2d")
+          .drawImage(
+            image,
+            0,
+            0,
+            width,
+            height
+          );
 
-const file=this.files[0];
+        resolve(
+          canvas.toDataURL(
+            "image/jpeg",
+            .7
+          )
+        );
 
-if(!file)return;
+      };
 
-const photo=await photoData(file);
+      image.onerror=reject;
 
-$("profilePhoto").dataset.photo=photo;
+      image.src=reader.result;
 
-showPhoto($("profilePhoto"),photo);
+    };
 
-};
+    reader.onerror=reject;
 
+    reader.readAsDataURL(file);
 
-/* PROFILE SAVE */
-
-$("saveProfile").onclick=async function(){
-
-const name=$("profileName").value.trim();
-
-const photo=
-$("profilePhoto").dataset.photo||"";
-
-if(!name){
-
-message(
-"profileMessage",
-"Please enter your name.",
-"error"
-);
-
-return;
-
-}
-
-/*
-The current SQL gives public SELECT access to adults
-but not UPDATE access.
-
-So save the photo/name locally for now.
-The shared profile update can be added once the main
-app is working.
-*/
-
-currentAdult.name=name;
-currentAdult.photo_url=photo;
-
-localStorage.setItem(
-"acornAdult",
-JSON.stringify(currentAdult)
-);
-
-$("menuName").textContent=name;
-
-showPhoto(
-$("miniAvatar"),
-photo
-);
-
-showPhoto(
-$("menuAvatar"),
-photo
-);
-
-message(
-"profileMessage",
-"Profile saved on this device.",
-"success"
-);
-
-setTimeout(function(){
-
-$("profileModal").classList.add("hidden");
-
-},700);
-
-};
-
-
-/* LOGOUT */
-
-$("logout").onclick=function(){
-
-localStorage.removeItem("acornAdult");
-
-currentAdult=null;
-
-$("app").classList.add("hidden");
-
-$("loginScreen").classList.remove("hidden");
-
-$("menu").classList.add("hidden");
-
-loadAdults();
-
-};
-
-
-/* OPEN APP */
-
-async function openApp(){
-
-$("loginScreen").classList.add("hidden");
-
-$("app").classList.remove("hidden");
-
-$("date").value=date;
-
-$("menuName").textContent=currentAdult.name;
-
-showPhoto(
-$("miniAvatar"),
-currentAdult.photo_url
-);
-
-showPhoto(
-$("menuAvatar"),
-currentAdult.photo_url
-);
-
-await loadData();
-
-render();
+  });
 
 }
 
 
-/* DATA */
+/* ---------------------------
+   NEW PHOTO
+---------------------------- */
 
-async function loadData(){
+$("newPhotoFile").onchange=
+async function(){
 
-data={};
+  const file=this.files[0];
 
-const snacks=await supabase
-.from("snack_lists")
-.select("*")
-.order("list_date")
-.order("id");
+  if(!file)return;
 
-const sun=await supabase
-.from("suncream_lists")
-.select("*")
-.order("list_date")
-.order("id");
+  try{
 
-if(snacks.error){
+    const photo=
+      await convertPhoto(file);
 
-console.error(snacks.error);
+    $("newPhoto").dataset.photo=photo;
 
-alert(snacks.error.message);
+    putPhoto(
+      $("newPhoto"),
+      photo
+    );
 
-return;
+  }catch(error){
 
-}
+    showMessage(
+      "adultMessage",
+      "Could not load that photo.",
+      "error"
+    );
 
-if(sun.error){
-
-console.error(sun.error);
-
-alert(sun.error.message);
-
-return;
-
-}
-
-(snacks.data||[]).forEach(function(x){
-
-if(!data[x.list_date])
-data[x.list_date]={am:[],pm:[],sun:[]};
-
-data[x.list_date][x.snack_time].push(x);
-
-});
-
-(sun.data||[]).forEach(function(x){
-
-if(!data[x.list_date])
-data[x.list_date]={am:[],pm:[],sun:[]};
-
-data[x.list_date].sun.push(x);
-
-});
-
-}
-
-
-/* NAVIGATION */
-
-function page(which){
-
-$("snackPage").classList.toggle(
-"hidden",which!=="snack"
-);
-
-$("groupPage").classList.toggle(
-"hidden",which!=="group"
-);
-
-$("sunPage").classList.toggle(
-"hidden",which!=="sun"
-);
-
-$("snackNav").classList.toggle(
-"active",which==="snack"
-);
-
-$("groupNav").classList.toggle(
-"active",which==="group"
-);
-
-$("sunNav").classList.toggle(
-"active",which==="sun"
-);
-
-render();
-
-}
-
-$("snackNav").onclick=function(){page("snack")};
-$("groupNav").onclick=function(){page("group")};
-$("sunNav").onclick=function(){page("sun")};
-
-
-/* SNACK TABS */
-
-$("am").onclick=function(){
-
-snackTime="am";
-
-$("am").classList.add("active");
-$("pm").classList.remove("active");
-
-$("snackTitle").textContent="AM Snack";
-
-renderSnacks();
-
-};
-
-$("pm").onclick=function(){
-
-snackTime="pm";
-
-$("pm").classList.add("active");
-$("am").classList.remove("active");
-
-$("snackTitle").textContent="PM Snack";
-
-renderSnacks();
+  }
 
 };
 
 
-/* GROUP TABS */
+/* ---------------------------
+   CREATE ADULT
+---------------------------- */
 
-$("groupAm").onclick=function(){
+$("createAdult").onclick=
+async function(){
 
-groupTime="am";
+  clearMessage("adultMessage");
 
-$("groupAm").classList.add("active");
-$("groupPm").classList.remove("active");
+  const name=
+    $("newAdultName").value.trim();
 
-renderGroups();
+  const code=
+    $("newAdultCode").value.trim();
+
+  const confirmCode=
+    $("newAdultConfirm").value.trim();
+
+  const photo=
+    $("newPhoto").dataset.photo||"";
+
+
+  if(!name){
+
+    showMessage(
+      "adultMessage",
+      "Please enter the adult's name.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(!/^[0-9]{4}$/.test(code)){
+
+    showMessage(
+      "adultMessage",
+      "The code must be exactly 4 numbers.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(code!==confirmCode){
+
+    showMessage(
+      "adultMessage",
+      "The two codes don't match.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const button=$("createAdult");
+
+  button.disabled=true;
+  button.textContent="Creating...";
+
+
+  try{
+
+    const result=
+      await request(
+        "/rest/v1/rpc/create_adult",
+        {
+          method:"POST",
+          body:JSON.stringify({
+            p_name:name,
+            p_code:code,
+            p_photo:photo
+          })
+        }
+      );
+
+
+    /* Immediately add it to the selector */
+
+    const newAdult=
+      Array.isArray(result)
+        ?result[0]
+        :result;
+
+
+    await loadAdults();
+
+
+    const newIndex=
+      adults.findIndex(
+        a=>a.id===newAdult.id
+      );
+
+
+    if(newIndex>=0){
+
+      selectedAdult=newIndex;
+
+      drawAdult();
+
+    }
+
+
+    hide("adultModal");
+
+    showMessage(
+      "loginMessage",
+      name+" has been added! Select their account and enter their code.",
+      "success"
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showMessage(
+      "adultMessage",
+      error.message,
+      "error"
+    );
+
+  }
+
+
+  button.disabled=false;
+  button.textContent="Create account";
 
 };
 
-$("groupPm").onclick=function(){
 
-groupTime="pm";
+/* ---------------------------
+   LOGIN
+---------------------------- */
 
-$("groupPm").classList.add("active");
-$("groupAm").classList.remove("active");
+$("loginButton").onclick=
+async function(){
 
-renderGroups();
+  clearMessage("loginMessage");
+
+  if(!adults.length){
+
+    showMessage(
+      "loginMessage",
+      "There are no adult accounts yet. Tap + to add one.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const adult=
+    adults[selectedAdult];
+
+  const code=
+    $("loginCode").value.trim();
+
+
+  if(!/^[0-9]{4}$/.test(code)){
+
+    showMessage(
+      "loginMessage",
+      "Please enter the 4-digit code.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const button=$("loginButton");
+
+  button.disabled=true;
+  button.textContent="Logging in...";
+
+
+  try{
+
+    const result=
+      await request(
+        "/rest/v1/rpc/login_adult",
+        {
+          method:"POST",
+          body:JSON.stringify({
+            p_name:adult.name,
+            p_code:code
+          })
+        }
+      );
+
+
+    currentAdult=
+      Array.isArray(result)
+        ?result[0]
+        :result;
+
+
+    localStorage.setItem(
+      "acornAdult",
+      JSON.stringify(currentAdult)
+    );
+
+
+    $("loginCode").value="";
+
+    openApp();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showMessage(
+      "loginMessage",
+      "Incorrect code.",
+      "error"
+    );
+
+  }
+
+
+  button.disabled=false;
+  button.textContent="Log in";
 
 };
 
 
-/* ADD SNACK */
+/* ---------------------------
+   OPEN APP
+---------------------------- */
 
-$("addSnack").onclick=async function(){
+function openApp(){
 
-const name=$("child").value.trim();
+  hide("loginScreen");
+  show("app");
 
-if(!name){
+  $("menuName").textContent=
+    currentAdult.name;
 
-alert("Please enter the child's name.");
+  putPhoto(
+    $("smallPhoto"),
+    currentAdult.photo_url
+  );
 
-return;
+  $("date").value=currentDate;
+
+  loadEverything();
 
 }
 
-const result=await supabase
-.from("snack_lists")
-.insert({
-adult_id:currentAdult.id,
-list_date:date,
-snack_time:snackTime,
-child_name:name,
-allergy_status:$("allergy").value,
-alternative_milk:$("milk").value.trim(),
-done:false,
-amount:"",
-food:""
-});
 
-if(result.error){
+/* ---------------------------
+   NAVIGATION
+---------------------------- */
 
-alert(result.error.message);
+$("snackNav").onclick=function(){
 
-return;
+  show("snackPage");
+  hide("groupPage");
+  hide("sunPage");
 
-}
+  $("snackNav").classList.add("active");
+  $("groupNav").classList.remove("active");
+  $("sunNav").classList.remove("active");
 
-$("child").value="";
-$("milk").value="";
-
-await loadData();
-
-renderSnacks();
+  renderSnacks();
 
 };
 
 
-/* RENDER SNACKS */
+$("groupNav").onclick=function(){
+
+  hide("snackPage");
+  show("groupPage");
+  hide("sunPage");
+
+  $("snackNav").classList.remove("active");
+  $("groupNav").classList.add("active");
+  $("sunNav").classList.remove("active");
+
+  renderGroups();
+
+};
+
+
+$("sunNav").onclick=function(){
+
+  hide("snackPage");
+  hide("groupPage");
+  show("sunPage");
+
+  $("snackNav").classList.remove("active");
+  $("groupNav").classList.remove("active");
+  $("sunNav").classList.add("active");
+
+  renderSun();
+
+};
+
+
+/* ---------------------------
+   DATE
+---------------------------- */
+
+$("date").onchange=function(){
+
+  currentDate=this.value;
+
+  loadEverything();
+
+};
+
+
+/* ---------------------------
+   SNACK TABS
+---------------------------- */
+
+$("amButton").onclick=function(){
+
+  snackTime="am";
+
+  $("amButton").classList.add("active");
+  $("pmButton").classList.remove("active");
+
+  $("snackHeading").textContent="AM Snack";
+
+  renderSnacks();
+
+};
+
+
+$("pmButton").onclick=function(){
+
+  snackTime="pm";
+
+  $("pmButton").classList.add("active");
+  $("amButton").classList.remove("active");
+
+  $("snackHeading").textContent="PM Snack";
+
+  renderSnacks();
+
+};
+
+
+/* ---------------------------
+   ADD SNACK
+---------------------------- */
+
+$("addSnack").onclick=
+async function(){
+
+  const name=
+    $("childName").value.trim();
+
+  if(!name){
+
+    alert("Please enter the child's name.");
+
+    return;
+
+  }
+
+
+  try{
+
+    await request(
+      "/rest/v1/snack_lists",
+      {
+        method:"POST",
+        headers:{
+          "Prefer":"return=minimal"
+        },
+        body:JSON.stringify({
+          adult_id:currentAdult.id,
+          list_date:currentDate,
+          snack_time:snackTime,
+          child_name:name,
+          allergy_status:$("allergy").value,
+          alternative_milk:$("milk").value,
+          done:false,
+          amount:"",
+          food:""
+        })
+      }
+    );
+
+
+    $("childName").value="";
+    $("milk").value="";
+
+    await loadEverything();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+
+};
+
+
+/* ---------------------------
+   LOAD DATA
+---------------------------- */
+
+let snacks=[];
+let suncream=[];
+
+
+async function loadEverything(){
+
+  try{
+
+    snacks=
+      await request(
+        "/rest/v1/snack_lists?select=*&order=id.asc"
+      );
+
+    suncream=
+      await request(
+        "/rest/v1/suncream_lists?select=*&order=id.asc"
+      );
+
+
+    renderSnacks();
+    renderGroups();
+    renderSun();
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* ---------------------------
+   RENDER SNACKS
+---------------------------- */
 
 function renderSnacks(){
 
-const box=$("snacks");
+  const box=$("snackList");
 
-box.innerHTML="";
+  box.innerHTML="";
 
-if(!data[date]){
-data[date]={am:[],pm:[],sun:[]};
-}
+  const list=
+    snacks.filter(
+      x=>
+        x.list_date===currentDate &&
+        x.snack_time===snackTime
+    );
 
-const list=data[date][snackTime];
 
-if(!list.length){
+  if(!list.length){
 
-box.innerHTML=
-'<div class="empty">No children added yet.</div>';
+    box.innerHTML=
+      '<div class="empty">No children added yet.</div>';
 
-return;
+    return;
 
-}
+  }
 
-list.forEach(function(child){
 
-const item=document.createElement("div");
+  list.forEach(child=>{
 
-item.className=
-"child"+(child.done?" done":"");
+    const item=
+      document.createElement("div");
 
-const top=document.createElement("div");
+    item.className=
+      "child"+
+      (child.done?" done":"");
 
-top.className="child-top";
 
-const tick=document.createElement("button");
+    const top=
+      document.createElement("div");
 
-tick.className="tick";
+    top.className="child-top";
 
-tick.textContent=child.done?"✓":"";
 
-tick.onclick=async function(){
+    const tick=
+      document.createElement("button");
 
-await supabase
-.from("snack_lists")
-.update({done:!child.done})
-.eq("id",child.id);
+    tick.className="tick";
 
-await loadData();
+    tick.textContent=
+      child.done?"✓":"";
 
-renderSnacks();
 
-};
+    tick.onclick=async function(){
 
-const name=document.createElement("div");
+      await request(
+        "/rest/v1/snack_lists?id=eq."+child.id,
+        {
+          method:"PATCH",
+          headers:{
+            "Prefer":"return=minimal"
+          },
+          body:JSON.stringify({
+            done:!child.done
+          })
+        }
+      );
 
-name.className="child-name";
+      loadEverything();
 
-name.textContent=child.child_name;
+    };
 
-const badge=document.createElement("span");
 
-badge.className="badge "+
-(
-child.allergy_status==="red"
-?"red"
-:
-child.allergy_status==="green"
-?"green"
-:"none"
-);
+    const name=
+      document.createElement("div");
 
-badge.textContent=
-child.allergy_status==="red"
-?"RED"
-:
-child.allergy_status==="green"
-?"GREEN"
-:"NONE";
+    name.className="child-name";
 
-const note=document.createElement("button");
+    name.textContent=
+      child.child_name;
 
-note.className="note";
 
-note.textContent="📝";
+    const badge=
+      document.createElement("span");
 
-note.onclick=function(){
+    badge.className=
+      "badge "+child.allergy_status;
 
-const box=document.createElement("div");
+    badge.textContent=
+      child.allergy_status==="red"
+        ?"ALLERGY"
+        :
+      child.allergy_status==="green"
+        ?"PREFERENCE"
+        :
+        "NONE";
 
-box.className="note-box";
 
-const amounts=[
-"Little",
-"Half",
-"Almost all",
-"All"
-];
+    const remove=
+      document.createElement("button");
 
-const title=document.createElement("b");
+    remove.className="remove";
 
-title.textContent="How much did they have?";
+    remove.textContent="Remove";
 
-box.appendChild(title);
 
-const amountsBox=document.createElement("div");
+    remove.onclick=async function(){
 
-amountsBox.className="amounts";
+      if(!confirm(
+        "Remove "+child.child_name+"?"
+      ))return;
 
-amounts.forEach(function(amount){
+      await request(
+        "/rest/v1/snack_lists?id=eq."+child.id,
+        {
+          method:"DELETE"
+        }
+      );
 
-const b=document.createElement("button");
+      loadEverything();
 
-b.className=
-"amount"+
-(child.amount===amount?" selected":"");
+    };
 
-b.textContent=amount;
 
-b.onclick=async function(){
+    top.append(
+      tick,
+      name,
+      badge,
+      remove
+    );
 
-await supabase
-.from("snack_lists")
-.update({amount:amount})
-.eq("id",child.id);
+    item.appendChild(top);
 
-await loadData();
 
-renderSnacks();
+    if(child.alternative_milk){
 
-};
+      const detail=
+        document.createElement("div");
 
-amountsBox.appendChild(b);
+      detail.className="detail";
 
-});
+      detail.textContent=
+        "Alternative milk: "+
+        child.alternative_milk;
 
-box.appendChild(amountsBox);
+      item.appendChild(detail);
 
-const input=document.createElement("input");
+    }
 
-input.value=child.food||"";
 
-input.placeholder="What did they eat?";
+    box.appendChild(item);
 
-box.appendChild(input);
-
-const save=document.createElement("button");
-
-save.className="primary";
-
-save.textContent="Save";
-
-save.style.marginTop="8px";
-
-save.onclick=async function(){
-
-await supabase
-.from("snack_lists")
-.update({
-food:input.value.trim()
-})
-.eq("id",child.id);
-
-await loadData();
-
-renderSnacks();
-
-};
-
-box.appendChild(save);
-
-item.appendChild(box);
-
-};
-
-const remove=document.createElement("button");
-
-remove.className="remove";
-
-remove.textContent="Remove";
-
-remove.onclick=async function(){
-
-if(!confirm("Remove "+child.child_name+"?"))
-return;
-
-await supabase
-.from("snack_lists")
-.delete()
-.eq("id",child.id);
-
-await loadData();
-
-renderSnacks();
-
-};
-
-top.append(
-tick,
-name,
-badge,
-note,
-remove
-);
-
-item.appendChild(top);
-
-if(child.alternative_milk){
-
-const detail=document.createElement("div");
-
-detail.className="detail";
-
-detail.textContent=
-"Alternative milk: "+
-child.alternative_milk;
-
-item.appendChild(detail);
-
-}
-
-if(child.amount||child.food){
-
-const eaten=document.createElement("div");
-
-eaten.className="eaten";
-
-eaten.textContent=
-"Eaten: "+
-(child.amount||"")+
-(child.food?" — "+child.food:"");
-
-item.appendChild(eaten);
-
-}
-
-box.appendChild(item);
-
-});
+  });
 
 }
 
 
-/* GROUPED */
+/* ---------------------------
+   GROUPED
+---------------------------- */
+
+$("groupAm").onclick=function(){
+
+  groupTime="am";
+
+  $("groupAm").classList.add("active");
+  $("groupPm").classList.remove("active");
+
+  renderGroups();
+
+};
+
+
+$("groupPm").onclick=function(){
+
+  groupTime="pm";
+
+  $("groupPm").classList.add("active");
+  $("groupAm").classList.remove("active");
+
+  renderGroups();
+
+};
+
 
 function renderGroups(){
 
-const box=$("groups");
+  const box=$("groups");
 
-box.innerHTML="";
-
-if(!data[date]){
-data[date]={am:[],pm:[],sun:[]};
-}
-
-const list=data[date][groupTime];
-
-const groups={};
-
-list.forEach(function(child){
-
-if(!child.food)return;
-
-const key=child.food.trim().toLowerCase();
-
-if(!groups[key])
-groups[key]=[];
-
-groups[key].push(child.child_name);
-
-});
-
-const keys=Object.keys(groups);
-
-if(!keys.length){
-
-box.innerHTML=
-'<div class="empty">No food recorded yet.</div>';
-
-return;
-
-}
-
-keys.forEach(function(key){
-
-const group=document.createElement("div");
-
-group.className="group";
-
-const title=document.createElement("div");
-
-title.className="group-title";
-
-title.textContent=key;
-
-const names=document.createElement("div");
-
-names.className="group-names";
-
-names.textContent=
-groups[key].join(" • ");
-
-group.append(title,names);
-
-box.appendChild(group);
-
-});
-
-}
+  box.innerHTML="";
 
 
-/* SUNCREAM */
+  const list=
+    snacks.filter(
+      x=>
+        x.list_date===currentDate &&
+        x.snack_time===groupTime &&
+        x.food
+    );
 
-$("addSun").onclick=async function(){
 
-const name=$("sunChild").value.trim();
+  if(!list.length){
 
-if(!name){
+    box.innerHTML=
+      '<div class="empty">No food has been recorded yet.</div>';
 
-alert("Please enter the child's name.");
+    return;
 
-return;
+  }
 
-}
 
-const result=await supabase
-.from("suncream_lists")
-.insert({
-adult_id:currentAdult.id,
-list_date:date,
-child_name:name,
-product:$("sunProduct").value.trim(),
-done:false
-});
+  const groups={};
 
-if(result.error){
 
-alert(result.error.message);
+  list.forEach(child=>{
 
-return;
+    const key=
+      child.food.trim();
+
+    if(!groups[key])
+      groups[key]=[];
+
+    groups[key].push(
+      child.child_name
+    );
+
+  });
+
+
+  Object.keys(groups).forEach(food=>{
+
+    const group=
+      document.createElement("div");
+
+    group.className="group";
+
+
+    const title=
+      document.createElement("div");
+
+    title.className="group-title";
+
+    title.textContent=food;
+
+
+    const names=
+      document.createElement("div");
+
+    names.className="group-names";
+
+    names.textContent=
+      groups[food].join(" • ");
+
+
+    group.append(
+      title,
+      names
+    );
+
+    box.appendChild(group);
+
+  });
 
 }
 
-$("sunChild").value="";
-$("sunProduct").value="";
 
-await loadData();
+/* ---------------------------
+   SUNCREAM
+---------------------------- */
 
-renderSun();
+$("addSun").onclick=
+async function(){
+
+  const name=
+    $("sunChild").value.trim();
+
+  if(!name){
+
+    alert("Please enter the child's name.");
+
+    return;
+
+  }
+
+
+  try{
+
+    await request(
+      "/rest/v1/suncream_lists",
+      {
+        method:"POST",
+        headers:{
+          "Prefer":"return=minimal"
+        },
+        body:JSON.stringify({
+          adult_id:currentAdult.id,
+          list_date:currentDate,
+          child_name:name,
+          product:$("sunProduct").value.trim(),
+          done:false
+        })
+      }
+    );
+
+
+    $("sunChild").value="";
+    $("sunProduct").value="";
+
+    loadEverything();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
 
 };
 
 
 function renderSun(){
 
-const box=$("sunList");
+  const box=$("sunList");
 
-box.innerHTML="";
+  box.innerHTML="";
 
-if(!data[date]){
-data[date]={am:[],pm:[],sun:[]};
-}
 
-const list=data[date].sun;
+  const list=
+    suncream.filter(
+      x=>x.list_date===currentDate
+    );
 
-if(!list.length){
 
-box.innerHTML=
-'<div class="empty">No children added yet.</div>';
+  if(!list.length){
 
-return;
+    box.innerHTML=
+      '<div class="empty">No children added yet.</div>';
 
-}
+    return;
 
-list.forEach(function(child){
+  }
 
-const item=document.createElement("div");
 
-item.className=
-"child"+(child.done?" done":"");
+  list.forEach(child=>{
 
-const top=document.createElement("div");
+    const item=
+      document.createElement("div");
 
-top.className="child-top";
+    item.className=
+      "child"+
+      (child.done?" done":"");
 
-const tick=document.createElement("button");
 
-tick.className="tick";
+    const top=
+      document.createElement("div");
 
-tick.textContent=child.done?"✓":"";
+    top.className="child-top";
 
-tick.onclick=async function(){
 
-await supabase
-.from("suncream_lists")
-.update({done:!child.done})
-.eq("id",child.id);
+    const tick=
+      document.createElement("button");
 
-await loadData();
+    tick.className="tick";
 
-renderSun();
+    tick.textContent=
+      child.done?"✓":"";
 
-};
 
-const name=document.createElement("div");
+    tick.onclick=async function(){
 
-name.className="child-name";
+      await request(
+        "/rest/v1/suncream_lists?id=eq."+child.id,
+        {
+          method:"PATCH",
+          headers:{
+            "Prefer":"return=minimal"
+          },
+          body:JSON.stringify({
+            done:!child.done
+          })
+        }
+      );
 
-name.textContent=child.child_name;
+      loadEverything();
 
-const remove=document.createElement("button");
+    };
 
-remove.className="remove";
 
-remove.textContent="Remove";
+    const name=
+      document.createElement("div");
 
-remove.onclick=async function(){
+    name.className="child-name";
 
-await supabase
-.from("suncream_lists")
-.delete()
-.eq("id",child.id);
+    name.textContent=
+      child.child_name;
 
-await loadData();
 
-renderSun();
+    const remove=
+      document.createElement("button");
 
-};
+    remove.className="remove";
 
-top.append(tick,name,remove);
+    remove.textContent="Remove";
 
-item.appendChild(top);
 
-if(child.product){
+    remove.onclick=async function(){
 
-const detail=document.createElement("div");
+      await request(
+        "/rest/v1/suncream_lists?id=eq."+child.id,
+        {
+          method:"DELETE"
+        }
+      );
 
-detail.className="detail";
+      loadEverything();
 
-detail.textContent=
-"Suncream: "+child.product;
+    };
 
-item.appendChild(detail);
 
-}
+    top.append(
+      tick,
+      name,
+      remove
+    );
 
-box.appendChild(item);
+    item.appendChild(top);
 
-});
 
-}
+    if(child.product){
 
+      const detail=
+        document.createElement("div");
 
-/* SAVED DAYS */
+      detail.className="detail";
 
-function renderSaved(){
+      detail.textContent=
+        "Suncream: "+child.product;
 
-const box=$("savedDays");
+      item.appendChild(detail);
 
-box.innerHTML="";
+    }
 
-const dates=Object.keys(data).sort().reverse();
 
-if(!dates.length){
+    box.appendChild(item);
 
-box.innerHTML=
-'<div class="empty">No saved days yet.</div>';
-
-return;
-
-}
-
-dates.forEach(function(d){
-
-const row=document.createElement("div");
-
-row.className="saved";
-
-const title=document.createElement("strong");
-
-title.textContent=
-new Date(d+"T12:00:00")
-.toLocaleDateString(
-"en-GB",
-{
-weekday:"long",
-day:"numeric",
-month:"long",
-year:"numeric"
-}
-);
-
-const open=document.createElement("button");
-
-open.className="secondary";
-
-open.textContent="Open";
-
-open.onclick=async function(){
-
-date=d;
-
-$("date").value=d;
-
-await loadData();
-
-render();
-
-};
-
-row.append(title,open);
-
-box.appendChild(row);
-
-});
+  });
 
 }
 
 
-/* DATE */
+/* ---------------------------
+   PROFILE MENU
+---------------------------- */
 
-$("date").onchange=async function(){
+$("profileButton").onclick=function(){
 
-date=this.value;
-
-await loadData();
-
-render();
+  $("menu").classList.toggle("hidden");
 
 };
 
 
-/* RENDER */
+$("addAnother").onclick=function(){
 
-function render(){
+  hide("menu");
 
-$("date").value=date;
+  openAdultModal();
 
-if(!$("snackPage").classList.contains("hidden"))
-renderSnacks();
-
-if(!$("groupPage").classList.contains("hidden"))
-renderGroups();
-
-if(!$("sunPage").classList.contains("hidden"))
-renderSun();
-
-renderSaved();
-
-}
+};
 
 
-/* START */
+$("logout").onclick=function(){
+
+  localStorage.removeItem("acornAdult");
+
+  currentAdult=null;
+
+  hide("app");
+
+  show("loginScreen");
+
+  $("loginCode").value="";
+
+  loadAdults();
+
+};
+
+
+$("editProfile").onclick=function(){
+
+  hide("menu");
+
+  $("profileName").value=
+    currentAdult.name;
+
+  putPhoto(
+    $("profilePhoto"),
+    currentAdult.photo_url
+  );
+
+  $("profilePhoto").dataset.photo=
+    currentAdult.photo_url||"";
+
+  show("profileModal");
+
+};
+
+
+$("cancelProfile").onclick=function(){
+
+  hide("profileModal");
+
+};
+
+
+$("profileFile").onchange=
+async function(){
+
+  const file=this.files[0];
+
+  if(!file)return;
+
+  const photo=
+    await convertPhoto(file);
+
+  $("profilePhoto").dataset.photo=
+    photo;
+
+  putPhoto(
+    $("profilePhoto"),
+    photo
+  );
+
+};
+
+
+$("saveProfile").onclick=async function(){
+
+  const name=
+    $("profileName").value.trim();
+
+  const photo=
+    $("profilePhoto").dataset.photo||"";
+
+
+  if(!name){
+
+    showMessage(
+      "profileMessage",
+      "Please enter a name.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await request(
+      "/rest/v1/adults?id=eq."+currentAdult.id,
+      {
+        method:"PATCH",
+        headers:{
+          "Prefer":"return=minimal"
+        },
+        body:JSON.stringify({
+          name:name,
+          photo_url:photo
+        })
+      }
+    );
+
+
+    currentAdult.name=name;
+    currentAdult.photo_url=photo;
+
+
+    localStorage.setItem(
+      "acornAdult",
+      JSON.stringify(currentAdult)
+    );
+
+
+    $("menuName").textContent=name;
+
+    putPhoto(
+      $("smallPhoto"),
+      photo
+    );
+
+
+    showMessage(
+      "profileMessage",
+      "Profile saved!",
+      "success"
+    );
+
+
+    await loadAdults();
+
+
+    setTimeout(
+      ()=>hide("profileModal"),
+      600
+    );
+
+
+  }catch(error){
+
+    showMessage(
+      "profileMessage",
+      error.message,
+      "error"
+    );
+
+  }
+
+};
+
+
+/* ---------------------------
+   START
+---------------------------- */
 
 async function start(){
 
-$("date").value=date;
+  $("date").value=currentDate;
 
-await loadAdults();
+  await loadAdults();
 
-const saved=
-localStorage.getItem("acornAdult");
 
-if(saved){
+  const saved=
+    localStorage.getItem("acornAdult");
 
-try{
 
-const savedAdult=JSON.parse(saved);
+  if(saved){
 
-if(savedAdult && savedAdult.id){
+    try{
 
-currentAdult=savedAdult;
+      currentAdult=
+        JSON.parse(saved);
 
-openApp();
+      if(currentAdult?.id){
+
+        openApp();
+
+      }
+
+    }catch{
+
+      localStorage.removeItem(
+        "acornAdult"
+      );
+
+    }
+
+  }
 
 }
 
-}catch(e){
-
-localStorage.removeItem("acornAdult");
-
-}
-
-}
-
-}
 
 start();
-
-});
 
 </script>
 

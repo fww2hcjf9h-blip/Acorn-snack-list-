@@ -19,10 +19,208 @@ button,input,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
+/* ---------- LOGIN ---------- */
+
+.login{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.login-box{
+  width:100%;
+  max-width:520px;
+  background:#fff;
+  border-radius:30px;
+  padding:30px 20px;
+  box-shadow:0 8px 35px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+.logo{
+  font-size:52px;
+  font-weight:900;
+  color:#40774d;
+}
+
+.login-title{
+  font-size:28px;
+  font-weight:900;
+  margin:7px 0 25px;
+}
+
+.no-account{
+  padding:20px 5px;
+}
+
+.no-icon{
+  font-size:65px;
+}
+
+.no-text{
+  font-size:20px;
+  font-weight:800;
+  color:#687169;
+  margin:10px 0 20px;
+}
+
+.selector{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.arrow{
+  flex:none;
+  width:50px;
+  height:50px;
+  border:0;
+  border-radius:50%;
+  background:#e7eee8;
+  color:#40774d;
+  font-size:38px;
+}
+
+.adult-card{
+  width:245px;
+  min-height:320px;
+  border:4px solid #40774d;
+  border-radius:28px;
+  background:#f0f5f0;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.adult-photo{
+  width:175px;
+  height:175px;
+  border-radius:50%;
+  background:#dfe8df;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:75px;
+}
+
+.adult-photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.adult-name{
+  margin-top:15px;
+  font-size:27px;
+  font-weight:900;
+  color:#40774d;
+}
+
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin:15px;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:10px;
+  background:#ccd6cd;
+}
+
+.dot.active{
+  width:23px;
+  background:#40774d;
+}
+
+label{
+  display:block;
+  text-align:left;
+  font-weight:800;
+  margin:10px 0 6px;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  border:2px solid #d5ded6;
+  border-radius:12px;
+  background:#fff;
+}
+
+.code{
+  text-align:center;
+  font-size:25px;
+  letter-spacing:8px;
+}
+
+.green{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:14px;
+  background:#40774d;
+  color:#fff;
+  font-weight:900;
+}
+
+.grey{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:13px;
+  background:#e7eee8;
+  color:#315b3d;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.plus{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:65px;
+  height:65px;
+  border:0;
+  border-radius:50%;
+  background:#40774d;
+  color:#fff;
+  font-size:40px;
+  box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+.message{
+  padding:12px;
+  border-radius:12px;
+  margin:12px 0;
+  font-weight:800;
+}
+
+.error{
+  background:#f7dddd;
+  color:#922e2e;
+}
+
+.success{
+  background:#dff0e1;
+  color:#28613a;
+}
+
+/* ---------- APP ---------- */
+
 .top{
   background:#40774d;
-  color:white;
-  padding:12px 16px;
+  color:#fff;
+  padding:12px 15px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -46,7 +244,7 @@ button{cursor:pointer}
   width:40px;
   height:40px;
   border-radius:50%;
-  background:#e5ece5;
+  background:#e2e9e2;
   overflow:hidden;
   display:flex;
   align-items:center;
@@ -71,7 +269,7 @@ button{cursor:pointer}
   display:flex;
   gap:7px;
   padding:8px;
-  background:white;
+  background:#fff;
   overflow-x:auto;
   position:sticky;
   top:64px;
@@ -79,18 +277,18 @@ button{cursor:pointer}
 }
 
 .nav button{
-  border:0;
-  background:#e8eee9;
-  color:#315b3d;
-  padding:10px 15px;
-  border-radius:11px;
-  font-weight:800;
   white-space:nowrap;
+  border:0;
+  border-radius:10px;
+  padding:10px 15px;
+  background:#e7eee8;
+  color:#315b3d;
+  font-weight:800;
 }
 
 .nav button.active{
   background:#40774d;
-  color:white;
+  color:#fff;
 }
 
 .main{
@@ -100,29 +298,11 @@ button{cursor:pointer}
 }
 
 .card{
-  background:white;
+  background:#fff;
   border-radius:17px;
   padding:16px;
   margin-bottom:14px;
   box-shadow:0 2px 9px rgba(0,0,0,.05);
-}
-
-h2{
-  margin-top:0;
-}
-
-label{
-  display:block;
-  font-weight:800;
-  margin:10px 0 6px;
-}
-
-input,select{
-  width:100%;
-  padding:13px;
-  border:2px solid #d7e0d8;
-  border-radius:12px;
-  background:white;
 }
 
 .row{
@@ -135,27 +315,6 @@ input,select{
   flex:1 1 180px;
 }
 
-.green{
-  width:100%;
-  border:0;
-  background:#40774d;
-  color:white;
-  border-radius:12px;
-  padding:14px;
-  font-weight:900;
-}
-
-.grey{
-  width:100%;
-  border:0;
-  background:#e8eee9;
-  color:#315b3d;
-  border-radius:12px;
-  padding:13px;
-  font-weight:800;
-  margin-top:8px;
-}
-
 .tabs{
   display:flex;
   gap:8px;
@@ -165,26 +324,26 @@ input,select{
 .tabs button{
   flex:1;
   border:0;
-  padding:12px;
   border-radius:11px;
-  background:#e8eee9;
+  padding:12px;
+  background:#e7eee8;
   color:#315b3d;
   font-weight:900;
 }
 
 .tabs button.active{
   background:#40774d;
-  color:white;
+  color:#fff;
 }
 
-/* CHILD ROW */
+/* ---------- CHILD ---------- */
 
 .child{
   border:1px solid #dce4dd;
   border-radius:14px;
   padding:12px;
   margin-bottom:9px;
-  background:white;
+  background:#fff;
 }
 
 .child.done{
@@ -194,22 +353,23 @@ input,select{
 .child-top{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:7px;
 }
 
 .tick{
+  flex:none;
   width:37px;
   height:37px;
   border:0;
   border-radius:50%;
-  background:#e8eee9;
+  background:#e7eee8;
   color:#40774d;
   font-weight:900;
 }
 
 .done .tick{
   background:#40774d;
-  color:white;
+  color:#fff;
 }
 
 .child-name{
@@ -218,43 +378,43 @@ input,select{
   font-weight:900;
 }
 
-.small-btn{
+.edit-btn{
+  flex:none;
   border:0;
   border-radius:9px;
-  padding:8px 10px;
-  font-weight:800;
-}
-
-.edit-btn{
-  background:#e8eee9;
+  padding:9px 11px;
+  background:#e7eee8;
   color:#315b3d;
+  font-weight:900;
 }
 
 .delete-btn{
+  flex:none;
+  border:0;
+  border-radius:9px;
+  padding:9px;
   background:#f5dddd;
   color:#922e2e;
+  font-weight:800;
 }
 
 .details{
-  margin:9px 0 0 45px;
-  color:#566158;
-}
-
-.details strong{
-  color:#29372d;
+  margin:9px 0 0 44px;
+  color:#59645b;
+  line-height:1.5;
 }
 
 .empty{
   text-align:center;
   padding:25px;
-  color:#6a746c;
+  color:#687169;
 }
 
-/* GROUPED PAGE */
+/* ---------- GROUP ---------- */
 
 .group-box{
-  border:1px solid #d9e1da;
-  border-radius:15px;
+  border:1px solid #dce4dd;
+  border-radius:14px;
   padding:14px;
   margin-bottom:12px;
 }
@@ -263,7 +423,7 @@ input,select{
   font-size:19px;
   font-weight:900;
   color:#40774d;
-  margin-bottom:7px;
+  margin-bottom:8px;
 }
 
 .group-child{
@@ -271,166 +431,25 @@ input,select{
   font-weight:700;
 }
 
-/* LOGIN */
+/* ---------- MENU ---------- */
 
-.login{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-
-.login-box{
-  width:100%;
-  max-width:540px;
-  background:white;
-  border-radius:30px;
-  padding:30px 22px;
-  box-shadow:0 8px 35px rgba(0,0,0,.08);
-  text-align:center;
-}
-
-.logo{
-  font-size:52px;
-  font-weight:900;
-  color:#40774d;
-}
-
-.login-title{
-  font-size:29px;
-  font-weight:900;
-  margin:8px 0 25px;
-}
-
-.selector{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-}
-
-.arrow{
-  width:50px;
-  height:50px;
-  border:0;
-  border-radius:50%;
-  background:#e8eee9;
-  color:#40774d;
-  font-size:38px;
-}
-
-.adult-card{
-  width:240px;
-  min-height:315px;
-  border:4px solid #40774d;
-  border-radius:27px;
-  background:#f0f5f0;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-
-.adult-photo{
-  width:170px;
-  height:170px;
-  border-radius:50%;
-  background:#dfe8df;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:75px;
-}
-
-.adult-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.adult-name{
-  margin-top:15px;
-  font-size:27px;
-  font-weight:900;
-  color:#40774d;
-}
-
-.dots{
-  display:flex;
-  justify-content:center;
-  gap:5px;
-  margin:15px;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#ccd6cd;
-}
-
-.dot.active{
-  width:23px;
-  background:#40774d;
-  border-radius:8px;
-}
-
-.code{
-  text-align:center;
-  letter-spacing:8px;
-  font-size:24px;
-}
-
-.plus{
+.menu{
   position:fixed;
-  right:20px;
-  bottom:20px;
-  width:65px;
-  height:65px;
-  border:0;
-  border-radius:50%;
-  background:#40774d;
-  color:white;
-  font-size:40px;
-  box-shadow:0 5px 20px rgba(0,0,0,.2);
+  right:12px;
+  top:68px;
+  width:255px;
+  background:#fff;
+  border-radius:15px;
+  padding:14px;
+  box-shadow:0 5px 25px rgba(0,0,0,.2);
+  z-index:80;
 }
 
-.message{
-  padding:12px;
-  border-radius:12px;
-  margin:12px 0;
-  font-weight:800;
+.menu button{
+  width:100%;
 }
 
-.error{
-  background:#f7dddd;
-  color:#922e2e;
-}
-
-.success{
-  background:#dff0e1;
-  color:#28613a;
-}
-
-.no-account{
-  padding:20px;
-}
-
-.no-account-icon{
-  font-size:65px;
-}
-
-.no-account-text{
-  font-size:20px;
-  font-weight:800;
-  color:#687169;
-  margin:10px 0 20px;
-}
-
-/* MODALS */
+/* ---------- MODALS ---------- */
 
 .modal{
   position:fixed;
@@ -448,7 +467,7 @@ input,select{
   max-width:470px;
   max-height:90vh;
   overflow:auto;
-  background:white;
+  background:#fff;
   border-radius:22px;
   padding:22px;
 }
@@ -460,8 +479,8 @@ input,select{
   background:#e0e9e0;
   overflow:hidden;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   font-size:55px;
   margin:10px auto 15px;
 }
@@ -477,7 +496,7 @@ input,select{
   text-align:center;
   padding:13px;
   border-radius:12px;
-  background:#e8eee9;
+  background:#e7eee8;
   color:#315b3d;
   font-weight:800;
 }
@@ -486,16 +505,27 @@ input,select{
   display:none;
 }
 
-.menu{
-  position:fixed;
-  right:12px;
-  top:68px;
-  width:250px;
-  background:white;
-  border-radius:15px;
-  padding:14px;
-  box-shadow:0 5px 25px rgba(0,0,0,.2);
-  z-index:80;
+/* AMOUNT BUTTONS */
+
+.amount-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.amount-button{
+  border:2px solid #d5ded6;
+  background:#fff;
+  color:#315b3d;
+  border-radius:12px;
+  padding:14px 8px;
+  font-weight:900;
+}
+
+.amount-button.selected{
+  background:#40774d;
+  color:#fff;
+  border-color:#40774d;
 }
 
 @media(max-width:600px){
@@ -511,13 +541,17 @@ input,select{
   .adult-name{
     font-size:24px;
   }
+
+  .delete-btn{
+    display:none;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
 
 <div id="loginScreen" class="login">
 
@@ -533,9 +567,9 @@ input,select{
 
     <div id="noAccounts" class="no-account hidden">
 
-      <div class="no-account-icon">👤</div>
+      <div class="no-icon">👤</div>
 
-      <div class="no-account-text">
+      <div class="no-text">
         No adult accounts yet
       </div>
 
@@ -549,7 +583,9 @@ input,select{
 
       <div class="selector">
 
-        <button id="left" class="arrow">‹</button>
+        <button id="left" class="arrow">
+          ‹
+        </button>
 
         <div class="adult-card">
 
@@ -561,7 +597,9 @@ input,select{
 
         </div>
 
-        <button id="right" class="arrow">›</button>
+        <button id="right" class="arrow">
+          ›
+        </button>
 
       </div>
 
@@ -587,12 +625,14 @@ input,select{
 
   </div>
 
-  <button id="plus" class="plus">+</button>
+  <button id="plus" class="plus">
+    +
+  </button>
 
 </div>
 
 
-<!-- APP -->
+<!-- ================= APP ================= -->
 
 <div id="app" class="hidden">
 
@@ -662,7 +702,6 @@ input,select{
           </button>
 
         </div>
-
 
         <div class="row">
 
@@ -812,13 +851,15 @@ input,select{
 </div>
 
 
-<!-- ADD ADULT -->
+<!-- ================= ADD ADULT ================= -->
 
 <div id="adultModal" class="modal hidden">
 
   <div class="modal-box">
 
-    <h2>Add adult</h2>
+    <h2>
+      Add adult
+    </h2>
 
     <div id="newPhoto" class="preview">
       👤
@@ -835,11 +876,15 @@ input,select{
 
     </label>
 
-    <label>Adult name</label>
+    <label>
+      Adult name
+    </label>
 
     <input id="newAdultName">
 
-    <label>4-digit code</label>
+    <label>
+      4-digit code
+    </label>
 
     <input
       id="newCode"
@@ -847,7 +892,9 @@ input,select{
       inputmode="numeric"
       maxlength="4">
 
-    <label>Confirm 4-digit code</label>
+    <label>
+      Confirm 4-digit code
+    </label>
 
     <input
       id="confirmCode"
@@ -870,24 +917,90 @@ input,select{
 </div>
 
 
-<!-- EDIT CHILD -->
+<!-- ================= RECORD WHAT CHILD HAD ================= -->
+
+<div id="recordModal" class="modal hidden">
+
+  <div class="modal-box">
+
+    <h2>
+      📝 Record snack
+    </h2>
+
+    <p id="recordChildName" style="font-weight:900"></p>
+
+    <label>
+      How much did they have?
+    </label>
+
+    <div class="amount-buttons">
+
+      <button class="amount-button" data-amount="Little">
+        Little
+      </button>
+
+      <button class="amount-button" data-amount="Half">
+        Half
+      </button>
+
+      <button class="amount-button" data-amount="Almost all">
+        Almost all
+      </button>
+
+      <button class="amount-button" data-amount="All">
+        All
+      </button>
+
+    </div>
+
+    <label>
+      What did they have?
+    </label>
+
+    <input
+      id="recordFood"
+      placeholder="e.g. Banana">
+
+    <button id="saveRecord" class="green" style="margin-top:15px">
+      Save
+    </button>
+
+    <button id="cancelRecord" class="grey">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ================= EDIT CHILD ================= -->
 
 <div id="childModal" class="modal hidden">
 
   <div class="modal-box">
 
-    <h2>Edit child</h2>
+    <h2>
+      ✏️ Edit child
+    </h2>
 
-    <input type="hidden" id="editId">
+    <input id="editId" type="hidden">
 
-    <label>Child's name</label>
+    <label>
+      Child's name
+    </label>
+
     <input id="editChildName">
 
-    <label>Allergy / preference</label>
+    <label>
+      Allergy / preference
+    </label>
 
     <select id="editAllergy">
 
-      <option value="none">None</option>
+      <option value="none">
+        None
+      </option>
 
       <option value="green">
         Green - Preference
@@ -899,23 +1012,13 @@ input,select{
 
     </select>
 
-    <label>Alternative milk</label>
+    <label>
+      Alternative milk
+    </label>
 
     <input id="editMilk">
 
-    <label>Amount</label>
-
-    <input
-      id="editAmount"
-      placeholder="e.g. 1 portion">
-
-    <label>What they had</label>
-
-    <input
-      id="editFood"
-      placeholder="e.g. Banana">
-
-    <button id="saveChild" class="green">
+    <button id="saveChild" class="green" style="margin-top:15px">
       Save changes
     </button>
 
@@ -928,13 +1031,15 @@ input,select{
 </div>
 
 
-<!-- PROFILE -->
+<!-- ================= PROFILE ================= -->
 
 <div id="profileModal" class="modal hidden">
 
   <div class="modal-box">
 
-    <h2>Edit profile</h2>
+    <h2>
+      Edit profile
+    </h2>
 
     <div id="profilePhoto" class="preview">
       👤
@@ -951,7 +1056,9 @@ input,select{
 
     </label>
 
-    <label>Name</label>
+    <label>
+      Name
+    </label>
 
     <input id="profileName">
 
@@ -970,7 +1077,7 @@ input,select{
 </div>
 
 
-<!-- MENU -->
+<!-- ================= MENU ================= -->
 
 <div id="menu" class="menu hidden">
 
@@ -999,7 +1106,6 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0";
 
-
 let adults=[];
 let adultIndex=0;
 let currentAdult=null;
@@ -1012,8 +1118,13 @@ let groupTime="am";
 let selectedDate=
 new Date().toISOString().slice(0,10);
 
+let recordId=null;
+let recordAmount="";
 
-const $=id=>document.getElementById(id);
+
+function $(id){
+  return document.getElementById(id);
+}
 
 
 function show(id){
@@ -1031,9 +1142,7 @@ function setMessage(id,text,type){
   const e=$(id);
 
   e.textContent=text;
-
-  e.className=
-    "message "+type;
+  e.className="message "+type;
 }
 
 
@@ -1041,12 +1150,18 @@ function setPhoto(element,url){
 
   element.innerHTML="";
 
-  if(url){
+  if(url && url.trim()){
 
     const img=
       document.createElement("img");
 
     img.src=url;
+
+    img.alt="Profile photo";
+
+    img.onerror=function(){
+      element.innerHTML="👤";
+    };
 
     element.appendChild(img);
 
@@ -1058,18 +1173,18 @@ function setPhoto(element,url){
 }
 
 
-/* SUPABASE REQUEST */
+/* DATABASE */
 
 async function db(path,options={}){
 
-  const r=
+  const response=
     await fetch(
       SUPABASE_URL+path,
       {
         ...options,
         headers:{
-          apikey:SUPABASE_KEY,
-          Authorization:
+          "apikey":SUPABASE_KEY,
+          "Authorization":
             "Bearer "+SUPABASE_KEY,
           "Content-Type":
             "application/json",
@@ -1079,7 +1194,7 @@ async function db(path,options={}){
     );
 
   const text=
-    await r.text();
+    await response.text();
 
   let data=null;
 
@@ -1089,7 +1204,7 @@ async function db(path,options={}){
     data=text;
   }
 
-  if(!r.ok){
+  if(!response.ok){
 
     throw new Error(
       data?.message ||
@@ -1098,7 +1213,6 @@ async function db(path,options={}){
       text ||
       "Database error"
     );
-
   }
 
   return data;
@@ -1125,7 +1239,7 @@ async function loadAdults(){
       ?data
       :[];
 
-    if(!adults.length){
+    if(adults.length===0){
 
       hide("selector");
       show("noAccounts");
@@ -1135,18 +1249,20 @@ async function loadAdults(){
       hide("noAccounts");
       show("selector");
 
-      if(adultIndex>=adults.length)
+      if(adultIndex>=adults.length){
         adultIndex=0;
+      }
 
       drawAdult();
 
     }
 
-  }catch(e){
+  }catch(error){
 
     setMessage(
       "loginMessage",
-      e.message,
+      "Couldn't load adult accounts: "+
+      error.message,
       "error"
     );
 
@@ -1164,6 +1280,12 @@ function drawAdult(){
   $("adultName").textContent=
     adult.name;
 
+  /*
+    IMPORTANT:
+    This takes the photo directly from
+    the adult account returned by Supabase.
+  */
+
   setPhoto(
     $("adultPhoto"),
     adult.photo_url
@@ -1172,16 +1294,20 @@ function drawAdult(){
   $("dots").innerHTML="";
 
   adults.forEach(
-    (_,i)=>{
+    (_,index)=>{
 
-      const d=
+      const dot=
         document.createElement("div");
 
-      d.className=
+      dot.className=
         "dot "+
-        (i===adultIndex?"active":"");
+        (
+          index===adultIndex
+          ?"active"
+          :""
+        );
 
-      $("dots").appendChild(d);
+      $("dots").appendChild(dot);
 
     }
   );
@@ -1195,8 +1321,10 @@ $("left").onclick=function(){
 
   adultIndex--;
 
-  if(adultIndex<0)
-    adultIndex=adults.length-1;
+  if(adultIndex<0){
+    adultIndex=
+      adults.length-1;
+  }
 
   drawAdult();
 
@@ -1209,15 +1337,16 @@ $("right").onclick=function(){
 
   adultIndex++;
 
-  if(adultIndex>=adults.length)
+  if(adultIndex>=adults.length){
     adultIndex=0;
+  }
 
   drawAdult();
 
 };
 
 
-/* PHOTO */
+/* PHOTO RESIZE */
 
 function resizePhoto(file){
 
@@ -1227,40 +1356,48 @@ function resizePhoto(file){
       const reader=
         new FileReader();
 
-      reader.onload=()=>{
+      reader.onload=function(){
 
-        const img=
+        const image=
           new Image();
 
-        img.onload=()=>{
+        image.onload=function(){
 
           const canvas=
             document.createElement("canvas");
 
           const max=500;
 
-          let w=img.width;
-          let h=img.height;
+          let width=image.width;
+          let height=image.height;
 
-          if(w>h){
+          if(width>height){
 
-            h*=max/w;
-            w=max;
+            height=
+              height*(max/width);
+
+            width=max;
 
           }else{
 
-            w*=max/h;
-            h=max;
+            width=
+              width*(max/height);
+
+            height=max;
 
           }
 
-          canvas.width=w;
-          canvas.height=h;
+          canvas.width=width;
+          canvas.height=height;
 
           canvas
             .getContext("2d")
             .drawImage(
-              img,0,0,w,h
+              image,
+              0,
+              0,
+              width,
+              height
             );
 
           resolve(
@@ -1272,17 +1409,17 @@ function resizePhoto(file){
 
         };
 
-        img.onerror=reject;
-        img.src=reader.result;
+        image.onerror=reject;
+        image.src=reader.result;
 
       };
 
       reader.onerror=reject;
+
       reader.readAsDataURL(file);
 
     }
   );
-
 }
 
 
@@ -1302,6 +1439,7 @@ function openAdult(){
   );
 
   hide("adultError");
+
   show("adultModal");
 
 }
@@ -1311,8 +1449,9 @@ $("plus").onclick=openAdult;
 $("firstAdd").onclick=openAdult;
 
 
-$("cancelAdult").onclick=()=>
+$("cancelAdult").onclick=()=>{
   hide("adultModal");
+};
 
 
 $("newPhotoFile").onchange=
@@ -1322,16 +1461,17 @@ async function(){
 
   try{
 
-    const p=
+    const photo=
       await resizePhoto(
         this.files[0]
       );
 
-    $("newPhoto").dataset.photo=p;
+    $("newPhoto").dataset.photo=
+      photo;
 
     setPhoto(
       $("newPhoto"),
-      p
+      photo
     );
 
   }catch{
@@ -1352,15 +1492,18 @@ async function(){
 
   const name=
     $("newAdultName")
-    .value.trim();
+    .value
+    .trim();
 
   const code=
     $("newCode")
-    .value.trim();
+    .value
+    .trim();
 
   const confirm=
     $("confirmCode")
-    .value.trim();
+    .value
+    .trim();
 
   const photo=
     $("newPhoto").dataset.photo||"";
@@ -1370,14 +1513,15 @@ async function(){
 
     setMessage(
       "adultError",
-      "Please enter a name.",
+      "Please enter the adult's name.",
       "error"
     );
 
     return;
   }
 
-  if(!/^\d{4}$/.test(code)){
+
+  if(!/^[0-9]{4}$/.test(code)){
 
     setMessage(
       "adultError",
@@ -1387,6 +1531,7 @@ async function(){
 
     return;
   }
+
 
   if(code!==confirm){
 
@@ -1414,36 +1559,41 @@ async function(){
       }
     );
 
+
     hide("adultModal");
 
     await loadAdults();
 
-    const i=
+
+    const newIndex=
       adults.findIndex(
-        a=>
-          a.name.toLowerCase()===
+        adult=>
+          adult.name.toLowerCase()===
           name.toLowerCase()
       );
 
-    if(i>=0){
 
-      adultIndex=i;
+    if(newIndex>=0){
+
+      adultIndex=newIndex;
 
       drawAdult();
 
     }
 
+
     setMessage(
       "loginMessage",
-      "Adult added. Select the account and enter the code.",
+      name+
+      " has been added. Select their account and enter their code.",
       "success"
     );
 
-  }catch(e){
+  }catch(error){
 
     setMessage(
       "adultError",
-      e.message,
+      error.message,
       "error"
     );
 
@@ -1461,7 +1611,7 @@ async function(){
 
     setMessage(
       "loginMessage",
-      "There are no adult accounts yet. Tap + to add one.",
+      "There are no adult accounts yet.",
       "error"
     );
 
@@ -1474,10 +1624,11 @@ async function(){
 
   const code=
     $("loginCode")
-    .value.trim();
+    .value
+    .trim();
 
 
-  if(!/^\d{4}$/.test(code)){
+  if(!/^[0-9]{4}$/.test(code)){
 
     setMessage(
       "loginMessage",
@@ -1503,17 +1654,18 @@ async function(){
         }
       );
 
+
     currentAdult=
       Array.isArray(result)
       ?result[0]
       :result;
 
+
     localStorage.setItem(
       "acornAdult",
-      JSON.stringify(
-        currentAdult
-      )
+      JSON.stringify(currentAdult)
     );
+
 
     $("loginCode").value="";
 
@@ -1532,7 +1684,7 @@ async function(){
 };
 
 
-/* APP */
+/* OPEN APP */
 
 function openApp(){
 
@@ -1555,7 +1707,24 @@ function openApp(){
 }
 
 
-/* LOGOUT */
+/* PROFILE MENU */
+
+$("profileBtn").onclick=function(){
+
+  $("menu").classList.toggle(
+    "hidden"
+  );
+
+};
+
+
+$("addAdultAgain").onclick=function(){
+
+  hide("menu");
+  openAdult();
+
+};
+
 
 $("logout").onclick=function(){
 
@@ -1567,7 +1736,6 @@ $("logout").onclick=function(){
 
   hide("menu");
   hide("app");
-
   show("loginScreen");
 
   loadAdults();
@@ -1575,21 +1743,9 @@ $("logout").onclick=function(){
 };
 
 
-/* PROFILE MENU */
+/* PROFILE */
 
-$("profileBtn").onclick=()=>
-  $("menu").classList.toggle("hidden");
-
-
-$("addAdultAgain").onclick=()=>{
-
-  hide("menu");
-  openAdult();
-
-};
-
-
-$("editProfile").onclick=()=>{
+$("editProfile").onclick=function(){
 
   hide("menu");
 
@@ -1611,8 +1767,9 @@ $("editProfile").onclick=()=>{
 };
 
 
-$("cancelProfile").onclick=()=>
+$("cancelProfile").onclick=()=>{
   hide("profileModal");
+};
 
 
 $("profileFile").onchange=
@@ -1620,29 +1777,18 @@ async function(){
 
   if(!this.files[0])return;
 
-  try{
-
-    const p=
-      await resizePhoto(
-        this.files[0]
-      );
-
-    $("profilePhoto").dataset.photo=p;
-
-    setPhoto(
-      $("profilePhoto"),
-      p
+  const photo=
+    await resizePhoto(
+      this.files[0]
     );
 
-  }catch{
+  $("profilePhoto").dataset.photo=
+    photo;
 
-    setMessage(
-      "profileError",
-      "Couldn't add that photo.",
-      "error"
-    );
-
-  }
+  setPhoto(
+    $("profilePhoto"),
+    photo
+  );
 
 };
 
@@ -1652,7 +1798,8 @@ async function(){
 
   const name=
     $("profileName")
-    .value.trim();
+    .value
+    .trim();
 
   const photo=
     $("profilePhoto")
@@ -1681,7 +1828,8 @@ async function(){
       {
         method:"PATCH",
         headers:{
-          Prefer:"return=minimal"
+          "Prefer":
+            "return=minimal"
         },
         body:JSON.stringify({
           name:name,
@@ -1694,6 +1842,7 @@ async function(){
     currentAdult.name=name;
     currentAdult.photo_url=photo;
 
+
     localStorage.setItem(
       "acornAdult",
       JSON.stringify(
@@ -1701,22 +1850,25 @@ async function(){
       )
     );
 
-    $("menuName").textContent=name;
+
+    $("menuName").textContent=
+      name;
 
     setPhoto(
       $("smallPhoto"),
       photo
     );
 
+
     await loadAdults();
 
     hide("profileModal");
 
-  }catch(e){
+  }catch(error){
 
     setMessage(
       "profileError",
-      e.message,
+      error.message,
       "error"
     );
 
@@ -1736,7 +1888,7 @@ $("date").onchange=function(){
 };
 
 
-/* LOAD SHARED ENTRIES */
+/* LOAD SHARED LIST */
 
 async function loadEntries(){
 
@@ -1751,18 +1903,18 @@ async function loadEntries(){
     renderGroup();
     renderSun();
 
-  }catch(e){
+  }catch(error){
 
-    console.error(e);
+    console.error(error);
 
   }
 
 }
 
 
-/* SNACK AM PM */
+/* AM / PM */
 
-$("amBtn").onclick=()=>{
+$("amBtn").onclick=function(){
 
   snackTime="am";
 
@@ -1777,7 +1929,7 @@ $("amBtn").onclick=()=>{
 };
 
 
-$("pmBtn").onclick=()=>{
+$("pmBtn").onclick=function(){
 
   snackTime="pm";
 
@@ -1799,14 +1951,16 @@ async function(){
 
   const name=
     $("childName")
-    .value.trim();
+    .value
+    .trim();
 
   if(!name){
 
-    alert("Please enter the child's name.");
+    alert(
+      "Please enter the child's name."
+    );
 
     return;
-
   }
 
 
@@ -1817,7 +1971,8 @@ async function(){
       {
         method:"POST",
         headers:{
-          Prefer:"return=minimal"
+          "Prefer":
+            "return=minimal"
         },
         body:JSON.stringify({
 
@@ -1837,7 +1992,11 @@ async function(){
 
           food:"",
 
-          done:false
+          done:false,
+
+          suncream_product:"",
+
+          suncream_done:false
 
         })
       }
@@ -1847,11 +2006,11 @@ async function(){
     $("childName").value="";
     $("milk").value="";
 
-    await loadEntries();
+    loadEntries();
 
-  }catch(e){
+  }catch(error){
 
-    alert(e.message);
+    alert(error.message);
 
   }
 
@@ -1870,10 +2029,10 @@ function renderSnacks(){
 
   const list=
     entries.filter(
-      e=>
-        e.list_date===selectedDate &&
-        e.snack_time===snackTime &&
-        !e.suncream_product
+      entry=>
+        entry.list_date===selectedDate &&
+        entry.snack_time===snackTime &&
+        !entry.suncream_product
     );
 
 
@@ -1883,18 +2042,17 @@ function renderSnacks(){
       '<div class="empty">No children added yet.</div>';
 
     return;
-
   }
 
 
-  list.forEach(e=>{
+  list.forEach(entry=>{
 
-    const item=
+    const child=
       document.createElement("div");
 
-    item.className=
+    child.className=
       "child "+
-      (e.done?"done":"");
+      (entry.done?"done":"");
 
 
     const top=
@@ -1909,11 +2067,10 @@ function renderSnacks(){
     tick.className="tick";
 
     tick.textContent=
-      e.done?"✓":"";
-
+      entry.done?"✓":"";
 
     tick.onclick=
-    ()=>toggleDone(e);
+      ()=>toggleDone(entry);
 
 
     const name=
@@ -1922,42 +2079,37 @@ function renderSnacks(){
     name.className="child-name";
 
     name.textContent=
-      e.child_name;
+      entry.child_name;
 
+
+    /*
+      THIS IS THE RECORD BUTTON
+      It is always visible beside
+      the child's name.
+    */
 
     const edit=
       document.createElement("button");
 
-    edit.className=
-      "small-btn edit-btn";
+    edit.className="edit-btn";
 
-    edit.textContent="✏️ Edit";
+    edit.textContent="📝";
+
+    edit.title=
+      "Record what they had";
 
     edit.onclick=
-      ()=>openChildEdit(e);
-
-
-    const del=
-      document.createElement("button");
-
-    del.className=
-      "small-btn delete-btn";
-
-    del.textContent="Delete";
-
-    del.onclick=
-      ()=>deleteEntry(e.id);
+      ()=>openRecord(entry);
 
 
     top.append(
       tick,
       name,
-      edit,
-      del
+      edit
     );
 
 
-    item.appendChild(top);
+    child.appendChild(top);
 
 
     const details=
@@ -1969,72 +2121,206 @@ function renderSnacks(){
     let html="";
 
 
-    if(e.allergy_status==="red")
+    if(entry.allergy_status==="red")
       html+="🔴 Allergy<br>";
 
-    if(e.allergy_status==="green")
+    if(entry.allergy_status==="green")
       html+="🟢 Preference<br>";
 
-    if(e.alternative_milk)
+
+    if(entry.alternative_milk)
       html+=
         "<strong>Milk:</strong> "+
-        escapeHtml(e.alternative_milk)+
+        escapeHtml(
+          entry.alternative_milk
+        )+
         "<br>";
 
 
-    if(e.amount)
+    if(entry.amount)
       html+=
         "<strong>Amount:</strong> "+
-        escapeHtml(e.amount)+
+        escapeHtml(
+          entry.amount
+        )+
         "<br>";
 
 
-    if(e.food)
+    if(entry.food)
       html+=
         "<strong>Had:</strong> "+
-        escapeHtml(e.food);
+        escapeHtml(
+          entry.food
+        );
 
 
     details.innerHTML=html;
 
-    item.appendChild(details);
+    child.appendChild(details);
 
 
-    box.appendChild(item);
+    const editChild=
+      document.createElement("button");
+
+    editChild.className="grey";
+
+    editChild.textContent=
+      "✏️ Edit child details";
+
+    editChild.style.marginTop="10px";
+
+    editChild.onclick=
+      ()=>openChildEditor(entry);
+
+
+    child.appendChild(editChild);
+
+
+    box.appendChild(child);
 
   });
 
 }
 
 
-/* EDIT CHILD */
+/* RECORD BUTTON */
 
-function openChildEdit(e){
+function openRecord(entry){
 
-  $("editId").value=e.id;
+  recordId=entry.id;
+
+  recordAmount=
+    entry.amount||"";
+
+  $("recordChildName").textContent=
+    entry.child_name;
+
+  $("recordFood").value=
+    entry.food||"";
+
+
+  document
+    .querySelectorAll(".amount-button")
+    .forEach(button=>{
+
+      button.classList.toggle(
+        "selected",
+        button.dataset.amount===
+        recordAmount
+      );
+
+    });
+
+
+  show("recordModal");
+
+}
+
+
+document
+  .querySelectorAll(".amount-button")
+  .forEach(button=>{
+
+    button.onclick=function(){
+
+      recordAmount=
+        this.dataset.amount;
+
+      document
+        .querySelectorAll(".amount-button")
+        .forEach(b=>
+          b.classList.remove("selected")
+        );
+
+      this.classList.add("selected");
+
+    };
+
+  });
+
+
+$("cancelRecord").onclick=function(){
+
+  hide("recordModal");
+
+  recordId=null;
+
+};
+
+
+$("saveRecord").onclick=
+async function(){
+
+  if(!recordId)return;
+
+
+  try{
+
+    await db(
+      "/rest/v1/acorn_entries?id=eq."+
+      recordId,
+      {
+        method:"PATCH",
+        headers:{
+          "Prefer":
+            "return=minimal"
+        },
+        body:JSON.stringify({
+
+          amount:recordAmount,
+
+          food:
+            $("recordFood")
+            .value
+            .trim(),
+
+          updated_at:
+            new Date().toISOString()
+
+        })
+      }
+    );
+
+
+    hide("recordModal");
+
+    recordId=null;
+
+    await loadEntries();
+
+  }catch(error){
+
+    alert(error.message);
+
+  }
+
+};
+
+
+/* EDIT CHILD DETAILS */
+
+function openChildEditor(entry){
+
+  $("editId").value=
+    entry.id;
 
   $("editChildName").value=
-    e.child_name||"";
+    entry.child_name||"";
 
   $("editAllergy").value=
-    e.allergy_status||"none";
+    entry.allergy_status||"none";
 
   $("editMilk").value=
-    e.alternative_milk||"";
-
-  $("editAmount").value=
-    e.amount||"";
-
-  $("editFood").value=
-    e.food||"";
+    entry.alternative_milk||"";
 
   show("childModal");
 
 }
 
 
-$("cancelChild").onclick=()=>
+$("cancelChild").onclick=()=>{
   hide("childModal");
+};
 
 
 $("saveChild").onclick=
@@ -2047,32 +2333,28 @@ async function(){
   try{
 
     await db(
-      "/rest/v1/acorn_entries?id=eq."+id,
+      "/rest/v1/acorn_entries?id=eq."+
+      id,
       {
         method:"PATCH",
         headers:{
-          Prefer:"return=minimal"
+          "Prefer":
+            "return=minimal"
         },
         body:JSON.stringify({
 
           child_name:
             $("editChildName")
-            .value.trim(),
+            .value
+            .trim(),
 
           allergy_status:
             $("editAllergy").value,
 
           alternative_milk:
             $("editMilk")
-            .value.trim(),
-
-          amount:
-            $("editAmount")
-            .value.trim(),
-
-          food:
-            $("editFood")
-            .value.trim(),
+            .value
+            .trim(),
 
           updated_at:
             new Date().toISOString()
@@ -2084,79 +2366,51 @@ async function(){
 
     hide("childModal");
 
-    await loadEntries();
+    loadEntries();
 
-  }catch(e){
+  }catch(error){
 
-    alert(e.message);
+    alert(error.message);
 
   }
 
 };
 
 
-/* TOGGLE DONE */
+/* DONE */
 
-async function toggleDone(e){
+async function toggleDone(entry){
 
   try{
 
     await db(
-      "/rest/v1/acorn_entries?id=eq."+e.id,
+      "/rest/v1/acorn_entries?id=eq."+
+      entry.id,
       {
         method:"PATCH",
-        headers:{
-          Prefer:"return=minimal"
-        },
         body:JSON.stringify({
-          done:!e.done
+          done:!entry.done
         })
       }
     );
 
-    await loadEntries();
+    loadEntries();
 
-  }catch(err){
+  }catch(error){
 
-    alert(err.message);
-
-  }
-
-}
-
-
-/* DELETE */
-
-async function deleteEntry(id){
-
-  if(!confirm(
-    "Delete this child from the list?"
-  ))return;
-
-
-  try{
-
-    await db(
-      "/rest/v1/acorn_entries?id=eq."+id,
-      {
-        method:"DELETE"
-      }
-    );
-
-    await loadEntries();
-
-  }catch(e){
-
-    alert(e.message);
+    alert(error.message);
 
   }
 
 }
 
 
-/* GROUPED PAGE */
+/* GROUP PAGE */
 
-$("groupAm").onclick=()=>{
+let groupTime="am";
+
+
+$("groupAm").onclick=function(){
 
   groupTime="am";
 
@@ -2168,7 +2422,7 @@ $("groupAm").onclick=()=>{
 };
 
 
-$("groupPm").onclick=()=>{
+$("groupPm").onclick=function(){
 
   groupTime="pm";
 
@@ -2190,11 +2444,11 @@ function renderGroup(){
 
   const list=
     entries.filter(
-      e=>
-        e.list_date===selectedDate &&
-        e.snack_time===groupTime &&
-        !e.suncream_product &&
-        e.food
+      entry=>
+        entry.list_date===selectedDate &&
+        entry.snack_time===groupTime &&
+        !entry.suncream_product &&
+        entry.food
     );
 
 
@@ -2211,13 +2465,15 @@ function renderGroup(){
   const groups={};
 
 
-  list.forEach(e=>{
+  list.forEach(entry=>{
 
     const amount=
-      e.amount||"Amount not entered";
+      entry.amount||
+      "Amount not recorded";
 
     const food=
-      e.food||"Food not entered";
+      entry.food||
+      "Food not recorded";
 
     const key=
       amount+"|||"+food;
@@ -2226,17 +2482,19 @@ function renderGroup(){
     if(!groups[key])
       groups[key]=[];
 
-    groups[key].push(e.child_name);
+    groups[key].push(
+      entry.child_name
+    );
 
   });
 
 
   Object.keys(groups)
-    .sort()
     .forEach(key=>{
 
       const parts=
         key.split("|||");
+
 
       const group=
         document.createElement("div");
@@ -2289,7 +2547,8 @@ async function(){
 
   const name=
     $("sunChild")
-    .value.trim();
+    .value
+    .trim();
 
   if(!name){
 
@@ -2298,7 +2557,6 @@ async function(){
     );
 
     return;
-
   }
 
 
@@ -2309,7 +2567,8 @@ async function(){
       {
         method:"POST",
         headers:{
-          Prefer:"return=minimal"
+          "Prefer":
+            "return=minimal"
         },
         body:JSON.stringify({
 
@@ -2321,7 +2580,8 @@ async function(){
 
           suncream_product:
             $("sunProduct")
-            .value.trim(),
+            .value
+            .trim(),
 
           suncream_done:false
 
@@ -2333,11 +2593,11 @@ async function(){
     $("sunChild").value="";
     $("sunProduct").value="";
 
-    await loadEntries();
+    loadEntries();
 
-  }catch(e){
+  }catch(error){
 
-    alert(e.message);
+    alert(error.message);
 
   }
 
@@ -2354,9 +2614,9 @@ function renderSun(){
 
   const list=
     entries.filter(
-      e=>
-        e.list_date===selectedDate &&
-        e.suncream_product
+      entry=>
+        entry.list_date===selectedDate &&
+        entry.suncream_product
     );
 
 
@@ -2370,14 +2630,14 @@ function renderSun(){
   }
 
 
-  list.forEach(e=>{
+  list.forEach(entry=>{
 
-    const item=
+    const child=
       document.createElement("div");
 
-    item.className=
+    child.className=
       "child "+
-      (e.suncream_done?"done":"");
+      (entry.suncream_done?"done":"");
 
 
     const top=
@@ -2392,19 +2652,20 @@ function renderSun(){
     tick.className="tick";
 
     tick.textContent=
-      e.suncream_done?"✓":"";
+      entry.suncream_done?"✓":"";
 
 
     tick.onclick=
-    async()=>{
+    async function(){
 
       await db(
-        "/rest/v1/acorn_entries?id=eq."+e.id,
+        "/rest/v1/acorn_entries?id=eq."+
+        entry.id,
         {
           method:"PATCH",
           body:JSON.stringify({
             suncream_done:
-              !e.suncream_done
+              !entry.suncream_done
           })
         }
       );
@@ -2420,38 +2681,16 @@ function renderSun(){
     name.className="child-name";
 
     name.textContent=
-      e.child_name;
-
-
-    const edit=
-      document.createElement("button");
-
-    edit.className=
-      "small-btn edit-btn";
-
-    edit.textContent="✏️ Edit";
-
-    edit.onclick=()=>{
-
-      $("sunChild").value=
-        e.child_name;
-
-      $("sunProduct").value=
-        e.suncream_product;
-
-      $("sunChild").focus();
-
-    };
+      entry.child_name;
 
 
     top.append(
       tick,
-      name,
-      edit
+      name
     );
 
 
-    item.appendChild(top);
+    child.appendChild(top);
 
 
     const details=
@@ -2462,13 +2701,13 @@ function renderSun(){
     details.innerHTML=
       "<strong>Product:</strong> "+
       escapeHtml(
-        e.suncream_product
+        entry.suncream_product
       );
 
-    item.appendChild(details);
 
+    child.appendChild(details);
 
-    box.appendChild(item);
+    box.appendChild(child);
 
   });
 
@@ -2477,7 +2716,7 @@ function renderSun(){
 
 /* NAVIGATION */
 
-$("snackNav").onclick=()=>{
+$("snackNav").onclick=function(){
 
   show("snackPage");
   hide("groupPage");
@@ -2490,7 +2729,7 @@ $("snackNav").onclick=()=>{
 };
 
 
-$("groupNav").onclick=()=>{
+$("groupNav").onclick=function(){
 
   hide("snackPage");
   show("groupPage");
@@ -2505,7 +2744,7 @@ $("groupNav").onclick=()=>{
 };
 
 
-$("sunNav").onclick=()=>{
+$("sunNav").onclick=function(){
 
   hide("snackPage");
   hide("groupPage");
@@ -2520,7 +2759,7 @@ $("sunNav").onclick=()=>{
 };
 
 
-/* ESCAPE HTML */
+/* ESCAPE */
 
 function escapeHtml(value){
 
@@ -2557,7 +2796,10 @@ async function start(){
       currentAdult=
         JSON.parse(saved);
 
-      if(currentAdult?.id){
+      if(
+        currentAdult &&
+        currentAdult.id
+      ){
 
         openApp();
 

@@ -2,101 +2,309 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acorn Lists</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Acorn</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
 margin:0;
-font-family:Arial,sans-serif;
-background:#f4f7f4;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+background:#f3f7f3;
 color:#202520;
 }
 
-button,input,select{font:inherit}
+button,input,select{
+font:inherit;
+}
 
 button{
 border:0;
-border-radius:10px;
-padding:10px 13px;
-font-weight:bold;
 cursor:pointer;
 }
 
-.hidden{display:none!important}
-
-.app{
-display:flex;
-min-height:100vh;
+.hidden{
+display:none!important;
 }
 
-.sidebar{
-width:220px;
+/* ================= LOGIN ================= */
+
+.login-screen{
+position:fixed;
+inset:0;
+background:#f3f7f3;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:1000;
+}
+
+.login-box{
+width:100%;
+max-width:440px;
 background:white;
-border-right:1px solid #ddd;
-padding:18px 12px;
-flex-shrink:0;
+border-radius:28px;
+padding:28px 22px 25px;
+box-shadow:0 8px 35px rgba(0,0,0,.08);
+text-align:center;
 }
 
 .logo{
-font-size:24px;
-font-weight:bold;
-color:#2f6f45;
-padding:8px;
-margin-bottom:15px;
+font-size:43px;
+font-weight:800;
+color:#397249;
+margin-bottom:3px;
 }
 
-.folder-button,
-.grouped-button{
+.login-subtitle{
+font-size:21px;
+font-weight:700;
+margin-bottom:20px;
+color:#4b554d;
+}
+
+.profile-carousel{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+margin:10px 0 8px;
+}
+
+.carousel-arrow{
+width:44px;
+height:44px;
+border-radius:50%;
+background:#e9eee9;
+color:#315b3d;
+font-size:28px;
+flex-shrink:0;
+}
+
+.selected-profile{
+width:190px;
+min-height:220px;
+border-radius:22px;
+background:#f1f5f1;
+padding:12px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+border:3px solid #397249;
+}
+
+.selected-profile-photo{
+width:140px;
+height:140px;
+border-radius:50%;
+overflow:hidden;
+background:#dfe8df;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:55px;
+margin-bottom:10px;
+}
+
+.selected-profile-photo img{
 width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.selected-profile-name{
+font-size:21px;
+font-weight:800;
+color:#315b3d;
+}
+
+.profile-dots{
+display:flex;
+justify-content:center;
+gap:6px;
+margin:10px 0 18px;
+}
+
+.profile-dot{
+width:7px;
+height:7px;
+border-radius:50%;
+background:#ccd5cd;
+}
+
+.profile-dot.active{
+background:#397249;
+width:18px;
+border-radius:6px;
+}
+
+.code-label{
+display:block;
+font-weight:700;
+font-size:16px;
 text-align:left;
-background:#eef3ee;
-color:#294e34;
-margin-bottom:8px;
+margin-bottom:7px;
 }
 
-.folder-button.active,
-.grouped-button.active{
-background:#2f6f45;
+.code-input{
+width:100%;
+height:55px;
+border:1px solid #ccd5cc;
+border-radius:14px;
+font-size:25px;
+letter-spacing:9px;
+text-align:center;
+outline:none;
+}
+
+.code-input:focus{
+border:2px solid #397249;
+}
+
+.primary{
+background:#397249;
 color:white;
+border-radius:13px;
+padding:14px 18px;
+font-weight:800;
 }
 
-.grouped-button{
-background:#dcefe0;
-color:#245d36;
+.login-button{
+width:100%;
+margin-top:12px;
+font-size:17px;
+}
+
+.login-message{
+padding:11px;
+border-radius:12px;
+margin-bottom:12px;
+font-size:14px;
+}
+
+.error{
+background:#f7dede;
+color:#922c2c;
+}
+
+.success{
+background:#dff1e3;
+color:#28623a;
+}
+
+.no-adults{
+padding:25px 10px;
+color:#657067;
+}
+
+.login-add{
+position:fixed;
+right:22px;
+bottom:22px;
+width:62px;
+height:62px;
+border-radius:50%;
+background:#397249;
+color:white;
+font-size:34px;
+font-weight:400;
+box-shadow:0 5px 18px rgba(0,0,0,.22);
+}
+
+/* ================= APP ================= */
+
+.app{
+min-height:100vh;
+}
+
+.topbar{
+background:#397249;
+color:white;
+padding:16px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+position:sticky;
+top:0;
+z-index:20;
+}
+
+.topbar-title{
+font-size:22px;
+font-weight:800;
+}
+
+.topbar-user{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.mini-avatar{
+width:39px;
+height:39px;
+border-radius:50%;
+background:#e2ebe2;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+font-size:20px;
+}
+
+.mini-avatar img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.profile-button{
+background:white;
+color:#315b3d;
+border-radius:12px;
+padding:8px 11px;
+font-weight:700;
+}
+
+.navigation{
+background:white;
+display:flex;
+gap:7px;
+padding:9px;
+overflow-x:auto;
+border-bottom:1px solid #dfe4df;
+}
+
+.nav-button{
+white-space:nowrap;
+background:#e9eee9;
+color:#315b3d;
+padding:10px 14px;
+border-radius:11px;
+font-weight:700;
+}
+
+.nav-button.active{
+background:#397249;
+color:white;
 }
 
 .main{
-width:100%;
 max-width:900px;
 margin:auto;
-padding:18px;
-}
-
-.header{
-background:#2f6f45;
-color:white;
-border-radius:17px;
-padding:20px;
-margin-bottom:15px;
-}
-
-.header h1{
-margin:0 0 5px;
-}
-
-.header p{
-margin:0;
+padding:14px;
 }
 
 .card{
 background:white;
-border-radius:15px;
+border-radius:17px;
 padding:16px;
-margin-bottom:15px;
-box-shadow:0 2px 10px rgba(0,0,0,.06);
+margin-bottom:14px;
+box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 
 .row{
@@ -112,66 +320,68 @@ flex:1 1 180px;
 label{
 display:block;
 font-size:13px;
-font-weight:bold;
+font-weight:800;
 margin-bottom:6px;
 }
 
-input,
-select{
+input,select{
 width:100%;
 padding:11px;
-border:1px solid #d2d9d2;
-border-radius:10px;
+border:1px solid #d1d9d1;
+border-radius:11px;
 background:white;
 }
 
-.primary{
-background:#2f6f45;
-color:white;
-}
-
 .secondary{
-background:#e8eee9;
-color:#294e34;
+background:#e9eee9;
+color:#315b3d;
+border-radius:11px;
+padding:10px 13px;
+font-weight:700;
 }
 
 .danger{
-background:#f7dddd;
-color:#8d2525;
+background:#f6dede;
+color:#922c2c;
+border-radius:10px;
+padding:8px 10px;
+font-weight:700;
 }
 
 .small{
-padding:7px 10px;
 font-size:13px;
 }
 
 .snack-tabs{
 display:flex;
 gap:8px;
-margin-bottom:15px;
+margin-bottom:14px;
 }
 
 .snack-tab{
 flex:1;
-background:#e8eee9;
-color:#294e34;
+background:#e9eee9;
+color:#315b3d;
+border-radius:11px;
+padding:11px;
+font-weight:800;
 }
 
 .snack-tab.active{
-background:#2f6f45;
+background:#397249;
 color:white;
 }
 
 .child{
-border:1px solid #dce2dc;
-border-radius:13px;
+border:1px solid #dce3dc;
+border-radius:14px;
 padding:12px;
 margin-top:9px;
 }
 
 .child.done{
 background:#f0f7f1;
-border-color:#b9d4bf;
+border-color:#b8d3bd;
 }
 
 .child-top{
@@ -181,65 +391,78 @@ gap:8px;
 }
 
 .tick{
-width:32px;
-height:32px;
-padding:0;
+width:34px;
+height:34px;
 border-radius:50%;
-background:#edf0ed;
-color:#2f6f45;
-border:1px solid #ccd4cc;
+background:#edf1ed;
+border:1px solid #ccd5cc;
+color:#397249;
+font-weight:900;
+font-size:17px;
 flex-shrink:0;
 }
 
 .child.done .tick{
-background:#2f6f45;
+background:#397249;
 color:white;
 }
 
 .child-name{
-font-weight:bold;
+font-weight:800;
 flex:1;
-min-width:100px;
 }
 
 .badge{
 font-size:10px;
-font-weight:bold;
+font-weight:900;
 padding:5px 7px;
 border-radius:7px;
 }
 
 .red{
-background:#f7dddd;
-color:#982626;
+background:#f7dede;
+color:#922c2c;
 }
 
 .green{
 background:#dff1e3;
-color:#246337;
+color:#28623a;
 }
 
 .none{
-background:#edf0ed;
+background:#edf1ed;
 color:#596159;
 }
 
 .note-button{
-background:#eef3ee;
-color:#294e34;
+background:#edf3ed;
+color:#315b3d;
+border-radius:9px;
 padding:7px 9px;
-font-size:15px;
+font-size:16px;
 }
 
 .note-button.has-note{
-background:#dcefe0;
-color:#246337;
+background:#dff1e3;
+}
+
+.detail{
+font-size:13px;
+color:#596159;
+margin:7px 0 0 42px;
+}
+
+.eaten-detail{
+font-size:14px;
+font-weight:700;
+color:#397249;
+margin:7px 0 0 42px;
 }
 
 .note-box{
-margin:12px 0 2px 40px;
+margin:12px 0 0 42px;
 padding:12px;
-background:#f7faf7;
+background:#f6f9f6;
 border:1px solid #dce5dc;
 border-radius:12px;
 }
@@ -253,184 +476,73 @@ margin-bottom:10px;
 
 .amount-button{
 background:white;
-border:1px solid #ccd4cc;
-color:#394239;
+border:1px solid #ccd5cc;
+border-radius:9px;
+padding:8px 10px;
 }
 
 .amount-button.selected{
-background:#2f6f45;
+background:#397249;
 color:white;
 }
 
-.note-save-row{
+.note-save{
 display:flex;
 gap:7px;
-margin-top:10px;
+margin-top:9px;
 }
 
-.detail{
-font-size:13px;
-color:#555;
-margin:8px 0 0 40px;
-}
-
-.eaten-detail{
-font-size:14px;
-font-weight:bold;
-color:#2f6f45;
-margin:7px 0 0 40px;
-}
-
-.empty,
-.grouped-empty{
+.empty{
 text-align:center;
-color:#687068;
 padding:20px;
+color:#69736b;
 }
+
+/* GROUPED */
 
 .grouped-section{
-border:1px solid #dce2dc;
+border:1px solid #dce3dc;
 border-radius:14px;
-margin-bottom:14px;
 overflow:hidden;
+margin-bottom:13px;
 }
 
 .grouped-heading{
-padding:13px 15px;
-font-size:18px;
-font-weight:bold;
-background:#eef3ee;
-color:#294e34;
+background:#e9eee9;
+padding:12px 14px;
+font-weight:900;
+color:#315b3d;
 }
 
 .grouped-snack{
-padding:13px 15px;
-border-top:1px solid #e4e8e4;
+padding:12px 14px;
+border-top:1px solid #e5e9e5;
 }
 
-.grouped-snack-name{
-font-size:16px;
-font-weight:bold;
-color:#2f6f45;
+.grouped-food{
+font-weight:900;
+color:#397249;
 }
 
 .grouped-names{
 font-size:14px;
-color:#555;
+color:#596159;
 margin-top:5px;
 line-height:1.6;
 }
 
-.history-item{
-border-top:1px solid #e4e8e4;
-padding:12px 0;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-}
-
-.history-buttons{
-display:flex;
-gap:6px;
-}
-
-/* LOGIN */
-
-.login-screen{
-position:fixed;
-inset:0;
-background:#f4f7f4;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-z-index:100;
-}
-
-.login-box{
-background:white;
-border-radius:20px;
-padding:25px;
-width:100%;
-max-width:420px;
-box-shadow:0 4px 20px rgba(0,0,0,.08);
-}
-
-.login-logo{
-text-align:center;
-font-size:32px;
-font-weight:bold;
-color:#2f6f45;
-}
-
-.login-subtitle{
-text-align:center;
-color:#687068;
-margin:6px 0 20px;
-}
-
-.login-tabs{
-display:flex;
-gap:7px;
-margin-bottom:15px;
-}
-
-.login-tabs button{
-flex:1;
-background:#e8eee9;
-color:#294e34;
-}
-
-.login-tabs button.active{
-background:#2f6f45;
-color:white;
-}
-
-.login-message{
-padding:10px;
-border-radius:10px;
-margin-bottom:12px;
-font-size:14px;
-}
-
-.error{
-background:#f7dddd;
-color:#8d2525;
-}
-
-.success{
-background:#dff1e3;
-color:#246337;
-}
-
-/* PROFILE */
-
-.fab{
-position:fixed;
-right:20px;
-bottom:20px;
-width:60px;
-height:60px;
-border-radius:50%;
-background:#2f6f45;
-color:white;
-font-size:30px;
-box-shadow:0 4px 15px rgba(0,0,0,.2);
-z-index:40;
-}
+/* PROFILE MENU */
 
 .profile-menu{
 position:fixed;
-right:20px;
-bottom:90px;
+right:15px;
+top:70px;
+width:250px;
 background:white;
-border:1px solid #ddd;
-border-radius:14px;
+border-radius:15px;
 padding:12px;
-width:240px;
-box-shadow:0 5px 20px rgba(0,0,0,.15);
-z-index:50;
+box-shadow:0 5px 25px rgba(0,0,0,.18);
+z-index:100;
 }
 
 .profile-menu button{
@@ -441,30 +553,30 @@ text-align:left;
 
 .profile-header{
 display:flex;
-align-items:center;
 gap:10px;
+align-items:center;
+padding:4px;
 }
 
-.avatar{
+.profile-avatar{
 width:50px;
 height:50px;
 border-radius:50%;
-background:#e8eee9;
+background:#e2ebe2;
+overflow:hidden;
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden;
-font-size:22px;
-flex-shrink:0;
+font-size:25px;
 }
 
-.avatar img{
+.profile-avatar img{
 width:100%;
 height:100%;
 object-fit:cover;
 }
 
-/* MODALS */
+/* MODAL */
 
 .modal{
 position:fixed;
@@ -473,47 +585,85 @@ background:rgba(0,0,0,.4);
 display:flex;
 align-items:center;
 justify-content:center;
-padding:20px;
-z-index:80;
+padding:18px;
+z-index:500;
 }
 
 .modal-box{
 background:white;
 width:100%;
-max-width:450px;
-border-radius:18px;
+max-width:430px;
+border-radius:20px;
 padding:20px;
+max-height:90vh;
+overflow:auto;
 }
 
-@media(max-width:650px){
-
-.app{
-display:block;
+.modal-box h2{
+margin-top:0;
 }
 
-.sidebar{
-width:100%;
-border-right:0;
-border-bottom:1px solid #ddd;
+.photo-preview{
+width:120px;
+height:120px;
+border-radius:50%;
+background:#e2ebe2;
+overflow:hidden;
 display:flex;
-gap:7px;
-overflow-x:auto;
-padding:9px;
+align-items:center;
+justify-content:center;
+font-size:45px;
+margin:10px auto 15px;
 }
 
-.logo{
+.photo-preview img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.file-button{
+display:block;
+text-align:center;
+background:#e9eee9;
+color:#315b3d;
+border-radius:11px;
+padding:12px;
+font-weight:800;
+cursor:pointer;
+}
+
+.file-button input{
 display:none;
 }
 
-.folder-button,
-.grouped-button{
-width:auto;
-white-space:nowrap;
-margin:0;
+.saved-day{
+border-top:1px solid #e4e9e4;
+padding:12px 0;
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:center;
 }
 
-.main{
-padding:10px;
+@media(max-width:600px){
+
+.login-box{
+padding:25px 16px;
+}
+
+.selected-profile{
+width:175px;
+}
+
+.selected-profile-photo{
+width:125px;
+height:125px;
+}
+
+.carousel-arrow{
+width:40px;
+height:40px;
 }
 
 .child-top{
@@ -526,95 +676,78 @@ flex-wrap:wrap;
 
 <body>
 
-<!-- LOGIN -->
+
+<!-- ================= LOGIN ================= -->
 
 <div id="loginScreen" class="login-screen">
 
 <div class="login-box">
 
-<div class="login-logo">
+<div class="logo">
 🌳 Acorn
 </div>
 
 <div class="login-subtitle">
-Adult access
+Who's logging in?
 </div>
 
-<div class="login-tabs">
+<div id="loginMessage" class="login-message hidden"></div>
 
-<button
-id="loginTab"
-class="active"
-type="button">
-Log in
+<div id="profileCarousel" class="profile-carousel">
+
+<button id="previousAdult" class="carousel-arrow" type="button">
+‹
 </button>
 
-<button
-id="createTab"
-type="button">
-Create account
+<div id="selectedProfile" class="selected-profile">
+
+<div id="selectedProfilePhoto" class="selected-profile-photo">
+👤
+</div>
+
+<div id="selectedProfileName" class="selected-profile-name">
+Adult
+</div>
+
+</div>
+
+<button id="nextAdult" class="carousel-arrow" type="button">
+›
 </button>
 
 </div>
 
-<div
-id="authMessage"
-class="login-message hidden">
+<div id="profileDots" class="profile-dots"></div>
+
+<div id="noAdults" class="no-adults hidden">
+
+No adult accounts yet.
+
+<br><br>
+
+Tap the <b>+</b> button to create the first adult account.
+
 </div>
 
-<div class="field">
+<div id="codeArea">
 
-<label>
-Adult name
+<label class="code-label">
+Enter your 4-digit code
 </label>
 
 <input
-id="adultName"
-type="text"
-placeholder="e.g. Sarah"
-autocomplete="off">
-
-</div>
-
-<div class="field">
-
-<label>
-4-digit code
-</label>
-
-<input
-id="adultCode"
+id="loginCode"
+class="code-input"
 type="password"
 inputmode="numeric"
 maxlength="4"
 placeholder="••••"
 autocomplete="off">
 
-</div>
-
-<div
-id="confirmCodeField"
-class="field hidden">
-
-<label>
-Confirm 4-digit code
-</label>
-
-<input
-id="confirmCode"
-type="password"
-inputmode="numeric"
-maxlength="4"
-placeholder="••••"
-autocomplete="off">
-
-</div>
-
 <button
-id="authButton"
-type="button"
-class="primary"
-style="width:100%;margin-top:10px">
+id="loginButton"
+class="primary login-button"
+type="button">
 
 Log in
 
@@ -624,70 +757,40 @@ Log in
 
 </div>
 
+<button
+id="loginAddButton"
+class="login-add"
+type="button">
 
-<!-- APP -->
++
 
-<div
-id="app"
-class="hidden">
+</button>
 
-<div class="app">
-
-<aside class="sidebar">
-
-<div class="logo">
-Acorn
 </div>
 
-<button
-type="button"
-class="folder-button active"
-id="snackFolder">
-Snack Lists
-</button>
 
-<button
-type="button"
-class="grouped-button"
-id="groupedButton">
-📋 Grouped
-</button>
+<!-- ================= APP ================= -->
 
-<button
-type="button"
-class="folder-button"
-id="suncreamFolder">
-Suncream Lists
-</button>
+<div id="app" class="hidden">
 
-</aside>
+<header class="topbar">
 
+<div class="topbar-title">
+🌳 Acorn
+</div>
 
-<main class="main">
+<div class="topbar-user">
 
-<header class="header">
-
-<div
-style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-
-<div>
-
-<h1 id="pageTitle">
-Acorn Snack List
-</h1>
-
-<p id="pageSubtitle">
-Daily records
-</p>
-
+<div id="miniAvatar" class="mini-avatar">
+👤
 </div>
 
 <button
 id="profileButton"
-type="button"
-class="secondary small">
+class="profile-button"
+type="button">
 
-👤 Profile
+Profile
 
 </button>
 
@@ -695,6 +798,40 @@ class="secondary small">
 
 </header>
 
+
+<nav class="navigation">
+
+<button
+id="snackNav"
+class="nav-button active"
+type="button">
+
+🍎 Snacks
+
+</button>
+
+<button
+id="groupedNav"
+class="nav-button"
+type="button">
+
+📋 Grouped
+
+</button>
+
+<button
+id="suncreamNav"
+class="nav-button"
+type="button">
+
+☀️ Suncream
+
+</button>
+
+</nav>
+
+
+<main class="main">
 
 <section class="card">
 
@@ -712,14 +849,12 @@ type="date">
 
 </div>
 
-<div
-class="field"
-style="align-self:end">
+<div style="align-self:end">
 
 <button
-type="button"
+id="newDayButton"
 class="secondary"
-id="newDayButton">
+type="button">
 
 Create new day
 
@@ -732,7 +867,7 @@ Create new day
 </section>
 
 
-<!-- SNACK PAGE -->
+<!-- SNACKS -->
 
 <div id="snackPage">
 
@@ -741,21 +876,24 @@ Create new day
 <div class="snack-tabs">
 
 <button
-type="button"
+id="amButton"
 class="snack-tab active"
-id="amButton">
+type="button">
+
 AM Snack
+
 </button>
 
 <button
-type="button"
+id="pmButton"
 class="snack-tab"
-id="pmButton">
+type="button">
+
 PM Snack
+
 </button>
 
 </div>
-
 
 <div class="row">
 
@@ -771,7 +909,6 @@ placeholder="Child's name"
 autocomplete="off">
 
 </div>
-
 
 <div class="field">
 
@@ -797,7 +934,6 @@ Red - Allergy
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -812,12 +948,11 @@ placeholder="e.g. oat milk">
 
 </div>
 
-
 <button
-type="button"
-class="primary"
 id="addSnackButton"
-style="margin-top:10px">
+class="primary"
+style="margin-top:10px"
+type="button">
 
 Add child
 
@@ -841,19 +976,7 @@ AM Snack
 
 <!-- GROUPED -->
 
-<div
-id="groupedPage"
-class="hidden">
-
-<button
-type="button"
-class="secondary"
-id="backToSnackButton">
-
-← Back to Snack List
-
-</button>
-
+<div id="groupedPage" class="hidden">
 
 <section class="card">
 
@@ -861,35 +984,27 @@ id="backToSnackButton">
 📋 Grouped Snacks
 </h2>
 
-<p style="color:#687068;font-size:14px">
-
-Snacks are grouped by amount and then by snack.
-
-</p>
-
-
 <div class="snack-tabs">
 
 <button
-type="button"
+id="groupedAmButton"
 class="snack-tab active"
-id="groupedAmButton">
+type="button">
 
 AM Snack
 
 </button>
 
 <button
-type="button"
+id="groupedPmButton"
 class="snack-tab"
-id="groupedPmButton">
+type="button">
 
 PM Snack
 
 </button>
 
 </div>
-
 
 <div id="groupedChildren"></div>
 
@@ -900,14 +1015,12 @@ PM Snack
 
 <!-- SUNCREAM -->
 
-<div
-id="suncreamPage"
-class="hidden">
+<div id="suncreamPage" class="hidden">
 
 <section class="card">
 
 <h2>
-Suncream List
+☀️ Suncream List
 </h2>
 
 <div class="row">
@@ -920,11 +1033,9 @@ Child's name
 
 <input
 id="suncreamName"
-placeholder="Child's name"
-autocomplete="off">
+placeholder="Child's name">
 
 </div>
-
 
 <div class="field">
 
@@ -934,18 +1045,17 @@ Suncream
 
 <input
 id="suncreamProduct"
-placeholder="e.g. child's own SPF 50">
+placeholder="e.g. SPF 50">
 
 </div>
 
 </div>
-
 
 <button
-type="button"
-class="primary"
 id="addSuncreamButton"
-style="margin-top:10px">
+class="primary"
+style="margin-top:10px"
+type="button">
 
 Add child
 
@@ -953,12 +1063,7 @@ Add child
 
 </section>
 
-
 <section class="card">
-
-<h2>
-Today's Suncream
-</h2>
 
 <div id="suncreamChildren"></div>
 
@@ -966,8 +1071,6 @@ Today's Suncream
 
 </div>
 
-
-<!-- SAVED DAYS -->
 
 <section class="card">
 
@@ -983,79 +1086,51 @@ Saved Days
 
 </div>
 
-</div>
-
-
-<!-- PLUS BUTTON -->
-
-<button
-id="accountFab"
-class="fab"
-type="button">
-
-+
-
-</button>
-
 
 <!-- PROFILE MENU -->
 
-<div
-id="profileMenu"
-class="profile-menu hidden">
+<div id="profileMenu" class="profile-menu hidden">
 
 <div class="profile-header">
 
-<div
-id="profileAvatar"
-class="avatar">
-
+<div id="menuAvatar" class="profile-avatar">
 👤
-
 </div>
 
 <div>
-
-<strong id="profileMenuName">
+<strong id="menuName">
 Adult
 </strong>
 
-<div
-style="font-size:12px;color:#687068">
-
+<div style="font-size:12px;color:#69736b">
 Adult account
-
+</div>
 </div>
 
 </div>
-
-</div>
-
 
 <button
 id="editProfileButton"
-type="button"
-class="secondary">
+class="secondary"
+type="button">
 
 ✏️ Edit profile
 
 </button>
 
-
 <button
 id="addAdultButton"
-type="button"
-class="secondary">
+class="secondary"
+type="button">
 
 ➕ Add another adult
 
 </button>
 
-
 <button
 id="logoutButton"
-type="button"
-class="danger">
+class="danger"
+type="button">
 
 🚪 Log out
 
@@ -1064,11 +1139,9 @@ class="danger">
 </div>
 
 
-<!-- EDIT PROFILE -->
+<!-- PROFILE MODAL -->
 
-<div
-id="profileModal"
-class="modal hidden">
+<div id="profileModal" class="modal hidden">
 
 <div class="modal-box">
 
@@ -1076,54 +1149,54 @@ class="modal hidden">
 Edit profile
 </h2>
 
-<div class="field">
+<div id="profilePhotoPreview" class="photo-preview">
+👤
+</div>
+
+<label class="file-button">
+
+📷 Change profile photo
+
+<input
+id="profilePhotoFile"
+type="file"
+accept="image/*">
+
+</label>
+
+<div class="field" style="margin-top:15px">
 
 <label>
 Your name
 </label>
 
 <input
-id="profileNameInput"
+id="profileName"
 placeholder="Your name">
 
 </div>
 
-
-<div class="field">
-
-<label>
-Profile photo URL
-</label>
-
-<input
-id="profilePhotoInput"
-placeholder="Optional photo URL">
-
-</div>
-
-
 <div
-id="profileMessage"
-class="login-message hidden">
+id="profileSaveMessage"
+class="login-message hidden"
+style="margin-top:12px">
 </div>
-
 
 <button
-id="saveProfileButton"
-type="button"
+id="saveProfile"
 class="primary"
-style="width:100%">
+style="width:100%;margin-top:12px"
+type="button">
 
-Save profile
+Save changes
 
 </button>
 
-
 <button
-id="closeProfileButton"
-type="button"
+id="closeProfile"
 class="secondary"
-style="width:100%;margin-top:7px">
+style="width:100%;margin-top:7px"
+type="button">
 
 Close
 
@@ -1134,46 +1207,138 @@ Close
 </div>
 
 
+<!-- ADD ADULT MODAL -->
+
+<div id="addAdultModal" class="modal hidden">
+
+<div class="modal-box">
+
+<h2>
+➕ Add adult
+</h2>
+
+<div class="photo-preview" id="newPhotoPreview">
+👤
+</div>
+
+<label class="file-button">
+
+📷 Choose profile photo
+
+<input
+id="newPhotoFile"
+type="file"
+accept="image/*">
+
+</label>
+
+<div class="field" style="margin-top:15px">
+
+<label>
+Adult name
+</label>
+
+<input
+id="newAdultName"
+placeholder="e.g. Sarah"
+autocomplete="off">
+
+</div>
+
+<div class="field">
+
+<label>
+4-digit code
+</label>
+
+<input
+id="newAdultCode"
+type="password"
+inputmode="numeric"
+maxlength="4"
+placeholder="••••"
+autocomplete="off">
+
+</div>
+
+<div class="field">
+
+<label>
+Confirm code
+</label>
+
+<input
+id="newAdultConfirm"
+type="password"
+inputmode="numeric"
+maxlength="4"
+placeholder="••••"
+autocomplete="off">
+
+</div>
+
+<div
+id="addAdultMessage"
+class="login-message hidden">
+</div>
+
+<button
+id="createAdult"
+class="primary"
+style="width:100%;margin-top:10px"
+type="button">
+
+Create adult
+
+</button>
+
+<button
+id="closeAddAdult"
+class="secondary"
+style="width:100%;margin-top:7px"
+type="button">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+
 <script type="module">
 
-import {
+import{
 createClient
-}
-from
+}from
 "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
-/* SUPABASE */
+/* ================= SUPABASE ================= */
 
 const supabase=createClient(
-
 "https://zzyyetnklrwzdzoraqqz.supabase.co",
-
 "sb_publishable_EcnKMGz-uEOLnVe8_QctmA_7wlwhsp0"
-
 );
 
 
-/* VARIABLES */
+/* ================= STATE ================= */
 
+let adults=[];
+let selectedAdultIndex=0;
 let currentAdult=null;
+
+let currentDate="";
+let currentSnack="am";
+let groupedSnack="am";
+let currentPage="snacks";
+let openNoteIndex=null;
 
 let data={};
 
-let currentDate="";
 
-let currentPage="snacks";
-
-let currentSnack="am";
-
-let groupedSnack="am";
-
-let openNoteIndex=null;
-
-let authMode="login";
-
-
-/* HELPERS */
+/* ================= HELPERS ================= */
 
 const $=id=>document.getElementById(id);
 
@@ -1198,11 +1363,9 @@ function createDay(date){
 if(!data[date]){
 
 data[date]={
-
 amSnack:[],
 pmSnack:[],
 suncream:[]
-
 };
 
 }
@@ -1226,47 +1389,306 @@ year:"numeric"
 }
 
 
-/* LOGIN MODE */
+/* ================= PHOTO ================= */
 
-$("loginTab").onclick=()=>{
+function compressPhoto(file){
 
-authMode="login";
+return new Promise(
+(resolve,reject)=>{
 
-$("loginTab").classList.add("active");
+const reader=new FileReader();
 
-$("createTab").classList.remove("active");
+reader.onload=function(){
 
-$("confirmCodeField").classList.add("hidden");
+const image=new Image();
 
-$("authButton").textContent="Log in";
+image.onload=function(){
 
-$("authMessage").classList.add("hidden");
+const max=500;
+
+let width=image.width;
+let height=image.height;
+
+if(width>height){
+
+if(width>max){
+
+height=
+height*(max/width);
+
+width=max;
+
+}
+
+}else{
+
+if(height>max){
+
+width=
+width*(max/height);
+
+height=max;
+
+}
+
+}
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=width;
+canvas.height=height;
+
+const ctx=
+canvas.getContext("2d");
+
+ctx.drawImage(
+image,
+0,
+0,
+width,
+height
+);
+
+resolve(
+canvas.toDataURL(
+"image/jpeg",
+0.75
+)
+);
+
+};
+
+image.onerror=reject;
+
+image.src=reader.result;
+
+};
+
+reader.onerror=reject;
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+
+function setImage(element,url){
+
+element.innerHTML="";
+
+if(url){
+
+const img=
+document.createElement("img");
+
+img.src=url;
+
+img.onerror=()=>{
+element.textContent="👤";
+};
+
+element.appendChild(img);
+
+}else{
+
+element.textContent="👤";
+
+}
+
+}
+
+
+/* ================= ADULTS ================= */
+
+async function loadAdults(){
+
+const result=
+await supabase
+.from("adults")
+.select("id,name,photo_url")
+.order("name");
+
+if(result.error){
+
+console.error(result.error);
+
+showLoginMessage(
+"Unable to load adult profiles."
+);
+
+return;
+
+}
+
+adults=result.data||[];
+
+if(selectedAdultIndex>=adults.length){
+
+selectedAdultIndex=
+Math.max(0,adults.length-1);
+
+}
+
+renderAdultCarousel();
+
+}
+
+
+function renderAdultCarousel(){
+
+const noAdults=
+$("noAdults");
+
+const area=
+$("codeArea");
+
+if(!adults.length){
+
+noAdults.classList.remove("hidden");
+
+area.classList.add("hidden");
+
+$("profileCarousel")
+.classList.add("hidden");
+
+$("profileDots")
+.classList.add("hidden");
+
+return;
+
+}
+
+noAdults.classList.add("hidden");
+
+area.classList.remove("hidden");
+
+$("profileCarousel")
+.classList.remove("hidden");
+
+$("profileDots")
+.classList.remove("hidden");
+
+
+const adult=
+adults[selectedAdultIndex];
+
+
+$("selectedProfileName")
+.textContent=
+adult.name;
+
+
+setImage(
+$("selectedProfilePhoto"),
+adult.photo_url
+);
+
+
+const dots=
+$("profileDots");
+
+dots.innerHTML="";
+
+
+adults.forEach(
+function(_,index){
+
+const dot=
+document.createElement("div");
+
+dot.className=
+"profile-dot"+
+(
+index===selectedAdultIndex
+?" active":""
+);
+
+dots.appendChild(dot);
+
+});
+
+}
+
+
+$("previousAdult").onclick=()=>{
+
+if(!adults.length)return;
+
+selectedAdultIndex=
+(
+selectedAdultIndex-1+adults.length
+)%adults.length;
+
+renderAdultCarousel();
+
+$("loginCode").focus();
 
 };
 
 
-$("createTab").onclick=()=>{
+$("nextAdult").onclick=()=>{
 
-authMode="create";
+if(!adults.length)return;
 
-$("createTab").classList.add("active");
+selectedAdultIndex=
+(
+selectedAdultIndex+1
+)%adults.length;
 
-$("loginTab").classList.remove("active");
+renderAdultCarousel();
 
-$("confirmCodeField").classList.remove("hidden");
-
-$("authButton").textContent="Create account";
-
-$("authMessage").classList.add("hidden");
+$("loginCode").focus();
 
 };
 
 
-/* LOGIN MESSAGE */
+/* TOUCH SWIPE */
 
-function authMessage(text,success=false){
+let touchStartX=0;
 
-const box=$("authMessage");
+
+$("selectedProfile").addEventListener(
+"touchstart",
+e=>{
+touchStartX=e.changedTouches[0].screenX;
+},
+{passive:true}
+);
+
+
+$("selectedProfile").addEventListener(
+"touchend",
+e=>{
+
+const difference=
+e.changedTouches[0].screenX-
+touchStartX;
+
+if(Math.abs(difference)<40)return;
+
+if(difference<0){
+
+$("nextAdult").click();
+
+}else{
+
+$("previousAdult").click();
+
+}
+
+},
+{passive:true}
+);
+
+
+/* ================= LOGIN ================= */
+
+function showLoginMessage(text,success=false){
+
+const box=
+$("loginMessage");
 
 box.textContent=text;
 
@@ -1279,25 +1701,175 @@ box.classList.toggle("error",!success);
 }
 
 
-/* CREATE / LOGIN */
-
-$("authButton").onclick=auth;
+$("loginButton").onclick=login;
 
 
-async function auth(){
+async function login(){
 
-const name=
-$("adultName").value.trim();
+if(!adults.length){
+
+showLoginMessage(
+"Please add an adult first."
+);
+
+return;
+
+}
+
+const adult=
+adults[selectedAdultIndex];
 
 const code=
-$("adultCode").value.trim();
+$("loginCode")
+.value.trim();
 
 
-if(!name){
+if(!/^\d{4}$/.test(code)){
 
-authMessage(
-"Please enter your name."
+showLoginMessage(
+"Please enter the 4-digit code."
 );
+
+return;
+
+}
+
+
+const result=
+await supabase.rpc(
+"login_adult",
+{
+p_name:adult.name,
+p_code:code
+}
+);
+
+
+if(result.error){
+
+showLoginMessage(
+"Incorrect code."
+);
+
+$("loginCode").value="";
+
+$("loginCode").focus();
+
+return;
+
+}
+
+
+currentAdult=result.data;
+
+localStorage.setItem(
+"acornAdult",
+JSON.stringify(currentAdult)
+);
+
+$("loginCode").value="";
+
+showApp();
+
+}
+
+
+/* ================= ADD ADULT ================= */
+
+function openAddAdult(){
+
+$("addAdultModal")
+.classList.remove("hidden");
+
+$("newAdultName").value="";
+$("newAdultCode").value="";
+$("newAdultConfirm").value="";
+
+$("newPhotoPreview")
+.textContent="👤";
+
+$("addAdultMessage")
+.classList.add("hidden");
+
+}
+
+
+$("loginAddButton").onclick=
+openAddAdult;
+
+$("addAdultButton").onclick=()=>{
+
+$("profileMenu")
+.classList.add("hidden");
+
+openAddAdult();
+
+};
+
+
+$("closeAddAdult").onclick=()=>{
+
+$("addAdultModal")
+.classList.add("hidden");
+
+};
+
+
+$("newPhotoFile").onchange=
+async function(){
+
+const file=this.files[0];
+
+if(!file)return;
+
+try{
+
+const photo=
+await compressPhoto(file);
+
+setImage(
+$("newPhotoPreview"),
+photo
+);
+
+$("newPhotoPreview").dataset.photo=
+photo;
+
+}catch{
+
+alert("Could not use that photo.");
+
+}
+
+};
+
+
+$("createAdult").onclick=
+async function(){
+
+const name=
+$("newAdultName")
+.value.trim();
+
+const code=
+$("newAdultCode")
+.value.trim();
+
+const confirm=
+$("newAdultConfirm")
+.value.trim();
+
+const message=
+$("addAdultMessage");
+
+
+if(name.length<2){
+
+message.textContent=
+"Please enter the adult's name.";
+
+message.className=
+"login-message error";
 
 return;
 
@@ -1306,26 +1878,24 @@ return;
 
 if(!/^\d{4}$/.test(code)){
 
-authMessage(
-"Please enter a 4-digit code."
-);
+message.textContent=
+"The code must be 4 numbers.";
+
+message.className=
+"login-message error";
 
 return;
 
 }
 
 
-if(authMode==="create"){
-
-const confirm=
-$("confirmCode").value.trim();
-
-
 if(code!==confirm){
 
-authMessage(
-"The codes don't match."
-);
+message.textContent=
+"The codes do not match.";
+
+message.className=
+"login-message error";
 
 return;
 
@@ -1344,73 +1914,85 @@ p_code:code
 
 if(result.error){
 
-authMessage(
-result.error.message
-);
+message.textContent=
+result.error.message;
+
+message.className=
+"login-message error";
 
 return;
 
 }
 
 
-currentAdult=result.data;
+const adultId=
+result.data.id;
 
-saveLogin();
+const photo=
+$("newPhotoPreview")
+.dataset.photo||"";
 
-showApp();
 
-return;
+if(photo){
+
+const update=
+await supabase
+.from("adults")
+.update({
+photo_url:photo
+})
+.eq("id",adultId);
+
+
+if(update.error){
+
+console.error(update.error);
+
+}
 
 }
 
 
-/* LOGIN */
+message.textContent=
+"Adult created successfully!";
 
-const result=
-await supabase.rpc(
-"login_adult",
-{
-p_name:name,
-p_code:code
-}
+message.className=
+"login-message success";
+
+
+await loadAdults();
+
+
+const newIndex=
+adults.findIndex(
+a=>a.id===adultId
 );
 
+if(newIndex>=0){
 
-if(result.error){
+selectedAdultIndex=newIndex;
 
-authMessage(
-"Incorrect name or code."
+renderAdultCarousel();
+
+}
+
+
+setTimeout(
+()=>{
+
+$("addAdultModal")
+.classList.add("hidden");
+
+},
+500
 );
 
-return;
-
-}
+};
 
 
-currentAdult=result.data;
+/* ================= APP LOGIN ================= */
 
-saveLogin();
-
-showApp();
-
-}
-
-
-/* SAVE LOGIN */
-
-function saveLogin(){
-
-localStorage.setItem(
-"acornAdult",
-JSON.stringify(currentAdult)
-);
-
-}
-
-
-/* SHOW APP */
-
-async function showApp(){
+function showApp(){
 
 $("loginScreen")
 .classList.add("hidden");
@@ -1420,137 +2002,35 @@ $("app")
 
 currentDate=today();
 
-await loadData();
+updateProfileDisplay();
 
-render();
-
-updateProfile();
+loadData().then(render);
 
 }
 
 
-/* AUTO LOGIN */
+/* ================= PROFILE ================= */
 
-async function checkLogin(){
+function updateProfileDisplay(){
 
-const saved=
-localStorage.getItem(
-"acornAdult"
-);
+if(!currentAdult)return;
 
-if(!saved){
-
-$("loginScreen")
-.classList.remove("hidden");
-
-return;
-
-}
-
-
-try{
-
-currentAdult=
-JSON.parse(saved);
-
-if(!currentAdult.id){
-
-throw new Error();
-
-}
-
-await loadData();
-
-$("loginScreen")
-.classList.add("hidden");
-
-$("app")
-.classList.remove("hidden");
-
-updateProfile();
-
-render();
-
-}
-
-catch(error){
-
-localStorage.removeItem(
-"acornAdult"
-);
-
-$("loginScreen")
-.classList.remove("hidden");
-
-}
-
-}
-
-
-/* PROFILE */
-
-async function updateProfile(){
-
-if(!currentAdult){
-
-return;
-
-}
-
-
-$("profileMenuName")
+$("menuName")
 .textContent=
-currentAdult.name || "Adult";
+currentAdult.name;
 
+setImage(
+$("miniAvatar"),
+currentAdult.photo_url
+);
 
-let result=
-await supabase
-.from("adults")
-.select("photo_url")
-.eq("id",currentAdult.id)
-.maybeSingle();
-
-
-if(result.data){
-
-setAvatar(
-$("profileAvatar"),
-result.data.photo_url
+setImage(
+$("menuAvatar"),
+currentAdult.photo_url
 );
 
 }
 
-}
-
-
-function setAvatar(element,url){
-
-element.innerHTML="";
-
-if(url){
-
-const image=
-document.createElement("img");
-
-image.src=url;
-
-image.onerror=
-()=>element.textContent="👤";
-
-element.appendChild(image);
-
-}
-
-else{
-
-element.textContent="👤";
-
-}
-
-}
-
-
-/* PROFILE MENU */
 
 $("profileButton").onclick=()=>{
 
@@ -1560,41 +2040,27 @@ $("profileMenu")
 };
 
 
-$("accountFab").onclick=()=>{
-
-$("profileMenu")
-.classList.toggle("hidden");
-
-};
-
-
-/* EDIT PROFILE */
-
-$("editProfileButton").onclick=
-async function(){
+$("editProfileButton").onclick=()=>{
 
 $("profileMenu")
 .classList.add("hidden");
 
+$("profileName").value=
+currentAdult.name||"";
 
-const result=
-await supabase
-.from("adults")
-.select("*")
-.eq("id",currentAdult.id)
-.maybeSingle();
+$("profilePhotoFile").value="";
 
+$("profileSaveMessage")
+.classList.add("hidden");
 
-if(result.data){
+setImage(
+$("profilePhotoPreview"),
+currentAdult.photo_url
+);
 
-$("profileNameInput").value=
-result.data.name || "";
-
-$("profilePhotoInput").value=
-result.data.photo_url || "";
-
-}
-
+$("profilePhotoPreview")
+.dataset.photo=
+currentAdult.photo_url||"";
 
 $("profileModal")
 .classList.remove("hidden");
@@ -1602,7 +2068,7 @@ $("profileModal")
 };
 
 
-$("closeProfileButton").onclick=()=>{
+$("closeProfile").onclick=()=>{
 
 $("profileModal")
 .classList.add("hidden");
@@ -1610,30 +2076,56 @@ $("profileModal")
 };
 
 
-/* SAVE PROFILE */
+$("profilePhotoFile").onchange=
+async function(){
 
-$("saveProfileButton").onclick=
+const file=this.files[0];
+
+if(!file)return;
+
+try{
+
+const photo=
+await compressPhoto(file);
+
+setImage(
+$("profilePhotoPreview"),
+photo
+);
+
+$("profilePhotoPreview")
+.dataset.photo=photo;
+
+}catch{
+
+alert("Could not use that photo.");
+
+}
+
+};
+
+
+$("saveProfile").onclick=
 async function(){
 
 const name=
-$("profileNameInput")
-.value
-.trim();
+$("profileName")
+.value.trim();
 
 const photo=
-$("profilePhotoInput")
-.value
-.trim();
+$("profilePhotoPreview")
+.dataset.photo||"";
 
 
 if(!name){
 
-$("profileMessage")
+$("profileSaveMessage")
 .textContent=
 "Please enter your name.";
 
-$("profileMessage")
-.classList.remove("hidden");
+$("profileSaveMessage")
+.className=
+"login-message error";
 
 return;
 
@@ -1653,12 +2145,13 @@ p_photo_url:photo
 
 if(result.error){
 
-$("profileMessage")
+$("profileSaveMessage")
 .textContent=
 result.error.message;
 
-$("profileMessage")
-.classList.remove("hidden");
+$("profileSaveMessage")
+.className=
+"login-message error";
 
 return;
 
@@ -1666,40 +2159,26 @@ return;
 
 
 currentAdult.name=name;
+currentAdult.photo_url=photo;
 
-saveLogin();
+
+localStorage.setItem(
+"acornAdult",
+JSON.stringify(currentAdult)
+);
+
+
+await loadAdults();
+
+updateProfileDisplay();
 
 $("profileModal")
 .classList.add("hidden");
 
-updateProfile();
-
 };
 
 
-/* ADD ADULT */
-
-$("addAdultButton").onclick=()=>{
-
-$("profileMenu")
-.classList.add("hidden");
-
-$("adultName").value="";
-
-$("adultCode").value="";
-
-$("confirmCode").value="";
-
-$("loginScreen").classList.remove("hidden");
-
-$("app").classList.add("hidden");
-
-$("createTab").click();
-
-};
-
-
-/* LOG OUT */
+/* ================= LOGOUT ================= */
 
 $("logoutButton").onclick=()=>{
 
@@ -1712,18 +2191,20 @@ currentAdult=null;
 $("profileMenu")
 .classList.add("hidden");
 
-$("app").classList.add("hidden");
+$("app")
+.classList.add("hidden");
 
-$("loginScreen").classList.remove("hidden");
+$("loginScreen")
+.classList.remove("hidden");
 
-$("adultName").value="";
+$("loginCode").value="";
 
-$("adultCode").value="";
+loadAdults();
 
 };
 
 
-/* LOAD DATA */
+/* ================= DATA ================= */
 
 async function loadData(){
 
@@ -1748,8 +2229,6 @@ await supabase
 
 if(snacks.error){
 
-console.log(snacks.error);
-
 alert(snacks.error.message);
 
 return;
@@ -1759,8 +2238,6 @@ return;
 
 if(suncream.error){
 
-console.log(suncream.error);
-
 alert(suncream.error.message);
 
 return;
@@ -1768,9 +2245,8 @@ return;
 }
 
 
-(snacks.data||[])
-.forEach(
-function(item){
+(snacks.data||[]).forEach(
+item=>{
 
 createDay(item.list_date);
 
@@ -1779,8 +2255,7 @@ item.snack_time==="am"
 ?"amSnack"
 :"pmSnack";
 
-data[item.list_date][key]
-.push({
+data[item.list_date][key].push({
 
 id:item.id,
 
@@ -1793,11 +2268,8 @@ milk:item.alternative_milk||"",
 done:!!item.done,
 
 note:{
-
 amount:item.amount||"",
-
 what:item.food||""
-
 }
 
 });
@@ -1805,15 +2277,13 @@ what:item.food||""
 });
 
 
-(suncream.data||[])
-.forEach(
-function(item){
+(suncream.data||[]).forEach(
+item=>{
 
 createDay(item.list_date);
 
 data[item.list_date]
-.suncream
-.push({
+.suncream.push({
 
 id:item.id,
 
@@ -1830,85 +2300,58 @@ done:!!item.done
 }
 
 
-/* NAVIGATION */
+/* ================= NAVIGATION ================= */
 
-function openSnackList(){
+function showPage(page){
 
-currentPage="snacks";
+currentPage=page;
 
-openNoteIndex=null;
+$("snackPage").classList.toggle(
+"hidden",
+page!=="snacks"
+);
 
-$("snackPage").classList.remove("hidden");
+$("groupedPage").classList.toggle(
+"hidden",
+page!=="grouped"
+);
 
-$("groupedPage").classList.add("hidden");
+$("suncreamPage").classList.toggle(
+"hidden",
+page!=="suncream"
+);
 
-$("suncreamPage").classList.add("hidden");
+$("snackNav").classList.toggle(
+"active",
+page==="snacks"
+);
 
-$("snackFolder").classList.add("active");
+$("groupedNav").classList.toggle(
+"active",
+page==="grouped"
+);
 
-$("groupedButton").classList.remove("active");
-
-$("suncreamFolder").classList.remove("active");
-
-$("pageTitle").textContent=
-"Acorn Snack List";
-
-render();
-
-}
-
-
-function openGroupedList(){
-
-currentPage="grouped";
-
-openNoteIndex=null;
-
-$("snackPage").classList.add("hidden");
-
-$("groupedPage").classList.remove("hidden");
-
-$("suncreamPage").classList.add("hidden");
-
-$("snackFolder").classList.remove("active");
-
-$("groupedButton").classList.add("active");
-
-$("suncreamFolder").classList.remove("active");
-
-$("pageTitle").textContent=
-"Grouped Snacks";
+$("suncreamNav").classList.toggle(
+"active",
+page==="suncream"
+);
 
 render();
 
 }
 
 
-function openSuncreamList(){
+$("snackNav").onclick=
+()=>showPage("snacks");
 
-currentPage="suncream";
+$("groupedNav").onclick=
+()=>showPage("grouped");
 
-$("snackPage").classList.add("hidden");
-
-$("groupedPage").classList.add("hidden");
-
-$("suncreamPage").classList.remove("hidden");
-
-$("snackFolder").classList.remove("active");
-
-$("groupedButton").classList.remove("active");
-
-$("suncreamFolder").classList.add("active");
-
-$("pageTitle").textContent=
-"Acorn Suncream List";
-
-render();
-
-}
+$("suncreamNav").onclick=
+()=>showPage("suncream");
 
 
-/* SNACK TABS */
+/* ================= SNACK TABS ================= */
 
 $("amButton").onclick=()=>{
 
@@ -1918,7 +2361,8 @@ $("amButton").classList.add("active");
 
 $("pmButton").classList.remove("active");
 
-$("snackTitle").textContent="AM Snack";
+$("snackTitle").textContent=
+"AM Snack";
 
 renderSnackList();
 
@@ -1933,14 +2377,13 @@ $("pmButton").classList.add("active");
 
 $("amButton").classList.remove("active");
 
-$("snackTitle").textContent="PM Snack";
+$("snackTitle").textContent=
+"PM Snack";
 
 renderSnackList();
 
 };
 
-
-/* GROUPED TABS */
 
 $("groupedAmButton").onclick=()=>{
 
@@ -1968,17 +2411,13 @@ renderGrouped();
 };
 
 
-/* RENDER */
+/* ================= RENDER ================= */
 
 function render(){
 
 createDay(currentDate);
 
 $("date").value=currentDate;
-
-$("pageSubtitle")
-.textContent=
-formatDate(currentDate);
 
 
 if(currentPage==="snacks"){
@@ -1987,25 +2426,24 @@ renderSnackList();
 
 }
 
-else if(currentPage==="grouped"){
+if(currentPage==="grouped"){
 
 renderGrouped();
 
 }
 
-else{
+if(currentPage==="suncream"){
 
 renderSuncreamList();
 
 }
-
 
 renderSavedDays();
 
 }
 
 
-/* SNACK LIST */
+/* ================= SNACK LIST ================= */
 
 function renderSnackList(){
 
@@ -2028,7 +2466,7 @@ data[currentDate][key];
 if(!children.length){
 
 container.innerHTML=
-'<div class="empty">No children added to this list yet.</div>';
+'<div class="empty">No children added yet.</div>';
 
 return;
 
@@ -2036,7 +2474,7 @@ return;
 
 
 children.forEach(
-function(child,index){
+(child,index)=>{
 
 const item=
 document.createElement("div");
@@ -2060,8 +2498,7 @@ tick.textContent=
 child.done?"✓":"";
 
 
-tick.onclick=
-async function(){
+tick.onclick=async()=>{
 
 const result=
 await supabase
@@ -2091,8 +2528,7 @@ document.createElement("div");
 
 name.className="child-name";
 
-name.textContent=
-child.name;
+name.textContent=child.name;
 
 
 const badge=
@@ -2104,17 +2540,13 @@ badge.className="badge red";
 
 badge.textContent="RED";
 
-}
-
-else if(child.status==="green"){
+}else if(child.status==="green"){
 
 badge.className="badge green";
 
 badge.textContent="GREEN";
 
-}
-
-else{
+}else{
 
 badge.className="badge none";
 
@@ -2140,8 +2572,7 @@ note.onclick=()=>{
 
 openNoteIndex=
 openNoteIndex===index
-?null
-:index;
+?null:index;
 
 renderSnackList();
 
@@ -2151,13 +2582,11 @@ renderSnackList();
 const remove=
 document.createElement("button");
 
-remove.className=
-"danger small";
+remove.className="danger small";
 
 remove.textContent="Remove";
 
-remove.onclick=
-async function(){
+remove.onclick=async()=>{
 
 if(!confirm(
 "Remove "+child.name+"?"
@@ -2210,24 +2639,19 @@ item.appendChild(milk);
 }
 
 
-if(
-child.note.amount||
-child.note.what
-){
+if(child.note.amount||child.note.what){
 
 const eaten=
 document.createElement("div");
 
-eaten.className=
-"eaten-detail";
+eaten.className="eaten-detail";
 
 eaten.textContent=
 "Eaten: "+
 child.note.amount+
 (
 child.note.what
-?
-" — "+child.note.what
+?" — "+child.note.what
 :""
 );
 
@@ -2252,7 +2676,7 @@ container.appendChild(item);
 }
 
 
-/* NOTE BOX */
+/* ================= NOTES ================= */
 
 function createNoteBox(child){
 
@@ -2287,23 +2711,21 @@ buttons.className=
 
 
 amounts.forEach(
-function(amount){
+amount=>{
 
-const button=
+const b=
 document.createElement("button");
 
-button.className=
+b.className=
 "amount-button"+
 (
 child.note.amount===amount
 ?" selected":""
 );
 
-button.textContent=
-amount;
+b.textContent=amount;
 
-button.onclick=
-async function(){
+b.onclick=async()=>{
 
 child.note.amount=amount;
 
@@ -2311,7 +2733,7 @@ await saveNote(child);
 
 };
 
-buttons.appendChild(button);
+buttons.appendChild(b);
 
 });
 
@@ -2331,11 +2753,11 @@ box.appendChild(foodLabel);
 const input=
 document.createElement("input");
 
-input.placeholder=
-"e.g. banana, apple, different fruit";
-
 input.value=
 child.note.what;
+
+input.placeholder=
+"e.g. banana, apple, yoghurt";
 
 box.appendChild(input);
 
@@ -2343,8 +2765,7 @@ box.appendChild(input);
 const row=
 document.createElement("div");
 
-row.className=
-"note-save-row";
+row.className="note-save";
 
 
 const save=
@@ -2354,8 +2775,7 @@ save.className="primary";
 
 save.textContent="Save";
 
-save.onclick=
-async function(){
+save.onclick=async()=>{
 
 child.note.what=
 input.value.trim();
@@ -2390,19 +2810,14 @@ return box;
 }
 
 
-/* SAVE NOTE */
-
 async function saveNote(child){
 
 const result=
 await supabase
 .from("snack_lists")
 .update({
-
 amount:child.note.amount||"",
-
 food:child.note.what||""
-
 })
 .eq("id",child.id);
 
@@ -2421,7 +2836,7 @@ renderSnackList();
 }
 
 
-/* GROUPED */
+/* ================= GROUPED ================= */
 
 function renderGrouped(){
 
@@ -2440,6 +2855,7 @@ groupedSnack==="am"
 :"pmSnack"
 ];
 
+
 const amounts=[
 "All",
 "Almost all",
@@ -2451,18 +2867,14 @@ let found=false;
 
 
 amounts.forEach(
-function(amount){
+amount=>{
 
 const matching=
 children.filter(
-function(child){
-
-return child.note.amount===amount &&
-child.note.what &&
-child.note.what.trim();
-
-});
-
+child=>
+child.note.amount===amount &&
+child.note.what.trim()
+);
 
 if(!matching.length)return;
 
@@ -2492,18 +2904,17 @@ const groups={};
 
 
 matching.forEach(
-function(child){
-
-const food=
-child.note.what.trim();
+child=>{
 
 const key=
-food.toLowerCase();
+child.note.what
+.trim()
+.toLowerCase();
 
 if(!groups[key]){
 
 groups[key]={
-name:food,
+name:child.note.what.trim(),
 children:[]
 };
 
@@ -2516,13 +2927,8 @@ groups[key]
 });
 
 
-Object.values(groups)
-.sort(
-(a,b)=>
-a.name.localeCompare(b.name)
-)
-.forEach(
-function(group){
+Object.values(groups).forEach(
+group=>{
 
 const snack=
 document.createElement("div");
@@ -2531,14 +2937,14 @@ snack.className=
 "grouped-snack";
 
 
-const title=
+const food=
 document.createElement("div");
 
-title.className=
-"grouped-snack-name";
+food.className=
+"grouped-food";
 
-title.textContent=
-"🍌 "+group.name;
+food.textContent=
+"🍎 "+group.name;
 
 
 const names=
@@ -2552,7 +2958,7 @@ group.children.join(" • ");
 
 
 snack.append(
-title,
+food,
 names
 );
 
@@ -2569,14 +2975,14 @@ container.appendChild(section);
 if(!found){
 
 container.innerHTML=
-'<div class="grouped-empty">Nothing has been recorded yet.<br><br>Use the 📝 button beside a child to add what they ate.</div>';
+'<div class="empty">Nothing has been recorded yet.<br><br>Use 📝 beside a child to add what they ate.</div>';
 
 }
 
 }
 
 
-/* SUNCREAM */
+/* ================= SUNCREAM ================= */
 
 function renderSuncreamList(){
 
@@ -2594,7 +3000,7 @@ data[currentDate].suncream;
 if(!children.length){
 
 container.innerHTML=
-'<div class="empty">No children added to today\'s suncream list yet.</div>';
+'<div class="empty">No children added yet.</div>';
 
 return;
 
@@ -2602,7 +3008,7 @@ return;
 
 
 children.forEach(
-function(child){
+child=>{
 
 const item=
 document.createElement("div");
@@ -2614,8 +3020,7 @@ item.className=
 const top=
 document.createElement("div");
 
-top.className=
-"child-top";
+top.className="child-top";
 
 
 const tick=
@@ -2627,8 +3032,7 @@ tick.textContent=
 child.done?"✓":"";
 
 
-tick.onclick=
-async function(){
+tick.onclick=async()=>{
 
 const result=
 await supabase
@@ -2656,23 +3060,19 @@ renderSuncreamList();
 const name=
 document.createElement("div");
 
-name.className=
-"child-name";
+name.className="child-name";
 
-name.textContent=
-child.name;
+name.textContent=child.name;
 
 
 const remove=
 document.createElement("button");
 
-remove.className=
-"danger small";
+remove.className="danger small";
 
 remove.textContent="Remove";
 
-remove.onclick=
-async function(){
+remove.onclick=async()=>{
 
 if(!confirm(
 "Remove "+child.name+"?"
@@ -2715,10 +3115,8 @@ detail.className="detail";
 
 detail.textContent=
 child.product
-?
-"Suncream: "+child.product
-:
-"No specific suncream recorded";
+?"Suncream: "+child.product
+:"No specific suncream recorded";
 
 item.appendChild(detail);
 
@@ -2729,7 +3127,7 @@ container.appendChild(item);
 }
 
 
-/* SAVED DAYS */
+/* ================= SAVED DAYS ================= */
 
 function renderSavedDays(){
 
@@ -2739,9 +3137,7 @@ $("savedDays");
 container.innerHTML="";
 
 const dates=
-Object.keys(data)
-.sort()
-.reverse();
+Object.keys(data).sort().reverse();
 
 
 if(!dates.length){
@@ -2755,13 +3151,12 @@ return;
 
 
 dates.forEach(
-function(date){
+date=>{
 
 const row=
 document.createElement("div");
 
-row.className=
-"history-item";
+row.className="saved-day";
 
 
 const title=
@@ -2771,18 +3166,10 @@ title.textContent=
 formatDate(date);
 
 
-const buttons=
-document.createElement("div");
-
-buttons.className=
-"history-buttons";
-
-
 const open=
 document.createElement("button");
 
-open.className=
-"secondary small";
+open.className="secondary small";
 
 open.textContent="Open";
 
@@ -2794,84 +3181,12 @@ currentPage="snacks";
 
 render();
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
 };
 
-
-const del=
-document.createElement("button");
-
-del.className=
-"danger small";
-
-del.textContent="Delete";
-
-del.onclick=
-async function(){
-
-if(!confirm(
-"Delete "+formatDate(date)+
-"?\n\nThis will delete all records for this day."
-))return;
-
-
-const snacks=
-await supabase
-.from("snack_lists")
-.delete()
-.eq("list_date",date);
-
-
-const suncream=
-await supabase
-.from("suncream_lists")
-.delete()
-.eq("list_date",date);
-
-
-if(snacks.error){
-
-alert(snacks.error.message);
-
-return;
-
-}
-
-
-if(suncream.error){
-
-alert(suncream.error.message);
-
-return;
-
-}
-
-
-await loadData();
-
-if(currentDate===date){
-
-currentDate=today();
-
-}
-
-render();
-
-};
-
-
-buttons.append(
-open,
-del
-);
 
 row.append(
 title,
-buttons
+open
 );
 
 container.appendChild(row);
@@ -2881,23 +3196,20 @@ container.appendChild(row);
 }
 
 
-/* ADD SNACK */
+/* ================= ADD SNACK ================= */
 
-async function addSnack(){
+$("addSnackButton").onclick=
+async function(){
 
 const name=
 $("snackName")
-.value
-.trim();
-
+.value.trim();
 
 if(!name){
 
 alert(
 "Please enter the child's name."
 );
-
-$("snackName").focus();
 
 return;
 
@@ -2921,7 +3233,8 @@ allergy_status:
 $("snackStatus").value,
 
 alternative_milk:
-$("snackMilk").value.trim(),
+$("snackMilk")
+.value.trim(),
 
 done:false,
 
@@ -2947,25 +3260,21 @@ $("snackMilk").value="";
 
 $("snackStatus").value="none";
 
-
 await loadData();
 
 renderSnackList();
 
-$("snackName").focus();
-
-}
+};
 
 
-/* ADD SUNCREAM */
+/* ================= ADD SUNCREAM ================= */
 
-async function addSuncream(){
+$("addSuncreamButton").onclick=
+async function(){
 
 const name=
 $("suncreamName")
-.value
-.trim();
-
+.value.trim();
 
 if(!name){
 
@@ -3011,29 +3320,26 @@ $("suncreamName").value="";
 
 $("suncreamProduct").value="";
 
-
 await loadData();
 
 renderSuncreamList();
 
-$("suncreamName").focus();
-
-}
+};
 
 
-/* NEW DAY */
+/* ================= NEW DAY ================= */
 
-function createNewDay(){
+$("newDayButton").onclick=()=>{
 
-const answer=
+const value=
 prompt(
-"Enter the date as DD/MM/YYYY"
+"Enter date as DD/MM/YYYY"
 );
 
-if(!answer)return;
+if(!value)return;
 
 const parts=
-answer.split("/");
+value.split("/");
 
 if(parts.length!==3){
 
@@ -3051,24 +3357,7 @@ parts[0].padStart(2,"0");
 const month=
 parts[1].padStart(2,"0");
 
-const year=
-parts[2];
-
-if(
-year.length!==4 ||
-Number(day)<1 ||
-Number(day)>31 ||
-Number(month)<1 ||
-Number(month)>12
-){
-
-alert(
-"Please enter a valid date."
-);
-
-return;
-
-}
+const year=parts[2];
 
 currentDate=
 year+"-"+month+"-"+day;
@@ -3077,40 +3366,15 @@ createDay(currentDate);
 
 render();
 
-}
+};
 
 
-/* BUTTONS */
-
-$("snackFolder").onclick=
-openSnackList;
-
-$("groupedButton").onclick=
-openGroupedList;
-
-$("suncreamFolder").onclick=
-openSuncreamList;
-
-$("backToSnackButton").onclick=
-openSnackList;
-
-$("addSnackButton").onclick=
-addSnack;
-
-$("addSuncreamButton").onclick=
-addSuncream;
-
-$("newDayButton").onclick=
-createNewDay;
-
-
-/* DATE */
+/* ================= DATE ================= */
 
 $("date").onchange=
 async function(){
 
-currentDate=
-$("date").value;
+currentDate=this.value;
 
 await loadData();
 
@@ -3119,43 +3383,61 @@ render();
 };
 
 
-/* ENTER */
+/* ================= ENTER ================= */
 
-$("snackName").onkeydown=
-function(event){
+$("loginCode").onkeydown=e=>{
 
-if(event.key==="Enter"){
+if(e.key==="Enter"){
 
-event.preventDefault();
+e.preventDefault();
 
-addSnack();
-
-}
-
-};
-
-
-$("suncreamName").onkeydown=
-function(event){
-
-if(event.key==="Enter"){
-
-event.preventDefault();
-
-addSuncream();
+login();
 
 }
 
 };
 
 
-/* START */
+/* ================= START ================= */
 
 currentDate=today();
 
-createDay(currentDate);
+loadAdults();
 
-checkLogin();
+
+/* ================= AUTO LOGIN ================= */
+
+const saved=
+localStorage.getItem("acornAdult");
+
+if(saved){
+
+try{
+
+const savedAdult=
+JSON.parse(saved);
+
+const found=
+adults.findIndex(
+a=>a.id===savedAdult.id
+);
+
+if(found>=0){
+
+selectedAdultIndex=found;
+
+currentAdult={
+...savedAdult,
+...adults[found]
+};
+
+showApp();
+
+}
+
+}catch{}
+
+}
 
 </script>
 

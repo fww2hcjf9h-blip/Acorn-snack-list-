@@ -6,288 +6,320 @@
 <title>Acorn Lists</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f7f4;
+color:#202520;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f7f4;
-  color: #202520;
+button,input,select{font:inherit}
+
+button{
+border:0;
+border-radius:10px;
+padding:10px 13px;
+font-weight:bold;
+cursor:pointer;
 }
 
-button,
-input,
-select {
-  font: inherit;
+.app{
+display:flex;
+min-height:100vh;
 }
 
-button {
-  border: 0;
-  border-radius: 10px;
-  padding: 11px 14px;
-  font-weight: bold;
-  cursor: pointer;
+.sidebar{
+width:220px;
+background:white;
+border-right:1px solid #ddd;
+padding:18px 12px;
+flex-shrink:0;
 }
 
-.app {
-  display: flex;
-  min-height: 100vh;
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#2f6f45;
+padding:8px;
+margin-bottom:15px;
 }
 
-/* SIDE MENU */
-
-.sidebar {
-  width: 220px;
-  background: white;
-  border-right: 1px solid #ddd;
-  padding: 18px 12px;
+.folder-button{
+width:100%;
+text-align:left;
+background:#eef3ee;
+color:#294e34;
+margin-bottom:8px;
 }
 
-.logo {
-  font-size: 23px;
-  font-weight: bold;
-  color: #2f6f45;
-  padding: 8px;
-  margin-bottom: 12px;
+.folder-button.active{
+background:#2f6f45;
+color:white;
 }
 
-.folder-button {
-  width: 100%;
-  text-align: left;
-  background: #eef3ee;
-  color: #294e34;
-  margin-bottom: 7px;
+.main{
+width:100%;
+max-width:900px;
+margin:auto;
+padding:18px;
 }
 
-.folder-button.active {
-  background: #2f6f45;
-  color: white;
+.header{
+background:#2f6f45;
+color:white;
+border-radius:17px;
+padding:20px;
+margin-bottom:15px;
 }
 
-/* MAIN */
-
-.main {
-  width: 100%;
-  max-width: 850px;
-  margin: auto;
-  padding: 18px;
+.header h1{
+margin:0 0 5px;
 }
 
-.header {
-  background: #2f6f45;
-  color: white;
-  border-radius: 17px;
-  padding: 20px;
-  margin-bottom: 14px;
+.header p{
+margin:0;
 }
 
-.header h1 {
-  margin: 0 0 4px;
+.card{
+background:white;
+border-radius:15px;
+padding:16px;
+margin-bottom:15px;
+box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
 
-.header p {
-  margin: 0;
+.row{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
 }
 
-.card {
-  background: white;
-  border-radius: 15px;
-  padding: 16px;
-  margin-bottom: 14px;
-  box-shadow: 0 2px 10px #0001;
+.field{
+flex:1 1 180px;
 }
 
-.row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+label{
+display:block;
+font-size:13px;
+font-weight:bold;
+margin-bottom:6px;
 }
 
-.field {
-  flex: 1 1 180px;
+input,select{
+width:100%;
+padding:11px;
+border:1px solid #d2d9d2;
+border-radius:10px;
+background:white;
 }
 
-label {
-  display: block;
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 6px;
+.primary{
+background:#2f6f45;
+color:white;
 }
 
-input,
-select {
-  width: 100%;
-  padding: 11px;
-  border: 1px solid #d2d9d2;
-  border-radius: 10px;
+.secondary{
+background:#e8eee9;
+color:#294e34;
 }
 
-.primary {
-  background: #2f6f45;
-  color: white;
+.danger{
+background:#f7dddd;
+color:#8d2525;
 }
 
-.secondary {
-  background: #e8eee9;
-  color: #294e34;
+.small{
+padding:7px 10px;
+font-size:13px;
 }
 
-.danger {
-  background: #f7dddd;
-  color: #8d2525;
+.snack-tabs{
+display:flex;
+gap:8px;
+margin-bottom:15px;
 }
 
-.small {
-  padding: 7px 10px;
-  font-size: 13px;
+.snack-tab{
+flex:1;
+background:#e8eee9;
+color:#294e34;
 }
 
-/* SNACK TABS */
-
-.snack-tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 14px;
+.snack-tab.active{
+background:#2f6f45;
+color:white;
 }
 
-.snack-tab {
-  flex: 1;
-  background: #e8eee9;
-  color: #294e34;
+.child{
+border:1px solid #dce2dc;
+border-radius:13px;
+padding:12px;
+margin-top:9px;
 }
 
-.snack-tab.active {
-  background: #2f6f45;
-  color: white;
+.child.done{
+background:#f0f7f1;
+border-color:#b9d4bf;
 }
 
-/* CHILD */
-
-.child {
-  border: 1px solid #dce2dc;
-  border-radius: 13px;
-  padding: 12px;
-  margin-top: 9px;
+.child-top{
+display:flex;
+align-items:center;
+gap:8px;
 }
 
-.child.done {
-  background: #f0f7f1;
-  border-color: #b9d4bf;
+.tick{
+width:32px;
+height:32px;
+padding:0;
+border-radius:50%;
+background:#edf0ed;
+color:#2f6f45;
+border:1px solid #ccd4cc;
+flex-shrink:0;
 }
 
-.child-top {
-  display: flex;
-  align-items: center;
-  gap: 9px;
+.child.done .tick{
+background:#2f6f45;
+color:white;
 }
 
-.tick {
-  width: 31px;
-  height: 31px;
-  padding: 0;
-  border-radius: 50%;
-  background: #edf0ed;
-  color: #2f6f45;
-  border: 1px solid #ccd4cc;
+.child-name{
+font-weight:bold;
+flex:1;
 }
 
-.child.done .tick {
-  background: #2f6f45;
-  color: white;
+.badge{
+font-size:10px;
+font-weight:bold;
+padding:5px 7px;
+border-radius:7px;
 }
 
-.child-name {
-  font-weight: bold;
-  flex: 1;
+.red{
+background:#f7dddd;
+color:#982626;
 }
 
-.badge {
-  font-size: 11px;
-  font-weight: bold;
-  padding: 5px 7px;
-  border-radius: 7px;
+.green{
+background:#dff1e3;
+color:#246337;
 }
 
-.red {
-  background: #f7dddd;
-  color: #982626;
+.none{
+background:#edf0ed;
+color:#596159;
 }
 
-.green {
-  background: #dff1e3;
-  color: #246337;
+.note-button{
+background:#eef3ee;
+color:#294e34;
+padding:7px 9px;
+font-size:15px;
 }
 
-.none {
-  background: #edf0ed;
-  color: #596159;
+.note-button.has-note{
+background:#dcefe0;
+color:#246337;
 }
 
-.detail {
-  font-size: 13px;
-  color: #555;
-  margin: 8px 0 0 40px;
+.note-box{
+margin:12px 0 2px 40px;
+padding:12px;
+background:#f7faf7;
+border:1px solid #dce5dc;
+border-radius:12px;
 }
 
-.empty {
-  text-align: center;
-  color: #687068;
-  padding: 20px;
+.amount-buttons{
+display:flex;
+gap:6px;
+flex-wrap:wrap;
+margin-bottom:10px;
 }
 
-/* SAVED DAYS */
-
-.history-item {
-  border-top: 1px solid #e4e8e4;
-  padding: 11px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+.amount-button{
+background:white;
+border:1px solid #ccd4cc;
+color:#394239;
 }
 
-.history-buttons {
-  display: flex;
-  gap: 6px;
+.amount-button.selected{
+background:#2f6f45;
+color:white;
 }
 
-.hidden {
-  display: none !important;
+.note-save-row{
+display:flex;
+gap:7px;
+margin-top:10px;
 }
 
-/* PHONE */
+.detail{
+font-size:13px;
+color:#555;
+margin:8px 0 0 40px;
+}
 
-@media (max-width: 650px) {
+.empty{
+text-align:center;
+color:#687068;
+padding:20px;
+}
 
-  .app {
-    display: block;
-  }
+.history-item{
+border-top:1px solid #e4e8e4;
+padding:12px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
 
-  .sidebar {
-    width: 100%;
-    border-right: 0;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    gap: 7px;
-    overflow-x: auto;
-    padding: 9px;
-  }
+.history-buttons{
+display:flex;
+gap:6px;
+}
 
-  .logo {
-    display: none;
-  }
+.hidden{
+display:none!important;
+}
 
-  .folder-button {
-    width: auto;
-    white-space: nowrap;
-    margin: 0;
-  }
+@media(max-width:650px){
 
-  .main {
-    padding: 10px;
-  }
+.app{
+display:block;
+}
+
+.sidebar{
+width:100%;
+border-right:0;
+border-bottom:1px solid #ddd;
+display:flex;
+gap:7px;
+overflow-x:auto;
+padding:9px;
+}
+
+.logo{
+display:none;
+}
+
+.folder-button{
+width:auto;
+white-space:nowrap;
+margin:0;
+}
+
+.main{
+padding:10px;
+}
+
+.child-top{
+flex-wrap:wrap;
+}
 
 }
 </style>
@@ -335,17 +367,13 @@ Daily records
 </header>
 
 
-<!-- DATE -->
-
 <section class="card">
 
 <div class="row">
 
 <div class="field">
 
-<label>
-Date
-</label>
+<label>Date</label>
 
 <input
 id="date"
@@ -385,18 +413,14 @@ Create new day
 type="button"
 class="snack-tab active"
 id="amButton">
-
 AM Snack
-
 </button>
 
 <button
 type="button"
 class="snack-tab"
 id="pmButton">
-
 PM Snack
-
 </button>
 
 </div>
@@ -406,9 +430,7 @@ PM Snack
 
 <div class="field">
 
-<label>
-Child's name
-</label>
+<label>Child's name</label>
 
 <input
 id="snackName"
@@ -419,9 +441,7 @@ placeholder="Child's name">
 
 <div class="field">
 
-<label>
-Allergy / preference
-</label>
+<label>Allergy / preference</label>
 
 <select id="snackStatus">
 
@@ -444,9 +464,7 @@ Red - Allergy
 
 <div class="field">
 
-<label>
-Alternative milk
-</label>
+<label>Alternative milk</label>
 
 <input
 id="snackMilk"
@@ -499,9 +517,7 @@ Suncream List
 
 <div class="field">
 
-<label>
-Child's name
-</label>
+<label>Child's name</label>
 
 <input
 id="suncreamName"
@@ -512,9 +528,7 @@ placeholder="Child's name">
 
 <div class="field">
 
-<label>
-Suncream
-</label>
+<label>Suncream</label>
 
 <input
 id="suncreamProduct"
@@ -563,7 +577,6 @@ Saved Days
 
 </section>
 
-
 </main>
 
 </div>
@@ -571,51 +584,45 @@ Saved Days
 
 <script>
 
-const STORAGE_KEY = "acornListsV6";
+const STORAGE_KEY="acornListsV8";
 
-let data = {};
+let data={};
 
-let currentDate = "";
+let currentDate="";
 
-let currentPage = "snacks";
+let currentPage="snacks";
 
-let currentSnack = "am";
+let currentSnack="am";
+
+let openNoteIndex=null;
 
 
-function get(id) {
-
+function get(id){
 return document.getElementById(id);
-
 }
 
 
-/* LOAD */
+function loadData(){
 
-function loadData() {
+try{
 
-try {
-
-const saved =
+const saved=
 localStorage.getItem(STORAGE_KEY);
 
-if (saved) {
+if(saved){
+data=JSON.parse(saved);
+}
 
-data = JSON.parse(saved);
+}catch(error){
+
+data={};
 
 }
 
-} catch (error) {
-
-data = {};
-
-}
-
 }
 
 
-/* SAVE */
-
-function saveData() {
+function saveData(){
 
 localStorage.setItem(
 STORAGE_KEY,
@@ -625,36 +632,28 @@ JSON.stringify(data)
 }
 
 
-/* TODAY */
+function getToday(){
 
-function getToday() {
+const d=new Date();
 
-const d = new Date();
-
-const local = new Date(
-d.getTime() -
-d.getTimezoneOffset() * 60000
+const local=new Date(
+d.getTime()-
+d.getTimezoneOffset()*60000
 );
 
-return local
-.toISOString()
-.slice(0,10);
+return local.toISOString().slice(0,10);
 
 }
 
 
-/* CREATE DAY */
+function createDay(date){
 
-function createDay(date) {
+if(!data[date]){
 
-if (!data[date]) {
-
-data[date] = {
-
-amSnack: [],
-pmSnack: [],
-suncream: []
-
+data[date]={
+amSnack:[],
+pmSnack:[],
+suncream:[]
 };
 
 }
@@ -662,82 +661,68 @@ suncream: []
 }
 
 
-/* FORMAT DATE */
+function formatDate(date){
 
-function formatDate(date) {
-
-return new Date(
-date + "T12:00:00"
-)
+return new Date(date+"T12:00:00")
 .toLocaleDateString(
 "en-GB",
 {
-weekday: "long",
-day: "numeric",
-month: "long",
-year: "numeric"
+weekday:"long",
+day:"numeric",
+month:"long",
+year:"numeric"
 }
 );
 
 }
 
 
-/* SNACK FOLDER */
+/* SWITCH TO SNACKS */
 
-function openSnackList() {
+function openSnackList(){
 
-currentPage = "snacks";
+currentPage="snacks";
 
 get("snackPage")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 get("suncreamPage")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 get("snackFolder")
-.classList
-.add("active");
+.classList.add("active");
 
 get("suncreamFolder")
-.classList
-.remove("active");
+.classList.remove("active");
 
 get("pageTitle")
-.textContent =
-"Acorn Snack List";
+.textContent="Acorn Snack List";
 
 render();
 
 }
 
 
-/* SUNCREAM FOLDER */
+/* SWITCH TO SUNCREAM */
 
-function openSuncreamList() {
+function openSuncreamList(){
 
-currentPage = "suncream";
+currentPage="suncream";
 
 get("snackPage")
-.classList
-.add("hidden");
+.classList.add("hidden");
 
 get("suncreamPage")
-.classList
-.remove("hidden");
+.classList.remove("hidden");
 
 get("snackFolder")
-.classList
-.remove("active");
+.classList.remove("active");
 
 get("suncreamFolder")
-.classList
-.add("active");
+.classList.add("active");
 
 get("pageTitle")
-.textContent =
-"Acorn Suncream List";
+.textContent="Acorn Suncream List";
 
 render();
 
@@ -746,21 +731,20 @@ render();
 
 /* AM */
 
-function openAM() {
+function openAM(){
 
-currentSnack = "am";
+currentSnack="am";
+
+openNoteIndex=null;
 
 get("amButton")
-.classList
-.add("active");
+.classList.add("active");
 
 get("pmButton")
-.classList
-.remove("active");
+.classList.remove("active");
 
 get("snackTitle")
-.textContent =
-"AM Snack";
+.textContent="AM Snack";
 
 renderSnackList();
 
@@ -769,46 +753,42 @@ renderSnackList();
 
 /* PM */
 
-function openPM() {
+function openPM(){
 
-currentSnack = "pm";
+currentSnack="pm";
+
+openNoteIndex=null;
 
 get("pmButton")
-.classList
-.add("active");
+.classList.add("active");
 
 get("amButton")
-.classList
-.remove("active");
+.classList.remove("active");
 
 get("snackTitle")
-.textContent =
-"PM Snack";
+.textContent="PM Snack";
 
 renderSnackList();
 
 }
 
 
-/* RENDER */
+/* MAIN RENDER */
 
-function render() {
+function render(){
 
 createDay(currentDate);
 
-get("date").value =
-currentDate;
+get("date").value=currentDate;
 
 get("pageSubtitle")
-.textContent =
-formatDate(currentDate);
+.textContent=formatDate(currentDate);
 
-
-if (currentPage === "snacks") {
+if(currentPage==="snacks"){
 
 renderSnackList();
 
-} else {
+}else{
 
 renderSuncreamList();
 
@@ -819,70 +799,64 @@ renderSavedDays();
 }
 
 
-/* SNACK LIST */
+/* RENDER SNACKS */
 
-function renderSnackList() {
+function renderSnackList(){
 
-const container =
-get("snackChildren");
+const container=get("snackChildren");
 
-container.innerHTML = "";
+container.innerHTML="";
 
-const key =
-currentSnack === "am"
-? "amSnack"
-: "pmSnack";
+const key=
+currentSnack==="am"
+?"amSnack"
+:"pmSnack";
 
-const children =
+const children=
 data[currentDate][key];
 
 
-if (!children.length) {
+if(!children.length){
 
-container.innerHTML =
-'<div class="empty">' +
-'No children added to this list yet.' +
-'</div>';
+container.innerHTML=
+'<div class="empty">No children added to this list yet.</div>';
 
 return;
 
 }
 
 
-children.forEach(
-(child, index) => {
+children.forEach((child,index)=>{
 
-const item =
+const item=
 document.createElement("div");
 
-item.className =
-"child" +
-(child.done ? " done" : "");
+item.className=
+"child"+(child.done?" done":"");
 
 
-const top =
+const top=
 document.createElement("div");
 
-top.className =
-"child-top";
+top.className="child-top";
 
 
-const tick =
+/* TICK */
+
+const tick=
 document.createElement("button");
 
-tick.type = "button";
+tick.type="button";
 
-tick.className = "tick";
+tick.className="tick";
 
-tick.textContent =
-child.done ? "✓" : "";
+tick.textContent=
+child.done?"✓":"";
 
 
-tick.onclick =
-function() {
+tick.onclick=function(){
 
-child.done =
-!child.done;
+child.done=!child.done;
 
 saveData();
 
@@ -891,72 +865,102 @@ renderSnackList();
 };
 
 
-const name =
+/* NAME */
+
+const name=
 document.createElement("div");
 
-name.className =
-"child-name";
+name.className="child-name";
 
-name.textContent =
-child.name;
+name.textContent=child.name;
 
 
-const badge =
+/* ALLERGY */
+
+const badge=
 document.createElement("span");
 
 
-if (child.status === "red") {
+if(child.status==="red"){
 
-badge.className =
-"badge red";
+badge.className="badge red";
 
-badge.textContent =
-"RED";
+badge.textContent="RED";
 
 }
 
-else if (
-child.status === "green"
-) {
+else if(child.status==="green"){
 
-badge.className =
-"badge green";
+badge.className="badge green";
 
-badge.textContent =
-"GREEN";
+badge.textContent="GREEN";
 
 }
 
-else {
+else{
 
-badge.className =
-"badge none";
+badge.className="badge none";
 
-badge.textContent =
-"NONE";
+badge.textContent="NONE";
 
 }
 
 
-const remove =
+/* NOTE BUTTON */
+
+const noteButton=
 document.createElement("button");
 
-remove.type = "button";
+noteButton.type="button";
 
-remove.className =
-"danger small";
-
-remove.textContent =
-"Remove";
-
-
-remove.onclick =
-function() {
-
-children.splice(
-index,
-1
+noteButton.className=
+"note-button"+
+(
+child.note &&
+(child.note.amount||child.note.what)
+?" has-note"
+:""
 );
+
+noteButton.textContent="📝";
+
+noteButton.title="Add snack note";
+
+
+noteButton.onclick=function(){
+
+if(openNoteIndex===index){
+
+openNoteIndex=null;
+
+}else{
+
+openNoteIndex=index;
+
+}
+
+renderSnackList();
+
+};
+
+
+/* REMOVE */
+
+const remove=
+document.createElement("button");
+
+remove.type="button";
+
+remove.className="danger small";
+
+remove.textContent="Remove";
+
+
+remove.onclick=function(){
+
+children.splice(index,1);
+
+openNoteIndex=null;
 
 saveData();
 
@@ -964,33 +968,44 @@ renderSnackList();
 
 };
 
+
+/* TOP ROW */
 
 top.append(
 tick,
 name,
 badge,
+noteButton,
 remove
 );
 
 item.appendChild(top);
 
 
-if (
-child.milk &&
-child.milk.trim()
-) {
+/* MILK */
 
-const milk =
+if(child.milk){
+
+const milk=
 document.createElement("div");
 
-milk.className =
-"detail";
+milk.className="detail";
 
-milk.textContent =
-"Alternative milk: " +
-child.milk;
+milk.textContent=
+"Alternative milk: "+child.milk;
 
 item.appendChild(milk);
+
+}
+
+
+/* NOTE */
+
+if(openNoteIndex===index){
+
+item.appendChild(
+createNoteBox(child)
+);
 
 }
 
@@ -1002,66 +1017,232 @@ container.appendChild(item);
 }
 
 
-/* SUNCREAM LIST */
+/* CREATE NOTE BOX */
 
-function renderSuncreamList() {
+function createNoteBox(child){
 
-const container =
+const box=
+document.createElement("div");
+
+box.className="note-box";
+
+
+const amountLabel=
+document.createElement("label");
+
+amountLabel.textContent=
+"How much did they have?";
+
+
+box.appendChild(amountLabel);
+
+
+const amounts=
+[
+"Little",
+"Half",
+"Almost all",
+"All"
+];
+
+
+const amountButtons=
+document.createElement("div");
+
+amountButtons.className=
+"amount-buttons";
+
+
+amounts.forEach(amount=>{
+
+const button=
+document.createElement("button");
+
+button.type="button";
+
+button.className=
+"amount-button"+
+(
+child.note &&
+child.note.amount===amount
+?" selected"
+:""
+);
+
+button.textContent=amount;
+
+
+button.onclick=function(){
+
+if(!child.note){
+child.note={};
+}
+
+child.note.amount=amount;
+
+saveData();
+
+renderSnackList();
+
+};
+
+
+amountButtons.appendChild(button);
+
+});
+
+
+box.appendChild(amountButtons);
+
+
+/* WHAT THEY HAD */
+
+const whatLabel=
+document.createElement("label");
+
+whatLabel.textContent=
+"What did they have?";
+
+
+box.appendChild(whatLabel);
+
+
+const whatInput=
+document.createElement("input");
+
+whatInput.type="text";
+
+whatInput.placeholder=
+"e.g. banana, apple, different fruit";
+
+whatInput.value=
+child.note &&
+child.note.what
+?child.note.what
+:"";
+
+
+box.appendChild(whatInput);
+
+
+const saveRow=
+document.createElement("div");
+
+saveRow.className="note-save-row";
+
+
+const saveButton=
+document.createElement("button");
+
+saveButton.type="button";
+
+saveButton.className="primary";
+
+saveButton.textContent="Save";
+
+
+saveButton.onclick=function(){
+
+if(!child.note){
+child.note={};
+}
+
+child.note.what=
+whatInput.value.trim();
+
+saveData();
+
+openNoteIndex=null;
+
+renderSnackList();
+
+};
+
+
+const cancelButton=
+document.createElement("button");
+
+cancelButton.type="button";
+
+cancelButton.className="secondary";
+
+cancelButton.textContent="Close";
+
+
+cancelButton.onclick=function(){
+
+openNoteIndex=null;
+
+renderSnackList();
+
+};
+
+
+saveRow.append(
+saveButton,
+cancelButton
+);
+
+box.appendChild(saveRow);
+
+
+return box;
+
+}
+
+
+/* SUNCREAM */
+
+function renderSuncreamList(){
+
+const container=
 get("suncreamChildren");
 
-container.innerHTML = "";
+container.innerHTML="";
 
-const children =
+const children=
 data[currentDate].suncream;
 
 
-if (!children.length) {
+if(!children.length){
 
-container.innerHTML =
-'<div class="empty">' +
-'No children added to today\'s suncream list yet.' +
-'</div>';
+container.innerHTML=
+'<div class="empty">No children added to today\'s suncream list yet.</div>';
 
 return;
 
 }
 
 
-children.forEach(
-(child, index) => {
+children.forEach((child,index)=>{
 
-const item =
+const item=
 document.createElement("div");
 
-item.className =
-"child" +
-(child.done ? " done" : "");
+item.className=
+"child"+(child.done?" done":"");
 
 
-const top =
+const top=
 document.createElement("div");
 
-top.className =
-"child-top";
+top.className="child-top";
 
 
-const tick =
+const tick=
 document.createElement("button");
 
-tick.type = "button";
+tick.type="button";
 
-tick.className =
-"tick";
+tick.className="tick";
 
-tick.textContent =
-child.done ? "✓" : "";
+tick.textContent=
+child.done?"✓":"";
 
 
-tick.onclick =
-function() {
+tick.onclick=function(){
 
-child.done =
-!child.done;
+child.done=!child.done;
 
 saveData();
 
@@ -1070,35 +1251,27 @@ renderSuncreamList();
 };
 
 
-const name =
+const name=
 document.createElement("div");
 
-name.className =
-"child-name";
+name.className="child-name";
 
-name.textContent =
-child.name;
+name.textContent=child.name;
 
 
-const remove =
+const remove=
 document.createElement("button");
 
-remove.type = "button";
+remove.type="button";
 
-remove.className =
-"danger small";
+remove.className="danger small";
 
-remove.textContent =
-"Remove";
+remove.textContent="Remove";
 
 
-remove.onclick =
-function() {
+remove.onclick=function(){
 
-children.splice(
-index,
-1
-);
+children.splice(index,1);
 
 saveData();
 
@@ -1116,17 +1289,15 @@ remove
 item.appendChild(top);
 
 
-const detail =
+const detail=
 document.createElement("div");
 
-detail.className =
-"detail";
+detail.className="detail";
 
-detail.textContent =
+detail.textContent=
 child.product
-? "Suncream: " +
-child.product
-: "No specific suncream recorded";
+?"Suncream: "+child.product
+:"No specific suncream recorded";
 
 
 item.appendChild(detail);
@@ -1140,111 +1311,96 @@ container.appendChild(item);
 
 /* SAVED DAYS */
 
-function renderSavedDays() {
+function renderSavedDays(){
 
-const container =
+const container=
 get("savedDays");
 
-container.innerHTML = "";
+container.innerHTML="";
 
-const dates =
+const dates=
 Object.keys(data)
 .sort()
 .reverse();
 
 
-if (!dates.length) {
+if(!dates.length){
 
-container.innerHTML =
-'<div class="empty">' +
-'Saved days will appear here.' +
-'</div>';
+container.innerHTML=
+'<div class="empty">Saved days will appear here.</div>';
 
 return;
 
 }
 
 
-dates.forEach(
-function(date) {
+dates.forEach(date=>{
 
-const row =
+const row=
 document.createElement("div");
 
-row.className =
-"history-item";
+row.className="history-item";
 
 
-const title =
+const title=
 document.createElement("strong");
 
-title.textContent =
+title.textContent=
 formatDate(date);
 
 
-const buttons =
+const buttons=
 document.createElement("div");
 
-buttons.className =
-"history-buttons";
+buttons.className="history-buttons";
 
 
-const open =
+const open=
 document.createElement("button");
 
-open.type = "button";
+open.type="button";
 
-open.className =
-"secondary small";
+open.className="secondary small";
 
-open.textContent =
-"Open";
+open.textContent="Open";
 
 
-open.onclick =
-function() {
+open.onclick=function(){
 
-currentDate =
-date;
+currentDate=date;
 
 render();
 
 window.scrollTo({
-top: 0,
-behavior: "smooth"
+top:0,
+behavior:"smooth"
 });
 
 };
 
 
-const deleteButton =
+const deleteButton=
 document.createElement("button");
 
-deleteButton.type =
-"button";
+deleteButton.type="button";
 
-deleteButton.className =
-"danger small";
+deleteButton.className="danger small";
 
-deleteButton.textContent =
-"Delete";
+deleteButton.textContent="Delete";
 
 
-deleteButton.onclick =
-function() {
+deleteButton.onclick=function(){
 
-const confirmed =
+const confirmed=
 confirm(
-"Are you sure you want to delete " +
-formatDate(date) +
+"Are you sure you want to delete "+
+formatDate(date)+
 "?\n\nThis will delete the AM snack, PM snack and suncream list for this day."
 );
 
 
-if (!confirmed) {
-
+if(!confirmed){
 return;
-
 }
 
 
@@ -1253,12 +1409,13 @@ delete data[date];
 saveData();
 
 
-if (currentDate === date) {
+if(currentDate===date){
 
-currentDate =
-getToday();
+currentDate=getToday();
 
 createDay(currentDate);
+
+saveData();
 
 }
 
@@ -1287,17 +1444,17 @@ container.appendChild(row);
 }
 
 
-/* ADD SNACK */
+/* ADD SNACK CHILD */
 
-function addSnack() {
+function addSnack(){
 
-const name =
+const name=
 get("snackName")
 .value
 .trim();
 
 
-if (!name) {
+if(!name){
 
 alert(
 "Please enter the child's name."
@@ -1308,15 +1465,15 @@ return;
 }
 
 
-const key =
-currentSnack === "am"
-? "amSnack"
-: "pmSnack";
+const key=
+currentSnack==="am"
+?"amSnack"
+:"pmSnack";
 
 
 data[currentDate][key].push({
 
-name: name,
+name:name,
 
 status:
 get("snackStatus").value,
@@ -1326,19 +1483,21 @@ get("snackMilk")
 .value
 .trim(),
 
-done: false
+done:false,
+
+note:{
+amount:"",
+what:""
+}
 
 });
 
 
-get("snackName").value =
-"";
+get("snackName").value="";
 
-get("snackMilk").value =
-"";
+get("snackMilk").value="";
 
-get("snackStatus").value =
-"none";
+get("snackStatus").value="none";
 
 
 saveData();
@@ -1348,17 +1507,17 @@ renderSnackList();
 }
 
 
-/* ADD SUNCREAM */
+/* ADD SUNCREAM CHILD */
 
-function addSuncream() {
+function addSuncream(){
 
-const name =
+const name=
 get("suncreamName")
 .value
 .trim();
 
 
-if (!name) {
+if(!name){
 
 alert(
 "Please enter the child's name."
@@ -1373,23 +1532,21 @@ data[currentDate]
 .suncream
 .push({
 
-name: name,
+name:name,
 
 product:
 get("suncreamProduct")
 .value
 .trim(),
 
-done: false
+done:false
 
 });
 
 
-get("suncreamName").value =
-"";
+get("suncreamName").value="";
 
-get("suncreamProduct").value =
-"";
+get("suncreamProduct").value="";
 
 
 saveData();
@@ -1399,28 +1556,26 @@ renderSuncreamList();
 }
 
 
-/* NEW DAY */
+/* CREATE NEW DAY */
 
-function createNewDay() {
+function createNewDay(){
 
-const answer =
+const answer=
 prompt(
 "Enter the date as DD/MM/YYYY"
 );
 
 
-if (!answer) {
-
+if(!answer){
 return;
-
 }
 
 
-const parts =
+const parts=
 answer.split("/");
 
 
-if (parts.length !== 3) {
+if(parts.length!==3){
 
 alert(
 "Please use DD/MM/YYYY."
@@ -1431,11 +1586,9 @@ return;
 }
 
 
-currentDate =
-parts[2] +
-"-" +
-parts[1].padStart(2,"0") +
-"-" +
+currentDate=
+parts[2]+"-"+
+parts[1].padStart(2,"0")+"-"+
 parts[0].padStart(2,"0");
 
 
@@ -1448,7 +1601,7 @@ render();
 }
 
 
-/* BUTTONS */
+/* BUTTON EVENTS */
 
 get("snackFolder")
 .addEventListener(
@@ -1502,9 +1655,9 @@ createNewDay
 get("date")
 .addEventListener(
 "change",
-function() {
+function(){
 
-currentDate =
+currentDate=
 get("date").value;
 
 createDay(currentDate);
@@ -1521,8 +1674,7 @@ render();
 
 loadData();
 
-currentDate =
-getToday();
+currentDate=getToday();
 
 createDay(currentDate);
 
